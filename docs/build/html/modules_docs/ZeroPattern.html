@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZeroPattern &mdash; rec_sequences 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="SignPattern" href="SignPattern.html" />
+    <link rel="prev" title="ArithmeticProgression" href="ArithmeticProgression.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> rec_sequences
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="RecurrenceSequenceRing.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">RecurrenceSequenceElement</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">RecurrenceSequenceRing</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="CFiniteSequenceRing.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">CFiniteSequence</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">CFiniteSequenceRing</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="DFiniteSequenceRing.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">DFiniteSequence</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">DFiniteSequenceRing</span></code></a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="DifferenceDefinableSequenceRing.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">DifferenceDefinableSequence</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">DifferenceDefinableSequenceRing</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="C2FiniteSequenceRing.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">C2FiniteSequence</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">C2FiniteSequenceRing</span></code></a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="ArithmeticProgression.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">ArithmeticProgression</span></code></a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#"><code class="xref py py-class docutils literal notranslate"><span class="pre">ZeroPattern</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="SignPattern.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">SignPattern</span></code></a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="LinearSolveSequence.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">LinearSolveSequence</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="FunctionalEquation.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">FunctionalEquation</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="SequenceRingOfFraction.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">FractionSequence</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">SequenceRingOfFraction</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="utility.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">utility</span></code></a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">rec_sequences</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><code class="xref py py-class docutils literal notranslate"><span class="pre">ZeroPattern</span></code></li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules_docs/ZeroPattern.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-rec_sequences.ZeroPattern">
+<span id="zeropattern"></span><h1><a class="reference internal" href="#module-rec_sequences.ZeroPattern" title="rec_sequences.ZeroPattern"><code class="xref py py-class docutils literal notranslate"><span class="pre">ZeroPattern</span></code></a><a class="headerlink" href="#module-rec_sequences.ZeroPattern" title="Permalink to this headline"></a></h1>
+<p>Describes the zero pattern of a sequence comprised of a finite
+set together with finitely many arithmetic progressions.
+Such a zero pattern is represented by a sequence of boolean values
+where <code class="docutils literal notranslate"><span class="pre">False</span></code> represents a zero and <code class="docutils literal notranslate"><span class="pre">True</span></code> a different value.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.ZeroPattern</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">progressions</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="n">ArithmeticProgression</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> \
+<span class="o">....</span><span class="p">:</span>                     <span class="n">ArithmeticProgression</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">)])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">pattern</span> <span class="o">=</span> <span class="n">ZeroPattern</span><span class="p">(</span><span class="nb">set</span><span class="p">([</span><span class="mi">0</span><span class="p">]),</span> <span class="n">progressions</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">pattern</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># check that 0-th term is zero</span>
+<span class="kc">False</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">pattern</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># check that 1-st term is non-zero</span>
+<span class="kc">True</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">pattern</span><span class="o">.</span><span class="n">get_cycle_start</span><span class="p">(),</span> <span class="n">pattern</span><span class="o">.</span><span class="n">get_cycle_length</span><span class="p">()</span>
+<span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">pattern</span><span class="o">.</span><span class="n">pattern</span><span class="p">())</span> <span class="c1"># first terms of pattern</span>
+<span class="mi">0</span><span class="o">*</span><span class="mi">00</span><span class="o">**</span><span class="mi">00</span><span class="o">*</span><span class="mi">0</span><span class="o">**</span><span class="mi">0</span><span class="o">**</span><span class="mi">0</span><span class="o">*</span><span class="mi">00</span><span class="o">*</span>
+</pre></div>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="rec_sequences.ZeroPattern.ZeroPattern">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">rec_sequences.ZeroPattern.</span></span><span class="sig-name descname"><span class="pre">ZeroPattern</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">finite_set</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">progressions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.ZeroPattern.ZeroPattern" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sage.structure.sage_object.SageObject</span></code></p>
+<p>The class describes the zero pattern of a sequence which
+does not violate the Skolem-Mahler-Lech-Theorem.
+I.e., the class describes a finite set of zeros and some
+finitely many arithmetic progessions where the sequence
+is zero as well.</p>
+<p>This zero pattern might not be unique, i.e. there might
+be several different objects describing the same pattern.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.ZeroPattern.ZeroPattern.__eq__">
+<span class="sig-name descname"><span class="pre">__eq__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.ZeroPattern.ZeroPattern.__eq__" title="Permalink to this definition"></a></dt>
+<dd><p>Checks whether two zero patterns are equal.</p>
+<p>INPUT:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pattern</span></code> – a zero pattern</p></li>
+</ul>
+<p>OUTPUT:</p>
+<p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the two patterns are equal and <code class="docutils literal notranslate"><span class="pre">False</span></code> 
+otherwise.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.ZeroPattern.ZeroPattern.__getitem__">
+<span class="sig-name descname"><span class="pre">__getitem__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.ZeroPattern.ZeroPattern.__getitem__" title="Permalink to this definition"></a></dt>
+<dd><p>INPUT:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">n</span></code> – a natural number or a slice object (specifying only finitely
+many values)</p></li>
+</ul>
+<p>OUTPUT:</p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the <code class="docutils literal notranslate"><span class="pre">n</span></code>-th term is non-zero and <code class="docutils literal notranslate"><span class="pre">False</span></code> if it 
+is zero provided that <code class="docutils literal notranslate"><span class="pre">n</span></code> is a natural number. If <code class="docutils literal notranslate"><span class="pre">n</span></code> is a slice
+object, a list with these boolean values is returned.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.ZeroPattern</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">progressions</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="n">ArithmeticProgression</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> \
+<span class="o">....</span><span class="p">:</span>                     <span class="n">ArithmeticProgression</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">)])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">pattern</span> <span class="o">=</span> <span class="n">ZeroPattern</span><span class="p">(</span><span class="nb">set</span><span class="p">([</span><span class="mi">0</span><span class="p">]),</span> <span class="n">progressions</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">pattern</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span> 
+<span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.ZeroPattern.ZeroPattern.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">finite_set</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">progressions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.ZeroPattern.ZeroPattern.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a zero pattern with the given set <code class="docutils literal notranslate"><span class="pre">finite_set</span></code> and the
+given arithmetic <code class="docutils literal notranslate"><span class="pre">progressions</span></code>.</p>
+<p>INPUT:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">finite_set</span></code> – a set of exceptional zeros not covered by the
+arithmetic progressions.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">progressions</span></code> – a set of arithmetic progressions of the type
+<a class="reference internal" href="ArithmeticProgression.html#module-rec_sequences.ArithmeticProgression" title="rec_sequences.ArithmeticProgression"><code class="xref py py-class docutils literal notranslate"><span class="pre">rec_sequences.ArithmeticProgression</span></code></a>.</p></li>
+</ul>
+<p>OUTPUT:</p>
+<p>The described zero pattern.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.ZeroPattern</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">progressions</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="n">ArithmeticProgression</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> \
+<span class="o">....</span><span class="p">:</span>                     <span class="n">ArithmeticProgression</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">)])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">pattern</span> <span class="o">=</span> <span class="n">ZeroPattern</span><span class="p">(</span><span class="nb">set</span><span class="p">([</span><span class="mi">0</span><span class="p">]),</span> <span class="n">progressions</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">pattern</span><span class="p">)</span> <span class="c1"># random</span>
+<span class="n">Zero</span> <span class="n">pattern</span> <span class="k">with</span> <span class="n">finite</span> <span class="nb">set</span> <span class="p">{</span><span class="mi">0</span><span class="p">}</span> <span class="ow">and</span> <span class="n">arithmetic</span> <span class="n">progressions</span><span class="p">:</span> 
+<span class="o">-</span> <span class="n">Arithmetic</span> <span class="n">progression</span> <span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">n</span><span class="o">+</span><span class="mi">3</span><span class="p">)</span><span class="n">_n</span>
+<span class="o">-</span> <span class="n">Arithmetic</span> <span class="n">progression</span> <span class="p">(</span><span class="mi">5</span><span class="o">*</span><span class="n">n</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span><span class="n">_n</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.ZeroPattern.ZeroPattern._latex_">
+<span class="sig-name descname"><span class="pre">_latex_</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.ZeroPattern.ZeroPattern._latex_" title="Permalink to this definition"></a></dt>
+<dd><p>OUTPUT:</p>
+<p>A latex representation of the zero pattern.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.ZeroPattern</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">progressions</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="n">ArithmeticProgression</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">latex</span><span class="p">(</span><span class="n">ZeroPattern</span><span class="p">(</span><span class="nb">set</span><span class="p">([</span><span class="mi">0</span><span class="p">]),</span> <span class="n">progressions</span><span class="p">)))</span> 
+\<span class="p">{</span><span class="mi">0</span>\<span class="p">}</span>\<span class="n">cup</span>\<span class="p">{</span><span class="mi">3</span> \<span class="n">cdot</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">3</span> <span class="p">:</span> <span class="n">n</span> \<span class="ow">in</span> \<span class="n">mathbb</span><span class="p">{</span><span class="n">N</span><span class="p">}</span>\<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.ZeroPattern.ZeroPattern._repr_">
+<span class="sig-name descname"><span class="pre">_repr_</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.ZeroPattern.ZeroPattern._repr_" title="Permalink to this definition"></a></dt>
+<dd><p>OUTPUT:</p>
+<p>A string representation of the zero pattern.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.ZeroPattern</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">progressions</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="n">ArithmeticProgression</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> \
+<span class="o">....</span><span class="p">:</span>                     <span class="n">ArithmeticProgression</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">)])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">latex</span><span class="p">(</span><span class="n">ZeroPattern</span><span class="p">(</span><span class="nb">set</span><span class="p">([</span><span class="mi">0</span><span class="p">]),</span> <span class="n">progressions</span><span class="p">)))</span> <span class="c1"># random</span>
+<span class="n">Zero</span> <span class="n">pattern</span> <span class="k">with</span> <span class="n">finite</span> <span class="nb">set</span> <span class="p">{</span><span class="mi">0</span><span class="p">}</span> <span class="ow">and</span> <span class="n">arithmetic</span> <span class="n">progressions</span><span class="p">:</span> 
+<span class="o">-</span> <span class="n">Arithmetic</span> <span class="n">progression</span> <span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">n</span><span class="o">+</span><span class="mi">3</span><span class="p">)</span><span class="n">_n</span>
+<span class="o">-</span> <span class="n">Arithmetic</span> <span class="n">progression</span> <span class="p">(</span><span class="mi">5</span><span class="o">*</span><span class="n">n</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span><span class="n">_n</span>
+<span class="n">sage</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">ZeroPattern</span><span class="p">(</span><span class="nb">set</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">]),</span> <span class="nb">set</span><span class="p">()))</span>
+<span class="n">Zero</span> <span class="n">pattern</span> <span class="k">with</span> <span class="n">finite</span> <span class="nb">set</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">}</span> <span class="ow">and</span> <span class="n">no</span> <span class="n">arithmetic</span> <span class="n">progressions</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.ZeroPattern.ZeroPattern.from_zero_pattern">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">from_zero_pattern</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">finite_set</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cycle_start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cycle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.ZeroPattern.ZeroPattern.from_zero_pattern" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a zero pattern with the given set <code class="docutils literal notranslate"><span class="pre">finite_set</span></code> and the
+given arithmetic cycle.</p>
+<p>INPUT:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">finite_set</span></code> – a set of exceptional zeros not covered by the
+arithmetic progressions.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cycle_start</span></code> – a natural number indicating where the periodic
+behavior of the zeros start.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cycle</span></code> – the zero-cycle which holds from <code class="docutils literal notranslate"><span class="pre">cycle_start</span></code> on. 
+It should be given as list of boolean values where <code class="docutils literal notranslate"><span class="pre">False</span></code>
+indicates a zero value and <code class="docutils literal notranslate"><span class="pre">True</span></code> a non-zero value (or use
+any values that can be casted like this).</p></li>
+</ul>
+<p>OUTPUT:</p>
+<p>The described zero pattern.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.ZeroPattern</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">pattern</span> <span class="o">=</span> <span class="n">ZeroPattern</span><span class="o">.</span><span class="n">from_zero_pattern</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="mi">3</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">pattern</span><span class="p">)</span> <span class="c1"># random</span>
+<span class="n">Zero</span> <span class="n">pattern</span> <span class="k">with</span> <span class="n">finite</span> <span class="nb">set</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">and</span> <span class="n">arithmetic</span> <span class="n">progressions</span><span class="p">:</span> 
+<span class="o">-</span> <span class="n">Arithmetic</span> <span class="n">progression</span> <span class="p">(</span><span class="mi">5</span><span class="o">*</span><span class="n">n</span><span class="o">+</span><span class="mi">3</span><span class="p">)</span><span class="n">_n</span>
+<span class="o">-</span> <span class="n">Arithmetic</span> <span class="n">progression</span> <span class="p">(</span><span class="mi">5</span><span class="o">*</span><span class="n">n</span><span class="o">+</span><span class="mi">6</span><span class="p">)</span><span class="n">_n</span>
+<span class="n">sage</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">pattern</span><span class="o">.</span><span class="n">pattern</span><span class="p">())</span>
+<span class="mi">00</span><span class="o">*</span><span class="mi">0</span><span class="o">**</span><span class="mi">0</span><span class="o">*</span><span class="mi">0</span><span class="o">**</span><span class="mi">0</span><span class="o">*</span><span class="mi">0</span><span class="o">**</span><span class="mi">0</span><span class="o">*</span><span class="mi">0</span><span class="o">*</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.ZeroPattern.ZeroPattern.get_cycle_length">
+<span class="sig-name descname"><span class="pre">get_cycle_length</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.ZeroPattern.ZeroPattern.get_cycle_length" title="Permalink to this definition"></a></dt>
+<dd><p>OUTPUT:</p>
+<p>Returns the length of the cycle.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.ZeroPattern</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">progressions</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="n">ArithmeticProgression</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> \
+<span class="o">....</span><span class="p">:</span>                     <span class="n">ArithmeticProgression</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">)])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">pattern</span> <span class="o">=</span> <span class="n">ZeroPattern</span><span class="p">(</span><span class="nb">set</span><span class="p">([</span><span class="mi">0</span><span class="p">]),</span> <span class="n">progressions</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">pattern</span><span class="o">.</span><span class="n">get_cycle_length</span><span class="p">())</span>
+<span class="mi">15</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.ZeroPattern.ZeroPattern.get_cycle_start">
+<span class="sig-name descname"><span class="pre">get_cycle_start</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.ZeroPattern.ZeroPattern.get_cycle_start" title="Permalink to this definition"></a></dt>
+<dd><p>OUTPUT:</p>
+<p>Returns the index from which the zero-pattern is guaranteed to
+be cyclic. This index might not be minimal.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.ZeroPattern</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">progressions</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="n">ArithmeticProgression</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> \
+<span class="o">....</span><span class="p">:</span>                     <span class="n">ArithmeticProgression</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">)])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">pattern</span> <span class="o">=</span> <span class="n">ZeroPattern</span><span class="p">(</span><span class="nb">set</span><span class="p">([</span><span class="mi">0</span><span class="p">]),</span> <span class="n">progressions</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">pattern</span><span class="o">.</span><span class="n">get_cycle_start</span><span class="p">())</span>
+<span class="mi">3</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.ZeroPattern.ZeroPattern.get_finite_set">
+<span class="sig-name descname"><span class="pre">get_finite_set</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.ZeroPattern.ZeroPattern.get_finite_set" title="Permalink to this definition"></a></dt>
+<dd><p>OUTPUT:</p>
+<p>Returns the finite zero-set of the pattern.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.ZeroPattern</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">progressions</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="n">ArithmeticProgression</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> \
+<span class="o">....</span><span class="p">:</span>                     <span class="n">ArithmeticProgression</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">)])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">pattern</span> <span class="o">=</span> <span class="n">ZeroPattern</span><span class="p">(</span><span class="nb">set</span><span class="p">([</span><span class="mi">0</span><span class="p">]),</span> <span class="n">progressions</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">pattern</span><span class="o">.</span><span class="n">get_finite_set</span><span class="p">())</span>
+<span class="p">{</span><span class="mi">0</span><span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.ZeroPattern.ZeroPattern.get_progressions">
+<span class="sig-name descname"><span class="pre">get_progressions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.ZeroPattern.ZeroPattern.get_progressions" title="Permalink to this definition"></a></dt>
+<dd><p>OUTPUT:</p>
+<p>Returns the arithmetic progressions of the pattern.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.ZeroPattern</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">progressions</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="n">ArithmeticProgression</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> \
+<span class="o">....</span><span class="p">:</span>                     <span class="n">ArithmeticProgression</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">)])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">pattern</span> <span class="o">=</span> <span class="n">ZeroPattern</span><span class="p">(</span><span class="nb">set</span><span class="p">([</span><span class="mi">0</span><span class="p">]),</span> <span class="n">progressions</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">pattern</span><span class="o">.</span><span class="n">get_progressions</span><span class="p">())</span> <span class="c1"># random</span>
+<span class="p">{</span><span class="n">Arithmetic</span> <span class="n">progression</span> <span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">n</span><span class="o">+</span><span class="mi">3</span><span class="p">)</span><span class="n">_n</span><span class="p">,</span> <span class="n">Arithmetic</span> <span class="n">progression</span> <span class="p">(</span><span class="mi">5</span><span class="o">*</span><span class="n">n</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span><span class="n">_n</span><span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.ZeroPattern.ZeroPattern.guess">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">guess</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cycles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwds</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.ZeroPattern.ZeroPattern.guess" title="Permalink to this definition"></a></dt>
+<dd><p>Computes the zero pattern of the given data.</p>
+<p>INPUT:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code> – a list of numbers</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cycles</span></code> – the number of cycles that need to
+be detected to conclude whether we indeed have a period. 
+Assume <code class="docutils literal notranslate"><span class="pre">cycles&gt;1</span></code>.</p></li>
+</ul>
+<p>OUTPUT:</p>
+<p>The zero-pattern satisfied by <code class="docutils literal notranslate"><span class="pre">data</span></code>. 
+If no pattern could be found, a <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> is raised.</p>
+<p>ALGORITHM:</p>
+<p>We assume that the periodic behavior starts at least at
+the half-point of the given data. The algorithm is not 
+particularly efficient and runs in <code class="docutils literal notranslate"><span class="pre">O(len(data)^3)</span></code> in the worst case.
+However, in the usual case, if data is cyclic almost from the beginning
+it is essentially <code class="docutils literal notranslate"><span class="pre">O(len(data))</span></code></p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.ZeroPattern</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">ZeroPattern</span><span class="o">.</span><span class="n">guess</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
+<span class="n">Zero</span> <span class="n">pattern</span> <span class="k">with</span> <span class="n">finite</span> <span class="nb">set</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">and</span> <span class="n">arithmetic</span> <span class="n">progressions</span><span class="p">:</span> 
+<span class="o">-</span> <span class="n">Arithmetic</span> <span class="n">progression</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">n</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span><span class="n">_n</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">ZeroPattern</span><span class="o">.</span><span class="n">guess</span><span class="p">(</span><span class="mi">10</span><span class="o">*</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># random</span>
+<span class="n">Zero</span> <span class="n">pattern</span> <span class="k">with</span> <span class="n">finite</span> <span class="nb">set</span> <span class="p">{}</span> <span class="ow">and</span> <span class="n">arithmetic</span> <span class="n">progressions</span><span class="p">:</span> 
+<span class="o">-</span> <span class="n">Arithmetic</span> <span class="n">progression</span> <span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="n">_n</span>
+<span class="o">-</span> <span class="n">Arithmetic</span> <span class="n">progression</span> <span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">n</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span><span class="n">_n</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.ZeroPattern.ZeroPattern.is_zero">
+<span class="sig-name descname"><span class="pre">is_zero</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.ZeroPattern.ZeroPattern.is_zero" title="Permalink to this definition"></a></dt>
+<dd><p>OUTPUT:</p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the pattern is constantly zero.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.ZeroPattern</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">progressions</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="n">ArithmeticProgression</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">ZeroPattern</span><span class="p">(</span><span class="nb">set</span><span class="p">([</span><span class="mi">0</span><span class="p">]),</span> <span class="n">progressions</span><span class="p">)</span><span class="o">.</span><span class="n">is_zero</span><span class="p">()</span>
+<span class="kc">False</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">ZeroPattern</span><span class="p">(</span><span class="nb">set</span><span class="p">([</span><span class="mi">3</span><span class="p">]))</span><span class="o">.</span><span class="n">is_zero</span><span class="p">()</span>
+<span class="kc">False</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">ZeroPattern</span><span class="p">()</span><span class="o">.</span><span class="n">is_zero</span><span class="p">()</span>
+<span class="kc">False</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">progressions2</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="n">ArithmeticProgression</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">ZeroPattern</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="n">progressions2</span><span class="p">)</span><span class="o">.</span><span class="n">is_zero</span><span class="p">()</span>
+<span class="kc">True</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">ZeroPattern</span><span class="p">([],</span> <span class="n">progressions2</span><span class="p">)</span><span class="o">.</span><span class="n">is_zero</span><span class="p">()</span>
+<span class="kc">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.ZeroPattern.ZeroPattern.non_zero">
+<span class="sig-name descname"><span class="pre">non_zero</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.ZeroPattern.ZeroPattern.non_zero" title="Permalink to this definition"></a></dt>
+<dd><p>OUTPUT:</p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the pattern has no zeros at all and
+<code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.ZeroPattern</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">progressions</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="n">ArithmeticProgression</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">ZeroPattern</span><span class="p">(</span><span class="nb">set</span><span class="p">([</span><span class="mi">0</span><span class="p">]),</span> <span class="n">progressions</span><span class="p">)</span><span class="o">.</span><span class="n">non_zero</span><span class="p">()</span>
+<span class="kc">False</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">ZeroPattern</span><span class="p">(</span><span class="nb">set</span><span class="p">([</span><span class="mi">3</span><span class="p">]))</span><span class="o">.</span><span class="n">non_zero</span><span class="p">()</span>
+<span class="kc">False</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">ZeroPattern</span><span class="p">()</span><span class="o">.</span><span class="n">non_zero</span><span class="p">()</span>
+<span class="kc">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.ZeroPattern.ZeroPattern.non_zero_start">
+<span class="sig-name descname"><span class="pre">non_zero_start</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.ZeroPattern.ZeroPattern.non_zero_start" title="Permalink to this definition"></a></dt>
+<dd><p>OUTPUT:</p>
+<p>Returns the index from which on the pattern has no zeros at all.
+If such an index does not exist, a <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> is raised.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.ZeroPattern</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">progressions</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="n">ArithmeticProgression</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">ZeroPattern</span><span class="p">(</span><span class="nb">set</span><span class="p">([</span><span class="mi">0</span><span class="p">]),</span> <span class="n">progressions</span><span class="p">)</span><span class="o">.</span><span class="n">non_zero_start</span><span class="p">()</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+<span class="o">...</span>
+<span class="ne">ValueError</span><span class="p">:</span> <span class="n">Pattern</span> <span class="n">contains</span> <span class="n">infinitely</span> <span class="n">many</span> <span class="n">zeros</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">ZeroPattern</span><span class="p">(</span><span class="nb">set</span><span class="p">([</span><span class="mi">3</span><span class="p">]))</span><span class="o">.</span><span class="n">non_zero_start</span><span class="p">()</span>
+<span class="mi">4</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">ZeroPattern</span><span class="p">()</span><span class="o">.</span><span class="n">non_zero_start</span><span class="p">()</span>
+<span class="mi">0</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.ZeroPattern.ZeroPattern.pattern">
+<span class="sig-name descname"><span class="pre">pattern</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.ZeroPattern.ZeroPattern.pattern" title="Permalink to this definition"></a></dt>
+<dd><p>INPUT:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">n</span></code> – a natural number</p></li>
+</ul>
+<p>OUTPUT:</p>
+<p>Returns a string <code class="docutils literal notranslate"><span class="pre">s</span></code> of length <code class="docutils literal notranslate"><span class="pre">n</span></code> with characters <code class="docutils literal notranslate"><span class="pre">0</span></code> 
+(representing a zero at the corresponding position) and <code class="docutils literal notranslate"><span class="pre">*</span></code>
+(representing a non-zero at the corresponding position).</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.ZeroPattern</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">progressions</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="n">ArithmeticProgression</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> \
+<span class="o">....</span><span class="p">:</span>                     <span class="n">ArithmeticProgression</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">)])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">pattern</span> <span class="o">=</span> <span class="n">ZeroPattern</span><span class="p">(</span><span class="nb">set</span><span class="p">([</span><span class="mi">0</span><span class="p">]),</span> <span class="n">progressions</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">pattern</span><span class="o">.</span><span class="n">pattern</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+<span class="mi">0</span><span class="o">*</span><span class="mi">00</span><span class="o">*</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ArithmeticProgression.html" class="btn btn-neutral float-left" title="ArithmeticProgression" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="SignPattern.html" class="btn btn-neutral float-right" title="SignPattern" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Philipp Nuspl.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

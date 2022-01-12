@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>rec_sequences: A Sage package &mdash; rec_sequences 0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="RecurrenceSequenceElement and RecurrenceSequenceRing" href="modules_docs/RecurrenceSequenceRing.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="#" class="icon icon-home"> rec_sequences
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="modules_docs/RecurrenceSequenceRing.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">RecurrenceSequenceElement</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">RecurrenceSequenceRing</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules_docs/CFiniteSequenceRing.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">CFiniteSequence</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">CFiniteSequenceRing</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules_docs/DFiniteSequenceRing.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">DFiniteSequence</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">DFiniteSequenceRing</span></code></a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules_docs/DifferenceDefinableSequenceRing.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">DifferenceDefinableSequence</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">DifferenceDefinableSequenceRing</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules_docs/C2FiniteSequenceRing.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">C2FiniteSequence</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">C2FiniteSequenceRing</span></code></a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules_docs/ArithmeticProgression.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">ArithmeticProgression</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules_docs/ZeroPattern.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">ZeroPattern</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules_docs/SignPattern.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">SignPattern</span></code></a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules_docs/LinearSolveSequence.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">LinearSolveSequence</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules_docs/FunctionalEquation.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">FunctionalEquation</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules_docs/SequenceRingOfFraction.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">FractionSequence</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">SequenceRingOfFraction</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules_docs/utility.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">utility</span></code></a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">rec_sequences</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
+      <li>rec_sequences: A Sage package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="rec-sequences-a-sage-package">
+<h1>rec_sequences: A Sage package<a class="headerlink" href="#rec-sequences-a-sage-package" title="Permalink to this headline"></a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline"></a></h2>
+<p>This <a class="reference external" href="https://www.sagemath.org/">SageMath</a> package
+provides a framework to work with sequences satisfying linear recurrence
+equations.</p>
+<ul class="simple">
+<li><p>In the simple case, these are sequences satisfying recurrences
+with constant coefficients (so called <span class="math notranslate nohighlight">\(C\)</span>-finite sequences) or polynomial
+coefficients (so called <span class="math notranslate nohighlight">\(D\)</span>-finite sequences). The implementation of these
+sequences is based on the
+<a class="reference external" href="https://github.com/mkauers/ore_algebra"><code class="docutils literal notranslate"><span class="pre">ore_algebra</span></code></a> package (cf. <a class="reference internal" href="#kjj15" id="id1"><span>[KJJ15]</span></a>).</p></li>
+<li><p>From these simple sequences
+one can create more complicated sequences, e.g. sequences satisfying a linear
+recurrence with <span class="math notranslate nohighlight">\(C\)</span>-finite coefficients, so called <span class="math notranslate nohighlight">\(C^2\)</span>-finite sequences.</p></li>
+<li><p>The package furthermore provides methods to show inequalities of <span class="math notranslate nohighlight">\(C\)</span>-finite
+and <span class="math notranslate nohighlight">\(D\)</span>-finite sequences based on the Gerhold-Kauers method
+(cf. <a class="reference internal" href="#gk05" id="id2"><span>[GK05]</span></a>, <a class="reference internal" href="#kp10" id="id3"><span>[KP10]</span></a>).</p></li>
+</ul>
+<p>The theory of <span class="math notranslate nohighlight">\(C^2\)</span>-finite sequences which serves as the theoretic backbone of
+the package is developed in:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Antonio Jiménez-Pastor, Philipp Nuspl, Veronika Pillwein:
+An extension of holonomic sequences: <span class="math notranslate nohighlight">\(C^2\)</span>-finite sequences (2021),
+<a class="reference external" href="https://epub.jku.at/obvulioa/download/pdf/6880353?originalFilename=true">10.35011/risc.21-20</a></p></li>
+</ul>
+</div></blockquote>
+<p>The package is developed by <a class="reference external" href="mailto:philipp&#46;nuspl&#37;&#52;&#48;jku&#46;at">Philipp Nuspl</a> and
+published under the GNU General Public License v3.0.
+The research is funded by the
+Austrian Science Fund (FWF): W1214-N15, project DK15.</p>
+</section>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline"></a></h2>
+<p>The package depends on the <a class="reference external" href="https://github.com/mkauers/ore_algebra"><code class="docutils literal notranslate"><span class="pre">ore_algebra</span></code></a> package.
+Several methods are available to install the <code class="docutils literal notranslate"><span class="pre">rec_sequences</span></code> package:</p>
+<ol class="arabic">
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">sage</span> <span class="pre">pip</span></code> one can install the package using</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span> <span class="o">--</span><span class="n">pip</span> <span class="n">install</span> <span class="n">git</span><span class="o">+</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">PhilippNuspl</span><span class="o">/</span><span class="n">rec_sequences</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+<p>This assumes that Sage was built from sources or installed from official
+packages. The command will also automatically install the <code class="docutils literal notranslate"><span class="pre">ore_algebra</span></code>
+package. The flag <code class="docutils literal notranslate"><span class="pre">--user</span></code> can be used for a user local installation.</p>
+</li>
+<li><p>One can clone the repository and run <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">install</span></code> in the main directory
+of the repository. Again, this will automatically install the <code class="docutils literal notranslate"><span class="pre">ore_algebra</span></code>
+package.</p></li>
+<li><p>One can move the folder <code class="docutils literal notranslate"><span class="pre">rec_sequences</span></code> containing the sources to a
+directory where Sage can find it.
+Then, <code class="docutils literal notranslate"><span class="pre">ore_algebra</span></code> has to be installed separately.</p></li>
+</ol>
+<p>In any case, for showing inequalities the optional Sage package <code class="docutils literal notranslate"><span class="pre">qepcad</span></code> is used.
+This can usually be installed using</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span> <span class="o">-</span><span class="n">i</span> <span class="n">qepcad</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">rec_sequences</span></code> package was developed under Sage 9.4. However, the
+package should also run under older Sage versions (Sage 8.7 or more recent).</p>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline"></a></h2>
+<p>After the installation, the modules can be imported.
+Here, we want to compute with <span class="math notranslate nohighlight">\(C\)</span>-finite and <span class="math notranslate nohighlight">\(C^2\)</span>-finite sequences and
+import the corresponding modules:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.CFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.C2FiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+<p>Before we can specify specific sequences, we have to create the rings where
+these sequences will live:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">C2</span> <span class="o">=</span> <span class="n">C2FiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now, we can already specify some <span class="math notranslate nohighlight">\(C\)</span>-finite sequences, e.g. by giving the
+recurrence or by using some symbolic expression:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="n">fib</span> <span class="o">=</span> <span class="n">C</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;f&quot;</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">fib</span>
+<span class="n">C</span><span class="o">-</span><span class="n">finite</span> <span class="n">sequence</span> <span class="n">f</span><span class="p">(</span><span class="n">n</span><span class="p">):</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">f</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">=</span><span class="mi">0</span> <span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="s2">&quot;n&quot;</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">alt</span> <span class="o">=</span> <span class="n">C</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">^</span><span class="n">n</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">alt</span>
+<span class="n">C</span><span class="o">-</span><span class="n">finite</span> <span class="n">sequence</span> <span class="n">a</span><span class="p">(</span><span class="n">n</span><span class="p">):</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">a</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">a</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">a</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">=</span><span class="mi">1</span>
+</pre></div>
+</div>
+<p>Using these sequences, we can already extract terms, perform computations and
+check identities (like Cassini's identity here):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="n">fib</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">34</span><span class="p">]</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">alt</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+<span class="o">-</span><span class="mi">1</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">c</span> <span class="o">=</span> <span class="n">fib</span><span class="o">+</span><span class="n">alt</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">c</span><span class="o">.</span><span class="n">order</span><span class="p">()</span>
+<span class="mi">3</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">fib</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">fib</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">fib</span><span class="o">^</span><span class="mi">2</span> <span class="o">==</span> <span class="n">alt</span>
+<span class="kc">True</span>
+</pre></div>
+</div>
+<p>Furthermore, using the Gerhold-Kauers method (<a class="reference internal" href="#gk05" id="id4"><span>[GK05]</span></a>, <a class="reference internal" href="#kp10" id="id5"><span>[KP10]</span></a>)
+we can check termwise inequalities for <span class="math notranslate nohighlight">\(C\)</span>-finite
+(or <span class="math notranslate nohighlight">\(D\)</span>-finite) sequences:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="n">fib</span> <span class="o">&gt;</span> <span class="mi">0</span>
+<span class="kc">False</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">fib</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="o">*</span><span class="n">fib</span>
+<span class="kc">False</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">fib</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="mi">3</span><span class="o">*</span><span class="n">fib</span>
+<span class="kc">True</span>
+</pre></div>
+</div>
+<p>For more information one can check out the documentation
+<a class="reference internal" href="modules_docs/CFiniteSequenceRing.html#module-rec_sequences.CFiniteSequenceRing" title="rec_sequences.CFiniteSequenceRing"><code class="xref py py-class docutils literal notranslate"><span class="pre">rec_sequences.CFiniteSequenceRing</span></code></a> and
+<a class="reference internal" href="modules_docs/DFiniteSequenceRing.html#module-rec_sequences.DFiniteSequenceRing" title="rec_sequences.DFiniteSequenceRing"><code class="xref py py-class docutils literal notranslate"><span class="pre">rec_sequences.DFiniteSequenceRing</span></code></a> (its superclass).</p>
+<p>Now, we can also define <span class="math notranslate nohighlight">\(C^2\)</span>-finite sequences. Using closure properties
+we can for instance check whether a certain recurrence is really satisfied
+by the subsequence <span class="math notranslate nohighlight">\(f(n^2)\)</span> of the Fibonacci sequence <span class="math notranslate nohighlight">\(f(n)\)</span>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="n">sparse_fib</span> <span class="o">=</span> <span class="n">fib</span><span class="o">.</span><span class="n">sparse_subsequence</span><span class="p">(</span><span class="n">C2</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">sparse_fib</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">987</span><span class="p">,</span> <span class="mi">75025</span><span class="p">,</span> <span class="mi">14930352</span><span class="p">,</span> <span class="mi">7778742049</span><span class="p">]</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">sparse_fib</span><span class="o">.</span><span class="n">order</span><span class="p">(),</span> <span class="n">sparse_fib</span><span class="o">.</span><span class="n">degree</span><span class="p">()</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">d</span> <span class="o">=</span> <span class="n">C</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">54</span><span class="p">,</span> <span class="mi">331</span><span class="p">,</span> <span class="o">-</span><span class="mi">54</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">136</span><span class="p">,</span> <span class="mi">6710</span><span class="p">,</span> <span class="mi">317434</span><span class="p">,</span> <span class="mi">14927768</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">sparse_fib2</span> <span class="o">=</span> <span class="n">C2</span><span class="p">([</span><span class="o">-</span><span class="n">fib</span><span class="o">.</span><span class="n">subsequence</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">11</span><span class="p">),</span><span class="o">-</span><span class="n">d</span><span class="p">,</span><span class="n">fib</span><span class="o">.</span><span class="n">subsequence</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">9</span><span class="p">),</span> <span class="mi">1</span><span class="p">],</span>
+<span class="o">....</span><span class="p">:</span>                  <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">sparse_fib</span> <span class="o">==</span> <span class="n">sparse_fib2</span>
+<span class="kc">True</span>
+</pre></div>
+</div>
+<p>For more information one can check out the documentation
+<a class="reference internal" href="modules_docs/C2FiniteSequenceRing.html#module-rec_sequences.C2FiniteSequenceRing" title="rec_sequences.C2FiniteSequenceRing"><code class="xref py py-class docutils literal notranslate"><span class="pre">rec_sequences.C2FiniteSequenceRing</span></code></a> and
+<a class="reference internal" href="modules_docs/DifferenceDefinableSequenceRing.html#module-rec_sequences.DifferenceDefinableSequenceRing" title="rec_sequences.DifferenceDefinableSequenceRing"><code class="xref py py-class docutils literal notranslate"><span class="pre">rec_sequences.DifferenceDefinableSequenceRing</span></code></a>
+(its superclass).</p>
+</section>
+<section id="module-documentations">
+<h2>Module documentations<a class="headerlink" href="#module-documentations" title="Permalink to this headline"></a></h2>
+<p>Here, the detailed documentation of all modules can be found.</p>
+<section id="base-rings">
+<h3>Base rings<a class="headerlink" href="#base-rings" title="Permalink to this headline"></a></h3>
+<p><span class="math notranslate nohighlight">\(C\)</span>-finite and <span class="math notranslate nohighlight">\(D\)</span>-finite sequence rings, based on the <code class="docutils literal notranslate"><span class="pre">ore_algebra</span></code>,
+package are implemented. They can serve as the base rings for creating more
+complicated rings. All sequence rings are derived from
+<code class="docutils literal notranslate"><span class="pre">RecurrenceSequenceRing</span></code> which provides common functionality for all
+sequence rings where a sequence is defined by a linear recurrence equation.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules_docs/RecurrenceSequenceRing.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">RecurrenceSequenceElement</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">RecurrenceSequenceRing</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules_docs/CFiniteSequenceRing.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">CFiniteSequence</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">CFiniteSequenceRing</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules_docs/DFiniteSequenceRing.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">DFiniteSequence</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">DFiniteSequenceRing</span></code></a></li>
+</ul>
+</div>
+</section>
+<section id="difference-definable-rings">
+<h3>Difference definable rings<a class="headerlink" href="#difference-definable-rings" title="Permalink to this headline"></a></h3>
+<p>Using the <span class="math notranslate nohighlight">\(C\)</span>-finite and <span class="math notranslate nohighlight">\(D\)</span>-finite sequence base rings we can create more
+complicated rings. Namely, rings of sequences which are defined by linear
+recurrences with coefficients in one of these base rings.
+The class <code class="docutils literal notranslate"><span class="pre">DifferenceDefinableSequenceRing</span></code> allows to create these rings.
+A special kind of such a ring, is the ring of <span class="math notranslate nohighlight">\(C^2\)</span>-finite sequences.
+Such a ring contains sequences satisfying a linear recurrence with
+<span class="math notranslate nohighlight">\(C\)</span>-finite coefficients. The special class <code class="docutils literal notranslate"><span class="pre">C2FiniteSequenceRing</span></code> contains
+several additional functionalities for this ring, including the computation
+of generating functions and a basic guessing routine.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules_docs/DifferenceDefinableSequenceRing.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">DifferenceDefinableSequence</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">DifferenceDefinableSequenceRing</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules_docs/C2FiniteSequenceRing.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">C2FiniteSequence</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">C2FiniteSequenceRing</span></code></a></li>
+</ul>
+</div>
+</section>
+<section id="arithmetic-progressions-and-zero-patterns">
+<h3>Arithmetic Progressions and Zero Patterns<a class="headerlink" href="#arithmetic-progressions-and-zero-patterns" title="Permalink to this headline"></a></h3>
+<p>The package provides functionalities to compute zeros and sign patterns of
+sequences. The class <code class="docutils literal notranslate"><span class="pre">ArithmeticProgression</span></code> encapsulates functionality
+to work with arithmetic progressions. By the Skolem-Mahler-Lech theorem,
+the zeros of a <span class="math notranslate nohighlight">\(C\)</span>-finite sequence is a finite set together with a finite
+number of arithmetic progressions. Such sets of zeros can be handled using
+the class <code class="docutils literal notranslate"><span class="pre">ZeroPattern</span></code>. Similarly, <code class="docutils literal notranslate"><span class="pre">SignPattern</span></code> provides a framework
+to work with a sign pattern of a sequence which is cyclic from some term on.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules_docs/ArithmeticProgression.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">ArithmeticProgression</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules_docs/ZeroPattern.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">ZeroPattern</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules_docs/SignPattern.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">SignPattern</span></code></a></li>
+</ul>
+</div>
+</section>
+<section id="additional-modules">
+<h3>Additional Modules<a class="headerlink" href="#additional-modules" title="Permalink to this headline"></a></h3>
+<p>The following modules contain auxiliary methods. The class
+<code class="docutils literal notranslate"><span class="pre">LinearSolveSequence</span></code> provides methods to solve linear systems of equations
+over sequence rings. The class <code class="docutils literal notranslate"><span class="pre">SequenceRingOfFraction</span></code> provides a ring
+structure for sequences which can be defined as the quotient of two sequences.
+The class <code class="docutils literal notranslate"><span class="pre">FunctionalEquation</span></code> represents equations satisfied by the
+generating functions of <span class="math notranslate nohighlight">\(C^2\)</span>-finite sequences.
+Finally, <code class="docutils literal notranslate"><span class="pre">utility</span></code> contains various other auxiliary methods.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules_docs/LinearSolveSequence.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">LinearSolveSequence</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules_docs/FunctionalEquation.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">FunctionalEquation</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules_docs/SequenceRingOfFraction.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">FractionSequence</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">SequenceRingOfFraction</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules_docs/utility.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">utility</span></code></a></li>
+</ul>
+</div>
+</section>
+<section id="references">
+<h3>References<a class="headerlink" href="#references" title="Permalink to this headline"></a></h3>
+<dl class="citation">
+<dt class="label" id="gk05"><span class="brackets">GK05</span><span class="fn-backref">(<a href="#id2">1</a>,<a href="#id4">2</a>)</span></dt>
+<dd><p>Stefan Gerhold, Manuel Kauers: A Procedure for Proving Special
+Function Inequalities Involving a Discrete Parameter. In: Proceedings of
+ISSAC’05, pp. 156–162. 2005.</p>
+</dd>
+<dt class="label" id="kjj15"><span class="brackets"><a class="fn-backref" href="#id1">KJJ15</a></span></dt>
+<dd><p>Manuel Kauers, Maximilian Jaroschek, Frederik Johansson: Ore
+Polynomials in Sage. In: Computer Algebra and Polynomials. Lecture Notes in
+Computer Science. 2015</p>
+</dd>
+<dt class="label" id="kp10"><span class="brackets">KP10</span><span class="fn-backref">(<a href="#id3">1</a>,<a href="#id5">2</a>)</span></dt>
+<dd><p>Manuel Kauers, Veronika Pillwein: When can we detect that
+a P-finite sequence is positive? In: Proceedings of
+ISSAC’10, pp. 195–202. 2010.</p>
+</dd>
+<dt class="label" id="jpnp21a"><span class="brackets">JPNP21a</span></dt>
+<dd><p>Antonio Jiménez-Pastor, Philipp Nuspl, Veronika Pillwein:
+An extension of holonomic sequences: <span class="math notranslate nohighlight">\(C^2\)</span>-finite sequences (2021), doi:
+<a class="reference external" href="https://epub.jku.at/obvulioa/download/pdf/6880353?originalFilename=true">10.35011/risc.21-20</a></p>
+</dd>
+<dt class="label" id="jpnp21b"><span class="brackets">JPNP21b</span></dt>
+<dd><p>Antonio Jiménez-Pastor, Philipp Nuspl, Veronika Pillwein:
+On <span class="math notranslate nohighlight">\(C^2\)</span>-finite sequences. In:
+Proceedings of ISSAC’21, pp. 217–224. 2021. <a class="reference external" href="https://www.dk-compmath.jku.at/publications/dk-reports/2021-02-08jp-n-p/at_download/file">preprint</a></p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="indices-and-tables">
+<h2>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="modules_docs/RecurrenceSequenceRing.html" class="btn btn-neutral float-right" title="RecurrenceSequenceElement and RecurrenceSequenceRing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Philipp Nuspl.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
