@@ -26,3 +26,4 @@ docmv: doc
 	mv docssrc/build/html .
 	rm -r docs
 	mv html docs
+	touch docs/.nojekyll # add .nojekyll file to make sure that css in docs is loaded properly
