@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FractionSequence and SequenceRingOfFraction &mdash; rec_sequences 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="utility" href="utility.html" />
+    <link rel="prev" title="FunctionalEquation" href="FunctionalEquation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> rec_sequences
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="RecurrenceSequenceRing.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">RecurrenceSequenceElement</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">RecurrenceSequenceRing</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="CFiniteSequenceRing.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">CFiniteSequence</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">CFiniteSequenceRing</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="DFiniteSequenceRing.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">DFiniteSequence</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">DFiniteSequenceRing</span></code></a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="DifferenceDefinableSequenceRing.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">DifferenceDefinableSequence</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">DifferenceDefinableSequenceRing</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="C2FiniteSequenceRing.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">C2FiniteSequence</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">C2FiniteSequenceRing</span></code></a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="ArithmeticProgression.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">ArithmeticProgression</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="ZeroPattern.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">ZeroPattern</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="SignPattern.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">SignPattern</span></code></a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="LinearSolveSequence.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">LinearSolveSequence</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="FunctionalEquation.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">FunctionalEquation</span></code></a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#"><code class="xref py py-class docutils literal notranslate"><span class="pre">FractionSequence</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">SequenceRingOfFraction</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="utility.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">utility</span></code></a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">rec_sequences</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><code class="xref py py-class docutils literal notranslate"><span class="pre">FractionSequence</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">SequenceRingOfFraction</span></code></li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules_docs/SequenceRingOfFraction.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-rec_sequences.SequenceRingOfFraction">
+<span id="fractionsequence-and-sequenceringoffraction"></span><h1><a class="reference internal" href="#rec_sequences.SequenceRingOfFraction.FractionSequence" title="rec_sequences.SequenceRingOfFraction.FractionSequence"><code class="xref py py-class docutils literal notranslate"><span class="pre">FractionSequence</span></code></a>  and <a class="reference internal" href="#rec_sequences.SequenceRingOfFraction.SequenceRingOfFraction" title="rec_sequences.SequenceRingOfFraction.SequenceRingOfFraction"><code class="xref py py-class docutils literal notranslate"><span class="pre">SequenceRingOfFraction</span></code></a><a class="headerlink" href="#module-rec_sequences.SequenceRingOfFraction" title="Permalink to this headline"></a></h1>
+<p>Ring of fractions of a sequence ring.</p>
+<p>Defines a ring which is the total ring of fractions of a sequence ring.
+I.e., elements in this ring are fractions of two sequences where the
+sequence in the denominator has no zero terms.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.SequenceRingOfFraction</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.CFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">QC</span> <span class="o">=</span> <span class="n">SequenceRingOfFraction</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">a</span> <span class="o">=</span> <span class="n">QC</span><span class="p">(</span><span class="n">C</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">]),</span> <span class="n">C</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">a</span>
+<span class="n">Fraction</span> <span class="n">sequence</span><span class="p">:</span>
+<span class="o">&gt;</span> <span class="n">Numerator</span><span class="p">:</span> <span class="n">C</span><span class="o">-</span><span class="n">finite</span> <span class="n">sequence</span> <span class="n">a</span><span class="p">(</span><span class="n">n</span><span class="p">):</span> <span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="n">a</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">a</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span> 
+<span class="ow">and</span> <span class="n">a</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">=</span><span class="mi">1</span> <span class="p">,</span> <span class="n">a</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">=</span><span class="mi">3</span>
+<span class="o">&gt;</span> <span class="n">Denominator</span><span class="p">:</span> <span class="n">C</span><span class="o">-</span><span class="n">finite</span> <span class="n">sequence</span> <span class="n">a</span><span class="p">(</span><span class="n">n</span><span class="p">):</span> <span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">a</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">a</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">a</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">b</span> <span class="o">=</span> <span class="n">QC</span><span class="p">(</span><span class="n">C</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">]))</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="o">*</span><span class="n">b</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">c</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="o">/</span><span class="mi">8</span><span class="p">,</span> <span class="mi">27</span><span class="o">/</span><span class="mi">16</span><span class="p">,</span> <span class="mi">27</span><span class="o">/</span><span class="mi">32</span><span class="p">,</span> <span class="mi">81</span><span class="o">/</span><span class="mi">64</span><span class="p">,</span> <span class="mi">81</span><span class="o">/</span><span class="mi">128</span><span class="p">,</span> <span class="mi">243</span><span class="o">/</span><span class="mi">256</span><span class="p">]</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">a_inv</span> <span class="o">=</span> <span class="o">~</span><span class="n">a</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">a_inv</span><span class="o">*</span><span class="n">a</span> <span class="o">==</span> <span class="mi">1</span>
+<span class="kc">True</span>
+</pre></div>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="rec_sequences.SequenceRingOfFraction.FractionSequence">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">rec_sequences.SequenceRingOfFraction.</span></span><span class="sig-name descname"><span class="pre">FractionSequence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">numerator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">denominator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'a'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_gen</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">construct</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.SequenceRingOfFraction.FractionSequence" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sage.structure.element.CommutativeAlgebraElement</span></code></p>
+<p>A fraction sequence, i.e. a fraction where both numerator and denominator
+are coming from a ring of sequences.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.SequenceRingOfFraction.FractionSequence.__eq__">
+<span class="sig-name descname"><span class="pre">__eq__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">right</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.SequenceRingOfFraction.FractionSequence.__eq__" title="Permalink to this definition"></a></dt>
+<dd><p>Return whether the two fractions <code class="docutils literal notranslate"><span class="pre">self</span></code> and <code class="docutils literal notranslate"><span class="pre">right</span></code> are equal.
+More precisely it is tested if the difference of <code class="docutils literal notranslate"><span class="pre">self</span></code> and <code class="docutils literal notranslate"><span class="pre">right</span></code> 
+equals 0.</p>
+<p>INPUT:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">right</span></code> - a <code class="docutils literal notranslate"><span class="pre">FractionSequence</span></code></p></li>
+</ul>
+<p>OUTPUT:</p>
+<p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the sequences are equal and <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.SequenceRingOfFraction</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.CFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">QC</span> <span class="o">=</span> <span class="n">SequenceRingOfFraction</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">c</span> <span class="o">=</span> <span class="n">C</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">d</span> <span class="o">=</span> <span class="n">C</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">a</span> <span class="o">=</span> <span class="n">QC</span><span class="p">(</span><span class="n">c</span><span class="o">*</span><span class="n">d</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">b</span> <span class="o">=</span> <span class="n">QC</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">C</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">a</span> <span class="o">==</span> <span class="n">b</span>
+<span class="kc">True</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">b</span> <span class="o">==</span> <span class="n">c</span>
+<span class="kc">True</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">a</span><span class="o">+</span><span class="mi">1</span> <span class="o">==</span> <span class="n">b</span>
+<span class="kc">False</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.SequenceRingOfFraction.FractionSequence.__getitem__">
+<span class="sig-name descname"><span class="pre">__getitem__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.SequenceRingOfFraction.FractionSequence.__getitem__" title="Permalink to this definition"></a></dt>
+<dd><p>Return the n-th term of <code class="docutils literal notranslate"><span class="pre">self</span></code>.</p>
+<p>INPUT:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">n</span></code> – a natural number or a <code class="docutils literal notranslate"><span class="pre">slice</span></code> object</p></li>
+</ul>
+<p>OUTPUT:</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">n</span></code>-th sequence term of <code class="docutils literal notranslate"><span class="pre">self</span></code> (starting with the <code class="docutils literal notranslate"><span class="pre">0</span></code>-th,
+i.e. to get the first term one has to call <code class="docutils literal notranslate"><span class="pre">self[0]</span></code>) if
+<code class="docutils literal notranslate"><span class="pre">n</span></code> is a natural number. If <code class="docutils literal notranslate"><span class="pre">n</span></code> is a slice object, the corresponding
+section of the sequence is returned.</p>
+<p>An error is raised if no upper bound in the <code class="docutils literal notranslate"><span class="pre">slice</span></code> object is 
+specified.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.SequenceRingOfFraction</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.CFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">QC</span> <span class="o">=</span> <span class="n">SequenceRingOfFraction</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">c</span> <span class="o">=</span> <span class="n">C</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">d</span> <span class="o">=</span> <span class="n">C</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">a</span> <span class="o">=</span> <span class="n">QC</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">b</span> <span class="o">=</span> <span class="n">QC</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">C</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">a</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+<span class="o">-</span><span class="mi">5</span><span class="o">/</span><span class="mi">243</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">b</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span> <span class="o">==</span> <span class="n">c</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+<span class="kc">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.SequenceRingOfFraction.FractionSequence.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">numerator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">denominator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'a'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_gen</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">construct</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.SequenceRingOfFraction.FractionSequence.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Construct a fraction sequence <code class="docutils literal notranslate"><span class="pre">numerator/denominator</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is not checked whether the denominator contains any zero terms.</p>
+</div>
+<p>INPUT:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">parent</span></code> – a <a class="reference internal" href="#rec_sequences.SequenceRingOfFraction.SequenceRingOfFraction" title="rec_sequences.SequenceRingOfFraction.SequenceRingOfFraction"><code class="xref py py-class docutils literal notranslate"><span class="pre">SequenceRingOfFraction</span></code></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">numerator</span></code> – the numerator of the fraction</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">denominator</span></code> – the denominator of the fraction which is non-zero
+at every term</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code> (default “a”) – a name for the sequence</p></li>
+</ul>
+<p>OUTPUT:</p>
+<p>A fraction sequence <code class="docutils literal notranslate"><span class="pre">numerator/denominator</span></code>.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.SequenceRingOfFraction</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.CFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">QC</span> <span class="o">=</span> <span class="n">SequenceRingOfFraction</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">QC</span><span class="p">(</span><span class="n">C</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">C</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+<span class="n">Fraction</span> <span class="n">sequence</span><span class="p">:</span>
+<span class="o">&gt;</span> <span class="n">Numerator</span><span class="p">:</span> <span class="n">C</span><span class="o">-</span><span class="n">finite</span> <span class="n">sequence</span> <span class="n">a</span><span class="p">(</span><span class="n">n</span><span class="p">):</span> <span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="n">a</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">a</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span> 
+<span class="ow">and</span> <span class="n">a</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">=</span><span class="mi">1</span>
+<span class="o">&gt;</span> <span class="n">Denominator</span><span class="p">:</span> <span class="n">C</span><span class="o">-</span><span class="n">finite</span> <span class="n">sequence</span> <span class="n">a</span><span class="p">(</span><span class="n">n</span><span class="p">):</span> <span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">a</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">a</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="ow">and</span> <span class="n">a</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">=</span><span class="mi">1</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.SequenceRingOfFraction.FractionSequence.__invert__">
+<span class="sig-name descname"><span class="pre">__invert__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.SequenceRingOfFraction.FractionSequence.__invert__" title="Permalink to this definition"></a></dt>
+<dd><p>Tries to compute the multiplicative inverse, if this is possible.
+Such an inverse exists if and only if
+the numerator does not contain any zero terms.</p>
+<p>The method can be called by ~self or self.inverse_of_unit().</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only some initial terms are checked to see whether a sequence is 
+invertible, cf. <a class="reference internal" href="#rec_sequences.SequenceRingOfFraction.FractionSequence.is_unit" title="rec_sequences.SequenceRingOfFraction.FractionSequence.is_unit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">is_unit()</span></code></a>.</p>
+</div>
+<p>OUTPUT:</p>
+<p>The multiplicative inverse of the sequence if it exists.
+Raises an <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> if the sequence is not invertible.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.SequenceRingOfFraction</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.CFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">QC</span> <span class="o">=</span> <span class="n">SequenceRingOfFraction</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">c</span> <span class="o">=</span> <span class="n">C</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">d</span> <span class="o">=</span> <span class="n">C</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">a</span> <span class="o">=</span> <span class="n">QC</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">b</span> <span class="o">=</span> <span class="n">QC</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">shift</span><span class="p">(),</span> <span class="n">d</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="o">~</span><span class="n">a</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+<span class="o">...</span>
+<span class="ne">ValueError</span><span class="p">:</span> <span class="n">Sequence</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">invertible</span>
+<span class="n">sage</span><span class="p">:</span> <span class="o">~</span><span class="n">b</span><span class="o">*</span><span class="n">b</span> <span class="o">==</span> <span class="mi">1</span>
+<span class="kc">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.SequenceRingOfFraction.FractionSequence._add_">
+<span class="sig-name descname"><span class="pre">_add_</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">right</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.SequenceRingOfFraction.FractionSequence._add_" title="Permalink to this definition"></a></dt>
+<dd><p>Return the sum of <code class="docutils literal notranslate"><span class="pre">self</span></code> and <code class="docutils literal notranslate"><span class="pre">right</span></code>.</p>
+<p>INPUTS:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">right</span></code> – a <code class="docutils literal notranslate"><span class="pre">FractionSequence</span></code></p></li>
+</ul>
+<p>OUTPUTS:</p>
+<p>The addition of <code class="docutils literal notranslate"><span class="pre">self</span></code> with <code class="docutils literal notranslate"><span class="pre">right</span></code>.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.SequenceRingOfFraction</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.CFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">QC</span> <span class="o">=</span> <span class="n">SequenceRingOfFraction</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">c</span> <span class="o">=</span> <span class="n">C</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">d</span> <span class="o">=</span> <span class="n">C</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">a</span> <span class="o">=</span> <span class="n">QC</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">b</span> <span class="o">=</span> <span class="n">QC</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">shift</span><span class="p">(),</span> <span class="n">d</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">s</span> <span class="o">=</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">s</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span> <span class="o">==</span> <span class="p">[</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+<span class="kc">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.SequenceRingOfFraction.FractionSequence._latex_">
+<span class="sig-name descname"><span class="pre">_latex_</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.SequenceRingOfFraction.FractionSequence._latex_" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a latex representation of the sequence.
+This is done by using the fraction of the latex representation of the 
+numerator and denominator.</p>
+<p>OUTPUT:</p>
+<p>A latex representation showing the closed form of the sequences.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.SequenceRingOfFraction</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.CFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">QC</span> <span class="o">=</span> <span class="n">SequenceRingOfFraction</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">latex</span><span class="p">(</span><span class="n">QC</span><span class="p">(</span><span class="n">C</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">C</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">]))))</span>
+\<span class="n">frac</span><span class="p">{</span>\<span class="n">left</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span>\<span class="n">right</span><span class="p">)</span><span class="o">^</span><span class="p">{</span><span class="n">n</span><span class="p">}}{</span><span class="mi">2</span><span class="o">^</span><span class="p">{</span><span class="n">n</span><span class="p">}}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.SequenceRingOfFraction.FractionSequence._mul_">
+<span class="sig-name descname"><span class="pre">_mul_</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">right</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.SequenceRingOfFraction.FractionSequence._mul_" title="Permalink to this definition"></a></dt>
+<dd><p>Return the product of <code class="docutils literal notranslate"><span class="pre">self</span></code> and <code class="docutils literal notranslate"><span class="pre">right</span></code>.</p>
+<p>INPUTS:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">right</span></code> – a <code class="docutils literal notranslate"><span class="pre">FractionSequence</span></code></p></li>
+</ul>
+<p>OUTPUTS:</p>
+<p>The product of <code class="docutils literal notranslate"><span class="pre">self</span></code> with <code class="docutils literal notranslate"><span class="pre">right</span></code>.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.SequenceRingOfFraction</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.CFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">QC</span> <span class="o">=</span> <span class="n">SequenceRingOfFraction</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">c</span> <span class="o">=</span> <span class="n">C</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">d</span> <span class="o">=</span> <span class="n">C</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">a</span> <span class="o">=</span> <span class="n">QC</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">b</span> <span class="o">=</span> <span class="n">QC</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">shift</span><span class="p">(),</span> <span class="n">d</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">p</span> <span class="o">=</span> <span class="n">a</span><span class="o">*</span><span class="n">b</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">p</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span> <span class="o">==</span> <span class="p">[</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+<span class="kc">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.SequenceRingOfFraction.FractionSequence._repr_">
+<span class="sig-name descname"><span class="pre">_repr_</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.SequenceRingOfFraction.FractionSequence._repr_" title="Permalink to this definition"></a></dt>
+<dd><p>Produces a string representation of the sequence.</p>
+<p>OUTPUT:</p>
+<p>A string representation of the sequence consisting of the numerator
+and the denominator of the sequence.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.SequenceRingOfFraction</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.CFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">QC</span> <span class="o">=</span> <span class="n">SequenceRingOfFraction</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">QC</span><span class="p">(</span><span class="n">C</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">C</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+<span class="n">Fraction</span> <span class="n">sequence</span><span class="p">:</span>
+<span class="o">&gt;</span> <span class="n">Numerator</span><span class="p">:</span> <span class="n">C</span><span class="o">-</span><span class="n">finite</span> <span class="n">sequence</span> <span class="n">a</span><span class="p">(</span><span class="n">n</span><span class="p">):</span> <span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">a</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">a</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span> 
+<span class="ow">and</span> <span class="n">a</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">=</span><span class="mi">1</span>
+<span class="o">&gt;</span> <span class="n">Denominator</span><span class="p">:</span> <span class="n">C</span><span class="o">-</span><span class="n">finite</span> <span class="n">sequence</span> <span class="n">a</span><span class="p">(</span><span class="n">n</span><span class="p">):</span> <span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">a</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">a</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="ow">and</span> <span class="n">a</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">=</span><span class="mi">1</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.SequenceRingOfFraction.FractionSequence.base">
+<span class="sig-name descname"><span class="pre">base</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.SequenceRingOfFraction.FractionSequence.base" title="Permalink to this definition"></a></dt>
+<dd><p>OUTPUT:</p>
+<p>Return the base of the parent of <code class="docutils literal notranslate"><span class="pre">self</span></code>.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.SequenceRingOfFraction</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.CFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">QC</span> <span class="o">=</span> <span class="n">SequenceRingOfFraction</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">c</span> <span class="o">=</span> <span class="n">C</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">d</span> <span class="o">=</span> <span class="n">C</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">a</span> <span class="o">=</span> <span class="n">QC</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">a</span><span class="o">.</span><span class="n">base</span><span class="p">()</span> <span class="o">==</span> <span class="n">C</span>
+<span class="kc">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.SequenceRingOfFraction.FractionSequence.base_ring">
+<span class="sig-name descname"><span class="pre">base_ring</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.SequenceRingOfFraction.FractionSequence.base_ring" title="Permalink to this definition"></a></dt>
+<dd><p>OUTPUT:</p>
+<p>Return the base field of the parent of <code class="docutils literal notranslate"><span class="pre">self</span></code>.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.SequenceRingOfFraction</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.CFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">QC</span> <span class="o">=</span> <span class="n">SequenceRingOfFraction</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">c</span> <span class="o">=</span> <span class="n">C</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">d</span> <span class="o">=</span> <span class="n">C</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">a</span> <span class="o">=</span> <span class="n">QC</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">a</span><span class="o">.</span><span class="n">base_ring</span><span class="p">()</span> <span class="o">==</span> <span class="n">QQ</span>
+<span class="kc">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.SequenceRingOfFraction.FractionSequence.d">
+<span class="sig-name descname"><span class="pre">d</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.SequenceRingOfFraction.FractionSequence.d" title="Permalink to this definition"></a></dt>
+<dd><p>Alias of <a class="reference internal" href="#rec_sequences.SequenceRingOfFraction.FractionSequence.denominator" title="rec_sequences.SequenceRingOfFraction.FractionSequence.denominator"><code class="xref py py-meth docutils literal notranslate"><span class="pre">denominator()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.SequenceRingOfFraction.FractionSequence.denominator">
+<span class="sig-name descname"><span class="pre">denominator</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.SequenceRingOfFraction.FractionSequence.denominator" title="Permalink to this definition"></a></dt>
+<dd><p>OUTPUT:</p>
+<p>Return the denominator</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.SequenceRingOfFraction</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.CFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">QC</span> <span class="o">=</span> <span class="n">SequenceRingOfFraction</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">c</span> <span class="o">=</span> <span class="n">C</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">d</span> <span class="o">=</span> <span class="n">C</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">a</span> <span class="o">=</span> <span class="n">QC</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">a</span><span class="o">.</span><span class="n">denominator</span><span class="p">()</span> <span class="o">==</span> <span class="n">d</span>
+<span class="kc">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.SequenceRingOfFraction.FractionSequence.interlace">
+<span class="sig-name descname"><span class="pre">interlace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">others</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.SequenceRingOfFraction.FractionSequence.interlace" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the interlaced sequence of self with <code class="docutils literal notranslate"><span class="pre">others</span></code>.</p>
+<p>INPUT:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">others</span></code> – other sequences over the same 
+<code class="docutils literal notranslate"><span class="pre">SequenceRingOfFraction</span></code></p></li>
+</ul>
+<p>OUTPUT:</p>
+<p>The interlaced sequence of self with <code class="docutils literal notranslate"><span class="pre">others</span></code>.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.SequenceRingOfFraction</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.CFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">QC</span> <span class="o">=</span> <span class="n">SequenceRingOfFraction</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">c</span> <span class="o">=</span> <span class="n">C</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">d</span> <span class="o">=</span> <span class="n">C</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">e</span> <span class="o">=</span> <span class="n">C</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">3</span><span class="p">],[</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">a</span> <span class="o">=</span> <span class="n">QC</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">a</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">9</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="o">/</span><span class="mi">27</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">27</span><span class="p">]</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">b</span> <span class="o">=</span> <span class="n">QC</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">C</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">b</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="o">/</span><span class="mi">9</span><span class="p">,</span> <span class="mi">16</span><span class="o">/</span><span class="mi">27</span><span class="p">,</span> <span class="mi">32</span><span class="o">/</span><span class="mi">81</span><span class="p">]</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">a</span><span class="o">.</span><span class="n">interlace</span><span class="p">(</span><span class="n">b</span><span class="p">)[:</span><span class="mi">6</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="o">/</span><span class="mi">9</span><span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.SequenceRingOfFraction.FractionSequence.is_gen">
+<span class="sig-name descname"><span class="pre">is_gen</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.SequenceRingOfFraction.FractionSequence.is_gen" title="Permalink to this definition"></a></dt>
+<dd><p>OUTPUT:</p>
+<p>Return <code class="docutils literal notranslate"><span class="pre">False</span></code>; the parent ring is not finitely generated.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.SequenceRingOfFraction.FractionSequence.is_unit">
+<span class="sig-name descname"><span class="pre">is_unit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.SequenceRingOfFraction.FractionSequence.is_unit" title="Permalink to this definition"></a></dt>
+<dd><p>Check whether sequence is multiplicative unit.</p>
+<p>OUTPUT:</p>
+<p>Return <code class="docutils literal notranslate"><span class="pre">True</span></code> if <code class="docutils literal notranslate"><span class="pre">self</span></code> is a unit.
+This is the case if the numerator has no zeros.
+We check this empirically by checking the first <code class="docutils literal notranslate"><span class="pre">100</span></code> values.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.SequenceRingOfFraction</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.CFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">QC</span> <span class="o">=</span> <span class="n">SequenceRingOfFraction</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">c</span> <span class="o">=</span> <span class="n">C</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">d</span> <span class="o">=</span> <span class="n">C</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">a</span> <span class="o">=</span> <span class="n">QC</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">b</span> <span class="o">=</span> <span class="n">QC</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">C</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">a</span><span class="o">.</span><span class="n">is_unit</span><span class="p">()</span>
+<span class="kc">False</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">b</span><span class="o">.</span><span class="n">is_unit</span><span class="p">()</span>
+<span class="kc">False</span>
+<span class="n">sage</span><span class="p">:</span> <span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">is_unit</span><span class="p">()</span>
+<span class="kc">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.SequenceRingOfFraction.FractionSequence.n">
+<span class="sig-name descname"><span class="pre">n</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.SequenceRingOfFraction.FractionSequence.n" title="Permalink to this definition"></a></dt>
+<dd><p>Alias of <a class="reference internal" href="#rec_sequences.SequenceRingOfFraction.FractionSequence.numerator" title="rec_sequences.SequenceRingOfFraction.FractionSequence.numerator"><code class="xref py py-meth docutils literal notranslate"><span class="pre">numerator()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.SequenceRingOfFraction.FractionSequence.numerator">
+<span class="sig-name descname"><span class="pre">numerator</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.SequenceRingOfFraction.FractionSequence.numerator" title="Permalink to this definition"></a></dt>
+<dd><p>OUTPUT:</p>
+<p>Return the numerator.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.SequenceRingOfFraction</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.CFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">QC</span> <span class="o">=</span> <span class="n">SequenceRingOfFraction</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">c</span> <span class="o">=</span> <span class="n">C</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">d</span> <span class="o">=</span> <span class="n">C</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">a</span> <span class="o">=</span> <span class="n">QC</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">a</span><span class="o">.</span><span class="n">numerator</span><span class="p">()</span> <span class="o">==</span> <span class="n">c</span>
+<span class="kc">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.SequenceRingOfFraction.FractionSequence.order">
+<span class="sig-name descname"><span class="pre">order</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.SequenceRingOfFraction.FractionSequence.order" title="Permalink to this definition"></a></dt>
+<dd><p>OUTPUT:</p>
+<p>Return the order of the recurrence of <code class="docutils literal notranslate"><span class="pre">self</span></code> which is the maximum of
+the orders of the numerator and denominator.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.SequenceRingOfFraction</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.CFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">QC</span> <span class="o">=</span> <span class="n">SequenceRingOfFraction</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">c</span> <span class="o">=</span> <span class="n">C</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">d</span> <span class="o">=</span> <span class="n">C</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">QC</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span><span class="o">.</span><span class="n">order</span><span class="p">()</span>
+<span class="mi">2</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">QC</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span><span class="o">.</span><span class="n">order</span><span class="p">()</span>
+<span class="mi">2</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">QC</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span><span class="o">.</span><span class="n">order</span><span class="p">()</span>
+<span class="mi">2</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.SequenceRingOfFraction.FractionSequence.prec">
+<span class="sig-name descname"><span class="pre">prec</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.SequenceRingOfFraction.FractionSequence.prec" title="Permalink to this definition"></a></dt>
+<dd><p>OUTPUT:</p>
+<p>The precision of these objects is infinite.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.SequenceRingOfFraction.FractionSequence.prepend">
+<span class="sig-name descname"><span class="pre">prepend</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.SequenceRingOfFraction.FractionSequence.prepend" title="Permalink to this definition"></a></dt>
+<dd><p>Prepends the given values to the sequence.</p>
+<p>Input:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">values</span></code> – list of values in the base ring</p></li>
+</ul>
+<p>OUTPUT:</p>
+<p>A sequence having the same terms with the additional <code class="docutils literal notranslate"><span class="pre">values</span></code>
+at the beginning.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.SequenceRingOfFraction</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.CFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">QC</span> <span class="o">=</span> <span class="n">SequenceRingOfFraction</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">c</span> <span class="o">=</span> <span class="n">C</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">d</span> <span class="o">=</span> <span class="n">C</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">a</span> <span class="o">=</span> <span class="n">QC</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">a</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">9</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="o">/</span><span class="mi">27</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">27</span><span class="p">]</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">a</span><span class="o">.</span><span class="n">prepend</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">])[:</span><span class="mi">7</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">9</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="o">/</span><span class="mi">27</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">27</span><span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.SequenceRingOfFraction.FractionSequence.shift">
+<span class="sig-name descname"><span class="pre">shift</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.SequenceRingOfFraction.FractionSequence.shift" title="Permalink to this definition"></a></dt>
+<dd><p>Shifts <code class="docutils literal notranslate"><span class="pre">self</span></code> <code class="docutils literal notranslate"><span class="pre">k</span></code>-times.</p>
+<p>INPUT:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">k</span></code> (default: <code class="docutils literal notranslate"><span class="pre">1</span></code>) – an integer</p></li>
+</ul>
+<p>OUTPUT:</p>
+<p>The sequence <span class="math notranslate nohighlight">\((a(n+k))_{k \in \mathbb{N}}\)</span>.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.SequenceRingOfFraction</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.CFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">QC</span> <span class="o">=</span> <span class="n">SequenceRingOfFraction</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">c</span> <span class="o">=</span> <span class="n">C</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">d</span> <span class="o">=</span> <span class="n">C</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">a</span> <span class="o">=</span> <span class="n">QC</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">11</span><span class="p">]</span> <span class="o">==</span> <span class="n">a</span><span class="o">.</span><span class="n">shift</span><span class="p">()[:</span><span class="mi">10</span><span class="p">]</span>
+<span class="kc">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.SequenceRingOfFraction.FractionSequence.simplified">
+<span class="sig-name descname"><span class="pre">simplified</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.SequenceRingOfFraction.FractionSequence.simplified" title="Permalink to this definition"></a></dt>
+<dd><p>Computes terms of the sequence and tries to guess a sequence 
+in the base ring from these
+that is equal to <code class="docutils literal notranslate"><span class="pre">self</span></code> and tries to prove this.</p>
+<p>OUTPUT:</p>
+<p>An identical sequence with possible trivial denominator if possible.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.SequenceRingOfFraction</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.CFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">QC</span> <span class="o">=</span> <span class="n">SequenceRingOfFraction</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">c</span> <span class="o">=</span> <span class="n">C</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">d</span> <span class="o">=</span> <span class="n">C</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">a</span> <span class="o">=</span> <span class="n">QC</span><span class="p">(</span><span class="n">c</span><span class="o">*</span><span class="n">d</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">a</span><span class="o">.</span><span class="n">denominator</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span>
+<span class="kc">False</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">a</span><span class="o">.</span><span class="n">simplified</span><span class="p">()</span><span class="o">.</span><span class="n">denominator</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span>
+<span class="kc">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.SequenceRingOfFraction.FractionSequence.subsequence">
+<span class="sig-name descname"><span class="pre">subsequence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.SequenceRingOfFraction.FractionSequence.subsequence" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the sequence <code class="docutils literal notranslate"><span class="pre">self[floor(u*n+v)]</span></code>.</p>
+<p>INPUT:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">u</span></code> – a rational number</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">v</span></code> (optional) – a rational number</p></li>
+</ul>
+<p>OUTPUT:</p>
+<p>The sequence <code class="docutils literal notranslate"><span class="pre">self[floor(u*n+v)]</span></code>.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.SequenceRingOfFraction</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.CFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">QC</span> <span class="o">=</span> <span class="n">SequenceRingOfFraction</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">c</span> <span class="o">=</span> <span class="n">C</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">d</span> <span class="o">=</span> <span class="n">C</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">a</span> <span class="o">=</span> <span class="n">QC</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">subsequence</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">b</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span> <span class="o">==</span> <span class="p">[</span><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span><span class="o">+</span><span class="mi">3</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+<span class="kc">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="rec_sequences.SequenceRingOfFraction.SequenceRingOfFraction">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">rec_sequences.SequenceRingOfFraction.</span></span><span class="sig-name descname"><span class="pre">SequenceRingOfFraction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">element_class</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">category</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.SequenceRingOfFraction.SequenceRingOfFraction" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sage.structure.unique_representation.UniqueRepresentation</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">sage.rings.ring.CommutativeAlgebra</span></code></p>
+<p>The ring of fractions over a ring of sequences.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="rec_sequences.SequenceRingOfFraction.SequenceRingOfFraction.Element">
+<span class="sig-name descname"><span class="pre">Element</span></span><a class="headerlink" href="#rec_sequences.SequenceRingOfFraction.SequenceRingOfFraction.Element" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="#rec_sequences.SequenceRingOfFraction.FractionSequence" title="rec_sequences.SequenceRingOfFraction.FractionSequence"><code class="xref py py-class docutils literal notranslate"><span class="pre">rec_sequences.SequenceRingOfFraction.FractionSequence</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.SequenceRingOfFraction.SequenceRingOfFraction.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">element_class</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">category</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.SequenceRingOfFraction.SequenceRingOfFraction.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Constructor for a sequence ring of fractions.</p>
+<p>INPUT:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">base</span></code> – a base ring which represents a sequence ring</p></li>
+</ul>
+<p>OUTPUT:</p>
+<p>A sequence ring of fraction over the given <code class="docutils literal notranslate"><span class="pre">base</span></code>.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.SequenceRingOfFraction</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.CFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">SequenceRingOfFraction</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+<span class="n">Sequence</span> <span class="n">ring</span> <span class="n">of</span> <span class="n">fractions</span> <span class="n">over</span> <span class="n">Ring</span> <span class="n">of</span> <span class="n">C</span><span class="o">-</span><span class="n">finite</span> <span class="n">sequences</span> <span class="n">over</span> 
+<span class="n">Rational</span> <span class="n">Field</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.SequenceRingOfFraction.SequenceRingOfFraction._element_constructor_">
+<span class="sig-name descname"><span class="pre">_element_constructor_</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_gen</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">construct</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwds</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.SequenceRingOfFraction.SequenceRingOfFraction._element_constructor_" title="Permalink to this definition"></a></dt>
+<dd><p>Tries to construct a fraction sequence element.</p>
+<p>This is possible if:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">x</span></code> is already a fraction sequence element</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">x</span></code> is an element in the base and <code class="docutils literal notranslate"><span class="pre">y</span></code> is an element in the base,
+then <code class="docutils literal notranslate"><span class="pre">x/y</span></code> is constructed</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">x</span></code> is an element in the base and <code class="docutils literal notranslate"><span class="pre">y</span></code> is None, then <code class="docutils literal notranslate"><span class="pre">x/1</span></code> is 
+constructed</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> can be used to construct a sequence element, then 
+this element over 1 is constructed</p></li>
+</ul>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.SequenceRingOfFraction</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.CFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">QC</span> <span class="o">=</span> <span class="n">SequenceRingOfFraction</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">fib</span> <span class="o">=</span> <span class="n">C</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">luc</span> <span class="o">=</span> <span class="n">C</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">c</span> <span class="o">=</span> <span class="n">QC</span><span class="p">(</span><span class="n">fib</span><span class="p">,</span> <span class="n">luc</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">c</span><span class="o">*</span><span class="n">luc</span> <span class="o">==</span> <span class="n">fib</span>
+<span class="kc">True</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">d</span> <span class="o">=</span> <span class="n">QC</span><span class="p">(</span><span class="n">fib</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">d</span> <span class="o">==</span> <span class="n">fib</span>
+<span class="kc">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.SequenceRingOfFraction.SequenceRingOfFraction._latex_">
+<span class="sig-name descname"><span class="pre">_latex_</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.SequenceRingOfFraction.SequenceRingOfFraction._latex_" title="Permalink to this definition"></a></dt>
+<dd><p>OUTPUT:</p>
+<p>A latex representation of the sequence ring of fractions.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.SequenceRingOfFraction</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.CFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">QC</span> <span class="o">=</span> <span class="n">SequenceRingOfFraction</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">latex</span><span class="p">(</span><span class="n">QC</span><span class="p">))</span>
+<span class="n">Q</span><span class="p">(</span>\<span class="n">mathcal</span><span class="p">{</span><span class="n">C</span><span class="p">}(</span>\<span class="n">Bold</span><span class="p">{</span><span class="n">Q</span><span class="p">}))</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.SequenceRingOfFraction.SequenceRingOfFraction._repr_">
+<span class="sig-name descname"><span class="pre">_repr_</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.SequenceRingOfFraction.SequenceRingOfFraction._repr_" title="Permalink to this definition"></a></dt>
+<dd><p>OUTPUT:</p>
+<p>A string representation of the sequence ring of fractions.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.SequenceRingOfFraction</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.CFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">SequenceRingOfFraction</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+<span class="n">Sequence</span> <span class="n">ring</span> <span class="n">of</span> <span class="n">fractions</span> <span class="n">over</span> <span class="n">Ring</span> <span class="n">of</span> <span class="n">C</span><span class="o">-</span><span class="n">finite</span> <span class="n">sequences</span> <span class="n">over</span> 
+<span class="n">Rational</span> <span class="n">Field</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.SequenceRingOfFraction.SequenceRingOfFraction.base">
+<span class="sig-name descname"><span class="pre">base</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.SequenceRingOfFraction.SequenceRingOfFraction.base" title="Permalink to this definition"></a></dt>
+<dd><p>OUTPUT:</p>
+<p>Return the base over which the ring of fractions is defined.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.SequenceRingOfFraction</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.CFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">QC</span> <span class="o">=</span> <span class="n">SequenceRingOfFraction</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">QC</span><span class="o">.</span><span class="n">base</span><span class="p">()</span> <span class="o">==</span> <span class="n">C</span>
+<span class="kc">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.SequenceRingOfFraction.SequenceRingOfFraction.base_ring">
+<span class="sig-name descname"><span class="pre">base_ring</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.SequenceRingOfFraction.SequenceRingOfFraction.base_ring" title="Permalink to this definition"></a></dt>
+<dd><p>OUTPUT:</p>
+<p>Return the base field over which the ring of fractions is defined</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.SequenceRingOfFraction</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.CFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">QC</span> <span class="o">=</span> <span class="n">SequenceRingOfFraction</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">QC</span><span class="o">.</span><span class="n">base_ring</span><span class="p">()</span> <span class="o">==</span> <span class="n">QQ</span>
+<span class="kc">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.SequenceRingOfFraction.SequenceRingOfFraction.change_base_ring">
+<span class="sig-name descname"><span class="pre">change_base_ring</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">R</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.SequenceRingOfFraction.SequenceRingOfFraction.change_base_ring" title="Permalink to this definition"></a></dt>
+<dd><p>OUTPUT:</p>
+<p>Return a copy of <code class="docutils literal notranslate"><span class="pre">self</span></code> but with the base <span class="math notranslate nohighlight">\(R\)</span></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.SequenceRingOfFraction.SequenceRingOfFraction.construction">
+<span class="sig-name descname"><span class="pre">construction</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.SequenceRingOfFraction.SequenceRingOfFraction.construction" title="Permalink to this definition"></a></dt>
+<dd><p>Shows how the given ring can be constructed using functors.</p>
+<p>OUTPUT:</p>
+<p>A functor <code class="docutils literal notranslate"><span class="pre">F</span></code> and a ring <code class="docutils literal notranslate"><span class="pre">R</span></code> such that <code class="docutils literal notranslate"><span class="pre">F(R)==self</span></code></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.SequenceRingOfFraction.SequenceRingOfFraction.is_commutative">
+<span class="sig-name descname"><span class="pre">is_commutative</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.SequenceRingOfFraction.SequenceRingOfFraction.is_commutative" title="Permalink to this definition"></a></dt>
+<dd><p>Returns whether <code class="docutils literal notranslate"><span class="pre">self</span></code> is a commutative ring.
+This is the case.</p>
+<p>OUTPUT:</p>
+<p><code class="docutils literal notranslate"><span class="pre">True</span></code></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.SequenceRingOfFraction.SequenceRingOfFraction.is_exact">
+<span class="sig-name descname"><span class="pre">is_exact</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.SequenceRingOfFraction.SequenceRingOfFraction.is_exact" title="Permalink to this definition"></a></dt>
+<dd><p>Returns whether <code class="docutils literal notranslate"><span class="pre">self</span></code> is an exact ring.
+This is the case.</p>
+<p>OUTPUT:</p>
+<p><code class="docutils literal notranslate"><span class="pre">True</span></code></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.SequenceRingOfFraction.SequenceRingOfFraction.is_field">
+<span class="sig-name descname"><span class="pre">is_field</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proof</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.SequenceRingOfFraction.SequenceRingOfFraction.is_field" title="Permalink to this definition"></a></dt>
+<dd><p>Returns whether <code class="docutils literal notranslate"><span class="pre">self</span></code> is a field.
+This is not the case.</p>
+<p>OUTPUT:</p>
+<p><code class="docutils literal notranslate"><span class="pre">False</span></code></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.SequenceRingOfFraction.SequenceRingOfFraction.is_finite">
+<span class="sig-name descname"><span class="pre">is_finite</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.SequenceRingOfFraction.SequenceRingOfFraction.is_finite" title="Permalink to this definition"></a></dt>
+<dd><p>Returns whether <code class="docutils literal notranslate"><span class="pre">self</span></code> is a finite ring.
+This is not the case.</p>
+<p>OUTPUT:</p>
+<p><code class="docutils literal notranslate"><span class="pre">False</span></code></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.SequenceRingOfFraction.SequenceRingOfFraction.is_integral_domain">
+<span class="sig-name descname"><span class="pre">is_integral_domain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proof</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.SequenceRingOfFraction.SequenceRingOfFraction.is_integral_domain" title="Permalink to this definition"></a></dt>
+<dd><p>Returns whether <code class="docutils literal notranslate"><span class="pre">self</span></code> is an integral domain.
+This is not the case.</p>
+<p>OUTPUT:</p>
+<p><code class="docutils literal notranslate"><span class="pre">False</span></code></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.SequenceRingOfFraction.SequenceRingOfFraction.is_noetherian">
+<span class="sig-name descname"><span class="pre">is_noetherian</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.SequenceRingOfFraction.SequenceRingOfFraction.is_noetherian" title="Permalink to this definition"></a></dt>
+<dd><p>Returns whether <code class="docutils literal notranslate"><span class="pre">self</span></code> is a Noetherian ring.
+This is not the case.</p>
+<p>OUTPUT:</p>
+<p><code class="docutils literal notranslate"><span class="pre">False</span></code></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.SequenceRingOfFraction.SequenceRingOfFraction.one">
+<span class="sig-name descname"><span class="pre">one</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.SequenceRingOfFraction.SequenceRingOfFraction.one" title="Permalink to this definition"></a></dt>
+<dd><p>OUTPUT:</p>
+<p>The constant sequence <span class="math notranslate nohighlight">\(1,1,\dots\)</span>.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.SequenceRingOfFraction</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.CFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">QC</span> <span class="o">=</span> <span class="n">SequenceRingOfFraction</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">QC</span><span class="o">.</span><span class="n">one</span><span class="p">()</span> <span class="o">==</span> <span class="n">C</span><span class="o">.</span><span class="n">one</span><span class="p">()</span>
+<span class="kc">True</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">QC</span><span class="o">.</span><span class="n">one</span><span class="p">()[:</span><span class="mi">10</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.SequenceRingOfFraction.SequenceRingOfFraction.random_element">
+<span class="sig-name descname"><span class="pre">random_element</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwds</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.SequenceRingOfFraction.SequenceRingOfFraction.random_element" title="Permalink to this definition"></a></dt>
+<dd><p>OUTPUT:</p>
+<p>Return a random fraction sequence. This is done by creating a
+random numerator and random denominator (iteratively until 
+a denominator which is a unit is found). Any additional arguments
+are passed to the <code class="docutils literal notranslate"><span class="pre">random_element</span></code> method of the base ring.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.SequenceRingOfFraction</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.CFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">QC</span> <span class="o">=</span> <span class="n">SequenceRingOfFraction</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">QC</span><span class="o">.</span><span class="n">random_element</span><span class="p">()[:</span><span class="mi">5</span><span class="p">]</span> <span class="c1"># random</span>
+<span class="p">[</span><span class="o">-</span><span class="mi">8</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">81</span><span class="o">/</span><span class="mi">28</span><span class="p">,</span> <span class="mi">99</span><span class="o">/</span><span class="mi">112</span><span class="p">,</span> <span class="o">-</span><span class="mi">1269</span><span class="o">/</span><span class="mi">896</span><span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.SequenceRingOfFraction.SequenceRingOfFraction.zero">
+<span class="sig-name descname"><span class="pre">zero</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.SequenceRingOfFraction.SequenceRingOfFraction.zero" title="Permalink to this definition"></a></dt>
+<dd><p>OUTPUT:</p>
+<p>The constant sequence <span class="math notranslate nohighlight">\(0,0,\dots\)</span>.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.SequenceRingOfFraction</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.CFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">QC</span> <span class="o">=</span> <span class="n">SequenceRingOfFraction</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">QC</span><span class="o">.</span><span class="n">zero</span><span class="p">()</span> <span class="o">==</span> <span class="n">C</span><span class="o">.</span><span class="n">zero</span><span class="p">()</span>
+<span class="kc">True</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">QC</span><span class="o">.</span><span class="n">zero</span><span class="p">()[:</span><span class="mi">10</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="rec_sequences.SequenceRingOfFraction.SequenceRingOfFractionFunctor">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">rec_sequences.SequenceRingOfFraction.</span></span><span class="sig-name descname"><span class="pre">SequenceRingOfFractionFunctor</span></span><a class="headerlink" href="#rec_sequences.SequenceRingOfFraction.SequenceRingOfFractionFunctor" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sage.categories.pushout.ConstructionFunctor</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.SequenceRingOfFraction.SequenceRingOfFractionFunctor.__eq__">
+<span class="sig-name descname"><span class="pre">__eq__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.SequenceRingOfFraction.SequenceRingOfFractionFunctor.__eq__" title="Permalink to this definition"></a></dt>
+<dd><p>Equality here means that they are mathematically equivalent, though they may have
+specific implementation data. This method will usually be overloaded in subclasses.
+by default, only the types of the functors are compared. Also see the <a class="reference internal" href="#rec_sequences.SequenceRingOfFraction.SequenceRingOfFractionFunctor.merge" title="rec_sequences.SequenceRingOfFraction.SequenceRingOfFractionFunctor.merge"><code class="xref py py-meth docutils literal notranslate"><span class="pre">merge()</span></code></a> function.</p>
+<p>TESTS:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">sage.categories.pushout</span> <span class="kn">import</span> <span class="n">IdentityConstructionFunctor</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">I</span> <span class="o">=</span> <span class="n">IdentityConstructionFunctor</span><span class="p">()</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">F</span> <span class="o">=</span> <span class="n">QQ</span><span class="o">.</span><span class="n">construction</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">P</span> <span class="o">=</span> <span class="n">ZZ</span><span class="p">[</span><span class="s1">&#39;t&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">construction</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">I</span> <span class="o">==</span> <span class="n">F</span>        <span class="c1"># indirect doctest</span>
+<span class="kc">False</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">I</span> <span class="o">==</span> <span class="n">I</span>        <span class="c1"># indirect doctest</span>
+<span class="kc">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.SequenceRingOfFraction.SequenceRingOfFractionFunctor.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.SequenceRingOfFraction.SequenceRingOfFractionFunctor.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Constructs a <code class="docutils literal notranslate"><span class="pre">RecurrenceSequenceRingFunctor</span></code>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.SequenceRingOfFraction.SequenceRingOfFractionFunctor._repr_">
+<span class="sig-name descname"><span class="pre">_repr_</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.SequenceRingOfFraction.SequenceRingOfFractionFunctor._repr_" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a string representation of the functor.</p>
+<p>OUTPUT:</p>
+<p>The string “SequenceRingOfFraction(*)” .</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.SequenceRingOfFraction.SequenceRingOfFractionFunctor.merge">
+<span class="sig-name descname"><span class="pre">merge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.SequenceRingOfFraction.SequenceRingOfFractionFunctor.merge" title="Permalink to this definition"></a></dt>
+<dd><p>Merge <code class="docutils literal notranslate"><span class="pre">self</span></code> with another construction functor, or return <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The default is to merge only if the two functors coincide. But this
+may be overloaded for subclasses, such as the quotient functor.</p>
+</div>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="n">F</span> <span class="o">=</span> <span class="n">QQ</span><span class="o">.</span><span class="n">construction</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">P</span> <span class="o">=</span> <span class="n">ZZ</span><span class="p">[</span><span class="s1">&#39;t&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">construction</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">F</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">F</span><span class="p">)</span>
+<span class="n">FractionField</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">F</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">P</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">P</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">F</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">P</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">P</span><span class="p">)</span>
+<span class="n">Poly</span><span class="p">[</span><span class="n">t</span><span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="FunctionalEquation.html" class="btn btn-neutral float-left" title="FunctionalEquation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="utility.html" class="btn btn-neutral float-right" title="utility" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Philipp Nuspl.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

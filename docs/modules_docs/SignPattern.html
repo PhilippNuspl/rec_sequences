@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SignPattern &mdash; rec_sequences 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="LinearSolveSequence" href="LinearSolveSequence.html" />
+    <link rel="prev" title="ZeroPattern" href="ZeroPattern.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> rec_sequences
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="RecurrenceSequenceRing.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">RecurrenceSequenceElement</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">RecurrenceSequenceRing</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="CFiniteSequenceRing.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">CFiniteSequence</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">CFiniteSequenceRing</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="DFiniteSequenceRing.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">DFiniteSequence</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">DFiniteSequenceRing</span></code></a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="DifferenceDefinableSequenceRing.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">DifferenceDefinableSequence</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">DifferenceDefinableSequenceRing</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="C2FiniteSequenceRing.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">C2FiniteSequence</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">C2FiniteSequenceRing</span></code></a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="ArithmeticProgression.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">ArithmeticProgression</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="ZeroPattern.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">ZeroPattern</span></code></a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#"><code class="xref py py-class docutils literal notranslate"><span class="pre">SignPattern</span></code></a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="LinearSolveSequence.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">LinearSolveSequence</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="FunctionalEquation.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">FunctionalEquation</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="SequenceRingOfFraction.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">FractionSequence</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">SequenceRingOfFraction</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="utility.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">utility</span></code></a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">rec_sequences</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><code class="xref py py-class docutils literal notranslate"><span class="pre">SignPattern</span></code></li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules_docs/SignPattern.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-rec_sequences.SignPattern">
+<span id="signpattern"></span><h1><a class="reference internal" href="#module-rec_sequences.SignPattern" title="rec_sequences.SignPattern"><code class="xref py py-class docutils literal notranslate"><span class="pre">SignPattern</span></code></a><a class="headerlink" href="#module-rec_sequences.SignPattern" title="Permalink to this headline"></a></h1>
+<p>The class describes a cyclic sign pattern from some term on.
+I.e., the class describes a finite set of initial values where
+the sign need not be cyclic and than a description of the signs 
+from the point on where they are cyclic.</p>
+<p>The initial values and elements from the cycle are saved as
+1,-1 and 0 describing positive, negative and zero values, 
+respectively.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.SignPattern</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">pattern</span> <span class="o">=</span> <span class="n">SignPattern</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">pattern</span>
+<span class="n">Sign</span> <span class="n">pattern</span><span class="p">:</span> <span class="n">initial</span> <span class="n">values</span> <span class="o">&lt;</span><span class="mi">0</span><span class="o">+-&gt;</span> <span class="n">cycle</span> <span class="o">&lt;+</span><span class="mi">0</span><span class="o">-&gt;</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">pattern</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">pattern</span><span class="o">.</span><span class="n">get_initial_values</span><span class="p">()</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">pattern</span><span class="o">.</span><span class="n">get_cycle</span><span class="p">()</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">pattern</span><span class="o">.</span><span class="n">get_positive_progressions</span><span class="p">()</span>
+<span class="p">{</span><span class="n">Arithmetic</span> <span class="n">progression</span> <span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">n</span><span class="o">+</span><span class="mi">3</span><span class="p">)</span><span class="n">_n</span><span class="p">}</span>
+</pre></div>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="rec_sequences.SignPattern.SignPattern">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">rec_sequences.SignPattern.</span></span><span class="sig-name descname"><span class="pre">SignPattern</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">initial_values</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cycle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.SignPattern.SignPattern" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sage.structure.sage_object.SageObject</span></code></p>
+<p>Describes the cyclic sign pattern of a sequence.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.SignPattern.SignPattern.__eq__">
+<span class="sig-name descname"><span class="pre">__eq__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.SignPattern.SignPattern.__eq__" title="Permalink to this definition"></a></dt>
+<dd><p>Checks whether two zero patterns are equal.</p>
+<p>INPUT:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pattern</span></code> – a sign pattern</p></li>
+</ul>
+<p>OUTPUT:</p>
+<p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the two patterns are equal and <code class="docutils literal notranslate"><span class="pre">False</span></code> 
+otherwise.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.SignPattern</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">pattern1</span> <span class="o">=</span> <span class="n">SignPattern</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">pattern2</span> <span class="o">=</span> <span class="n">SignPattern</span><span class="p">([],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">pattern3</span> <span class="o">=</span> <span class="n">SignPattern</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">pattern1</span> <span class="o">==</span> <span class="n">pattern2</span> 
+<span class="kc">True</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">pattern2</span> <span class="o">==</span> <span class="n">pattern3</span>
+<span class="kc">False</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.SignPattern.SignPattern.__getitem__">
+<span class="sig-name descname"><span class="pre">__getitem__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.SignPattern.SignPattern.__getitem__" title="Permalink to this definition"></a></dt>
+<dd><p>INPUT:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">n</span></code> – a natural number or a slice object (specifying only finitely
+many values)</p></li>
+</ul>
+<p>OUTPUT:</p>
+<p>Returns -1 if the <code class="docutils literal notranslate"><span class="pre">n</span></code>-th value is negative +1 if it is positive and
+0 if it is zero. If <code class="docutils literal notranslate"><span class="pre">n</span></code> is a slice
+object, a list with these values is returned.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.SignPattern</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">pattern</span> <span class="o">=</span> <span class="n">SignPattern</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">pattern</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+<span class="mi">1</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">pattern</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.SignPattern.SignPattern.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">initial_values</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cycle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.SignPattern.SignPattern.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a sign pattern with the given data.</p>
+<p>INPUT:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">initial_values</span></code> – a list of exceptional signs not covered by 
+the cycle.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cycle</span></code> – the list of cyclic signs which holds after the 
+<code class="docutils literal notranslate"><span class="pre">initial_values</span></code> (has to be non-empty)</p></li>
+</ul>
+<p>OUTPUT:</p>
+<p>The described sign pattern.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.SignPattern</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">pattern</span> <span class="o">=</span> <span class="n">SignPattern</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">pattern</span><span class="p">)</span>
+<span class="n">Sign</span> <span class="n">pattern</span><span class="p">:</span> <span class="n">initial</span> <span class="n">values</span> <span class="o">&lt;</span><span class="mi">0</span><span class="o">+-&gt;</span> <span class="n">cycle</span> <span class="o">&lt;+</span><span class="mi">0</span><span class="o">-&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.SignPattern.SignPattern._latex_">
+<span class="sig-name descname"><span class="pre">_latex_</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.SignPattern.SignPattern._latex_" title="Permalink to this definition"></a></dt>
+<dd><p>OUTPUT:</p>
+<p>A latex representation of the form</p>
+<div class="math notranslate nohighlight">
+\[\langle a \underbrace{b}_{} \cdots \rangle\]</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">a</span></code> is a string representation of the signs of the initial 
+values and <code class="docutils literal notranslate"><span class="pre">b</span></code> is a string representation of the signs of the cycle
+(built by the characters +,0,-).</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.SignPattern</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">latex</span><span class="p">(</span><span class="n">SignPattern</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">])))</span>
+\<span class="n">langle0</span><span class="o">+-</span>\<span class="n">underbrace</span><span class="p">{</span><span class="o">+</span><span class="mi">0</span><span class="o">-</span><span class="p">}</span><span class="n">_</span><span class="p">{}</span>\<span class="n">cdots</span>\<span class="n">rangle</span>
+<span class="n">sage</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">latex</span><span class="p">(</span><span class="n">SignPattern</span><span class="p">([],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">])))</span>
+\<span class="n">langle</span>\<span class="n">underbrace</span><span class="p">{</span><span class="o">+-</span><span class="p">}</span><span class="n">_</span><span class="p">{}</span>\<span class="n">cdots</span>\<span class="n">rangle</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.SignPattern.SignPattern.get_cycle">
+<span class="sig-name descname"><span class="pre">get_cycle</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.SignPattern.SignPattern.get_cycle" title="Permalink to this definition"></a></dt>
+<dd><p>OUTPUT:</p>
+<p>Returns the cycle of the pattern.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.SignPattern</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">SignPattern</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">get_cycle</span><span class="p">()</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">SignPattern</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">get_cycle</span><span class="p">()</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.SignPattern.SignPattern.get_cycle_length">
+<span class="sig-name descname"><span class="pre">get_cycle_length</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.SignPattern.SignPattern.get_cycle_length" title="Permalink to this definition"></a></dt>
+<dd><p>OUTPUT:</p>
+<p>Returns the length of the cycle. This might be a multiple
+of the minimal length.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.SignPattern</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">SignPattern</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">get_cycle_length</span><span class="p">()</span>
+<span class="mi">3</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">SignPattern</span><span class="p">([],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">get_cycle_length</span><span class="p">()</span>
+<span class="mi">3</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">SignPattern</span><span class="p">([],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">get_cycle_length</span><span class="p">()</span>
+<span class="mi">2</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">SignPattern</span><span class="p">([],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">get_cycle_length</span><span class="p">()</span>
+<span class="mi">4</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.SignPattern.SignPattern.get_cycle_start">
+<span class="sig-name descname"><span class="pre">get_cycle_start</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.SignPattern.SignPattern.get_cycle_start" title="Permalink to this definition"></a></dt>
+<dd><p>OUTPUT:</p>
+<p>Returns the index from which the sign-pattern is guaranteed to
+be cyclic. This index might not be minimal.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.SignPattern</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">SignPattern</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">get_cycle_start</span><span class="p">()</span>
+<span class="mi">3</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">SignPattern</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">get_cycle_start</span><span class="p">()</span>
+<span class="mi">3</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">SignPattern</span><span class="p">([],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">get_cycle_start</span><span class="p">()</span>
+<span class="mi">0</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.SignPattern.SignPattern.get_initial_values">
+<span class="sig-name descname"><span class="pre">get_initial_values</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.SignPattern.SignPattern.get_initial_values" title="Permalink to this definition"></a></dt>
+<dd><p>OUTPUT:</p>
+<p>Returns the initial values of the pattern.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.SignPattern</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">SignPattern</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">get_initial_values</span><span class="p">()</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">SignPattern</span><span class="p">([],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">get_initial_values</span><span class="p">()</span>
+<span class="p">[]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.SignPattern.SignPattern.get_negative_progressions">
+<span class="sig-name descname"><span class="pre">get_negative_progressions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.SignPattern.SignPattern.get_negative_progressions" title="Permalink to this definition"></a></dt>
+<dd><p>OUTPUT:</p>
+<p>Returns a set of the arithmetic progressions 
+(<a class="reference internal" href="ArithmeticProgression.html#module-rec_sequences.ArithmeticProgression" title="rec_sequences.ArithmeticProgression"><code class="xref py py-class docutils literal notranslate"><span class="pre">rec_sequences.ArithmeticProgression</span></code></a>) 
+where the pattern is negative.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.SignPattern</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">SignPattern</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">get_negative_progressions</span><span class="p">()</span>
+<span class="p">{</span><span class="n">Arithmetic</span> <span class="n">progression</span> <span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">n</span><span class="o">+</span><span class="mi">5</span><span class="p">)</span><span class="n">_n</span><span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.SignPattern.SignPattern.get_positive_progressions">
+<span class="sig-name descname"><span class="pre">get_positive_progressions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.SignPattern.SignPattern.get_positive_progressions" title="Permalink to this definition"></a></dt>
+<dd><p>OUTPUT:</p>
+<p>Returns a set of the arithmetic progressions 
+(<a class="reference internal" href="ArithmeticProgression.html#module-rec_sequences.ArithmeticProgression" title="rec_sequences.ArithmeticProgression"><code class="xref py py-class docutils literal notranslate"><span class="pre">rec_sequences.ArithmeticProgression</span></code></a>) 
+where the pattern is positive.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.SignPattern</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">SignPattern</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">get_positive_progressions</span><span class="p">()</span>
+<span class="p">{</span><span class="n">Arithmetic</span> <span class="n">progression</span> <span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">n</span><span class="o">+</span><span class="mi">3</span><span class="p">)</span><span class="n">_n</span><span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.SignPattern.SignPattern.get_zero_progressions">
+<span class="sig-name descname"><span class="pre">get_zero_progressions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.SignPattern.SignPattern.get_zero_progressions" title="Permalink to this definition"></a></dt>
+<dd><p>OUTPUT:</p>
+<p>Returns a set of the arithmetic progressions 
+(<a class="reference internal" href="ArithmeticProgression.html#module-rec_sequences.ArithmeticProgression" title="rec_sequences.ArithmeticProgression"><code class="xref py py-class docutils literal notranslate"><span class="pre">rec_sequences.ArithmeticProgression</span></code></a>) 
+where the pattern is zero.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.SignPattern</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">SignPattern</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">get_zero_progressions</span><span class="p">()</span>
+<span class="p">{</span><span class="n">Arithmetic</span> <span class="n">progression</span> <span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">n</span><span class="o">+</span><span class="mi">4</span><span class="p">)</span><span class="n">_n</span><span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.SignPattern.SignPattern.guess">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">guess</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cycles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.SignPattern.SignPattern.guess" title="Permalink to this definition"></a></dt>
+<dd><p>Computes the sign pattern of the given data.</p>
+<p>INPUT:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code> – a list of numbers</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cycles</span></code> – the number of cycles that need to
+be detected to conclude whether we indeed have a period. 
+Assume <code class="docutils literal notranslate"><span class="pre">cycles</span></code>&gt;1.</p></li>
+</ul>
+<p>OUTPUT:</p>
+<p>The sign-pattern satisfied by <code class="docutils literal notranslate"><span class="pre">data</span></code>. 
+If no pattern could be found, a ValueError is raised.</p>
+<p>ALGORITHM:</p>
+<p>We assume that the periodic behavior starts at least at
+the half-point of the given data. The algorithm is not 
+particularly efficient and runs in <code class="docutils literal notranslate"><span class="pre">O(len(data)^3)</span></code> in the worst case.
+However, in the usual case, if data is cyclic almost from the beginning
+it is essentially <code class="docutils literal notranslate"><span class="pre">O(len(data))</span></code></p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.SignPattern</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">SignPattern</span><span class="o">.</span><span class="n">guess</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="mi">10</span><span class="o">*</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">Sign</span> <span class="n">pattern</span><span class="p">:</span> <span class="n">initial</span> <span class="n">values</span> <span class="o">&lt;</span><span class="mi">0</span><span class="o">+&gt;</span> <span class="n">cycle</span> <span class="o">&lt;+-&gt;</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">SignPattern</span><span class="o">.</span><span class="n">guess</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+<span class="o">...</span>
+<span class="ne">ValueError</span><span class="p">:</span> <span class="n">No</span> <span class="n">sign</span> <span class="n">pattern</span> <span class="n">found</span><span class="p">,</span> <span class="n">you</span> <span class="n">can</span> <span class="k">try</span> <span class="k">with</span> <span class="n">more</span> <span class="n">data</span><span class="o">.</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">SignPattern</span><span class="o">.</span><span class="n">guess</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> \
+<span class="o">....</span><span class="p">:</span>                   <span class="n">cycles</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">Sign</span> <span class="n">pattern</span><span class="p">:</span> <span class="n">initial</span> <span class="n">values</span> <span class="o">&lt;+</span><span class="mi">0</span><span class="o">&gt;</span> <span class="n">cycle</span> <span class="o">&lt;</span><span class="mi">0</span><span class="o">+</span><span class="mi">0</span><span class="o">-&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.SignPattern.SignPattern.is_negative">
+<span class="sig-name descname"><span class="pre">is_negative</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.SignPattern.SignPattern.is_negative" title="Permalink to this definition"></a></dt>
+<dd><p>OUTPUT:</p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the pattern has only negative values,
+i.e. no zeros or positive values.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.SignPattern</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">SignPattern</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">is_negative</span><span class="p">()</span>
+<span class="kc">False</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">SignPattern</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">is_negative</span><span class="p">()</span>
+<span class="kc">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.SignPattern.SignPattern.is_positive">
+<span class="sig-name descname"><span class="pre">is_positive</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.SignPattern.SignPattern.is_positive" title="Permalink to this definition"></a></dt>
+<dd><p>OUTPUT:</p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the pattern has only positive values,
+i.e. no zeros or negative values.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.SignPattern</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">SignPattern</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">is_positive</span><span class="p">()</span>
+<span class="kc">False</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">SignPattern</span><span class="p">([</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">is_positive</span><span class="p">()</span>
+<span class="kc">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.SignPattern.SignPattern.is_zero">
+<span class="sig-name descname"><span class="pre">is_zero</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.SignPattern.SignPattern.is_zero" title="Permalink to this definition"></a></dt>
+<dd><p>OUTPUT:</p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the pattern is constantly zero.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.SignPattern</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">SignPattern</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">is_zero</span><span class="p">()</span>
+<span class="kc">False</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">SignPattern</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">is_zero</span><span class="p">()</span>
+<span class="kc">False</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">SignPattern</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">is_zero</span><span class="p">()</span>
+<span class="kc">True</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">SignPattern</span><span class="p">([],</span> <span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">is_zero</span><span class="p">()</span>
+<span class="kc">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.SignPattern.SignPattern.non_zero">
+<span class="sig-name descname"><span class="pre">non_zero</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.SignPattern.SignPattern.non_zero" title="Permalink to this definition"></a></dt>
+<dd><p>OUTPUT:</p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the pattern has no zeros at all.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.SignPattern</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">SignPattern</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">non_zero</span><span class="p">()</span>
+<span class="kc">False</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">SignPattern</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">non_zero</span><span class="p">()</span>
+<span class="kc">True</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">SignPattern</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">non_zero</span><span class="p">()</span>
+<span class="kc">False</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.SignPattern.SignPattern.repr_cycle">
+<span class="sig-name descname"><span class="pre">repr_cycle</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.SignPattern.SignPattern.repr_cycle" title="Permalink to this definition"></a></dt>
+<dd><p>OUTPUT:</p>
+<p>Returns a string representation of the cycle only containing
++, -, 0 for positive, negative and zero entries.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.SignPattern</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">SignPattern</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">repr_cycle</span><span class="p">())</span>
+<span class="o">+</span><span class="mi">0</span><span class="o">-</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.SignPattern.SignPattern.repr_initial_values">
+<span class="sig-name descname"><span class="pre">repr_initial_values</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.SignPattern.SignPattern.repr_initial_values" title="Permalink to this definition"></a></dt>
+<dd><p>OUTPUT:</p>
+<p>Returns a string representation of the initial values only containing
++, -, 0 for positive, negative and zero entries.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.SignPattern</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">SignPattern</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">repr_initial_values</span><span class="p">())</span>
+<span class="mi">0</span><span class="o">+-</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ZeroPattern.html" class="btn btn-neutral float-left" title="ZeroPattern" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="LinearSolveSequence.html" class="btn btn-neutral float-right" title="LinearSolveSequence" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Philipp Nuspl.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

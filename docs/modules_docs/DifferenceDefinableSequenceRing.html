@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DifferenceDefinableSequence and DifferenceDefinableSequenceRing &mdash; rec_sequences 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="C2FiniteSequence and C2FiniteSequenceRing" href="C2FiniteSequenceRing.html" />
+    <link rel="prev" title="DFiniteSequence and DFiniteSequenceRing" href="DFiniteSequenceRing.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> rec_sequences
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="RecurrenceSequenceRing.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">RecurrenceSequenceElement</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">RecurrenceSequenceRing</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="CFiniteSequenceRing.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">CFiniteSequence</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">CFiniteSequenceRing</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="DFiniteSequenceRing.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">DFiniteSequence</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">DFiniteSequenceRing</span></code></a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#"><code class="xref py py-class docutils literal notranslate"><span class="pre">DifferenceDefinableSequence</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">DifferenceDefinableSequenceRing</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="C2FiniteSequenceRing.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">C2FiniteSequence</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">C2FiniteSequenceRing</span></code></a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="ArithmeticProgression.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">ArithmeticProgression</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="ZeroPattern.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">ZeroPattern</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="SignPattern.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">SignPattern</span></code></a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="LinearSolveSequence.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">LinearSolveSequence</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="FunctionalEquation.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">FunctionalEquation</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="SequenceRingOfFraction.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">FractionSequence</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">SequenceRingOfFraction</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="utility.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">utility</span></code></a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">rec_sequences</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><code class="xref py py-class docutils literal notranslate"><span class="pre">DifferenceDefinableSequence</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">DifferenceDefinableSequenceRing</span></code></li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules_docs/DifferenceDefinableSequenceRing.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-rec_sequences.DifferenceDefinableSequenceRing">
+<span id="differencedefinablesequence-and-differencedefinablesequencering"></span><h1><code class="xref py py-class docutils literal notranslate"><span class="pre">DifferenceDefinableSequence</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">DifferenceDefinableSequenceRing</span></code><a class="headerlink" href="#module-rec_sequences.DifferenceDefinableSequenceRing" title="Permalink to this headline"></a></h1>
+<p>Difference definable sequence ring.</p>
+<p>Sublasses <a class="reference internal" href="RecurrenceSequenceRing.html#module-rec_sequences.RecurrenceSequenceRing" title="rec_sequences.RecurrenceSequenceRing"><code class="xref py py-class docutils literal notranslate"><span class="pre">rec_sequences.RecurrenceSequenceRing</span></code></a> and defines 
+sequences satisfying a linear
+recurrence equation with coefficients in some sequence
+ring. Such a recurrence sequence 
+<span class="math notranslate nohighlight">\(a(n)\)</span> is defined by a recurrence</p>
+<div class="math notranslate nohighlight">
+\[c_0(n) a(n) + \dots + c_r(n) a(n+r) = 0 \text{ for all } n \geq 0\]</div>
+<p>with <span class="math notranslate nohighlight">\(c_r(n) \neq 0\)</span> for all <span class="math notranslate nohighlight">\(n\)</span> and initial values <span class="math notranslate nohighlight">\(a(0),...,a(r-1)\)</span>. 
+This is based on the theory and algorithms developed in <a class="reference internal" href="../index.html#jpnp21a" id="id1"><span>[JPNP21a]</span></a>.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.DifferenceDefinableSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.CFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">C2</span> <span class="o">=</span> <span class="n">DifferenceDefinableSequenceRing</span><span class="p">(</span><span class="n">C</span><span class="p">)</span> <span class="c1"># C^2-finite sequence ring</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">n</span> <span class="o">=</span> <span class="n">var</span><span class="p">(</span><span class="s2">&quot;n&quot;</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span> <span class="n">C2</span><span class="p">([</span><span class="n">C</span><span class="p">((</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span><span class="o">^</span><span class="n">n</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="p">)</span>
+<span class="n">Difference</span> <span class="n">definable</span> <span class="n">sequence</span> <span class="n">of</span> <span class="n">order</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">degree</span> <span class="mi">1</span> <span class="k">with</span> <span class="n">coefficients</span><span class="p">:</span>
+<span class="o">&gt;</span> <span class="n">c0</span> <span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span> <span class="n">C</span><span class="o">-</span><span class="n">finite</span> <span class="n">sequence</span> <span class="n">c0</span><span class="p">(</span><span class="n">n</span><span class="p">):</span> <span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">c0</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">c0</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">c0</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">=</span><span class="mi">1</span>
+<span class="o">&gt;</span> <span class="n">c1</span> <span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span> <span class="n">C</span><span class="o">-</span><span class="n">finite</span> <span class="n">sequence</span> <span class="n">c1</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">=-</span><span class="mi">1</span>
+<span class="ow">and</span> <span class="n">initial</span> <span class="n">values</span> <span class="n">a</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">=</span><span class="mi">1</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">c</span> <span class="o">=</span> <span class="n">C</span><span class="p">(</span><span class="mi">2</span><span class="o">^</span><span class="n">n</span><span class="o">+</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">^</span><span class="n">n</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">d</span> <span class="o">=</span> <span class="n">C</span><span class="p">(</span><span class="mi">2</span><span class="o">^</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">a</span> <span class="o">=</span> <span class="n">C2</span><span class="p">([</span><span class="n">c</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;a&quot;</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">b</span> <span class="o">=</span> <span class="n">C2</span><span class="p">([</span><span class="n">d</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">a</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">1190</span><span class="p">,</span> <span class="mi">36890</span><span class="p">,</span> <span class="mi">2397850</span><span class="p">,</span> <span class="mi">304526950</span><span class="p">,</span> <span class="mi">78263426150</span><span class="p">]</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">b</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">270</span><span class="p">,</span> <span class="mi">4590</span><span class="p">,</span> <span class="mi">151470</span><span class="p">,</span> <span class="mi">9845550</span><span class="p">,</span> <span class="mi">1270075950</span><span class="p">,</span> <span class="mi">326409519150</span><span class="p">]</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">a_plus_b</span> <span class="o">=</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">a_plus_b</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">340</span><span class="p">,</span> <span class="mi">5780</span><span class="p">,</span> <span class="mi">188360</span><span class="p">,</span> <span class="mi">12243400</span><span class="p">,</span> <span class="mi">1574602900</span><span class="p">,</span> <span class="mi">404672945300</span><span class="p">]</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">a_plus_b</span><span class="o">.</span><span class="n">order</span><span class="p">(),</span> <span class="n">a_plus_b</span><span class="o">.</span><span class="n">degree</span><span class="p">()</span>
+<span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">a_times_b</span> <span class="o">=</span> <span class="n">a</span><span class="o">*</span><span class="n">b</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">a_times_b</span><span class="p">[:</span><span class="mi">7</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">18900</span><span class="p">,</span> <span class="mi">5462100</span><span class="p">,</span> <span class="mi">5587728300</span><span class="p">]</span>
+</pre></div>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequence">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">rec_sequences.DifferenceDefinableSequenceRing.</span></span><span class="sig-name descname"><span class="pre">DifferenceDefinableSequence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coefficients</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'a'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_gen</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">construct</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequence" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="RecurrenceSequenceRing.html#rec_sequences.RecurrenceSequenceRing.RecurrenceSequenceElement" title="rec_sequences.RecurrenceSequenceRing.RecurrenceSequenceElement"><code class="xref py py-class docutils literal notranslate"><span class="pre">rec_sequences.RecurrenceSequenceRing.RecurrenceSequenceElement</span></code></a></p>
+<p>A difference definable sequence, i.e. a sequence where every term can be determined by a linear recurrence
+with coefficients coming from a difference ring and finitely many initial values. We assume that this
+recurrence holds for all values and that the leading coefficient is non-zero for all n (this is not checked).</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequence.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coefficients</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'a'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_gen</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">construct</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequence.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Construct a difference definable sequence <span class="math notranslate nohighlight">\(a(n)\)</span> with recurrence</p>
+<div class="math notranslate nohighlight">
+\[c_0(n) a(n) + \dots + c_r(n) a(n+r) = 0 \text{ for all } n \geq 0\]</div>
+<p>from given list of coefficients <span class="math notranslate nohighlight">\(c_0, ... , c_r\)</span> and given list of
+initial values <span class="math notranslate nohighlight">\(a(0), ..., a(r-1)\)</span>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We assume that the leading coefficient <span class="math notranslate nohighlight">\(c_r\)</span> does not contain any 
+zero terms. If it does, this might yield problems in later 
+computations.</p>
+</div>
+<p>INPUT:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">parent</span></code> – a <code class="docutils literal notranslate"><span class="pre">DifferenceDefinableSequenceRing</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">coefficients</span></code> – the coefficients of the recurrence</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">initial_values</span></code> – a list of initial values, determining the 
+sequence with at least order of the recurrence many values</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code> (default “a”) – a name for the sequence</p></li>
+</ul>
+<p>OUTPUT:</p>
+<p>A sequence determined by the given recurrence and 
+initial values.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.DifferenceDefinableSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.CFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">C2</span> <span class="o">=</span> <span class="n">DifferenceDefinableSequenceRing</span><span class="p">(</span><span class="n">C</span><span class="p">)</span> 
+<span class="n">sage</span><span class="p">:</span> <span class="n">n</span> <span class="o">=</span> <span class="n">var</span><span class="p">(</span><span class="s2">&quot;n&quot;</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">a</span> <span class="o">=</span> <span class="n">C2</span><span class="p">([</span><span class="n">C</span><span class="p">((</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span><span class="o">^</span><span class="n">n</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">])</span> 
+<span class="n">sage</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="n">Difference</span> <span class="n">definable</span> <span class="n">sequence</span> <span class="n">of</span> <span class="n">order</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">degree</span> <span class="mi">1</span> <span class="k">with</span> <span class="n">coefficients</span><span class="p">:</span>
+<span class="o">&gt;</span> <span class="n">c0</span> <span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span> <span class="n">C</span><span class="o">-</span><span class="n">finite</span> <span class="n">sequence</span> <span class="n">c0</span><span class="p">(</span><span class="n">n</span><span class="p">):</span> <span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">c0</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">c0</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">c0</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">=</span><span class="mi">1</span>
+<span class="o">&gt;</span> <span class="n">c1</span> <span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span> <span class="n">C</span><span class="o">-</span><span class="n">finite</span> <span class="n">sequence</span> <span class="n">c1</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">=-</span><span class="mi">1</span>
+<span class="ow">and</span> <span class="n">initial</span> <span class="n">values</span> <span class="n">a</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">a</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">1024</span><span class="p">,</span> <span class="o">-</span><span class="mi">32768</span><span class="p">,</span> <span class="o">-</span><span class="mi">2097152</span><span class="p">,</span> <span class="mi">268435456</span><span class="p">,</span> <span class="mi">68719476736</span><span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequence._add_">
+<span class="sig-name descname"><span class="pre">_add_</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">right</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequence._add_" title="Permalink to this definition"></a></dt>
+<dd><p>Return the termwise sum of <code class="docutils literal notranslate"><span class="pre">self</span></code> and <code class="docutils literal notranslate"><span class="pre">right</span></code>.</p>
+<p>INPUTS:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">right</span></code> – a sequence over the same ring as <code class="docutils literal notranslate"><span class="pre">self</span></code>.</p></li>
+</ul>
+<p>OUTPUTS:</p>
+<p>The addition of <code class="docutils literal notranslate"><span class="pre">self</span></code> with <code class="docutils literal notranslate"><span class="pre">right</span></code>.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.DifferenceDefinableSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.CFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">C2</span> <span class="o">=</span> <span class="n">DifferenceDefinableSequenceRing</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">n</span> <span class="o">=</span> <span class="n">var</span><span class="p">(</span><span class="s2">&quot;n&quot;</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">c</span> <span class="o">=</span> <span class="n">C</span><span class="p">(</span><span class="mi">2</span><span class="o">^</span><span class="n">n</span><span class="o">+</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">^</span><span class="n">n</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">d</span> <span class="o">=</span> <span class="n">C</span><span class="p">(</span><span class="mi">2</span><span class="o">^</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">a</span> <span class="o">=</span> <span class="n">C2</span><span class="p">([</span><span class="n">c</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;a&quot;</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">b</span> <span class="o">=</span> <span class="n">C2</span><span class="p">([</span><span class="n">d</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">a</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">1190</span><span class="p">,</span> <span class="mi">36890</span><span class="p">,</span> <span class="mi">2397850</span><span class="p">,</span> <span class="mi">304526950</span><span class="p">,</span> <span class="mi">78263426150</span><span class="p">]</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">b</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">270</span><span class="p">,</span> <span class="mi">4590</span><span class="p">,</span> <span class="mi">151470</span><span class="p">,</span> <span class="mi">9845550</span><span class="p">,</span> <span class="mi">1270075950</span><span class="p">,</span> <span class="mi">326409519150</span><span class="p">]</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">a_plus_b</span> <span class="o">=</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">a_plus_b</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">340</span><span class="p">,</span> <span class="mi">5780</span><span class="p">,</span> <span class="mi">188360</span><span class="p">,</span> <span class="mi">12243400</span><span class="p">,</span> <span class="mi">1574602900</span><span class="p">,</span> <span class="mi">404672945300</span><span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequence._latex_">
+<span class="sig-name descname"><span class="pre">_latex_</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequence._latex_" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a latex representation of the sequence.
+This is done by creating the latex representation of the closed form
+of the coefficients.</p>
+<p>OUTPUT:</p>
+<p>A latex representation showing the recurrence and the initial values 
+of the sequence.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.DifferenceDefinableSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.CFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">C2</span> <span class="o">=</span> <span class="n">DifferenceDefinableSequenceRing</span><span class="p">(</span><span class="n">C</span><span class="p">)</span> 
+<span class="n">sage</span><span class="p">:</span> <span class="n">n</span> <span class="o">=</span> <span class="n">var</span><span class="p">(</span><span class="s2">&quot;n&quot;</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">a</span> <span class="o">=</span> <span class="n">C2</span><span class="p">([</span><span class="n">C</span><span class="p">((</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span><span class="o">^</span><span class="n">n</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">])</span> 
+<span class="n">sage</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">latex</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+\<span class="n">left</span><span class="p">(</span>\<span class="n">left</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span>\<span class="n">right</span><span class="p">)</span><span class="o">^</span><span class="p">{</span><span class="n">n</span><span class="p">}</span>\<span class="n">right</span><span class="p">)</span>\<span class="n">cdot</span> <span class="n">a</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">+</span> \<span class="n">left</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span>\<span class="n">right</span><span class="p">)</span> \<span class="n">cdot</span> <span class="n">a</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span> \<span class="n">quad</span> <span class="n">a</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">=</span><span class="mi">1</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequence._mul_">
+<span class="sig-name descname"><span class="pre">_mul_</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">right</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequence._mul_" title="Permalink to this definition"></a></dt>
+<dd><p>Return the product of <code class="docutils literal notranslate"><span class="pre">self</span></code> and <code class="docutils literal notranslate"><span class="pre">right</span></code>. The result is the 
+termwise product (Hadamard product) of <code class="docutils literal notranslate"><span class="pre">self</span></code> and 
+<code class="docutils literal notranslate"><span class="pre">right</span></code>.</p>
+<p>INPUTS:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">right</span></code> –  a sequence over the same ring as <code class="docutils literal notranslate"><span class="pre">self</span></code>.</p></li>
+</ul>
+<p>OUTPUTS:</p>
+<p>The product of <code class="docutils literal notranslate"><span class="pre">self</span></code> with <code class="docutils literal notranslate"><span class="pre">right</span></code>.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.DifferenceDefinableSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.CFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">C2</span> <span class="o">=</span> <span class="n">DifferenceDefinableSequenceRing</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">n</span> <span class="o">=</span> <span class="n">var</span><span class="p">(</span><span class="s2">&quot;n&quot;</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">c</span> <span class="o">=</span> <span class="n">C</span><span class="p">(</span><span class="mi">2</span><span class="o">^</span><span class="n">n</span><span class="o">+</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">^</span><span class="n">n</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">d</span> <span class="o">=</span> <span class="n">C</span><span class="p">(</span><span class="mi">2</span><span class="o">^</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">a</span> <span class="o">=</span> <span class="n">C2</span><span class="p">([</span><span class="n">c</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;a&quot;</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">b</span> <span class="o">=</span> <span class="n">C2</span><span class="p">([</span><span class="n">d</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">a</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">1190</span><span class="p">,</span> <span class="mi">36890</span><span class="p">,</span> <span class="mi">2397850</span><span class="p">,</span> <span class="mi">304526950</span><span class="p">,</span> <span class="mi">78263426150</span><span class="p">]</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">b</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">270</span><span class="p">,</span> <span class="mi">4590</span><span class="p">,</span> <span class="mi">151470</span><span class="p">,</span> <span class="mi">9845550</span><span class="p">,</span> <span class="mi">1270075950</span><span class="p">,</span> <span class="mi">326409519150</span><span class="p">]</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">a_times_b</span> <span class="o">=</span> <span class="n">a</span><span class="o">*</span><span class="n">b</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">a_times_b</span><span class="p">[:</span><span class="mi">7</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">18900</span><span class="p">,</span> <span class="mi">5462100</span><span class="p">,</span> <span class="mi">5587728300</span><span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequence._repr_">
+<span class="sig-name descname"><span class="pre">_repr_</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequence._repr_" title="Permalink to this definition"></a></dt>
+<dd><p>Produces a string representation of the sequence.</p>
+<p>INPUT:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code> (optional) – a string used as the name of the sequence;
+if not given, <code class="docutils literal notranslate"><span class="pre">self.name()</span></code> is used.</p></li>
+</ul>
+<p>OUTPUT:</p>
+<p>A string representation of the sequence consisting of the recurrence
+and enough initial values to uniquely define the sequence.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.DifferenceDefinableSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.CFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">C2</span> <span class="o">=</span> <span class="n">DifferenceDefinableSequenceRing</span><span class="p">(</span><span class="n">C</span><span class="p">)</span> 
+<span class="n">sage</span><span class="p">:</span> <span class="n">n</span> <span class="o">=</span> <span class="n">var</span><span class="p">(</span><span class="s2">&quot;n&quot;</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">a</span> <span class="o">=</span> <span class="n">C2</span><span class="p">([</span><span class="n">C</span><span class="p">((</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span><span class="o">^</span><span class="n">n</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">])</span> 
+<span class="n">sage</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="n">Difference</span> <span class="n">definable</span> <span class="n">sequence</span> <span class="n">of</span> <span class="n">order</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">degree</span> <span class="mi">1</span> <span class="k">with</span> <span class="n">coefficients</span><span class="p">:</span>
+<span class="o">&gt;</span> <span class="n">c0</span> <span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span> <span class="n">C</span><span class="o">-</span><span class="n">finite</span> <span class="n">sequence</span> <span class="n">c0</span><span class="p">(</span><span class="n">n</span><span class="p">):</span> <span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">c0</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">c0</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">c0</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">=</span><span class="mi">1</span>
+<span class="o">&gt;</span> <span class="n">c1</span> <span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span> <span class="n">C</span><span class="o">-</span><span class="n">finite</span> <span class="n">sequence</span> <span class="n">c1</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">=-</span><span class="mi">1</span>
+<span class="ow">and</span> <span class="n">initial</span> <span class="n">values</span> <span class="n">a</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">=</span><span class="mi">1</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequence.base">
+<span class="sig-name descname"><span class="pre">base</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequence.base" title="Permalink to this definition"></a></dt>
+<dd><p>OUTPUT:</p>
+<p>The base of the parent of <code class="docutils literal notranslate"><span class="pre">self</span></code>, c.f. 
+<a class="reference internal" href="#rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequenceRing.base" title="rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequenceRing.base"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DifferenceDefinableSequenceRing.base()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequence.clear_common_factor">
+<span class="sig-name descname"><span class="pre">clear_common_factor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequence.clear_common_factor" title="Permalink to this definition"></a></dt>
+<dd><p>Tries to clear a common factor in the coefficients.</p>
+<p>OUTPUT:</p>
+<p>The same sequence with possible smaller coefficients in the
+recurrence.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequence.coefficients">
+<span class="sig-name descname"><span class="pre">coefficients</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequence.coefficients" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the list of polynomial coefficients of the recurrence of 
+<code class="docutils literal notranslate"><span class="pre">self</span></code> in the format <code class="docutils literal notranslate"><span class="pre">[c0,...,cr]</span></code> representing the recurrence</p>
+<div class="math notranslate nohighlight">
+\[c_0(n) a(n) + \dots + c_r(n) a(n+r) = 0.\]</div>
+<p>OUTPUT:</p>
+<p>The coefficients of the recurrence of the sequence.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.DifferenceDefinableSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.CFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">C2</span> <span class="o">=</span> <span class="n">DifferenceDefinableSequenceRing</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">n</span> <span class="o">=</span> <span class="n">var</span><span class="p">(</span><span class="s2">&quot;n&quot;</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">a</span> <span class="o">=</span> <span class="n">C2</span><span class="p">([</span><span class="n">C</span><span class="p">(</span><span class="mi">2</span><span class="o">^</span><span class="n">n</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">])</span> 
+<span class="n">sage</span><span class="p">:</span> <span class="n">a</span><span class="o">.</span><span class="n">coefficients</span><span class="p">()</span>
+<span class="p">[</span><span class="n">C</span><span class="o">-</span><span class="n">finite</span> <span class="n">sequence</span> <span class="n">a</span><span class="p">(</span><span class="n">n</span><span class="p">):</span> <span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">a</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="n">a</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">a</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span> 
+<span class="ow">and</span> <span class="n">a</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">=</span><span class="mi">2</span> <span class="p">,</span> <span class="n">a</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+<span class="n">C</span><span class="o">-</span><span class="n">finite</span> <span class="n">sequence</span> <span class="n">a</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">=-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequence.companion_matrix">
+<span class="sig-name descname"><span class="pre">companion_matrix</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequence.companion_matrix" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the <span class="math notranslate nohighlight">\(r \times r\)</span> companion matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{pmatrix}
+    0 &amp; 0 &amp; \dots &amp; 0 &amp; -c_0/c_r \\
+    1 &amp; 0 &amp; \dots &amp; 0 &amp; -c_1/c_r \\
+    0 &amp; 1 &amp; \dots &amp; 0 &amp; -c_2/c_r \\
+    \vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots \\
+    0 &amp; 0 &amp; \dots &amp; 1 &amp; -c_{r-1}/c_r
+\end{pmatrix} .\end{split}\]</div>
+<p>of <code class="docutils literal notranslate"><span class="pre">self</span></code> with entries in the
+<code class="docutils literal notranslate"><span class="pre">SequenceRingOfFraction</span></code> of the base.</p>
+<p>OUTPUT:</p>
+<p>The companion matrix.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.DifferenceDefinableSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.CFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">C2</span> <span class="o">=</span> <span class="n">DifferenceDefinableSequenceRing</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">n</span> <span class="o">=</span> <span class="n">var</span><span class="p">(</span><span class="s2">&quot;n&quot;</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">a</span> <span class="o">=</span> <span class="n">C2</span><span class="p">([</span><span class="n">C</span><span class="p">(</span><span class="mi">2</span><span class="o">^</span><span class="n">n</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">])</span> 
+<span class="n">sage</span><span class="p">:</span> <span class="n">a</span><span class="o">.</span><span class="n">companion_matrix</span><span class="p">()</span>
+<span class="p">[</span><span class="n">Fraction</span> <span class="n">sequence</span><span class="p">:</span>
+<span class="o">&gt;</span> <span class="n">Numerator</span><span class="p">:</span> <span class="n">C</span><span class="o">-</span><span class="n">finite</span> <span class="n">sequence</span> <span class="n">a</span><span class="p">(</span><span class="n">n</span><span class="p">):</span> <span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">a</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="n">a</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">a</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">a</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">=</span><span class="mi">2</span> <span class="p">,</span> <span class="n">a</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">=</span><span class="mi">3</span>
+<span class="o">&gt;</span> <span class="n">Denominator</span><span class="p">:</span> <span class="n">C</span><span class="o">-</span><span class="n">finite</span> <span class="n">sequence</span> <span class="n">a</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">=</span><span class="mi">1</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequence.compress">
+<span class="sig-name descname"><span class="pre">compress</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequence.compress" title="Permalink to this definition"></a></dt>
+<dd><p>Tries to compress the recurrence defining the sequence by 
+compressing all coefficients.</p>
+<p>OUTPUT:</p>
+<p>The same sequence with possible compressed coefficients in the
+recurrence.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequence.degree">
+<span class="sig-name descname"><span class="pre">degree</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequence.degree" title="Permalink to this definition"></a></dt>
+<dd><p>OUTPUT:</p>
+<p>The degree of the recurrence, i.e. the maximal
+order of the coefficients</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.DifferenceDefinableSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.CFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">C2</span> <span class="o">=</span> <span class="n">DifferenceDefinableSequenceRing</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">n</span> <span class="o">=</span> <span class="n">var</span><span class="p">(</span><span class="s2">&quot;n&quot;</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">a</span> <span class="o">=</span> <span class="n">C2</span><span class="p">([</span><span class="n">C</span><span class="p">(</span><span class="mi">2</span><span class="o">^</span><span class="n">n</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">])</span> 
+<span class="n">sage</span><span class="p">:</span> <span class="p">(</span><span class="n">C</span><span class="p">(</span><span class="mi">2</span><span class="o">^</span><span class="n">n</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">order</span><span class="p">()</span>
+<span class="mi">2</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">a</span><span class="o">.</span><span class="n">degree</span><span class="p">()</span>
+<span class="mi">2</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequence.log">
+<span class="sig-name descname"><span class="pre">log</span></span><em class="property"> <span class="pre">=</span> <span class="pre">&lt;Logger</span> <span class="pre">DDS</span> <span class="pre">(WARNING)&gt;</span></em><a class="headerlink" href="#rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequence.log" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequence.multiple">
+<span class="sig-name descname"><span class="pre">multiple</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequence.multiple" title="Permalink to this definition"></a></dt>
+<dd><p>Computes the sequence <span class="math notranslate nohighlight">\(c(\left \lfloor{n/d}\right \rfloor)\)</span>.</p>
+<p>INPUT:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">d</span></code> – a natural number</p></li>
+</ul>
+<p>OUTPUT:</p>
+<p>The sequence <span class="math notranslate nohighlight">\(c(\left \lfloor{n/d}\right \rfloor)\)</span>.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.DifferenceDefinableSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.CFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">C2</span> <span class="o">=</span> <span class="n">DifferenceDefinableSequenceRing</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">n</span> <span class="o">=</span> <span class="n">var</span><span class="p">(</span><span class="s2">&quot;n&quot;</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">a</span> <span class="o">=</span> <span class="n">C2</span><span class="p">([</span><span class="n">C</span><span class="p">(</span><span class="mi">2</span><span class="o">^</span><span class="n">n</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">])</span> 
+<span class="n">sage</span><span class="p">:</span> <span class="n">a</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">270</span><span class="p">,</span> <span class="mi">4590</span><span class="p">,</span> <span class="mi">151470</span><span class="p">,</span> <span class="mi">9845550</span><span class="p">,</span> <span class="mi">1270075950</span><span class="p">,</span> <span class="mi">326409519150</span><span class="p">]</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">a2</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">multiple</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">a2</span><span class="o">.</span><span class="n">order</span><span class="p">()</span>
+<span class="mi">2</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">a2</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">270</span><span class="p">,</span> <span class="mi">270</span><span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequence.subsequence">
+<span class="sig-name descname"><span class="pre">subsequence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequence.subsequence" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the sequence <span class="math notranslate nohighlight">\(c(n u + v)\)</span>.</p>
+<p>INPUT:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">u</span></code> – a natural number</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">v</span></code> (default: <code class="docutils literal notranslate"><span class="pre">0</span></code>) – a natural number</p></li>
+</ul>
+<p>OUTPUT:</p>
+<p>The sequence <span class="math notranslate nohighlight">\(c(n u + v)\)</span>.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.DifferenceDefinableSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.CFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">C2</span> <span class="o">=</span> <span class="n">DifferenceDefinableSequenceRing</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">f</span> <span class="o">=</span> <span class="n">C</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># Fibonacci numbers</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">c0</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">subsequence</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">subsequence</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">f</span><span class="o">.</span><span class="n">subsequence</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span><span class="o">-</span><span class="n">f</span><span class="o">.</span><span class="n">subsequence</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">^</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">c1</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">subsequence</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">subsequence</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span><span class="o">+</span><span class="n">f</span><span class="o">.</span><span class="n">subsequence</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">c2</span> <span class="o">=</span> <span class="o">-</span><span class="n">f</span><span class="o">.</span><span class="n">subsequence</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">fs</span> <span class="o">=</span> <span class="n">C2</span><span class="p">([</span><span class="n">c0</span><span class="p">,</span><span class="n">c1</span><span class="p">,</span><span class="n">c2</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span> <span class="c1"># f(n^2)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">fs_subs</span> <span class="o">=</span> <span class="n">fs</span><span class="o">.</span><span class="n">subsequence</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># long time</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">fs_subs</span><span class="o">.</span><span class="n">order</span><span class="p">()</span> <span class="c1"># long time</span>
+<span class="mi">2</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">fs_subs</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span> <span class="c1"># long time</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">75025</span><span class="p">,</span> <span class="mi">7778742049</span><span class="p">,</span> <span class="mi">37889062373143906</span><span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequenceRing">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">rec_sequences.DifferenceDefinableSequenceRing.</span></span><span class="sig-name descname"><span class="pre">DifferenceDefinableSequenceRing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">guess</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verified</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">element_class</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">category</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequenceRing" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="RecurrenceSequenceRing.html#rec_sequences.RecurrenceSequenceRing.RecurrenceSequenceRing" title="rec_sequences.RecurrenceSequenceRing.RecurrenceSequenceRing"><code class="xref py py-class docutils literal notranslate"><span class="pre">rec_sequences.RecurrenceSequenceRing.RecurrenceSequenceRing</span></code></a></p>
+<p>A Ring of difference definable sequences over a ring of sequences.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequenceRing.Element">
+<span class="sig-name descname"><span class="pre">Element</span></span><a class="headerlink" href="#rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequenceRing.Element" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="#rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequence" title="rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequence"><code class="xref py py-class docutils literal notranslate"><span class="pre">rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequence</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequenceRing.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">guess</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verified</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">element_class</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">category</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequenceRing.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Constructor for a difference definable sequence ring.</p>
+<p>INPUT:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">base</span></code> – a difference ring, e.g. the ring of C-finite sequences
+or D-finite sequences</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">guess</span></code> (default: <code class="docutils literal notranslate"><span class="pre">True</span></code>) – if <code class="docutils literal notranslate"><span class="pre">True</span></code>, the linear systems
+that arise in the computations are solved with guessing (if possible)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">verified</span></code> (default: <code class="docutils literal notranslate"><span class="pre">False</span></code>) – if <code class="docutils literal notranslate"><span class="pre">True</span></code>, the solutions of
+the linear system are verified to be correct. If <code class="docutils literal notranslate"><span class="pre">False</span></code> there can
+be rare cases, for which the solutions are wrong.</p></li>
+</ul>
+<p>OUTPUT:</p>
+<p>A ring of difference definable sequences over <code class="docutils literal notranslate"><span class="pre">base</span></code>.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.DifferenceDefinableSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.CFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">DifferenceDefinableSequenceRing</span><span class="p">(</span><span class="n">C</span><span class="p">)</span> 
+<span class="n">Ring</span> <span class="n">of</span> <span class="n">difference</span> <span class="n">definable</span> <span class="n">sequences</span> <span class="n">over</span> <span class="n">Ring</span> <span class="n">of</span> <span class="n">C</span><span class="o">-</span><span class="n">finite</span> 
+<span class="n">sequences</span> <span class="n">over</span> <span class="n">Rational</span> <span class="n">Field</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequenceRing._element_constructor_">
+<span class="sig-name descname"><span class="pre">_element_constructor_</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'a'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_gen</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">construct</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwds</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequenceRing._element_constructor_" title="Permalink to this definition"></a></dt>
+<dd><p>Tries to construct a sequence <span class="math notranslate nohighlight">\(a(n)\)</span>.</p>
+<p>This is possible if:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">x</span></code> is already a difference definable sequence.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">x</span></code> is a list of <code class="docutils literal notranslate"><span class="pre">base</span></code> elements and <code class="docutils literal notranslate"><span class="pre">y</span></code> is a list of field 
+elements. Then <code class="docutils literal notranslate"><span class="pre">x</span></code> is interpreted as the coefficients of the 
+sequence and <code class="docutils literal notranslate"><span class="pre">y</span></code> as the initial 
+values of the sequence, i.e. <span class="math notranslate nohighlight">\(a(0), ..., a(r-1)\)</span>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">x</span></code> is in <code class="docutils literal notranslate"><span class="pre">base</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">x</span></code> can be converted into a field element. Then it is interpreted 
+as the constant sequence <span class="math notranslate nohighlight">\((x)_{n \in \mathbb{N}}\)</span></p></li>
+</ul>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.DifferenceDefinableSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.CFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">C2</span> <span class="o">=</span> <span class="n">DifferenceDefinableSequenceRing</span><span class="p">(</span><span class="n">C</span><span class="p">)</span> 
+<span class="n">sage</span><span class="p">:</span> <span class="n">n</span> <span class="o">=</span> <span class="n">var</span><span class="p">(</span><span class="s2">&quot;n&quot;</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">c</span> <span class="o">=</span> <span class="n">C</span><span class="p">(</span><span class="mi">2</span><span class="o">^</span><span class="n">n</span><span class="o">+</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">^</span><span class="n">n</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">d</span> <span class="o">=</span> <span class="n">C</span><span class="p">(</span><span class="mi">2</span><span class="o">^</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">a</span> <span class="o">=</span> <span class="n">C2</span><span class="p">([</span><span class="n">c</span><span class="p">,</span><span class="o">-</span><span class="n">d</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;a&quot;</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">latex</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+\<span class="n">left</span><span class="p">(</span><span class="mi">2</span><span class="o">^</span><span class="p">{</span><span class="n">n</span><span class="p">}</span> <span class="o">+</span> \<span class="n">left</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span>\<span class="n">right</span><span class="p">)</span><span class="o">^</span><span class="p">{</span><span class="n">n</span><span class="p">}</span>\<span class="n">right</span><span class="p">)</span>\<span class="n">cdot</span> <span class="n">a</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">+</span> \<span class="n">left</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="o">^</span><span class="p">{</span><span class="n">n</span><span class="p">}</span> <span class="o">-</span> 
+<span class="mi">1</span>\<span class="n">right</span><span class="p">)</span> \<span class="n">cdot</span> <span class="n">a</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span> \<span class="n">quad</span> <span class="n">a</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">a2</span> <span class="o">=</span> <span class="n">C2</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">b</span> <span class="o">=</span> <span class="n">C2</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="n">Difference</span> <span class="n">definable</span> <span class="n">sequence</span> <span class="n">of</span> <span class="n">order</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">degree</span> <span class="mi">1</span> <span class="k">with</span> 
+<span class="n">coefficients</span><span class="p">:</span>
+<span class="o">&gt;</span> <span class="n">c0</span> <span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span> <span class="n">C</span><span class="o">-</span><span class="n">finite</span> <span class="n">sequence</span> <span class="n">c0</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">=</span><span class="mi">2</span>
+<span class="o">&gt;</span> <span class="n">c1</span> <span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span> <span class="n">C</span><span class="o">-</span><span class="n">finite</span> <span class="n">sequence</span> <span class="n">c1</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">=</span><span class="mi">1</span>
+<span class="o">&gt;</span> <span class="n">c2</span> <span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span> <span class="n">C</span><span class="o">-</span><span class="n">finite</span> <span class="n">sequence</span> <span class="n">c2</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">=-</span><span class="mi">1</span>
+<span class="ow">and</span> <span class="n">initial</span> <span class="n">values</span> <span class="n">a</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">=</span><span class="mi">2</span> <span class="p">,</span> <span class="n">a</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">=</span><span class="mi">1</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequenceRing._latex_">
+<span class="sig-name descname"><span class="pre">_latex_</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequenceRing._latex_" title="Permalink to this definition"></a></dt>
+<dd><p>OUTPUT:</p>
+<p>A latex representation of the sequence ring.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.DifferenceDefinableSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.CFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">latex</span><span class="p">(</span><span class="n">DifferenceDefinableSequenceRing</span><span class="p">(</span><span class="n">C</span><span class="p">)))</span>
+\<span class="n">mathcal</span><span class="p">{</span><span class="n">D_</span>\<span class="n">sigma</span><span class="p">}(</span>\<span class="n">mathcal</span><span class="p">{</span><span class="n">C</span><span class="p">}(</span>\<span class="n">Bold</span><span class="p">{</span><span class="n">Q</span><span class="p">}))</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequenceRing._repr_">
+<span class="sig-name descname"><span class="pre">_repr_</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequenceRing._repr_" title="Permalink to this definition"></a></dt>
+<dd><p>OUTPUT:</p>
+<p>A string representation of the sequence ring.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.DifferenceDefinableSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.CFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">DifferenceDefinableSequenceRing</span><span class="p">(</span><span class="n">C</span><span class="p">)</span> 
+<span class="n">Ring</span> <span class="n">of</span> <span class="n">difference</span> <span class="n">definable</span> <span class="n">sequences</span> <span class="n">over</span> <span class="n">Ring</span> <span class="n">of</span> <span class="n">C</span><span class="o">-</span><span class="n">finite</span> 
+<span class="n">sequences</span> <span class="n">over</span> <span class="n">Rational</span> <span class="n">Field</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequenceRing.base">
+<span class="sig-name descname"><span class="pre">base</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequenceRing.base" title="Permalink to this definition"></a></dt>
+<dd><p>OUTPUT:</p>
+<p>Return the base over which the sequence ring is defined.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.DifferenceDefinableSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.CFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">C2</span> <span class="o">=</span> <span class="n">DifferenceDefinableSequenceRing</span><span class="p">(</span><span class="n">C</span><span class="p">)</span> 
+<span class="n">sage</span><span class="p">:</span> <span class="n">C2</span><span class="o">.</span><span class="n">base</span><span class="p">()</span><span class="o">==</span><span class="n">C</span>
+<span class="kc">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequenceRing.change_base_ring">
+<span class="sig-name descname"><span class="pre">change_base_ring</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">R</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequenceRing.change_base_ring" title="Permalink to this definition"></a></dt>
+<dd><p>Return a copy of <code class="docutils literal notranslate"><span class="pre">self</span></code> but with the base ring <code class="docutils literal notranslate"><span class="pre">R</span></code>.</p>
+<p>OUTPUT:</p>
+<p>A differene definable sequence ring with base <code class="docutils literal notranslate"><span class="pre">R</span></code>.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequenceRing.log">
+<span class="sig-name descname"><span class="pre">log</span></span><em class="property"> <span class="pre">=</span> <span class="pre">&lt;Logger</span> <span class="pre">DDR</span> <span class="pre">(WARNING)&gt;</span></em><a class="headerlink" href="#rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequenceRing.log" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequenceRing.random_element">
+<span class="sig-name descname"><span class="pre">random_element</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">degree</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwds</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequenceRing.random_element" title="Permalink to this definition"></a></dt>
+<dd><p>Return a random difference definable sequence.</p>
+<p>INPUT:</p>
+<p>-<code class="docutils literal notranslate"><span class="pre">order</span></code> (default: <code class="docutils literal notranslate"><span class="pre">2</span></code>) – the order of the recurrence of the random
+difference definable sequence
+-<code class="docutils literal notranslate"><span class="pre">degree</span></code> (default <code class="docutils literal notranslate"><span class="pre">1</span></code>) – the order of the coefficient sequences</p>
+<p>OUTPUT:</p>
+<p>A difference definable sequence with a random recurrence of order 
+<code class="docutils literal notranslate"><span class="pre">order</span></code>, random coefficient sequences of order <code class="docutils literal notranslate"><span class="pre">degree</span></code>
+and random initial values constisting of integers between <code class="docutils literal notranslate"><span class="pre">-100</span></code>
+and <code class="docutils literal notranslate"><span class="pre">100</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is only guaranteed that the leading coefficient of the recurrence
+has no zeros in the first <code class="docutils literal notranslate"><span class="pre">20</span></code> values.</p>
+</div>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.DifferenceDefinableSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.CFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">C2</span> <span class="o">=</span> <span class="n">DifferenceDefinableSequenceRing</span><span class="p">(</span><span class="n">C</span><span class="p">)</span> 
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">C2</span><span class="o">.</span><span class="n">random_element</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">order</span><span class="p">()</span> 
+<span class="mi">2</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequenceRing.random_monic_element">
+<span class="sig-name descname"><span class="pre">random_monic_element</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">degree</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwds</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequenceRing.random_monic_element" title="Permalink to this definition"></a></dt>
+<dd><p>Return a random difference definable sequence where the leading coefficient
+of the recurrence is <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p>
+<p>INPUT:</p>
+<p>-<code class="docutils literal notranslate"><span class="pre">order</span></code> (default: <code class="docutils literal notranslate"><span class="pre">2</span></code>) – the order of the recurrence of the random
+difference definable sequence
+-<code class="docutils literal notranslate"><span class="pre">degree</span></code> (default: <code class="docutils literal notranslate"><span class="pre">1</span></code>) – the order of the coefficient sequences</p>
+<p>OUTPUT:</p>
+<p>A difference definable sequence with a random recurrence of order <code class="docutils literal notranslate"><span class="pre">order</span></code>,
+random coefficient sequences of order <code class="docutils literal notranslate"><span class="pre">degree</span></code>
+and random initial values constisting of integers between <code class="docutils literal notranslate"><span class="pre">-100</span></code> 
+and <code class="docutils literal notranslate"><span class="pre">100</span></code> where the leading coefficient of the recurrence is <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.DifferenceDefinableSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.CFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">C2</span> <span class="o">=</span> <span class="n">DifferenceDefinableSequenceRing</span><span class="p">(</span><span class="n">C</span><span class="p">)</span> 
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">a</span> <span class="o">=</span> <span class="n">C2</span><span class="o">.</span><span class="n">random_monic_element</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">a</span><span class="o">.</span><span class="n">leading_coefficient</span><span class="p">()</span><span class="o">.</span><span class="n">is_one</span><span class="p">()</span> 
+<span class="kc">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequenceRing.verified">
+<span class="sig-name descname"><span class="pre">verified</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequenceRing.verified" title="Permalink to this definition"></a></dt>
+<dd><p>OUTPUT:</p>
+<p><code class="docutils literal notranslate"><span class="pre">True</span></code> if solutions of linear systems are verified to be
+correct. <code class="docutils literal notranslate"><span class="pre">False</span></code> if they are not verified.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequenceRing.with_guessing">
+<span class="sig-name descname"><span class="pre">with_guessing</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequenceRing.with_guessing" title="Permalink to this definition"></a></dt>
+<dd><p>OUTPUT:</p>
+<p><code class="docutils literal notranslate"><span class="pre">True</span></code> if solutions of linear systems are obtained via
+guessing (if possible). <code class="docutils literal notranslate"><span class="pre">False</span></code> if they are 
+always computed using a generalized inverse approach.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequenceRingFunctor">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">rec_sequences.DifferenceDefinableSequenceRing.</span></span><span class="sig-name descname"><span class="pre">DifferenceDefinableSequenceRingFunctor</span></span><a class="headerlink" href="#rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequenceRingFunctor" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="RecurrenceSequenceRing.html#rec_sequences.RecurrenceSequenceRing.RecurrenceSequenceRingFunctor" title="rec_sequences.RecurrenceSequenceRing.RecurrenceSequenceRingFunctor"><code class="xref py py-class docutils literal notranslate"><span class="pre">rec_sequences.RecurrenceSequenceRing.RecurrenceSequenceRingFunctor</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequenceRingFunctor.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequenceRingFunctor.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Constructs a <code class="docutils literal notranslate"><span class="pre">DifferenceDefinableSequenceRingFunctor</span></code>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequenceRingFunctor._repr_">
+<span class="sig-name descname"><span class="pre">_repr_</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequenceRingFunctor._repr_" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a string representation of the functor.</p>
+<p>OUTPUT:</p>
+<p>The string “DifferenceDefinableSequenceRing(*)”</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="DFiniteSequenceRing.html" class="btn btn-neutral float-left" title="DFiniteSequence and DFiniteSequenceRing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="C2FiniteSequenceRing.html" class="btn btn-neutral float-right" title="C2FiniteSequence and C2FiniteSequenceRing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Philipp Nuspl.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

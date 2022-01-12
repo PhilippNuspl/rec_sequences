@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LinearSolveSequence &mdash; rec_sequences 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="FunctionalEquation" href="FunctionalEquation.html" />
+    <link rel="prev" title="SignPattern" href="SignPattern.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> rec_sequences
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="RecurrenceSequenceRing.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">RecurrenceSequenceElement</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">RecurrenceSequenceRing</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="CFiniteSequenceRing.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">CFiniteSequence</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">CFiniteSequenceRing</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="DFiniteSequenceRing.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">DFiniteSequence</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">DFiniteSequenceRing</span></code></a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="DifferenceDefinableSequenceRing.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">DifferenceDefinableSequence</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">DifferenceDefinableSequenceRing</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="C2FiniteSequenceRing.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">C2FiniteSequence</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">C2FiniteSequenceRing</span></code></a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="ArithmeticProgression.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">ArithmeticProgression</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="ZeroPattern.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">ZeroPattern</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="SignPattern.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">SignPattern</span></code></a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#"><code class="xref py py-class docutils literal notranslate"><span class="pre">LinearSolveSequence</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="FunctionalEquation.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">FunctionalEquation</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="SequenceRingOfFraction.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">FractionSequence</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">SequenceRingOfFraction</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="utility.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">utility</span></code></a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">rec_sequences</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><code class="xref py py-class docutils literal notranslate"><span class="pre">LinearSolveSequence</span></code></li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules_docs/LinearSolveSequence.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-rec_sequences.LinearSolveSequence">
+<span id="linearsolvesequence"></span><h1><a class="reference internal" href="#module-rec_sequences.LinearSolveSequence" title="rec_sequences.LinearSolveSequence"><code class="xref py py-class docutils literal notranslate"><span class="pre">LinearSolveSequence</span></code></a><a class="headerlink" href="#module-rec_sequences.LinearSolveSequence" title="Permalink to this headline"></a></h1>
+<p>Provides methods to solve linear systems over sequence rings.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="rec_sequences.LinearSolveSequence.LinearSolveSequence">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">rec_sequences.LinearSolveSequence.</span></span><span class="sig-name descname"><span class="pre">LinearSolveSequence</span></span><a class="headerlink" href="#rec_sequences.LinearSolveSequence.LinearSolveSequence" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Provides methods to solve linear systems over sequence rings.
+It is always assumed that the base ring satisfies the Skolem-Mahler-Lech
+Theorem.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.LinearSolveSequence.LinearSolveSequence.clear_denominators">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">clear_denominators</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bound</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.LinearSolveSequence.LinearSolveSequence.clear_denominators" title="Permalink to this definition"></a></dt>
+<dd><p>Clears the denominators of fractional sequences.</p>
+<p>INPUT:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">v</span></code> – a (non-empty) vector or list of sequences in a
+<a class="reference internal" href="SequenceRingOfFraction.html#module-rec_sequences.SequenceRingOfFraction" title="rec_sequences.SequenceRingOfFraction"><code class="xref py py-class docutils literal notranslate"><span class="pre">rec_sequences.SequenceRingOfFraction</span></code></a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bound</span></code> (default: <code class="docutils literal notranslate"><span class="pre">100</span></code>) – a natural number, used as the
+number of terms to guess a common multiple of the denominators
+of the sequences in <code class="docutils literal notranslate"><span class="pre">v</span></code>.</p></li>
+</ul>
+<p>OUTPUT:</p>
+<p><code class="docutils literal notranslate"><span class="pre">d</span></code> and a list <code class="docutils literal notranslate"><span class="pre">v*d</span></code> such that <code class="docutils literal notranslate"><span class="pre">d</span></code> is a common multiple of the
+denominators of <code class="docutils literal notranslate"><span class="pre">v</span></code>.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.LinearSolveSequence</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.CFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.SequenceRingOfFraction</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">QC</span> <span class="o">=</span> <span class="n">SequenceRingOfFraction</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">d0</span> <span class="o">=</span> <span class="n">C</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">d1</span> <span class="o">=</span> <span class="n">C</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">c0</span> <span class="o">=</span> <span class="n">C</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">c1</span> <span class="o">=</span> <span class="n">C</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">a</span> <span class="o">=</span> <span class="n">QC</span><span class="p">(</span><span class="n">c0</span><span class="p">,</span> <span class="n">d0</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">b</span> <span class="o">=</span> <span class="n">QC</span><span class="p">(</span><span class="n">c1</span><span class="p">,</span> <span class="n">d1</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="n">QC</span><span class="p">,</span> <span class="p">[</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">d</span><span class="p">,</span> <span class="n">cleared</span> <span class="o">=</span> <span class="n">LinearSolveSequence</span><span class="o">.</span><span class="n">clear_denominators</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">d</span> <span class="o">==</span> <span class="n">d0</span><span class="o">*</span><span class="n">d1</span>
+<span class="kc">True</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">cleared_v</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">cleared</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span><span class="o">*</span><span class="n">d</span> <span class="o">==</span> <span class="n">cleared_v</span>
+<span class="kc">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.LinearSolveSequence.LinearSolveSequence.clear_divisor">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">clear_divisor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bound</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.LinearSolveSequence.LinearSolveSequence.clear_divisor" title="Permalink to this definition"></a></dt>
+<dd><p>Given a vector of sequences <span class="math notranslate nohighlight">\(v=(v_0,\dots,v_m)\)</span>
+computes a common divisor <span class="math notranslate nohighlight">\(d\)</span> of <span class="math notranslate nohighlight">\(v_0,\dots,v_m\)</span>.
+Tries guessing to find the gcd using <code class="docutils literal notranslate"><span class="pre">bound</span></code> number of values.
+If this fails, the common divisor <span class="math notranslate nohighlight">\(1\)</span> is returned. 
+Assumes that <span class="math notranslate nohighlight">\(m \geq 0\)</span>, i.e., <span class="math notranslate nohighlight">\(v\)</span> is non-empty.</p>
+<p>INPUT:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">v</span></code> – a vector of sequences</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bound</span></code> (default: <code class="docutils literal notranslate"><span class="pre">50</span></code>) – a natural number</p></li>
+</ul>
+<p>OUTPUT:</p>
+<p>A pair <span class="math notranslate nohighlight">\(d\)</span>, <code class="docutils literal notranslate"><span class="pre">divisors</span></code> where <span class="math notranslate nohighlight">\(d\)</span> is a common divisor
+of all <span class="math notranslate nohighlight">\(v_i\)</span> and <code class="docutils literal notranslate"><span class="pre">divisors</span></code> is a list of sequences
+<span class="math notranslate nohighlight">\(d_0,\dots,d_m\)</span> with <span class="math notranslate nohighlight">\(d_i d = v_i\)</span> for all <span class="math notranslate nohighlight">\(i\)</span>.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.LinearSolveSequence</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.CFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">c1</span> <span class="o">=</span> <span class="n">C</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">c2</span> <span class="o">=</span> <span class="n">C</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">c3</span> <span class="o">=</span> <span class="n">C</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="n">c1</span><span class="o">*</span><span class="n">c2</span><span class="p">,</span> <span class="n">c1</span><span class="o">*</span><span class="n">c3</span><span class="p">]</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">d</span><span class="p">,</span> <span class="n">div</span> <span class="o">=</span> <span class="n">LinearSolveSequence</span><span class="o">.</span><span class="n">clear_divisor</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">d</span> <span class="o">==</span> <span class="n">c1</span>
+<span class="kc">True</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">d</span><span class="o">*</span><span class="n">div</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">d</span><span class="o">*</span><span class="n">div</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.LinearSolveSequence.LinearSolveSequence.common_multiple">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">common_multiple</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bound</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.LinearSolveSequence.LinearSolveSequence.common_multiple" title="Permalink to this definition"></a></dt>
+<dd><p>Given a vector of sequences <span class="math notranslate nohighlight">\(v=(v_0,\dots,v_m)\)</span>
+computes a common multiple <span class="math notranslate nohighlight">\(d\)</span> of <span class="math notranslate nohighlight">\(v_0,\dots,v_m\)</span>.
+Tries guessing to find the lcm using <code class="docutils literal notranslate"><span class="pre">bound</span></code> number of values.
+If this fails, the product <span class="math notranslate nohighlight">\(v_0 \cdots v_m\)</span> is returned. 
+Assumes that <span class="math notranslate nohighlight">\(m \geq 0\)</span>, i.e., <span class="math notranslate nohighlight">\(v\)</span> is non-empty.</p>
+<p>INPUT:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">v</span></code> – a vector of sequences</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bound</span></code> (default: <code class="docutils literal notranslate"><span class="pre">100</span></code>) – a natural number</p></li>
+</ul>
+<p>OUTPUT:</p>
+<p>A pair <span class="math notranslate nohighlight">\(d\)</span>, <code class="docutils literal notranslate"><span class="pre">divisors</span></code> where <span class="math notranslate nohighlight">\(d\)</span> is a common multiple
+of all <span class="math notranslate nohighlight">\(v_i\)</span> and <code class="docutils literal notranslate"><span class="pre">divisors</span></code> is a list of sequences
+<span class="math notranslate nohighlight">\(d_0,\dots,d_m\)</span> with <span class="math notranslate nohighlight">\(d_i v_i = d\)</span> for all <span class="math notranslate nohighlight">\(i\)</span>.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.LinearSolveSequence</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.CFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">c1</span> <span class="o">=</span> <span class="n">C</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">c2</span> <span class="o">=</span> <span class="n">C</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">d</span><span class="p">,</span> <span class="n">div</span> <span class="o">=</span> <span class="n">LinearSolveSequence</span><span class="o">.</span><span class="n">common_multiple</span><span class="p">([</span><span class="n">c1</span><span class="o">*</span><span class="n">c2</span><span class="p">,</span> <span class="n">c1</span><span class="p">],</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">d</span> <span class="o">==</span> <span class="n">c1</span><span class="o">*</span><span class="n">c2</span>
+<span class="kc">True</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">div</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">c1</span><span class="o">*</span><span class="n">c2</span> <span class="o">==</span> <span class="n">d</span><span class="p">,</span> <span class="n">div</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">c1</span> <span class="o">==</span> <span class="n">d</span>
+<span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="rec_sequences.LinearSolveSequence.LinearSolveSequence.log">
+<span class="sig-name descname"><span class="pre">log</span></span><em class="property"> <span class="pre">=</span> <span class="pre">&lt;Logger</span> <span class="pre">LSS</span> <span class="pre">(WARNING)&gt;</span></em><a class="headerlink" href="#rec_sequences.LinearSolveSequence.LinearSolveSequence.log" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.LinearSolveSequence.LinearSolveSequence.solve">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">solve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">M</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">guess</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verified</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.LinearSolveSequence.LinearSolveSequence.solve" title="Permalink to this definition"></a></dt>
+<dd><p>Tries to compute a solution <span class="math notranslate nohighlight">\(x\)</span> of the linear system</p>
+<div class="math notranslate nohighlight">
+\[Mx=b.\]</div>
+<p>Let <code class="docutils literal notranslate"><span class="pre">R</span></code> be the base ring. We assume that a sequence in <code class="docutils literal notranslate"><span class="pre">R</span></code> 
+is invertible iff it does not have any zeros. If <code class="docutils literal notranslate"><span class="pre">R</span></code> is not 
+a <a class="reference internal" href="SequenceRingOfFraction.html#module-rec_sequences.SequenceRingOfFraction" title="rec_sequences.SequenceRingOfFraction"><code class="xref py py-class docutils literal notranslate"><span class="pre">rec_sequences.SequenceRingOfFraction</span></code></a>, 
+the sequences are casted there and the system solved there.</p>
+<p>INPUT:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">M</span></code> – the matrix of the linear system</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">b</span></code> – the right-hand-side of the system</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">guess</span></code> (default: <code class="docutils literal notranslate"><span class="pre">True</span></code>) – use guessing for solving the system</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">verified</span></code> (default: <code class="docutils literal notranslate"><span class="pre">False</span></code>) – verify the result formally. If 
+<code class="docutils literal notranslate"><span class="pre">False</span></code> the result might not (although unlikely) be a solution to the equation if guessing is sued.</p></li>
+</ul>
+<p>OUTPUT:</p>
+<p>One possible solution <span class="math notranslate nohighlight">\(x\)</span> as a list if there is one. Otherwise,
+a <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> is raised.</p>
+<p>ALGORITHM:</p>
+<p>The method implements the algorithm from
+Lemma 4.5 from <a class="reference internal" href="../index.html#jpnp21b" id="id1"><span>[JPNP21b]</span></a>.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.LinearSolveSequence</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.CFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.SequenceRingOfFraction</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">QC</span> <span class="o">=</span> <span class="n">SequenceRingOfFraction</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">a</span> <span class="o">=</span> <span class="n">QC</span><span class="p">(</span><span class="n">C</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">]),</span> <span class="n">C</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">b</span> <span class="o">=</span> <span class="n">QC</span><span class="p">(</span><span class="n">C</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">]))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">c</span> <span class="o">=</span> <span class="n">QC</span><span class="p">(</span><span class="n">C</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">]))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">d</span> <span class="o">=</span> <span class="n">QC</span><span class="p">(</span><span class="n">C</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]),</span> <span class="n">C</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">]))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">v1</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="n">QC</span><span class="p">,</span> <span class="p">[</span><span class="n">a</span><span class="p">,</span><span class="n">c</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">v2</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="n">QC</span><span class="p">,</span> <span class="p">[</span><span class="n">b</span><span class="p">,</span><span class="n">d</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">M</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="n">QC</span><span class="p">,</span> <span class="p">[</span><span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">])</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">rhs</span> <span class="o">=</span> <span class="n">QC</span><span class="p">(</span><span class="n">C</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">]))</span><span class="o">*</span><span class="n">v1</span> \
+<span class="o">....</span><span class="p">:</span>       <span class="o">+</span> <span class="n">QC</span><span class="p">(</span><span class="n">C</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]),</span> <span class="n">C</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">]))</span><span class="o">*</span><span class="n">v2</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">x</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="n">QC</span><span class="p">,</span> <span class="n">LinearSolveSequence</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">rhs</span><span class="p">))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">M</span><span class="o">*</span><span class="n">x</span><span class="o">==</span><span class="n">rhs</span>
+<span class="kc">True</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">a2</span> <span class="o">=</span> <span class="n">C</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">b2</span> <span class="o">=</span> <span class="n">C</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">c2</span> <span class="o">=</span> <span class="n">C</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">d2</span> <span class="o">=</span> <span class="n">C</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">v12</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="p">[</span><span class="n">a2</span><span class="p">,</span><span class="n">c2</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">v22</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="p">[</span><span class="n">b2</span><span class="p">,</span><span class="n">d2</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">M2</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="p">[</span><span class="n">v12</span><span class="p">,</span> <span class="n">v22</span><span class="p">])</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">rhs2</span> <span class="o">=</span> <span class="n">C</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">*</span><span class="n">v12</span> <span class="o">+</span> <span class="n">C</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span><span class="o">*</span><span class="n">v22</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">x2</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="n">QC</span><span class="p">,</span> <span class="n">LinearSolveSequence</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">M2</span><span class="p">,</span> <span class="n">rhs2</span><span class="p">,</span> \
+<span class="o">....</span><span class="p">:</span>                                           <span class="n">guess</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">M2</span><span class="o">*</span><span class="n">x2</span><span class="o">==</span><span class="n">rhs2</span>
+<span class="kc">True</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">x3</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="n">QC</span><span class="p">,</span> <span class="n">LinearSolveSequence</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">M2</span><span class="p">,</span> <span class="n">rhs2</span><span class="p">,</span> \
+<span class="o">....</span><span class="p">:</span>                 <span class="n">guess</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">verified</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">M2</span><span class="o">*</span><span class="n">x3</span><span class="o">==</span><span class="n">rhs2</span>
+<span class="kc">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="SignPattern.html" class="btn btn-neutral float-left" title="SignPattern" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="FunctionalEquation.html" class="btn btn-neutral float-right" title="FunctionalEquation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Philipp Nuspl.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

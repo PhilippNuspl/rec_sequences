@@ -7,7 +7,7 @@ SAGE=sage
 # Package folder
 PACKAGE=rec_sequences
 
-all: install doc test
+all: install doc docmv test
 	
 # Installing commands
 install:
@@ -20,6 +20,9 @@ test: install
 
 # Documentation commands
 doc: install
-	cd docs && $(SAGE) -sh -c "make html"
-
+	cd docssrc && $(SAGE) -sh -c "make html"
 	
+docmv: doc
+	mv docssrc/build/html .
+	rm -r docs
+	mv html docs
