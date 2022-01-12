@@ -65,7 +65,7 @@ Documentation
 The documentation, including examples on how to use the package can
 be found at:
 
-- `TBA <https://TBA>`_
+- `https://philippnuspl.github.io/rec_sequences/ <https://philippnuspl.github.io/rec_sequences/>`_
 
 References
 ------------
