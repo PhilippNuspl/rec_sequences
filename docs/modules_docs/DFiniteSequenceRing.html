@@ -232,7 +232,7 @@ could be shown.</p>
 <span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.CFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="n">sage</span><span class="p">:</span> <span class="n">R</span><span class="o">.&lt;</span><span class="n">n</span><span class="o">&gt;</span> <span class="o">=</span> <span class="n">PolynomialRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
 <span class="n">sage</span><span class="p">:</span> <span class="n">D</span> <span class="o">=</span> <span class="n">DFiniteSequenceRing</span><span class="p">(</span><span class="n">R</span><span class="p">)</span>
-<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">,</span> <span class="n">time_limit</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
 
 <span class="n">sage</span><span class="p">:</span> <span class="n">harm</span> <span class="o">=</span> <span class="n">D</span><span class="p">([</span><span class="o">-</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="o">*</span><span class="n">n</span><span class="o">+</span><span class="mi">3</span><span class="p">,</span><span class="o">-</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
 <span class="n">sage</span><span class="p">:</span> <span class="n">harm</span> <span class="o">&gt;=</span> <span class="mi">1</span>
@@ -279,7 +279,7 @@ could be shown.</p>
 <span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.CFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="n">sage</span><span class="p">:</span> <span class="n">R</span><span class="o">.&lt;</span><span class="n">n</span><span class="o">&gt;</span> <span class="o">=</span> <span class="n">PolynomialRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
 <span class="n">sage</span><span class="p">:</span> <span class="n">D</span> <span class="o">=</span> <span class="n">DFiniteSequenceRing</span><span class="p">(</span><span class="n">R</span><span class="p">)</span>
-<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">,</span> <span class="n">time_limit</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
 
 <span class="n">sage</span><span class="p">:</span> <span class="n">harm</span> <span class="o">=</span> <span class="n">D</span><span class="p">([</span><span class="o">-</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="o">*</span><span class="n">n</span><span class="o">+</span><span class="mi">3</span><span class="p">,</span><span class="o">-</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
 <span class="n">sage</span><span class="p">:</span> <span class="mi">0</span> <span class="o">&lt;</span> <span class="n">harm</span>
@@ -589,13 +589,11 @@ the generating system <code class="docutils literal notranslate"><span class="pr
 <dt class="sig sig-object py" id="rec_sequences.DFiniteSequenceRing.DFiniteSequence.has_no_zeros">
 <span class="sig-name descname"><span class="pre">has_no_zeros</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bound</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bound_n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.DFiniteSequenceRing.DFiniteSequence.has_no_zeros" title="Permalink to this definition"></a></dt>
 <dd><p>Tries to prove that the sequence has no zeros. This is done using
-several algorithms (if <code class="docutils literal notranslate"><span class="pre">time</span></code> is specified, <code class="docutils literal notranslate"><span class="pre">time/3</span></code> is used
+different algorithms (if <code class="docutils literal notranslate"><span class="pre">time</span></code> is specified, <code class="docutils literal notranslate"><span class="pre">time/2</span></code> is used
 for each of the algorithm):</p>
 <ol class="arabic simple">
-<li><p>Uses <a class="reference internal" href="#rec_sequences.DFiniteSequenceRing.DFiniteSequence.is_eventually_positive" title="rec_sequences.DFiniteSequenceRing.DFiniteSequence.is_eventually_positive"><code class="xref py py-meth docutils literal notranslate"><span class="pre">is_eventually_positive()</span></code></a> to show 
-positivity.</p></li>
-<li><p>Uses <a class="reference internal" href="#rec_sequences.DFiniteSequenceRing.DFiniteSequence.is_eventually_positive" title="rec_sequences.DFiniteSequenceRing.DFiniteSequence.is_eventually_positive"><code class="xref py py-meth docutils literal notranslate"><span class="pre">is_eventually_positive()</span></code></a> to show 
-negativity.</p></li>
+<li><p>Determine the sign pattern using <a class="reference internal" href="#rec_sequences.DFiniteSequenceRing.DFiniteSequence.sign_pattern" title="rec_sequences.DFiniteSequenceRing.DFiniteSequence.sign_pattern"><code class="xref py py-meth docutils literal notranslate"><span class="pre">sign_pattern()</span></code></a> and check 
+whether it contains zeros.</p></li>
 <li><p>Uses <a class="reference internal" href="#rec_sequences.DFiniteSequenceRing.DFiniteSequence.is_eventually_positive" title="rec_sequences.DFiniteSequenceRing.DFiniteSequence.is_eventually_positive"><code class="xref py py-meth docutils literal notranslate"><span class="pre">is_eventually_positive()</span></code></a> to show 
 that the squared sequence is positive.</p></li>
 </ol>
@@ -624,6 +622,19 @@ might be raised.</p>
 
 <span class="n">sage</span><span class="p">:</span> <span class="n">harm</span> <span class="o">=</span> <span class="n">D</span><span class="p">([</span><span class="o">-</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="o">*</span><span class="n">n</span><span class="o">+</span><span class="mi">3</span><span class="p">,</span><span class="o">-</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
 <span class="n">sage</span><span class="p">:</span> <span class="n">harm</span><span class="o">.</span><span class="n">has_no_zeros</span><span class="p">()</span>
+<span class="kc">False</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.CFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span> 
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">n</span> <span class="o">=</span> <span class="n">var</span><span class="p">(</span><span class="s2">&quot;n&quot;</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span><span class="p">(</span><span class="mi">3</span><span class="o">^</span><span class="n">n</span><span class="o">-</span><span class="n">n</span><span class="o">*</span><span class="mi">2</span><span class="o">^</span><span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">has_no_zeros</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># long time</span>
+<span class="kc">True</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span><span class="p">(</span><span class="mi">10</span><span class="o">*</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">has_no_zeros</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># long time</span>
+<span class="kc">True</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">has_no_zeros</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># long time</span>
 <span class="kc">False</span>
 </pre></div>
 </div>
@@ -800,7 +811,7 @@ the Gerhold-Kauers <a class="reference internal" href="../index.html#kp10" id="i
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">bound</span></code> (default: <code class="docutils literal notranslate"><span class="pre">0</span></code>) – length of induction hypothesis.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">time</span></code> (default: <code class="docutils literal notranslate"><span class="pre">-1</span></code>) – if positive, this is the maximal time 
-(in seconds) used in every verification step.</p></li>
+(in seconds) used to verify the sign patterns.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">data</span></code> (default: <code class="docutils literal notranslate"><span class="pre">100</span></code>) – number of terms used to guess the
 sign-pattern.</p></li>
 </ul>
@@ -868,6 +879,50 @@ the partial sums.</p>
 <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">11</span><span class="o">/</span><span class="mi">6</span><span class="p">,</span> <span class="mi">25</span><span class="o">/</span><span class="mi">12</span><span class="p">,</span> <span class="mi">137</span><span class="o">/</span><span class="mi">60</span><span class="p">,</span> <span class="mi">49</span><span class="o">/</span><span class="mi">20</span><span class="p">,</span> <span class="mi">363</span><span class="o">/</span><span class="mi">140</span><span class="p">,</span> <span class="mi">761</span><span class="o">/</span><span class="mi">280</span><span class="p">,</span> <span class="mi">7129</span><span class="o">/</span><span class="mi">2520</span><span class="p">]</span>
 <span class="n">sage</span><span class="p">:</span> <span class="n">harm</span><span class="o">.</span><span class="n">sum</span><span class="p">()[:</span><span class="mi">10</span><span class="p">]</span>
 <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">13</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="mi">77</span><span class="o">/</span><span class="mi">12</span><span class="p">,</span> <span class="mi">87</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span> <span class="mi">223</span><span class="o">/</span><span class="mi">20</span><span class="p">,</span> <span class="mi">481</span><span class="o">/</span><span class="mi">35</span><span class="p">,</span> <span class="mi">4609</span><span class="o">/</span><span class="mi">280</span><span class="p">,</span> <span class="mi">4861</span><span class="o">/</span><span class="mi">252</span><span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.DFiniteSequenceRing.DFiniteSequence.zeros">
+<span class="sig-name descname"><span class="pre">zeros</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bound</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.DFiniteSequenceRing.DFiniteSequence.zeros" title="Permalink to this definition"></a></dt>
+<dd><p>Computes the zeros of the sequence provided that the sequence
+satisfies the Skolem-Mahler-Lech-Theorem, i.e., the zeros
+consist of finitely many zeros together with a finite number of
+arithmetic progressions. The method <a class="reference internal" href="#rec_sequences.DFiniteSequenceRing.DFiniteSequence.sign_pattern" title="rec_sequences.DFiniteSequenceRing.DFiniteSequence.sign_pattern"><code class="xref py py-meth docutils literal notranslate"><span class="pre">sign_pattern()</span></code></a> is used
+to derive the sign pattern from which the zeros are extracted.
+All the parameters correspond to the parameters of <a class="reference internal" href="#rec_sequences.DFiniteSequenceRing.DFiniteSequence.sign_pattern" title="rec_sequences.DFiniteSequenceRing.DFiniteSequence.sign_pattern"><code class="xref py py-meth docutils literal notranslate"><span class="pre">sign_pattern()</span></code></a>.</p>
+<p>INPUT:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">bound</span></code> (default: <code class="docutils literal notranslate"><span class="pre">0</span></code>) – length of induction hypothesis.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">time</span></code> (default: <code class="docutils literal notranslate"><span class="pre">-1</span></code>) – if positive, this is the maximal time 
+(in seconds) used to verify the sign patterns.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code> (default: <code class="docutils literal notranslate"><span class="pre">100</span></code>) – number of terms used to guess the
+sign-pattern.</p></li>
+</ul>
+<p>OUTPUT:</p>
+<p>The zero pattern of the sequence as an object of type
+<a class="reference internal" href="ZeroPattern.html#module-rec_sequences.ZeroPattern" title="rec_sequences.ZeroPattern"><code class="xref py py-class docutils literal notranslate"><span class="pre">rec_sequences.ZeroPattern</span></code></a>. If no pattern could be guessed
+or this pattern could not be verified, a <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> is raised.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.CFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.DFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">R</span><span class="o">.&lt;</span><span class="n">n</span><span class="o">&gt;</span> <span class="o">=</span> <span class="n">PolynomialRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">D</span> <span class="o">=</span> <span class="n">DFiniteSequenceRing</span><span class="p">(</span><span class="n">R</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">harm</span> <span class="o">=</span> <span class="n">D</span><span class="p">([</span><span class="o">-</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="o">*</span><span class="n">n</span><span class="o">+</span><span class="mi">3</span><span class="p">,</span><span class="o">-</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">harm</span><span class="o">.</span><span class="n">zeros</span><span class="p">()</span>
+<span class="n">Zero</span> <span class="n">pattern</span> <span class="k">with</span> <span class="n">finite</span> <span class="nb">set</span> <span class="p">{</span><span class="mi">0</span><span class="p">}</span> <span class="ow">and</span> <span class="n">no</span> <span class="n">arithmetic</span> <span class="n">progressions</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">n</span> <span class="o">=</span> <span class="n">var</span><span class="p">(</span><span class="s2">&quot;n&quot;</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">D</span><span class="p">(</span><span class="mi">3</span><span class="o">^</span><span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">interlace</span><span class="p">(</span><span class="n">D</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="o">^</span><span class="n">n</span><span class="p">))</span><span class="o">.</span><span class="n">prepend</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span><span class="o">.</span><span class="n">zeros</span><span class="p">()</span>
+<span class="n">Zero</span> <span class="n">pattern</span> <span class="k">with</span> <span class="n">finite</span> <span class="nb">set</span> <span class="p">{}</span> <span class="ow">and</span> <span class="n">no</span> <span class="n">arithmetic</span> <span class="n">progressions</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span><span class="p">(</span><span class="mi">10</span><span class="o">*</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">prepend</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span><span class="o">.</span><span class="n">zeros</span><span class="p">()</span> <span class="c1"># random</span>
+<span class="n">Zero</span> <span class="n">pattern</span> <span class="k">with</span> <span class="n">finite</span> <span class="nb">set</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">}</span> <span class="ow">and</span> <span class="n">arithmetic</span> <span class="n">progressions</span><span class="p">:</span> 
+<span class="o">-</span> <span class="n">Arithmetic</span> <span class="n">progression</span> <span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">n</span><span class="o">+</span><span class="mi">6</span><span class="p">)</span><span class="n">_n</span>
+<span class="o">-</span> <span class="n">Arithmetic</span> <span class="n">progression</span> <span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">n</span><span class="o">+</span><span class="mi">4</span><span class="p">)</span><span class="n">_n</span>
 </pre></div>
 </div>
 </dd></dl>

@@ -276,7 +276,7 @@ class DFiniteSequence(RecurrenceSequenceElement):
         
         - ``bound`` (default: ``0``) -- length of induction hypothesis.
         - ``time`` (default: ``-1``) -- if positive, this is the maximal time 
-          (in seconds) used in every verification step.
+          (in seconds) used to verify the sign patterns.
         - ``data`` (default: ``100``) -- number of terms used to guess the
           sign-pattern.
         
@@ -303,6 +303,12 @@ class DFiniteSequence(RecurrenceSequenceElement):
         """
         terms = self[:data]
         pattern = SignPattern.guess(terms)
+        # how many inequalities do we have to show?
+        if time > 0:
+            num_ineq = len(pattern.get_positive_progressions()) 
+            num_ineq += len(pattern.get_negative_progressions())
+            time = time/num_ineq
+        
         # initial values are valid for sure, we try
         # to prove the arithmethic progressions
         pattern_false = ValueError("Guessed sign pattern is false, try to " \
@@ -333,17 +339,67 @@ class DFiniteSequence(RecurrenceSequenceElement):
                 raise pattern_false
         return pattern
     
+    def zeros(self, bound=0, time=-1, data=100) :
+        r"""
+        Computes the zeros of the sequence provided that the sequence
+        satisfies the Skolem-Mahler-Lech-Theorem, i.e., the zeros
+        consist of finitely many zeros together with a finite number of
+        arithmetic progressions. The method :meth:`sign_pattern` is used
+        to derive the sign pattern from which the zeros are extracted.
+        All the parameters correspond to the parameters of :meth:`sign_pattern`.
+        
+        INPUT:
+        
+        - ``bound`` (default: ``0``) -- length of induction hypothesis.
+        - ``time`` (default: ``-1``) -- if positive, this is the maximal time 
+          (in seconds) used to verify the sign patterns.
+        - ``data`` (default: ``100``) -- number of terms used to guess the
+          sign-pattern.
+        
+        OUTPUT:
+        
+        The zero pattern of the sequence as an object of type
+        :class:`rec_sequences.ZeroPattern`. If no pattern could be guessed
+        or this pattern could not be verified, a ``ValueError`` is raised.
+        
+        EXAMPLES::
+
+            sage: from rec_sequences.CFiniteSequenceRing import *
+            sage: from rec_sequences.DFiniteSequenceRing import *
+            sage: R.<n> = PolynomialRing(QQ)
+            sage: D = DFiniteSequenceRing(R)
+            
+            sage: harm = D([-n-1,2*n+3,-n-2],[0,1])
+            sage: harm.zeros()
+            Zero pattern with finite set {0} and no arithmetic progressions
+            
+            sage: n = var("n")
+            sage: D(3^n).interlace(D(-2^n)).prepend([1,3,-2]).zeros()
+            Zero pattern with finite set {} and no arithmetic progressions
+            
+            sage: C = CFiniteSequenceRing(QQ)
+            sage: C(10*[1,0,-1,0]).prepend([0,0,2]).zeros() # random
+            Zero pattern with finite set {0, 1} and arithmetic progressions: 
+            - Arithmetic progression (4*n+6)_n
+            - Arithmetic progression (4*n+4)_n
+
+        """
+        sign_pattern = self.sign_pattern(bound, time, data)
+        progressions = sign_pattern.get_zero_progressions()
+        init_values = sign_pattern.get_initial_values()
+        ex_zeros = set([i for i, val in enumerate(init_values) if val == 0])
+        return ZeroPattern(ex_zeros, progressions)
+        
+    
     def has_no_zeros(self, bound=0, time=-1, bound_n = 5):
         r"""
         Tries to prove that the sequence has no zeros. This is done using
-        several algorithms (if ``time`` is specified, ``time/3`` is used
+        different algorithms (if ``time`` is specified, ``time/2`` is used
         for each of the algorithm):
         
-        1. Uses :meth:`is_eventually_positive` to show 
-           positivity.
+        1. Determine the sign pattern using :meth:`sign_pattern` and check 
+           whether it contains zeros. 
         2. Uses :meth:`is_eventually_positive` to show 
-           negativity.
-        3. Uses :meth:`is_eventually_positive` to show 
            that the squared sequence is positive.
         
         INPUT:
@@ -376,28 +432,31 @@ class DFiniteSequence(RecurrenceSequenceElement):
             sage: harm.has_no_zeros()
             False
             
+            sage: from rec_sequences.CFiniteSequenceRing import *
+            sage: C = CFiniteSequenceRing(QQ) 
+            
+            sage: n = var("n")
+            sage: C(3^n-n*2^n).has_no_zeros(time=10) # long time
+            True
+            
+            sage: C(10*[1,-1]).has_no_zeros(time=10) # long time
+            True
+            
+            sage: C(n-4).has_no_zeros(time=10) # long time
+            False
+            
         """
         if 0 in self[:bound_n] :
             return False
         
-        time_alg = time/3
+        time_alg = time/2
         try :
-            n0 = self.is_eventually_positive(bound=bound, 
-                                             time=time_alg/bound_n, 
-                                             bound_n = bound_n, strict=True)
-            DFiniteSequence.log.info(f"Used eventual positivity from {n0} on")
-            if 0 not in self[:n0] :
+            zero_pattern = self.zeros(bound=bound, time=time_alg)
+            DFiniteSequence.log.info(f"Used sign pattern")
+            if zero_pattern.non_zero() :
                 return True
-        except (ValueError, TimeoutError) as e:
-            pass 
-        
-        try :
-            neg = -self
-            n0 = neg.is_eventually_positive(bound=bound, time=time_alg/bound_n, 
-                                            bound_n = bound_n, strict=True)
-            DFiniteSequence.log.info(f"Used eventual negativity from {n0} on")
-            if 0 not in self[:n0] :
-                return True
+            else :
+                return False
         except (ValueError, TimeoutError) as e:
             pass 
         
@@ -503,7 +562,7 @@ class DFiniteSequence(RecurrenceSequenceElement):
             sage: from rec_sequences.CFiniteSequenceRing import *
             sage: R.<n> = PolynomialRing(QQ)
             sage: D = DFiniteSequenceRing(R)
-            sage: C = CFiniteSequenceRing(QQ)
+            sage: C = CFiniteSequenceRing(QQ, time_limit = 10)
             
             sage: harm = D([-n-1,2*n+3,-n-2],[0,1])
             sage: 0 < harm
@@ -571,7 +630,7 @@ class DFiniteSequence(RecurrenceSequenceElement):
             sage: from rec_sequences.CFiniteSequenceRing import *
             sage: R.<n> = PolynomialRing(QQ)
             sage: D = DFiniteSequenceRing(R)
-            sage: C = CFiniteSequenceRing(QQ)
+            sage: C = CFiniteSequenceRing(QQ, time_limit = 10)
             
             sage: harm = D([-n-1,2*n+3,-n-2],[0,1])
             sage: harm >= 1
@@ -665,6 +724,9 @@ class DFiniteSequence(RecurrenceSequenceElement):
         Uses an induction hypothesis of length `bound`.
         """
         r = self.order()
+        if r == 0 : # then self is zero sequence as lc has no zeros
+            return not strict
+        
         x_var = vector(SR, var("xvc", n=r))
         mu = var("muvc")
         n_var = var("nvc")

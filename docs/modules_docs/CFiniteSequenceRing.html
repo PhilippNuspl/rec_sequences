@@ -461,55 +461,6 @@ for all <span class="math notranslate nohighlight">\(n \geq s\)</span>. Otherwis
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="rec_sequences.CFiniteSequenceRing.CFiniteSequence.has_no_zeros">
-<span class="sig-name descname"><span class="pre">has_no_zeros</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bound</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bound_n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.CFiniteSequenceRing.CFiniteSequence.has_no_zeros" title="Permalink to this definition"></a></dt>
-<dd><p>Tries to prove that the sequence has no zeros. This is done using
-several algorithms (if <code class="docutils literal notranslate"><span class="pre">time</span></code> is specified, <code class="docutils literal notranslate"><span class="pre">time/5</span></code> is used
-for each of the algorithm):</p>
-<ol class="arabic simple">
-<li><p>Uses the Gerhold-Kauers method <a class="reference internal" href="../index.html#kp10" id="id1"><span>[KP10]</span></a> to show that <code class="docutils literal notranslate"><span class="pre">self[n]*mu^n</span></code>
-is positive for some mu != 0.</p></li>
-<li><p>Uses the Gerhold-Kauers method <a class="reference internal" href="../index.html#kp10" id="id2"><span>[KP10]</span></a> to show that 
-<code class="docutils literal notranslate"><span class="pre">(-self)[n]*mu^n</span></code> is positive for some mu != 0.</p></li>
-<li><p>Uses <a class="reference internal" href="#rec_sequences.CFiniteSequenceRing.CFiniteSequence.is_eventually_positive" title="rec_sequences.CFiniteSequenceRing.CFiniteSequence.is_eventually_positive"><code class="xref py py-meth docutils literal notranslate"><span class="pre">is_eventually_positive()</span></code></a> to show 
-positivity.</p></li>
-<li><p>Uses <a class="reference internal" href="#rec_sequences.CFiniteSequenceRing.CFiniteSequence.is_eventually_positive" title="rec_sequences.CFiniteSequenceRing.CFiniteSequence.is_eventually_positive"><code class="xref py py-meth docutils literal notranslate"><span class="pre">is_eventually_positive()</span></code></a> to show 
-negativity.</p></li>
-<li><p>Uses <a class="reference internal" href="#rec_sequences.CFiniteSequenceRing.CFiniteSequence.is_eventually_positive" title="rec_sequences.CFiniteSequenceRing.CFiniteSequence.is_eventually_positive"><code class="xref py py-meth docutils literal notranslate"><span class="pre">is_eventually_positive()</span></code></a> to show 
-that the squared sequence is positive.</p></li>
-</ol>
-<p>INPUT:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">bound</span></code> (default: <code class="docutils literal notranslate"><span class="pre">0</span></code>) – length of induction hypothesis</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">time</span></code> (default: <code class="docutils literal notranslate"><span class="pre">-1</span></code>) – if positive, this is the maximal time 
-(in seconds) after computations are aborted</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">bound_n</span></code> (default: <code class="docutils literal notranslate"><span class="pre">5</span></code>) – index up to which it is checked
-whether the sequences is positive from that term on for the
-algorithms using <a class="reference internal" href="#rec_sequences.CFiniteSequenceRing.CFiniteSequence.is_eventually_positive" title="rec_sequences.CFiniteSequenceRing.CFiniteSequence.is_eventually_positive"><code class="xref py py-meth docutils literal notranslate"><span class="pre">is_eventually_positive()</span></code></a>.</p></li>
-</ul>
-<p>OUTPUT:</p>
-<p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if every term of the sequence is not equal to zero
-and <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise. Raises a <code class="docutils literal notranslate"><span class="pre">TimeoutError</span></code> if neither could
-be proven. If the formula for CAD is too big a <code class="docutils literal notranslate"><span class="pre">RuntimeError</span></code>
-might be raised.</p>
-<p>EXAMPLES:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.CFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span> 
-
-<span class="n">sage</span><span class="p">:</span> <span class="n">n</span> <span class="o">=</span> <span class="n">var</span><span class="p">(</span><span class="s2">&quot;n&quot;</span><span class="p">)</span>
-<span class="n">sage</span><span class="p">:</span> <span class="n">C</span><span class="p">(</span><span class="mi">3</span><span class="o">^</span><span class="n">n</span><span class="o">-</span><span class="n">n</span><span class="o">*</span><span class="mi">2</span><span class="o">^</span><span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">has_no_zeros</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># long time</span>
-<span class="kc">True</span>
-
-<span class="n">sage</span><span class="p">:</span> <span class="n">C</span><span class="p">(</span><span class="mi">10</span><span class="o">*</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">has_no_zeros</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># long time</span>
-<span class="kc">True</span>
-
-<span class="n">sage</span><span class="p">:</span> <span class="n">C</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">has_no_zeros</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># long time</span>
-<span class="kc">False</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="py method">
 <dt class="sig sig-object py" id="rec_sequences.CFiniteSequenceRing.CFiniteSequence.interlace">
 <span class="sig-name descname"><span class="pre">interlace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">others</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.CFiniteSequenceRing.CFiniteSequence.interlace" title="Permalink to this definition"></a></dt>
 <dd><p>Returns the interlaced sequence of self with <code class="docutils literal notranslate"><span class="pre">others</span></code>.</p>
@@ -558,7 +509,7 @@ distinct roots is a root of unity. Returns False otherwise.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="rec_sequences.CFiniteSequenceRing.CFiniteSequence.is_eventually_positive">
 <span class="sig-name descname"><span class="pre">is_eventually_positive</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bound_n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bound</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.CFiniteSequenceRing.CFiniteSequence.is_eventually_positive" title="Permalink to this definition"></a></dt>
-<dd><p>Uses the Gerhold-Kauers methods (Algorithm 1 and 2 in <a class="reference internal" href="../index.html#kp10" id="id3"><span>[KP10]</span></a>) 
+<dd><p>Uses the Gerhold-Kauers methods (Algorithm 1 and 2 in <a class="reference internal" href="../index.html#kp10" id="id1"><span>[KP10]</span></a>) 
 to check whether the sequence is eventually positive. 
 This is done by checking whether <code class="docutils literal notranslate"><span class="pre">self.shift(n)</span></code> is positive for 
 <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">&lt;=</span> <span class="pre">bound_n</span></code>. The smallest such index is returned.
@@ -590,12 +541,14 @@ If no such index could be found, a <code class="docutils literal notranslate"><s
 
 <dl class="py method">
 <dt class="sig sig-object py" id="rec_sequences.CFiniteSequenceRing.CFiniteSequence.is_positive">
-<span class="sig-name descname"><span class="pre">is_positive</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bound</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.CFiniteSequenceRing.CFiniteSequence.is_positive" title="Permalink to this definition"></a></dt>
-<dd><p>Uses the Gerhold-Kauers methods (Algorithm 1 and 2 in <a class="reference internal" href="../index.html#kp10" id="id4"><span>[KP10]</span></a>) 
+<span class="sig-name descname"><span class="pre">is_positive</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bound</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wo_rec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.CFiniteSequenceRing.CFiniteSequence.is_positive" title="Permalink to this definition"></a></dt>
+<dd><p>Uses the Gerhold-Kauers methods (Algorithm 1 and 2 in <a class="reference internal" href="../index.html#kp10" id="id2"><span>[KP10]</span></a>) 
 to check whether the sequence is positive. 
 If these methods fail, it is checked whether it can be shown that
 the sequence is eventually monotonously increasing (and positive
-up to that term). If for the C-finite
+up to that term). This is also iterated to show whether it
+can be checked that the difference is monotonously increasing, etc.
+If for the C-finite
 representation of the sequence positivity could not be shown,
 the same is tried with a (possibly) shorter D-finite representation.</p>
 <div class="admonition note">
@@ -612,15 +565,20 @@ it could show positivity if a time limit were given.</p>
 instead of positivity is checked</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">time</span></code> (default: <code class="docutils literal notranslate"><span class="pre">-1</span></code>) – if positive, this is the maximal time 
 (in seconds) after computations are aborted</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wo_rec</span></code> (default: <code class="docutils literal notranslate"><span class="pre">False</span></code>) – if <code class="docutils literal notranslate"><span class="pre">True</span></code>, then the method does
+not try to check whether the sequence is eventually increasing and 
+deduce positivity this way.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">depth</span></code> (default: <code class="docutils literal notranslate"><span class="pre">5</span></code>) – a natural number; the depth <span class="math notranslate nohighlight">\(d\)</span> used in 
+showing that the <span class="math notranslate nohighlight">\(d\)</span>-th iterated forward difference <span class="math notranslate nohighlight">\(\Delta^d c\)</span> is 
+positive.</p></li>
 </ul>
 <p>OUTPUT:</p>
 <p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if it is positive, <code class="docutils literal notranslate"><span class="pre">False</span></code> if it is not positive and
-raises a <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> exception if it could neither 
-prove or disprove positivity. If the time runs out, a <code class="docutils literal notranslate"><span class="pre">TimeoutError</span></code>
-is raised.</p>
+raises a <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> or a <code class="docutils literal notranslate"><span class="pre">TimeoutError</span></code> exception if it could 
+neither prove or disprove positivity.</p>
 <p>EXAMPLES:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.CFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span> 
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">,</span> <span class="n">time_limit</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span> 
 
 <span class="n">sage</span><span class="p">:</span> <span class="n">C</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">is_positive</span><span class="p">(</span><span class="n">strict</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="kc">True</span>
@@ -632,7 +590,7 @@ is raised.</p>
 <span class="n">sage</span><span class="p">:</span> <span class="n">C</span><span class="p">(</span><span class="n">n</span><span class="o">^</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">is_positive</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># long time</span>
 <span class="kc">True</span>
 <span class="n">sage</span><span class="p">:</span> <span class="n">n</span> <span class="o">=</span> <span class="n">var</span><span class="p">(</span><span class="s2">&quot;n&quot;</span><span class="p">)</span>
-<span class="n">sage</span><span class="p">:</span> <span class="n">C</span><span class="p">(</span><span class="mi">3</span><span class="o">^</span><span class="n">n</span><span class="o">+</span><span class="mi">2</span><span class="o">^</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">is_positive</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span><span class="p">(</span><span class="mi">2</span><span class="o">^</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">is_positive</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 <span class="kc">True</span>
 </pre></div>
 </div>
@@ -641,7 +599,7 @@ is raised.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="rec_sequences.CFiniteSequenceRing.CFiniteSequence.is_positive_algo1">
 <span class="sig-name descname"><span class="pre">is_positive_algo1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bound</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.CFiniteSequenceRing.CFiniteSequence.is_positive_algo1" title="Permalink to this definition"></a></dt>
-<dd><p>Uses the Gerhold-Kauers methods, in particular Algorithm 1 in <a class="reference internal" href="../index.html#kp10" id="id5"><span>[KP10]</span></a>, 
+<dd><p>Uses the Gerhold-Kauers methods, in particular Algorithm 1 in <a class="reference internal" href="../index.html#kp10" id="id3"><span>[KP10]</span></a>, 
 to check whether the sequence is positive.</p>
 <p>INPUT:</p>
 <ul class="simple">
@@ -673,7 +631,7 @@ is raised.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="rec_sequences.CFiniteSequenceRing.CFiniteSequence.is_positive_algo2">
 <span class="sig-name descname"><span class="pre">is_positive_algo2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bound</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.CFiniteSequenceRing.CFiniteSequence.is_positive_algo2" title="Permalink to this definition"></a></dt>
-<dd><p>Uses the Gerhold-Kauers methods, in particular Algorithm 2 in <a class="reference internal" href="../index.html#kp10" id="id6"><span>[KP10]</span></a>, 
+<dd><p>Uses the Gerhold-Kauers methods, in particular Algorithm 2 in <a class="reference internal" href="../index.html#kp10" id="id4"><span>[KP10]</span></a>, 
 to check whether the sequence is positive.</p>
 <p>INPUT:</p>
 <ul class="simple">
@@ -924,7 +882,7 @@ of the built-in sage C-finite sequence ring</p></li>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="rec_sequences.CFiniteSequenceRing.CFiniteSequenceRing">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">rec_sequences.CFiniteSequenceRing.</span></span><span class="sig-name descname"><span class="pre">CFiniteSequenceRing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">field=Rational</span> <span class="pre">Field</span></em>, <em class="sig-param"><span class="pre">name=None</span></em>, <em class="sig-param"><span class="pre">element_class=None</span></em>, <em class="sig-param"><span class="pre">category=None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.CFiniteSequenceRing.CFiniteSequenceRing" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">rec_sequences.CFiniteSequenceRing.</span></span><span class="sig-name descname"><span class="pre">CFiniteSequenceRing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">field=Rational</span> <span class="pre">Field</span></em>, <em class="sig-param"><span class="pre">time_limit=2</span></em>, <em class="sig-param"><span class="pre">name=None</span></em>, <em class="sig-param"><span class="pre">element_class=None</span></em>, <em class="sig-param"><span class="pre">category=None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.CFiniteSequenceRing.CFiniteSequenceRing" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="DFiniteSequenceRing.html#rec_sequences.DFiniteSequenceRing.DFiniteSequenceRing" title="rec_sequences.DFiniteSequenceRing.DFiniteSequenceRing"><code class="xref py py-class docutils literal notranslate"><span class="pre">rec_sequences.DFiniteSequenceRing.DFiniteSequenceRing</span></code></a></p>
 <p>A Ring of C-finite sequences over a field.</p>
 <dl class="py attribute">
@@ -935,12 +893,14 @@ of the built-in sage C-finite sequence ring</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="rec_sequences.CFiniteSequenceRing.CFiniteSequenceRing.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">field=Rational</span> <span class="pre">Field</span></em>, <em class="sig-param"><span class="pre">name=None</span></em>, <em class="sig-param"><span class="pre">element_class=None</span></em>, <em class="sig-param"><span class="pre">category=None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.CFiniteSequenceRing.CFiniteSequenceRing.__init__" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">field=Rational</span> <span class="pre">Field</span></em>, <em class="sig-param"><span class="pre">time_limit=2</span></em>, <em class="sig-param"><span class="pre">name=None</span></em>, <em class="sig-param"><span class="pre">element_class=None</span></em>, <em class="sig-param"><span class="pre">category=None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.CFiniteSequenceRing.CFiniteSequenceRing.__init__" title="Permalink to this definition"></a></dt>
 <dd><p>Constructor for a C-finite sequence ring.</p>
 <p>INPUT:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">field</span></code> (default: <code class="docutils literal notranslate"><span class="pre">QQ</span></code>) – a field of characteristic zero over 
 which the C-finite sequence ring is defined.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">time_limit</span></code> (default: <code class="docutils literal notranslate"><span class="pre">2</span></code>) – a positive number indicating
+the time limit in seconds used to prove inequalities.</p></li>
 </ul>
 <p>OUTPUT:</p>
 <p>A ring of C-finite sequences</p>

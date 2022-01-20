@@ -296,6 +296,27 @@ class RecurrenceSequenceElement(CommutativeAlgebraElement):
         """
         neg_intial_values = [-val for val in self.initial_values()]
         return type(self)(self.parent(), self.coefficients(), neg_intial_values)
+    
+    def difference(self, i=1) :
+        r"""
+        Returns the forward difference `\Delta c = c(n+1)-c(n)` of the 
+        sequence `c`.
+        
+        INPUT:
+        
+        - ``i`` (default: ``1``) -- a natural number
+        
+        OUTPUT:
+        
+        The iterated forward difference sequence `\Delta^i c`.
+        
+        """
+        if i == 1 :
+            return self.shift() - self
+        elif i == 0 :
+            return self
+        else : # assume i is natural and i > 0
+            return (self.shift() - self).difference(i-1)
 
     def _mul_(self, right):
         r"""

@@ -298,168 +298,6 @@ class CFiniteSequence(DFiniteSequence):
                 return True
         return False
     
-    def has_no_zeros(self, bound=0, time=-1, bound_n = 5):
-        r"""
-        Tries to prove that the sequence has no zeros. This is done using
-        several algorithms (if ``time`` is specified, ``time/5`` is used
-        for each of the algorithm):
-        
-        1. Uses the Gerhold-Kauers method [KP10]_ to show that ``self[n]*mu^n``
-           is positive for some mu != 0.
-        2. Uses the Gerhold-Kauers method [KP10]_ to show that 
-           ``(-self)[n]*mu^n`` is positive for some mu != 0.
-        3. Uses :meth:`is_eventually_positive` to show 
-           positivity.
-        4. Uses :meth:`is_eventually_positive` to show 
-           negativity.
-        5. Uses :meth:`is_eventually_positive` to show 
-           that the squared sequence is positive.
-        
-        INPUT:
-        
-        - ``bound`` (default: ``0``) -- length of induction hypothesis
-        - ``time`` (default: ``-1``) -- if positive, this is the maximal time 
-          (in seconds) after computations are aborted
-        - ``bound_n`` (default: ``5``) -- index up to which it is checked
-          whether the sequences is positive from that term on for the
-          algorithms using :meth:`is_eventually_positive`.
-        
-        OUTPUT:
-        
-        Returns ``True`` if every term of the sequence is not equal to zero
-        and ``False`` otherwise. Raises a ``TimeoutError`` if neither could
-        be proven. If the formula for CAD is too big a ``RuntimeError``
-        might be raised.
-                  
-        EXAMPLES::
-        
-            sage: from rec_sequences.CFiniteSequenceRing import *
-            sage: C = CFiniteSequenceRing(QQ) 
-            
-            sage: n = var("n")
-            sage: C(3^n-n*2^n).has_no_zeros(time=10) # long time
-            True
-            
-            sage: C(10*[1,-1]).has_no_zeros(time=10) # long time
-            True
-            
-            sage: C(n-4).has_no_zeros(time=10) # long time
-            False
-            
-        """
-        if 0 in self[:bound_n] :
-            return False
-        
-        time_alg = time/5
-        try :
-            non_zero = self._has_no_zeros_algo1(bound=bound, time=time_alg)
-            CFiniteSequence.log.info(f"Used Algorithm 1")
-            return non_zero
-        except (ValueError, TimeoutError) as e:
-            pass 
-        
-        try :
-            neg = -self
-            non_zero = neg._has_no_zeros_algo1(bound=bound, time=time_alg)
-            CFiniteSequence.log.info(f"Used Algorithm 1 with negation")
-            return non_zero
-        except (ValueError, TimeoutError) as e:
-            pass 
-        
-        bound_n = 5
-        try :
-            n0 = self.is_eventually_positive(bound=bound, 
-                                             time=time_alg/bound_n, 
-                                             bound_n = bound_n, strict=True)
-            CFiniteSequence.log.info(f"Used eventual positivity from {n0} on")
-            if 0 not in self[:n0] :
-                return True
-            else :
-                return False
-        except (ValueError, TimeoutError) as e:
-            pass 
-        
-        try :
-            neg = -self
-            n0 = neg.is_eventually_positive(bound=bound, time=time_alg/bound_n, 
-                                            bound_n = bound_n, strict=True)
-            CFiniteSequence.log.info(f"Used eventual negativity from {n0} on")
-            if 0 not in self[:n0] :
-                return True
-            else :
-                return False
-        except (ValueError, TimeoutError) as e:
-            pass 
-        
-        try :
-            square = self**2
-            n0 = square.is_eventually_positive(bound=bound, 
-                                               time=time_alg/bound_n, 
-                                               bound_n = bound_n, strict=True)
-            CFiniteSequence.log.info(f"Used that squared sequence is positive")
-            if 0 not in self[:n0] :
-                return True
-            else :
-                return False
-        except TimeoutError:
-            raise TimeoutError(time)
-    
-    def _has_no_zeros_algo1(self, bound=0, time=-1):
-        r"""
-        Uses the Gerhold-Kauers method to show that self[n]*mu^n is increasing
-        for some mu != 0 using at most the given `time` (if positive).
-        
-        Returns a ValueError if the given `time` or `bound` was not 
-        sufficient.
-        """
-        return timeout(self._has_no_zeros_algo1_not_timed, time, bound=bound)
-    
-    def _has_no_zeros_algo1_not_timed(self, bound=0):
-        r"""
-        Uses the Gerhold-Kauers method to show that self[n]*mu^n is positive
-        for some mu != 0.
-        
-        Returns a ValueError if the given `bound` was not 
-        sufficient.
-        """
-        r = self.order()
-        x_var = vector(SR, var("xvc", n=r))
-        mu = var("mvc")
-        cad = qepcad_formula
-        # x_var[j] corresponds to c(n+i)*mu^(n+i)
-        lhs = cad.and_([0<x_var[i] for i in range(0,r)])
-        x_mu_var = vector(SR, [mu**(r-i)*xi for i, xi in enumerate(x_var)])
-        rhs = (0 < self.get_shift(r)*x_mu_var)
-        formula = cad.forall(list(x_var), qepcad_formula.implies(lhs, rhs))
-        #print("with qf: " + str(formula))
-        formula_qff = qformula(qepcad(formula),frozenset(list(map(str,x_var))))
-        #print("qff-free: "+ str(formula_qff))
-        for n in range(r+bound) :
-            if self[n] == 0 :
-                return False
-            cond_mu = (mu != 0) 
-            if r > 1 :
-                inits = cad.and_([0<mu**(n+i)*self[n+i] for i in range(0,r)])
-                total = cad.exists(mu, cad.and_(formula_qff, inits, cond_mu))
-            else :
-                total = cad.exists(mu, cad.and_(formula_qff, cond_mu))
-            #print(f"Start computation for n={n}")
-            #print(total)
-            if qepcad(total) == "TRUE" :
-                return True
-            #print(f"Could not decide for n={n}")
-        raise ValueError("Could not decide whether nonzero!")
-    
-    def _has_no_zeros_algo2(self, bound=0, time=-1):
-        r"""
-        Checks whether self^2[n]>0 for all n.
-        """
-        squared = self**2
-        try :
-            return squared.is_positive(bound=bound, strict=True, time=time)
-        except ValueError :
-            raise ValueError("Could not decide whether nonzero!")
-    
     def is_eventually_positive(self, bound_n = 5, bound=0, strict=True, 
                                time=-1) :
         r"""
@@ -507,7 +345,7 @@ class CFiniteSequence(DFiniteSequence):
         for n in range(bound_n+1) :
             shift = self.shift(n)
             try :
-                ret = shift.is_positive(bound, strict, time)
+                ret = shift.is_positive(bound, strict, time, True)
                 if ret == True :
                     return n0
             except (ValueError, TimeoutError) as e:
@@ -515,13 +353,16 @@ class CFiniteSequence(DFiniteSequence):
         raise ValueError("Could not prove whether eventually positive.")
                 
     
-    def is_positive(self, bound=0, strict=True, time=-1):
+    def is_positive(self, bound=0, strict=True, time=-1, wo_rec = False, 
+                    depth=5):
         r"""
         Uses the Gerhold-Kauers methods (Algorithm 1 and 2 in [KP10]_) 
         to check whether the sequence is positive. 
         If these methods fail, it is checked whether it can be shown that
         the sequence is eventually monotonously increasing (and positive
-        up to that term). If for the C-finite
+        up to that term). This is also iterated to show whether it
+        can be checked that the difference is monotonously increasing, etc.
+        If for the C-finite
         representation of the sequence positivity could not be shown,
         the same is tried with a (possibly) shorter D-finite representation. 
         
@@ -539,18 +380,23 @@ class CFiniteSequence(DFiniteSequence):
           instead of positivity is checked
         - ``time`` (default: ``-1``) -- if positive, this is the maximal time 
           (in seconds) after computations are aborted
+        - ``wo_rec`` (default: ``False``) -- if ``True``, then the method does
+          not try to check whether the sequence is eventually increasing and 
+          deduce positivity this way.
+        - ``depth`` (default: ``5``) -- a natural number; the depth `d` used in 
+          showing that the `d`-th iterated forward difference `\Delta^d c` is 
+          positive.
         
         OUTPUT:
         
         Returns ``True`` if it is positive, ``False`` if it is not positive and
-        raises a ``ValueError`` exception if it could neither 
-        prove or disprove positivity. If the time runs out, a ``TimeoutError``
-        is raised.
+        raises a ``ValueError`` or a ``TimeoutError`` exception if it could 
+        neither prove or disprove positivity. 
                   
         EXAMPLES::
         
             sage: from rec_sequences.CFiniteSequenceRing import *
-            sage: C = CFiniteSequenceRing(QQ) 
+            sage: C = CFiniteSequenceRing(QQ, time_limit = 10) 
             
             sage: C([1,1,-1], [0,1]).is_positive(strict=False)
             True
@@ -562,40 +408,71 @@ class CFiniteSequence(DFiniteSequence):
             sage: C(n^2+1).is_positive(time=10) # long time
             True
             sage: n = var("n")
-            sage: C(3^n+2^n+1).is_positive(time=2)
+            sage: C(2^n+1).is_positive(time=5)
             True
             
         """
-        try :
-            non_zero = self.is_positive_algo2(bound=bound, time=time/3, 
-                                                    strict=strict)
-            return non_zero
-        except (ValueError, TimeoutError) as e:
-            pass 
-        
-        try :
-            non_zero = self.is_positive_algo1(bound=bound, time=time/3,
-                                                    strict=strict)
-            return non_zero
-        except (ValueError, TimeoutError) as e:
-            pass 
-        
-        try :
-            diff = self.shift() - self
-            is_increasing = diff.is_positive_algo2(bound=bound, time=time/3,
-                                                   strict=strict)
-            cond = (lambda a : a > 0) if strict else (lambda a : a >= 0)
-            if is_increasing and cond(self[0]) :
-                return True 
+        if time != -1 :
+            # times used for algo 2, algo 1, differences, d-finite case
+            time_dist = [1/8, 1/8, 1/2, 1/4]
+            times = [time*ratio for ratio in time_dist]
+        else :
+            times = 4*[-1]
             
+        try :
+            non_zero = self.is_positive_algo2(bound=bound, time=times[0], 
+                                                    strict=strict)
+            CFiniteSequence.log.info(f"Used Algorithm 2")
+            return non_zero
         except (ValueError, TimeoutError) as e:
-            pass
+            pass 
+        
+        try :
+            non_zero = self.is_positive_algo1(bound=bound, time=times[1],
+                                                    strict=strict)
+            CFiniteSequence.log.info(f"Used Algorithm 1")
+            return non_zero
+        except (ValueError, TimeoutError) as e:
+            pass 
+        
+        if not wo_rec :
+            try :
+                bound_n = 2
+                time = times[2]/(depth*bound_n)
+                differences = [self]
+                for i in range(1, depth+1) :
+                    differences.append(differences[i-1].difference())
+                    diff = differences[i]
+                    starts_incre = diff.is_eventually_positive(
+                                                bound_n = bound_n,
+                                                bound=bound, 
+                                                time=time,
+                                                strict=False)
+                    # iterated differences is eventually non-negative
+                    # then check whether the previous differences are 
+                    # non-negative at that index which implies by induction
+                    # that the previous differences are also non-negative from
+                    # said term on
+                    if not all([differences[j][starts_incre] >= 0 
+                                    for j in range(1, i)]) :
+                        break
+                    
+                    cond = (lambda a : a > 0) if strict else (lambda a : a >= 0)
+                    if all([cond(self[i]) for i in range(starts_incre+1)]) :
+                        CFiniteSequence.log.info(f"Used differences")
+                        return True 
+            
+            except (ValueError, TimeoutError) as e:
+                pass
         
         if not self.is_squarefree() :
             R = PolynomialRing(self.base_ring(), "n")
             d_fin_ring = DFiniteSequenceRing(R)
             d_fin = self.dfinite(d_fin_ring)
-            return d_fin.is_positive(bound=bound, time=time, strict=strict)
+            is_positive = d_fin.is_positive(bound=bound, time=times[3],
+                                            strict=strict)
+            CFiniteSequence.log.info(f"Used reduction to D-finite sequence")
+            return is_positive
         else :
             raise ValueError("Could not prove positivity")
 
@@ -646,6 +523,9 @@ class CFiniteSequence(DFiniteSequence):
         Uses an induction hypothesis of length `bound`.
         """
         r = self.order()
+        if r == 0 : # then self is zero sequence
+            return not strict
+        
         if min(self[:r]) < 0 or ( min(self[:r]) == 0 and strict ):
             return False
         
@@ -708,6 +588,8 @@ class CFiniteSequence(DFiniteSequence):
         Uses an induction hypothesis of length `bound`.
         """
         r = self.order()
+        if r == 0 : # then self is zero sequence
+            return not strict
         x_var = vector(SR, var("xvc", n=r))
         mu = var("mvc")
         cad = qepcad_formula
@@ -1591,7 +1473,8 @@ class CFiniteSequenceRing(DFiniteSequenceRing):
 
 # constructor
 
-    def __init__(self, field = QQ, name=None, element_class=None, category=None):
+    def __init__(self, field = QQ, time_limit = 2, name=None, 
+                 element_class=None, category=None):
         r"""
         Constructor for a C-finite sequence ring.
 
@@ -1599,6 +1482,8 @@ class CFiniteSequenceRing(DFiniteSequenceRing):
 
         - ``field`` (default: ``QQ``) -- a field of characteristic zero over 
           which the C-finite sequence ring is defined.
+        - ``time_limit`` (default: ``2``) -- a positive number indicating
+          the time limit in seconds used to prove inequalities. 
 
         OUTPUT:
 
@@ -1622,7 +1507,7 @@ class CFiniteSequenceRing(DFiniteSequenceRing):
         """
         self._poly_ring = PolynomialRing(field, "n")
         
-        DFiniteSequenceRing.__init__(self, self._poly_ring)
+        DFiniteSequenceRing.__init__(self, self._poly_ring, time_limit)
 
     def _element_constructor_(self, x, y=None, name="a", check=True, 
                               is_gen = False, construct=False, **kwds):
