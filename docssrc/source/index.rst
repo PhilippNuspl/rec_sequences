@@ -242,6 +242,10 @@ References
    Proceedings of ISSAC'21, pp. 217–224. 2021. `preprint <https://www.
    dk-compmath.jku.at/publications/dk-reports/2021-02-08jp-n-p/at_download/
    file>`_
+
+.. [AKKOW21] Shaull Almagor, Toghrul Karimov, Edon Kelmendi, Joël Ouaknine, and 
+   James Worrell. 2021. Deciding ω-regular properties on linear recurrence 
+   sequences. Proc. ACM Program. Lang. 5, POPL, Article 48 (January 2021)
    
 
 Indices and tables

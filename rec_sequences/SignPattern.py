@@ -3,7 +3,9 @@ r"""
 The class describes a cyclic sign pattern from some term on.
 I.e., the class describes a finite set of initial values where
 the sign need not be cyclic and than a description of the signs 
-from the point on where they are cyclic.
+from the point on where they are cyclic. However, there are also C-finite
+sequences which do not have cyclic sign pattern, cf. Example 2.3 in
+[AKKOW21]_.
 
 The initial values and elements from the cycle are saved as
 1,-1 and 0 describing positive, negative and zero values, 
