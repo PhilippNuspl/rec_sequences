@@ -385,6 +385,29 @@ returns that closed form.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.CFiniteSequenceRing.CFiniteSequence.decompose_degenerate">
+<span class="sig-name descname"><span class="pre">decompose_degenerate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.CFiniteSequenceRing.CFiniteSequence.decompose_degenerate" title="Permalink to this definition"></a></dt>
+<dd><p>Decomposes the sequence into sequences which are not degenerate or zero.</p>
+<p>OUTPUT:</p>
+<p>A list of non-degenerate (or zero) sequences such that <code class="docutils literal notranslate"><span class="pre">self</span></code> is the
+interlacing of these sequences.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.CFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span> 
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">n</span> <span class="o">=</span> <span class="n">var</span><span class="p">(</span><span class="s2">&quot;n&quot;</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">seqs</span> <span class="o">=</span> <span class="n">C</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="n">n</span> <span class="o">+</span> <span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">decompose_degenerate</span><span class="p">()</span>
+<span class="n">sage</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">seqs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span>
+<span class="kc">True</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">seqs</span> <span class="o">=</span> <span class="n">C</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="n">n</span> <span class="o">+</span> <span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span><span class="o">**</span><span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">decompose_degenerate</span><span class="p">()</span>
+<span class="n">sage</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">seqs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+<span class="kc">True</span>  
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="rec_sequences.CFiniteSequenceRing.CFiniteSequence.dfinite">
 <span class="sig-name descname"><span class="pre">dfinite</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ring</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.CFiniteSequenceRing.CFiniteSequence.dfinite" title="Permalink to this definition"></a></dt>
 <dd><p>Returns <code class="docutils literal notranslate"><span class="pre">self</span></code> as D-finite sequence in the given ring 
@@ -413,6 +436,16 @@ There is a shorter recurrence if</p>
 <span class="o">=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">a</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">=</span><span class="mi">1</span>
 </pre></div>
 </div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.CFiniteSequenceRing.CFiniteSequence.dominant_root">
+<span class="sig-name descname"><span class="pre">dominant_root</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.CFiniteSequenceRing.CFiniteSequence.dominant_root" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the dominant root of the sequence.</p>
+<p>OUTPUT:</p>
+<p>The root with maximal modulus of the characteristic polynomial as
+an element in <code class="docutils literal notranslate"><span class="pre">QQbar</span></code> if it exists. If it does not exist, a
+<code class="docutils literal notranslate"><span class="pre">ValueError</span></code> is raised.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -542,15 +575,22 @@ If no such index could be found, a <code class="docutils literal notranslate"><s
 <dl class="py method">
 <dt class="sig sig-object py" id="rec_sequences.CFiniteSequenceRing.CFiniteSequence.is_positive">
 <span class="sig-name descname"><span class="pre">is_positive</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bound</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wo_rec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.CFiniteSequenceRing.CFiniteSequence.is_positive" title="Permalink to this definition"></a></dt>
-<dd><p>Uses the Gerhold-Kauers methods (Algorithm 1 and 2 in <a class="reference internal" href="../index.html#kp10" id="id2"><span>[KP10]</span></a>) 
-to check whether the sequence is positive. 
-If these methods fail, it is checked whether it can be shown that
+<dd><p>The following methods are used to show positivity of the sequence:</p>
+<ol class="arabic simple">
+<li><p>Decomposes a sequence into non-generate and zero sequences and
+proves positivity of each sequence using a classical method based
+on the asymptotics provided that the sequences have a unique 
+dominating root <a class="reference internal" href="../index.html#ow14" id="id2"><span>[OW14]</span></a>.</p></li>
+<li><p>The Gerhold-Kauers method, Algorithm 1 in <a class="reference internal" href="../index.html#kp10" id="id3"><span>[KP10]</span></a>.</p></li>
+<li><p>It is checked whether it can be shown that
 the sequence is eventually monotonously increasing (and positive
 up to that term). This is also iterated to show whether it
-can be checked that the difference is monotonously increasing, etc.
-If for the C-finite
+can be checked that the difference is monotonously increasing, etc.</p></li>
+<li><p>A variation of the Gerhold-Kauers method, Algorithm 2 in <a class="reference internal" href="../index.html#kp10" id="id4"><span>[KP10]</span></a>.</p></li>
+<li><p>If for the C-finite
 representation of the sequence positivity could not be shown,
-the same is tried with a (possibly) shorter D-finite representation.</p>
+the same is tried with a (possibly) shorter D-finite representation.</p></li>
+</ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Note, that a time limit has to be given in order to run through
@@ -599,7 +639,7 @@ neither prove or disprove positivity.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="rec_sequences.CFiniteSequenceRing.CFiniteSequence.is_positive_algo1">
 <span class="sig-name descname"><span class="pre">is_positive_algo1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bound</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.CFiniteSequenceRing.CFiniteSequence.is_positive_algo1" title="Permalink to this definition"></a></dt>
-<dd><p>Uses the Gerhold-Kauers methods, in particular Algorithm 1 in <a class="reference internal" href="../index.html#kp10" id="id3"><span>[KP10]</span></a>, 
+<dd><p>Uses the Gerhold-Kauers methods, in particular Algorithm 1 in <a class="reference internal" href="../index.html#kp10" id="id5"><span>[KP10]</span></a>, 
 to check whether the sequence is positive.</p>
 <p>INPUT:</p>
 <ul class="simple">
@@ -631,7 +671,7 @@ is raised.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="rec_sequences.CFiniteSequenceRing.CFiniteSequence.is_positive_algo2">
 <span class="sig-name descname"><span class="pre">is_positive_algo2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bound</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.CFiniteSequenceRing.CFiniteSequence.is_positive_algo2" title="Permalink to this definition"></a></dt>
-<dd><p>Uses the Gerhold-Kauers methods, in particular Algorithm 2 in <a class="reference internal" href="../index.html#kp10" id="id4"><span>[KP10]</span></a>, 
+<dd><p>Uses the Gerhold-Kauers methods, in particular Algorithm 2 in <a class="reference internal" href="../index.html#kp10" id="id6"><span>[KP10]</span></a>, 
 to check whether the sequence is positive.</p>
 <p>INPUT:</p>
 <ul class="simple">
@@ -662,6 +702,70 @@ is raised.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.CFiniteSequenceRing.CFiniteSequence.is_positive_dominant_root">
+<span class="sig-name descname"><span class="pre">is_positive_dominant_root</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">strict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.CFiniteSequenceRing.CFiniteSequence.is_positive_dominant_root" title="Permalink to this definition"></a></dt>
+<dd><p>Uses a classical method for show positivity of a sequence using
+bounds derived from the closed form, cf. <a class="reference internal" href="../index.html#ow14" id="id7"><span>[OW14]</span></a>.</p>
+<p>INPUT:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">strict</span></code> (default: <code class="docutils literal notranslate"><span class="pre">True</span></code>) – if <code class="docutils literal notranslate"><span class="pre">False</span></code> non-negativity 
+instead of positivity is checked</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">time</span></code> (default: <code class="docutils literal notranslate"><span class="pre">-1</span></code>) – if positive, this is the maximal time 
+(in seconds) after computations are aborted</p></li>
+</ul>
+<p>OUTPUT:</p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if it is positive, <code class="docutils literal notranslate"><span class="pre">False</span></code> if it is not positive and
+raises a <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> or a <code class="docutils literal notranslate"><span class="pre">TimeoutError</span></code> exception if it could 
+neither prove or disprove positivity.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.CFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">,</span> <span class="n">time_limit</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span> 
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">is_positive_dominant_root</span><span class="p">(</span><span class="n">strict</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="kc">True</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">is_positive_dominant_root</span><span class="p">()</span>
+<span class="kc">False</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">n</span> <span class="o">=</span> <span class="n">var</span><span class="p">(</span><span class="s2">&quot;n&quot;</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span><span class="p">(</span><span class="n">n</span><span class="o">^</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">is_positive_dominant_root</span><span class="p">()</span>
+<span class="kc">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.CFiniteSequenceRing.CFiniteSequence.is_positive_dominant_root_decompose">
+<span class="sig-name descname"><span class="pre">is_positive_dominant_root_decompose</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">strict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.CFiniteSequenceRing.CFiniteSequence.is_positive_dominant_root_decompose" title="Permalink to this definition"></a></dt>
+<dd><p>Decomposes the sequence into non-degenerate and zero sequences
+and proves positivity of these sequences using 
+<a class="reference internal" href="#rec_sequences.CFiniteSequenceRing.CFiniteSequence.is_positive_dominant_root" title="rec_sequences.CFiniteSequenceRing.CFiniteSequence.is_positive_dominant_root"><code class="xref py py-meth docutils literal notranslate"><span class="pre">is_positive_dominant_root()</span></code></a>. This fails if one of the sequences
+does not have a unique dominating root. In this case, a ValueError is
+raised.</p>
+<p>INPUT:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">strict</span></code> (default: <code class="docutils literal notranslate"><span class="pre">True</span></code>) – if <code class="docutils literal notranslate"><span class="pre">False</span></code> non-negativity 
+instead of positivity is checked</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">time</span></code> (default: <code class="docutils literal notranslate"><span class="pre">-1</span></code>) – if positive, this is the maximal time 
+(in seconds) after computations are aborted</p></li>
+</ul>
+<p>OUTPUT:</p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if it is positive, <code class="docutils literal notranslate"><span class="pre">False</span></code> if it is not positive and
+raises a <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> or a <code class="docutils literal notranslate"><span class="pre">TimeoutError</span></code> exception if it could 
+neither prove or disprove positivity.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.CFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span> 
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">n</span> <span class="o">=</span> <span class="n">var</span><span class="p">(</span><span class="s2">&quot;n&quot;</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">c</span> <span class="o">=</span> <span class="n">C</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="n">n</span> <span class="o">+</span> <span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="n">n</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">c</span><span class="o">.</span><span class="n">is_positive_dominant_root_decompose</span><span class="p">(</span><span class="n">strict</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="kc">True</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">c</span><span class="o">.</span><span class="n">is_positive_dominant_root_decompose</span><span class="p">()</span>
+<span class="kc">False</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="rec_sequences.CFiniteSequenceRing.CFiniteSequence.is_squarefree">
 <span class="sig-name descname"><span class="pre">is_squarefree</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.CFiniteSequenceRing.CFiniteSequence.is_squarefree" title="Permalink to this definition"></a></dt>
 <dd><p>Checks whether the characteristic polynomial is squarefree.</p>
@@ -687,6 +791,17 @@ and <code class="docutils literal notranslate"><span class="pre">False</span></c
 <dt class="sig sig-object py" id="rec_sequences.CFiniteSequenceRing.CFiniteSequence.log">
 <span class="sig-name descname"><span class="pre">log</span></span><em class="property"> <span class="pre">=</span> <span class="pre">&lt;Logger</span> <span class="pre">CFin</span> <span class="pre">(WARNING)&gt;</span></em><a class="headerlink" href="#rec_sequences.CFiniteSequenceRing.CFiniteSequence.log" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.CFiniteSequenceRing.CFiniteSequence.nonzero_trailing_coefficient">
+<span class="sig-name descname"><span class="pre">nonzero_trailing_coefficient</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.CFiniteSequenceRing.CFiniteSequence.nonzero_trailing_coefficient" title="Permalink to this definition"></a></dt>
+<dd><p>Computes a natural number <span class="math notranslate nohighlight">\(N\)</span> and a sequence <span class="math notranslate nohighlight">\(c\)</span> such
+that <code class="docutils literal notranslate"><span class="pre">self[n+N]=c[n]</span></code> for all <span class="math notranslate nohighlight">\(n\)</span> and the sequence <span class="math notranslate nohighlight">\(c\)</span>
+has a nonzero trailing coefficient. In particular, the
+sequence <span class="math notranslate nohighlight">\(c\)</span> has e.g. a closed form.</p>
+<p>OUTPUT:</p>
+<p>A pair <span class="math notranslate nohighlight">\((N, c)\)</span> such that <code class="docutils literal notranslate"><span class="pre">self[n+N]=c[n]</span></code> for all <span class="math notranslate nohighlight">\(n\)</span>.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="rec_sequences.CFiniteSequenceRing.CFiniteSequence.normalized">

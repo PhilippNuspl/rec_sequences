@@ -65,7 +65,7 @@ class LinearSolveSequence(object):
         - ``b`` -- the right-hand-side of the system
         - ``guess`` (default: ``True``) -- use guessing for solving the system
         - ``verified`` (default: ``False``) -- verify the result formally. If 
-          ``False`` the result might not (although unlikely) be a solution to the equation if guessing is sued.
+          ``False`` the result might not (although unlikely) be a solution to the equation if guessing is used.
 
         OUTPUT:
 
@@ -133,7 +133,10 @@ class LinearSolveSequence(object):
             b_new = b.change_ring(QR)
             return LinearSolveSequence.solve(M_new, b_new, guess, verified)
         
-        n0, p = LinearSolveSequence._zero_pattern_minors(M)
+        if verified :
+            n0, p = LinearSolveSequence._zero_pattern_minors_verified(M) 
+        else :
+            n0, p =  LinearSolveSequence._zero_pattern_minors(M)
         log(cls, f"Zero pattern of minors cyclic of length {p} from {n0} on", 1)
         
         # find maximally linearly independent vectors 
@@ -446,6 +449,7 @@ class LinearSolveSequence(object):
     def _zero_pattern_minors(cls, M, guess = 100) :
         r"""
         Computes the zero pattern of the minors by guessing it.
+        
         INPUT:
 
         - ``M`` -- the matrix 
@@ -466,6 +470,41 @@ class LinearSolveSequence(object):
         for i in range(num_minors) :
             minor_seq = [evaluations_minors[j][i] for j in range(guess)]
             pattern = ZeroPattern.guess(minor_seq)
+            start_cycle = max([start_cycle, pattern.get_cycle_start()])
+            cycle_length = lcm([cycle_length, pattern.get_cycle_length()])
+            
+        return start_cycle, cycle_length
+    
+    @classmethod
+    def _zero_pattern_minors_verified(cls, M) :
+        r"""
+        Computes the zero pattern of the minors using exact methods.
+        
+        INPUT:
+
+        - ``M`` -- the matrix 
+
+        OUTPUT:
+
+        start_cycle, cycle_length such that from ``start_cycle`` on, all zeros
+        in all minors are cyclic with the common ``cycle_length``
+        """
+        minors = LinearSolveSequence._get_minors(M)
+        
+        start_cycle = 0
+        cycle_length = 1
+        for minor in minors :
+            pattern_found = False
+            for guess_length in [20, 50, 100, 300, 1000] :
+                try :
+                    pattern = minor.zeros(data=guess_length)
+                    pattern_found = True
+                    break
+                except ValueError :
+                    pass
+            if not pattern_found :
+                raise ValueError("Zero pattern of minors could not be "
+                                 "established")
             start_cycle = max([start_cycle, pattern.get_cycle_start()])
             cycle_length = lcm([cycle_length, pattern.get_cycle_length()])
             

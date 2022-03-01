@@ -247,6 +247,9 @@ References
    James Worrell. 2021. Deciding ω-regular properties on linear recurrence 
    sequences. Proc. ACM Program. Lang. 5, POPL, Article 48 (January 2021)
    
+.. [OW14] Joël Ouaknine and James Worrell. Positivity problems for low-order linear 
+   recurrence sequences. In: Proceedings of SODA 14. 2014
+   
 
 Indices and tables
 ==================

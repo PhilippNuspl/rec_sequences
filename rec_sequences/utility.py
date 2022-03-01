@@ -27,6 +27,8 @@ from sage.misc.functional import round
 from sage.matrix.constructor import matrix
 from sage.modules.free_module_element import free_module_element as vector
 from sage.rings.integer_ring import ZZ
+from sage.misc.functional import numerical_approx
+from sage.rings.rational_field import QQ
 
 class TimeoutError(Exception):
     """Exception raised if computations did not finish in given ``time``.
@@ -381,4 +383,45 @@ def log(cls, msg, level=0, time=-1, time2=-1) :
     else :
         msg_time = f" (taking time {time2-time})"
         logger.info(indent+msg+msg_time)
+        
+def ceil_SR(a) :
+    r"""
+    Computes an integer approximation of ``a``.
+    
+    INPUT:
+    
+    - ``a`` -- a number
+    
+    OUTPUT:
+    
+    The smallest integer ``b`` with ``a <= b``.
+    """
+    if a in ZZ :
+        return ZZ(a)
+    else :
+        return ZZ(numerical_approx(a).trunc() + 1)
+        
+def ceil_SR_bound(a, bound) :
+    r"""
+    Computes a rational approximation of ``a``.
+    
+    INPUT:
+    
+    - ``a`` -- a real number
+    - ``bound`` -- a number
+    
+    OUTPUT:
+    
+    A rational number ``b`` with ``a <= b < bound``.
+    """
+    a_approx = numerical_approx(a, digits=10)
+    k = 1
+    approx = (a_approx*10**k+1).trunc()/10**k
+    while approx >= bound :
+        k += 1
+        if k > 8 :
+            a_approx = numerical_approx(a, digits=k+2)
+        approx = (a_approx*10**k+1).trunc()/10**k
+        
+    return QQ(approx)
     

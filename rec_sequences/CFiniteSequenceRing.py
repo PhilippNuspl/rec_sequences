@@ -76,7 +76,9 @@ from sage.functions.other import floor, ceil, binomial
 from sage.matrix.constructor import matrix
 from sage.matrix.special import identity_matrix
 from sage.misc.all import prod, randint
+from sage.misc.flatten import flatten
 from sage.rings.all import ZZ, QQ, CC
+from sage.rings.qqbar import QQbar, AA
 from sage.modules.free_module_element import free_module_element as vector
 from sage.symbolic.ring import SR
 from sage.rings.cfinite_sequence import CFiniteSequences as SageCFiniteSequences
@@ -102,7 +104,8 @@ from ore_algebra import OreAlgebra
 from ore_algebra.guessing import guess
 
 from .SequenceRingOfFraction import SequenceRingOfFraction
-from .utility import TimeoutError, timeout, is_root_of_unity
+from .utility import TimeoutError, timeout, is_root_of_unity, ceil_SR, \
+                     ceil_SR_bound
 from .SignPattern import SignPattern
 from .DFiniteSequenceRing import DFiniteSequence
 from .DFiniteSequenceRing import DFiniteSequenceRing
@@ -199,6 +202,29 @@ class CFiniteSequence(DFiniteSequence):
             return ring(self)
         
 # action
+
+    def nonzero_trailing_coefficient(self):
+        r"""
+        Computes a natural number `N` and a sequence `c` such
+        that ``self[n+N]=c[n]`` for all `n` and the sequence `c`
+        has a nonzero trailing coefficient. In particular, the
+        sequence `c` has e.g. a closed form.
+        
+        OUTPUT:
+        
+        A pair `(N, c)` such that ``self[n+N]=c[n]`` for all `n`.
+        """
+        for N, coeff in enumerate(self.coefficients()) :
+            if coeff != 0 :
+                break
+            
+        if N == 0 :
+            c = self
+        else :
+            c = self.shift(N).compress()
+            
+        return (N, c)
+        
 
     def normalized(self):
         r"""
@@ -298,6 +324,38 @@ class CFiniteSequence(DFiniteSequence):
                 return True
         return False
     
+    def decompose_degenerate(self) :
+        r"""
+        Decomposes the sequence into sequences which are not degenerate or zero.
+        
+        OUTPUT:
+        
+        A list of non-degenerate (or zero) sequences such that ``self`` is the
+        interlacing of these sequences.
+        
+        EXAMPLES::
+        
+            sage: from rec_sequences.CFiniteSequenceRing import *
+            sage: C = CFiniteSequenceRing(QQ) 
+            
+            sage: n = var("n")
+            sage: seqs = C(2**n + (-2)**n).decompose_degenerate()
+            sage: len(seqs) == 2
+            True
+            
+            sage: seqs = C(2**n + (-3)**n).decompose_degenerate()
+            sage: len(seqs) == 1
+            True  
+            
+        """
+        k = 1 # number of sequences
+        seqs = [self]
+        cond = lambda seq : (not seq.is_degenerate() or seq.is_zero())
+        while not all([cond(seq) for seq in seqs]) :
+            k += 1
+            seqs = [self.subsequence(k, v) for v in range(k)]
+        return seqs
+    
     def is_eventually_positive(self, bound_n = 5, bound=0, strict=True, 
                                time=-1) :
         r"""
@@ -356,15 +414,21 @@ class CFiniteSequence(DFiniteSequence):
     def is_positive(self, bound=0, strict=True, time=-1, wo_rec = False, 
                     depth=5):
         r"""
-        Uses the Gerhold-Kauers methods (Algorithm 1 and 2 in [KP10]_) 
-        to check whether the sequence is positive. 
-        If these methods fail, it is checked whether it can be shown that
-        the sequence is eventually monotonously increasing (and positive
-        up to that term). This is also iterated to show whether it
-        can be checked that the difference is monotonously increasing, etc.
-        If for the C-finite
-        representation of the sequence positivity could not be shown,
-        the same is tried with a (possibly) shorter D-finite representation. 
+        The following methods are used to show positivity of the sequence:
+        
+        1. Decomposes a sequence into non-generate and zero sequences and
+           proves positivity of each sequence using a classical method based
+           on the asymptotics provided that the sequences have a unique 
+           dominating root [OW14]_.
+        2. The Gerhold-Kauers method, Algorithm 1 in [KP10]_.
+        3. It is checked whether it can be shown that
+           the sequence is eventually monotonously increasing (and positive
+           up to that term). This is also iterated to show whether it
+           can be checked that the difference is monotonously increasing, etc.
+        4. A variation of the Gerhold-Kauers method, Algorithm 2 in [KP10]_.
+        5. If for the C-finite
+           representation of the sequence positivity could not be shown,
+           the same is tried with a (possibly) shorter D-finite representation. 
         
         .. NOTE::
         
@@ -413,20 +477,22 @@ class CFiniteSequence(DFiniteSequence):
             
         """
         if time != -1 :
-            # times used for algo 2, algo 1, differences, d-finite case
-            time_dist = [1/8, 1/8, 1/2, 1/4]
+            # times used for decomp. maximal ev, algo 1, differences, algo 2,
+            # d-finite case
+            time_dist = [1/2, 1/5, 1/5, 1/20, 1/20]
             times = [time*ratio for ratio in time_dist]
         else :
-            times = 4*[-1]
+            times = 5*[-1]
             
         try :
-            non_zero = self.is_positive_algo2(bound=bound, time=times[0], 
-                                                    strict=strict)
-            CFiniteSequence.log.info(f"Used Algorithm 2")
+            non_zero = self.is_positive_dominant_root_decompose(time=times[0], 
+                                                                strict=strict)
+            CFiniteSequence.log.info(f"Used decomposition in non-degenerate "
+                                      "sequences and unique dominant ev")
             return non_zero
         except (ValueError, TimeoutError) as e:
             pass 
-        
+           
         try :
             non_zero = self.is_positive_algo1(bound=bound, time=times[1],
                                                     strict=strict)
@@ -434,7 +500,7 @@ class CFiniteSequence(DFiniteSequence):
             return non_zero
         except (ValueError, TimeoutError) as e:
             pass 
-        
+            
         if not wo_rec :
             try :
                 bound_n = 2
@@ -464,6 +530,14 @@ class CFiniteSequence(DFiniteSequence):
             
             except (ValueError, TimeoutError) as e:
                 pass
+            
+        try :
+            non_zero = self.is_positive_algo2(bound=bound, time=times[0], 
+                                                    strict=strict)
+            CFiniteSequence.log.info(f"Used Algorithm 2")
+            return non_zero
+        except (ValueError, TimeoutError) as e:
+            pass 
         
         if not self.is_squarefree() :
             R = PolynomialRing(self.base_ring(), "n")
@@ -475,6 +549,198 @@ class CFiniteSequence(DFiniteSequence):
             return is_positive
         else :
             raise ValueError("Could not prove positivity")
+
+    def is_positive_dominant_root_decompose(self, strict=True, time=-1) :
+        r"""
+        Decomposes the sequence into non-degenerate and zero sequences
+        and proves positivity of these sequences using 
+        :meth:`is_positive_dominant_root`. This fails if one of the sequences
+        does not have a unique dominating root. In this case, a ValueError is
+        raised.
+        
+        INPUT:
+        
+        - ``strict`` (default: ``True``) -- if ``False`` non-negativity 
+          instead of positivity is checked
+        - ``time`` (default: ``-1``) -- if positive, this is the maximal time 
+          (in seconds) after computations are aborted
+        
+        OUTPUT:
+        
+        Returns ``True`` if it is positive, ``False`` if it is not positive and
+        raises a ``ValueError`` or a ``TimeoutError`` exception if it could 
+        neither prove or disprove positivity. 
+        
+        EXAMPLES::
+        
+            sage: from rec_sequences.CFiniteSequenceRing import *
+            sage: C = CFiniteSequenceRing(QQ) 
+            
+            sage: n = var("n")
+            sage: c = C(2**n + (-2)**n)
+            sage: c.is_positive_dominant_root_decompose(strict=False)
+            True
+            sage: c.is_positive_dominant_root_decompose()
+            False
+            
+        """
+        return timeout(self._is_positive_dominant_root_decompose, time,
+                       strict=strict)
+
+    def _is_positive_dominant_root_decompose(self, strict=True) :
+        r"""
+        """
+        subseqs = self.decompose_degenerate()
+        for seq in subseqs :
+            positive = seq.is_positive_dominant_root(strict=strict)
+            if not positive :
+                return False
+        return True
+            
+
+    def is_positive_dominant_root(self, strict=True, time=-1) :
+        r"""
+        Uses a classical method for show positivity of a sequence using
+        bounds derived from the closed form, cf. [OW14]_.
+        
+        INPUT:
+        
+        - ``strict`` (default: ``True``) -- if ``False`` non-negativity 
+          instead of positivity is checked
+        - ``time`` (default: ``-1``) -- if positive, this is the maximal time 
+          (in seconds) after computations are aborted
+        
+        OUTPUT:
+        
+        Returns ``True`` if it is positive, ``False`` if it is not positive and
+        raises a ``ValueError`` or a ``TimeoutError`` exception if it could 
+        neither prove or disprove positivity. 
+                  
+        EXAMPLES::
+        
+            sage: from rec_sequences.CFiniteSequenceRing import *
+            sage: C = CFiniteSequenceRing(QQ, time_limit = 10) 
+            
+            sage: C([1,1,-1], [0,1]).is_positive_dominant_root(strict=False)
+            True
+            sage: C([1,1,-1], [0,1]).is_positive_dominant_root()
+            False
+            sage: n = var("n")
+            sage: C(n^2+1).is_positive_dominant_root()
+            True
+            
+        """
+        return timeout(self._is_positive_dominant_root, time, strict=strict)
+        
+    def _is_positive_dominant_root(self, strict=True) :
+        r"""
+        """
+        def bound_poly(p) :
+            r"""
+            Compute constant c, such that |p(n)| <= c*n^deg(p) for all n.
+            We choose the smallest integer larger than (deg(p)+1)*max_coeff(p).
+            """
+            max_coeff = max([QQbar(coeff).abs() for coeff in p.list()])
+            return (max_coeff*(p.degree() + 1)).ceil()
+
+        def get_constants(seq, max_root) :
+            r"""
+            Given a C-finite sequence seq with unique maximal eigenvalue, compute a bound c on the polynomial coefficients,
+            d the maximal degree of the coefficient polynomials, l the absolute value of the second largest eigenvalue and
+            the coefficient polynomial p of the maximal eigenvalue.
+            Returns a tuple (c, d, l, p).
+            """
+            R = PolynomialRing(QQbar, "x")
+            closed_form = seq._closed_form_list(R)
+            max_root = seq.dominant_root()
+            p = [poly for poly, root in closed_form if root == max_root][0]
+            filter_root = lambda pair : pair[1] != max_root
+            closed_form_res = list(filter(filter_root, closed_form))
+            if not closed_form_res :
+                return (1, 0, 1/2, p)
+            d = max([poly.degree() for poly, _ in closed_form_res])
+            c = sum(bound_poly(poly) for poly, _ in closed_form_res)
+            l = closed_form_res[0][1].abs()
+            for _, root in closed_form_res[1:] :
+                root_abs = root.abs()
+                if root_abs > l :
+                    l = root_abs
+            return (c, d, l/max_root, p)
+
+        def bound_poly_below(p, eps) :
+            r"""
+            Given a polynomial p and an eps in (0,1), compute an index n0, s.t. p(n) >= (1-eps)^n for all n >= n0.
+            Of course, this is only possible if the leading coefficient of p is positive. If this is not the case, a ValueError is raised.
+            """
+            if p.leading_coefficient() <= 0 :
+                raise ValueError("Leading coefficient of polynomial is not "
+                                 "positive")
+            p_deriv = p.derivative()
+            if p_deriv == 0 :
+                return max(0, ceil_SR(ln(p, 1-eps)))
+            n = ceil(max(p_deriv.roots(AA, multiplicities=False) + [0]))
+            # p is monton. increasing from n on
+            while True :
+                if p(n) >= (1-eps)**n :
+                    return n
+                n += 1
+
+        def get_bound(seq, max_root) :
+            r"""
+            Given a C-finite sequence seq with unique maximal positive real eigenvalue, compute an index n0, such that seq is positive
+            from n0 on.
+            """
+            c, d, l, p = get_constants(seq, max_root)
+            c = ceil_SR(c)
+            
+            eps = (1-l)/2
+            f = (l+eps)/l if d == 0 else ((l+eps)/l)**(1/d) 
+            
+            bound_poly = bound_poly_below(p, eps)
+            
+            # make sure rhs is montonically increasing
+            if d == 0 :
+                return max(ceil_SR(ln(c)/ln(f)), bound_poly)
+            else :
+                n = max(1, ceil_SR(1/ln(f)))
+                lhs = ceil_SR(ln(c**(1/d))/ln(f) )
+                while True :
+                    if lhs < n-ln(n)/ln(f) :
+                        return max( n, bound_poly )
+                    n += 1
+        
+        cond = lambda term : term > 0 if strict else term >= 0
+        
+        # make sure sequence is in canonical form with non zero
+        # trailing coefficient
+        N, c = self.nonzero_trailing_coefficient()
+        if N > 0 :
+            if all([cond(term) for term in self[:N]]) :
+                return c._is_positive_dominant_root(strict=strict)
+            else :
+                return False
+           
+        # check some simple cases, i.e., sequence is zero, 
+        # or the dominant root is not a positive real number         
+        if self.is_zero() :
+            return not strict
+        
+        try :
+            max_root = QQbar(self.dominant_root())
+        except ValueError :
+            raise ValueError("Sequence does not have a dominant root")
+        
+        if max_root.imag() != 0 or max_root <= 0 :
+            return False
+                  
+        try :
+            N = max(get_bound(self, max_root), 1)
+        except ValueError :
+            return False
+        if all([cond(term) for term in self[:N]]) :
+            return True
+        else :
+            return False
 
     def is_positive_algo1(self, bound=0, strict=True, time=-1):
         r"""
@@ -1444,23 +1710,100 @@ class CFiniteSequence(DFiniteSequence):
         K = charpoly.splitting_field(gen)
         return charpoly.roots(K, *args, **kwargs)
     
-    def _closed_form_list(self, field=None) :
+    def dominant_root(self) :
         r"""
-        Returns a list l of tuples li=(ki,ci,gi) such that:: 
+        Returns the dominant root of the sequence.
         
-            self[n] = sum_i ci*n^ki*gi^n
-            
-        for all n where ki and gi are in `field` (if it is not given, it
-        is chosen automatically) and ki is a natural number.
+        OUTPUT:
+        
+        The root with maximal modulus of the characteristic polynomial as
+        an element in ``QQbar`` if it exists. If it does not exist, a
+        ``ValueError`` is raised.
         """
-        """"roots = self.roots()
-        if not field :
-            K = roots[0][0].parent()
+        R = PolynomialRing(self.base_ring(), "y")
+        roots = self.charpoly(R).roots(QQbar, multiplicities=False)
+        max_root = roots[0]
+        max_val = max_root.abs()
+        multiplicity = 1
+        for e in roots[1:] :
+            e_abs = e.abs()
+            if e_abs > max_val :
+                max_root = e
+                max_val = e_abs
+                multiplicity = 1
+            elif e_abs == max_val :
+                multiplicity += 1
+        if multiplicity == 1 :
+            return max_root
         else :
-            K = field
-            roots = [(K(root[0]),root[1]) for root in roots]
-        r = self.order()"""
-        return NotImplementedError
+            raise ValueError(f"There are {multiplicity} eigenvalues" 
+                             f" with equal modulus")
+        
+    
+    def _closed_form_list(self, polynomial_ring = False) :
+        r"""
+        Returns a list ``l`` of tuples `(d_i,\gamma_i,\lambda_i)` such that:: 
+        
+        ..MATH::
+        
+            c(n+n_0) = \sum_{i=1}^m \gamma_i n^{d_i} \lambda_i^n
+            
+        for all `n` where `\gamma_i, \lambda_i` are algebraic numbers
+        and `d_i` are natural numbers. `n_0` is minimal such that the `n_0`-th
+        coefficient in the recurrence of `c` is minimal.
+        
+        If ``polynomial_ring`` is a given polynomial ring, then instead a list 
+        of tuples `(p_i, \lambda_i) is returned such that
+        
+        ..MATH::
+        
+            c(n+n_0) = \sum_{i=1}^m p_i(n) \lambda_i^n
+            
+        where the `p_i` are polynomials in the given ring and `\lambda_i` the 
+        pairwise different eigenvalues.
+        """
+        if self.is_zero():
+            if polynomial_ring :
+                return [(polynomial_ring(0), 0)]
+            else :
+                return [(0, 0, 0)]
+        
+        R = PolynomialRing(self.base_ring(), "y")
+        roots = self.charpoly(R).roots(QQbar)
+        # closed form might only hold from some term on
+        # shift accordingly so that closed form holds
+        N, new_seq = self.nonzero_trailing_coefficient()
+        if N > 0 :
+            return new_seq._closed_form_list(polynomial_ring)
+        
+        # set up linear system for coefficients ci
+        # we know that a solution exists and the linear system is a 
+        # generalized vandermonde matrix, so the solution is unique
+        num_vars = sum(mult for root, mult in roots)
+        M = matrix(QQbar, num_vars)
+        for n in range(num_vars) :
+            row = flatten([[n**j*root**n for j in range(mult)] 
+                                         for root, mult in roots])
+            M[n] = row   
+        rhs = vector(QQbar, self[:num_vars])
+        sol = M.solve_right(rhs)
+        
+        # assemble list of closed form
+        closed_form_list = []
+        if not polynomial_ring :
+            i = 0
+            for root, mult in roots :
+                for j in range(mult) :
+                    closed_form_list.append((j, sol[i], root))
+                    i += 1
+        else :
+            i = 0
+            for root, mult in roots :
+                coeffs = list(sol[i:(i+mult)])
+                closed_form_list.append((polynomial_ring(coeffs), root))
+                i += mult
+                
+        return closed_form_list
 
 ####################################################################################################
 

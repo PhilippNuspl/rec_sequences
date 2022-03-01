@@ -290,6 +290,18 @@ class FractionSequence(CommutativeAlgebraElement):
         """
         raise NotImplementedError
 
+    def zeros(self, *args, **kwds) :
+        r"""
+        Computes the zeros of the sequence. The sequence is zero if and only if
+        the numerator sequence is zero at that term. Any arguments are passed 
+        to the ``zeros`` method of the numerator.
+        
+        OUTPUT:
+        
+        The indices where the sequence is zero. 
+        """
+        return self.numerator().zeros(*args, **kwds)
+
     def is_unit(self):
         r"""
         Check whether sequence is multiplicative unit.
