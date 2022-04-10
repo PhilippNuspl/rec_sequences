@@ -652,7 +652,6 @@ class CFiniteSequence(DFiniteSequence):
             """
             R = PolynomialRing(QQbar, "x")
             closed_form = seq._closed_form_list(R)
-            max_root = seq.dominant_root()
             p = [poly for poly, root in closed_form if root == max_root][0]
             filter_root = lambda pair : pair[1] != max_root
             closed_form_res = list(filter(filter_root, closed_form))
@@ -795,15 +794,17 @@ class CFiniteSequence(DFiniteSequence):
         if min(self[:r]) < 0 or ( min(self[:r]) == 0 and strict ):
             return False
         
-        x_var = vector(SR, var("xvc", n=r))
-        for n in range(r,r+bound+1) :
-            if self[n] < 0 or ( self[n] == 0 and strict ):
-                return False
-            cad = qepcad_formula
-            formula = cad.forall(list(x_var),
-                        self._create_ineq_positive_algo1(n, x_var, strict))
-            if qepcad(formula) == "TRUE" :
-                return True
+        with SR.temp_var(n = r) as x_var :
+            x_var = vector(SR, [x for x in x_var])
+            for n in range(r,r+bound+1) :
+                if self[n] < 0 or ( self[n] == 0 and strict ):
+                    return False
+                cad = qepcad_formula
+                formula = cad.forall(list(x_var),
+                            self._create_ineq_positive_algo1(n, x_var, strict)
+                            )
+                if qepcad(formula) == "TRUE" :
+                    return True
         raise ValueError("Could not decide whether positive!")
 
     def is_positive_algo2(self, bound=0, strict=True, time=-1):
@@ -856,25 +857,25 @@ class CFiniteSequence(DFiniteSequence):
         r = self.order()
         if r == 0 : # then self is zero sequence
             return not strict
-        x_var = vector(SR, var("xvc", n=r))
-        mu = var("mvc")
-        cad = qepcad_formula
-        formula = cad.forall(list(x_var), 
-                             self._create_ineq_positive_algo2(mu, x_var, strict)
-                             )
-        formula_qff = qformula(qepcad(formula),frozenset(list(map(str,x_var))))
-        for n in range(r+bound) :
-            if self[n] < 0 or (self[n] == 0 and strict) :
-                return False
-            cond_mu = mu>0 if strict else mu>=0
-            if r > 1 :
-                inits = cad.and_([self[n+j] >= mu*self[n+j-1] 
-                                  for j in range(1,r)])
-                total = cad.exists(mu, cad.and_(formula_qff, inits, cond_mu))
-            else :
-                total = cad.exists(mu, cad.and_(formula_qff, cond_mu))
-            if qepcad(total) == "TRUE" :
-                return True
+        with SR.temp_var(n=r) as x_var, SR.temp_var() as mu :
+            cad = qepcad_formula
+            x_var = vector(SR, [x for x in x_var])
+            form = cad.forall(list(x_var), \
+                    self._create_ineq_positive_algo2(mu, x_var, strict))
+            form_qff = qformula(qepcad(form),
+                                    frozenset(list(map(str,x_var))))
+            for n in range(r+bound) :
+                if self[n] < 0 or (self[n] == 0 and strict) :
+                    return False
+                cond_mu = mu>0 if strict else mu>=0
+                if r > 1 :
+                    inits = cad.and_([self[n+j] >= mu*self[n+j-1] 
+                                    for j in range(1,r)])
+                    total = cad.exists(mu, cad.and_(form_qff, inits, cond_mu))
+                else :
+                    total = cad.exists(mu, cad.and_(form_qff, cond_mu))
+                if qepcad(total) == "TRUE" :
+                    return True
         raise ValueError("Could not decide whether positive!")
         
             

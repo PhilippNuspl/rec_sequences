@@ -727,30 +727,29 @@ class DFiniteSequence(RecurrenceSequenceElement):
         if r == 0 : # then self is zero sequence as lc has no zeros
             return not strict
         
-        x_var = vector(SR, var("xvc", n=r))
-        mu = var("muvc")
-        n_var = var("nvc")
-        xi_var = var("xivc")
-        qf_vars = list(x_var)+[n_var]
-        qf_vars_str = frozenset(list(map(str,qf_vars)))
-        cad = qepcad_formula
-        ineq = self._create_ineq_positive_algo2(mu, n_var, x_var, strict)
-        formula = cad.forall(qf_vars, cad.implies(n_var>=xi_var, ineq))
-        formula_exec = qepcad(formula)
-        for n in range(r+bound) :
-            formula_exec_n = formula_exec.replace(str(xi_var), str(n))
-            formula_qff = qformula(formula_exec_n, qf_vars_str)
-            if self[n] < 0 or (self[n] == 0 and strict) :
-                return False
-            cond_mu = mu>0 if strict else mu>=0
-            if r > 1 :
-                inits = cad.and_([self[n+j] >= mu*self[n+j-1] 
-                                  for j in range(1,r)])
-                total = cad.exists(mu, cad.and_(formula_qff, inits, cond_mu))
-            else :
-                total = cad.exists(mu, cad.and_(formula_qff, cond_mu))
-            if qepcad(total) == "TRUE" :
-                return True
+        with SR.temp_var(n=r) as x_var, SR.temp_var() as mu,\
+             SR.temp_var() as n_var, SR.temp_var() as xi_var :
+            x_var = vector(SR, [x for x in x_var])
+            qf_vars = list(x_var)+[n_var]
+            qf_vars_str = frozenset(list(map(str,qf_vars)))
+            cad = qepcad_formula
+            ineq = self._create_ineq_positive_algo2(mu, n_var, x_var, strict)
+            form = cad.forall(qf_vars, cad.implies(n_var>=xi_var, ineq))
+            form_exec = qepcad(form)
+            for n in range(r+bound) :
+                form_exec_n = form_exec.replace(str(xi_var), str(n))
+                form_qff = qformula(form_exec_n, qf_vars_str)
+                if self[n] < 0 or (self[n] == 0 and strict) :
+                    return False
+                cond_mu = mu>0 if strict else mu>=0
+                if r > 1 :
+                    inits = cad.and_([self[n+j] >= mu*self[n+j-1] 
+                                    for j in range(1,r)])
+                    total = cad.exists(mu, cad.and_(form_qff, inits, cond_mu))
+                else :
+                    total = cad.exists(mu, cad.and_(form_qff, cond_mu))
+                if qepcad(total) == "TRUE" :
+                    return True
         raise ValueError("Could not decide whether positive!")
     
     def _create_ineq_positive_algo2(self, mu, n_var, x_var, strict=True) :
