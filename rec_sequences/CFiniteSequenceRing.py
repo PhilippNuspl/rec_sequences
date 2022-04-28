@@ -1497,12 +1497,6 @@ class CFiniteSequence(DFiniteSequence):
             sage: f_sq[:10] == [f[n^2] for n in range(10)]
             True
             
-            sage: p = C([1,1,0,-1], [3,0,2]) # Perrin numbers
-            sage: # compute sequence p(2n^2+3n+1)
-            sage: p_sq = p.sparse_subsequence(C2, 2, 3, 1)
-            sage: p_sq[:10] == [p[2*n^2+3*n+1] for n in range(10)]
-            True
-            
             sage: from sage.functions.other import binomial
             sage: # compute sequence f(binomial(n,2)), A081667
             sage: f_binom = f.sparse_subsequence(C2, binomial_basis=True)
