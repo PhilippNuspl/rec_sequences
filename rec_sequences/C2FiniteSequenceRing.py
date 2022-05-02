@@ -49,10 +49,10 @@ EXAMPLES::
     sage: l_sparse[:8]
     [2, 1, 7, 76, 2207, 167761, 33385282, 17393796001]
     
-    sage: f_times_l = f_fac * l_sparse
-    sage: f_times_l.order(), f_times_l.degree()
-    (2, 14)
-    sage: f_times_l[:5]
+    sage: f_times_l = f_fac * l_sparse # long time
+    sage: f_times_l.order(), f_times_l.degree() # long time
+    (2, 15)
+    sage: f_times_l[:5] # long time
     [2, 1, 7, 152, 13242]
     
 """

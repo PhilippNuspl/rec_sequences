@@ -131,6 +131,66 @@ of the recurrences have no zeros by shifting the recurrence appropriately
 with polynomial coefficients and finitely many initial values. We assume that this recurrence
 holds for all values.</p>
 <dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.DFiniteSequenceRing.DFiniteSequence.__call__">
+<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.DFiniteSequenceRing.DFiniteSequence.__call__" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the sequence <code class="docutils literal notranslate"><span class="pre">self[expr(n)]</span></code> if expr is a symbolic
+expression in one variable representing a linear polynomial.</p>
+<p>INPUT:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">expr</span></code> – a linear rational univariate polynomial (can be 
+in the symbolic ring)</p></li>
+</ul>
+<p>OUTPUT:</p>
+<p>The sequence <code class="docutils literal notranslate"><span class="pre">self[expr(n)]</span></code>.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.DFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">R</span><span class="o">.&lt;</span><span class="n">n</span><span class="o">&gt;</span> <span class="o">=</span> <span class="n">PolynomialRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">D</span> <span class="o">=</span> <span class="n">DFiniteSequenceRing</span><span class="p">(</span><span class="n">R</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">fac</span> <span class="o">=</span> <span class="n">D</span><span class="p">([</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">harm</span> <span class="o">=</span> <span class="n">D</span><span class="p">([</span><span class="o">-</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="o">*</span><span class="n">n</span><span class="o">+</span><span class="mi">3</span><span class="p">,</span><span class="o">-</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">harm</span><span class="o">.</span><span class="n">subsequence</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="n">harm</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">n</span><span class="p">)</span>
+<span class="kc">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.DFiniteSequenceRing.DFiniteSequence.__contains__">
+<span class="sig-name descname"><span class="pre">__contains__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.DFiniteSequenceRing.DFiniteSequence.__contains__" title="Permalink to this definition"></a></dt>
+<dd><p>Checks whether <code class="docutils literal notranslate"><span class="pre">item</span></code> is a term of the sequence.</p>
+<p>INPUT:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">item</span></code> – an element in the ground field of the sequence</p></li>
+</ul>
+<p>OUTPUT:</p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if there is a term <code class="docutils literal notranslate"><span class="pre">item</span></code> in the sequence and
+<code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.DFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">R</span><span class="o">.&lt;</span><span class="n">n</span><span class="o">&gt;</span> <span class="o">=</span> <span class="n">PolynomialRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">D</span> <span class="o">=</span> <span class="n">DFiniteSequenceRing</span><span class="p">(</span><span class="n">R</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">fac</span> <span class="o">=</span> <span class="n">D</span><span class="p">([</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">])</span> 
+<span class="n">sage</span><span class="p">:</span> <span class="n">factorial</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="ow">in</span> <span class="n">fac</span> <span class="c1"># long time</span>
+<span class="kc">True</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.CFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span> 
+
+<span class="n">sage</span><span class="p">:</span> <span class="mi">2</span> <span class="ow">in</span> <span class="n">C</span><span class="p">(</span><span class="mi">10</span><span class="o">*</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> 
+<span class="kc">False</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="mi">4</span> <span class="ow">in</span> <span class="n">C</span><span class="o">.</span><span class="n">an_element</span><span class="p">()</span> 
+<span class="kc">False</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="mi">13</span> <span class="ow">in</span> <span class="n">C</span><span class="o">.</span><span class="n">an_element</span><span class="p">()</span> 
+<span class="kc">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="rec_sequences.DFiniteSequenceRing.DFiniteSequence.__ge__">
 <span class="sig-name descname"><span class="pre">__ge__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.DFiniteSequenceRing.DFiniteSequence.__ge__" title="Permalink to this definition"></a></dt>
 <dd><p>Equivalent to <code class="docutils literal notranslate"><span class="pre">other</span> <span class="pre">&lt;=</span> <span class="pre">self</span></code>, cf. <a class="reference internal" href="#rec_sequences.DFiniteSequenceRing.DFiniteSequence.__le__" title="rec_sequences.DFiniteSequenceRing.DFiniteSequence.__le__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__le__()</span></code></a>.</p>
@@ -616,8 +676,8 @@ might be raised.</p>
 <span class="n">sage</span><span class="p">:</span> <span class="n">R</span><span class="o">.&lt;</span><span class="n">n</span><span class="o">&gt;</span> <span class="o">=</span> <span class="n">PolynomialRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
 <span class="n">sage</span><span class="p">:</span> <span class="n">D</span> <span class="o">=</span> <span class="n">DFiniteSequenceRing</span><span class="p">(</span><span class="n">R</span><span class="p">)</span>
 
-<span class="n">sage</span><span class="p">:</span> <span class="n">fac</span> <span class="o">=</span> <span class="n">D</span><span class="p">([</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">])</span>
-<span class="n">sage</span><span class="p">:</span> <span class="n">fac</span><span class="o">.</span><span class="n">has_no_zeros</span><span class="p">()</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">fac</span> <span class="o">=</span> <span class="n">D</span><span class="p">([</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">])</span> 
+<span class="n">sage</span><span class="p">:</span> <span class="n">fac</span><span class="o">.</span><span class="n">has_no_zeros</span><span class="p">()</span> <span class="c1"># long time</span>
 <span class="kc">True</span>
 
 <span class="n">sage</span><span class="p">:</span> <span class="n">harm</span> <span class="o">=</span> <span class="n">D</span><span class="p">([</span><span class="o">-</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="o">*</span><span class="n">n</span><span class="o">+</span><span class="mi">3</span><span class="p">,</span><span class="o">-</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>

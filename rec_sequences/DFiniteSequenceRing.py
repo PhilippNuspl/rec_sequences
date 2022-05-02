@@ -424,8 +424,8 @@ class DFiniteSequence(RecurrenceSequenceElement):
             sage: R.<n> = PolynomialRing(QQ)
             sage: D = DFiniteSequenceRing(R)
             
-            sage: fac = D([n+1,-1],[1])
-            sage: fac.has_no_zeros()
+            sage: fac = D([n+1,-1],[1]) 
+            sage: fac.has_no_zeros() # long time
             True
             
             sage: harm = D([-n-1,2*n+3,-n-2],[0,1])
@@ -468,6 +468,45 @@ class DFiniteSequence(RecurrenceSequenceElement):
                 return True
         except TimeoutError:
             raise TimeoutError(time)
+        
+    def __contains__(self, item) :
+        r"""
+        Checks whether ``item`` is a term of the sequence.
+        
+        INPUT:
+        
+        - ``item`` -- an element in the ground field of the sequence 
+        
+        OUTPUT:
+        
+        Returns ``True`` if there is a term ``item`` in the sequence and
+        ``False`` otherwise.
+        
+        EXAMPLES::
+        
+            sage: from rec_sequences.DFiniteSequenceRing import *
+            sage: R.<n> = PolynomialRing(QQ)
+            sage: D = DFiniteSequenceRing(R)
+            
+            sage: fac = D([n+1,-1],[1]) 
+            sage: factorial(5) in fac # long time
+            True
+            
+            sage: from rec_sequences.CFiniteSequenceRing import *
+            sage: C = CFiniteSequenceRing(QQ) 
+            
+            sage: 2 in C(10*[1,-1]) 
+            False
+            
+            sage: 4 in C.an_element() 
+            False
+            
+            sage: 13 in C.an_element() 
+            True
+            
+        """
+        return not (self-item).has_no_zeros()
+        
     
     def is_eventually_positive(self, bound_n = 5, bound=0, strict=True, 
                                time=-1) :
@@ -1163,6 +1202,46 @@ class DFiniteSequence(RecurrenceSequenceElement):
         right2 = right.get_ore_algebra_sequence()
         result = left2*right2
         return self.parent()(result)
+    
+    def __call__(self, expr) :
+        r"""
+        Returns the sequence ``self[expr(n)]`` if expr is a symbolic
+        expression in one variable representing a linear polynomial.
+
+        INPUT:
+
+        - ``expr`` -- a linear rational univariate polynomial (can be 
+          in the symbolic ring)
+
+        OUTPUT:
+        
+        The sequence ``self[expr(n)]``.
+        
+        EXAMPLES::
+        
+            sage: from rec_sequences.DFiniteSequenceRing import *
+            sage: R.<n> = PolynomialRing(QQ)
+            sage: D = DFiniteSequenceRing(R)
+            
+            sage: fac = D([n+1,-1],[1])
+            sage: harm = D([-n-1,2*n+3,-n-2],[0,1])
+            sage: harm.subsequence(2) == harm(2*n)
+            True
+            
+        """
+        if expr in ZZ :
+            return self[expr]
+        vars = expr.variables()
+        if len(vars) != 1 :
+            raise NotImplementedError("Cannot convert expression to "
+                                      "linear polynomial")
+        with SR.temp_var() as v :
+            R = PolynomialRing(QQ, v)
+            poly = R(expr.subs({vars[0] : v}))
+            if poly.degree() > 1 :
+                raise NotImplementedError("Polynomial has to be linear")
+            v, u = poly.coefficients(sparse=False)
+            return self.subsequence(u, v)
     
     def subsequence(self, u, v=0):
         r"""

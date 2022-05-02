@@ -870,7 +870,7 @@ class DifferenceDefinableSequenceRing(RecurrenceSequenceRing):
 
 # constructor
 
-    def __init__(self, base, guess=True, verified=True, name=None, 
+    def __init__(self, base, guess=False, verified=True, name=None, 
                  element_class=None, category=None):
         r"""
         Constructor for a difference definable sequence ring.
@@ -879,7 +879,7 @@ class DifferenceDefinableSequenceRing(RecurrenceSequenceRing):
 
         - ``base`` -- a difference ring, e.g. the ring of C-finite sequences
           or D-finite sequences
-        - ``guess`` (default: ``True``) -- if ``True``, the linear systems
+        - ``guess`` (default: ``False``) -- if ``True``, the linear systems
           that arise in the computations are solved with guessing (if possible)
         - ``verified`` (default: ``True``) -- if ``True``, the solutions of
           the linear system are verified to be correct. If ``False`` there can

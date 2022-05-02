@@ -188,7 +188,7 @@ class LinearSolveSequence(object):
         msg = f"Simplified solutions"
         log(cls, msg, 1, time_post_interlace, time_post_simpl)
             
-        if verified :
+        if verified and guess:
             #check_system = LinearSolveSequence._check_linear_system_explicit
             check_system = LinearSolveSequence._check_linear_system
             checked = check_system(M, x_interlaced, b)
