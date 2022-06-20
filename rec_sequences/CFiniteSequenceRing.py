@@ -78,6 +78,8 @@ from sage.matrix.special import identity_matrix
 from sage.misc.all import prod, randint
 from sage.misc.flatten import flatten
 from sage.rings.all import ZZ, QQ, CC
+from sage.rings.complex_arb import CBF
+from sage.rings.real_arb import RBF
 from sage.rings.qqbar import QQbar, AA
 from sage.modules.free_module_element import free_module_element as vector
 from sage.symbolic.ring import SR
@@ -316,13 +318,38 @@ class CFiniteSequence(DFiniteSequence):
             sage: b.is_degenerate() 
             True  
         """
-        roots = self.roots("gen_splitting_field_var", "gen_charpoly_var",
-                           multiplicities=False)
+        roots = self.roots(multiplicities=False)
         pairs_root = combinations(roots, 2)
         for pair in pairs_root :
             if not pair[1].is_zero() and is_root_of_unity(pair[0]/pair[1]) :
                 return True
         return False
+    
+    def _check_sequences_non_degenerate(self, seqs) :
+        r"""
+        Returns True if all the sequences in ``seqs`` are non-degenerate
+        or zero.
+        """
+        for seq in seqs :
+            if seq.is_zero() :
+                continue
+            
+            coeffs_list = tuple(seq.coefficients())
+            degenaracy_table = self.parent()._degeneracy_table
+            if coeffs_list in degenaracy_table :
+                # degeneracy known
+                if degenaracy_table[coeffs_list] :
+                    return False 
+                else :
+                    continue
+                
+            is_degenerate = seq.is_degenerate()
+            degenaracy_table[coeffs_list] = is_degenerate
+            if is_degenerate :
+                return False
+            
+        return True    
+        
     
     def decompose_degenerate(self) :
         r"""
@@ -350,8 +377,7 @@ class CFiniteSequence(DFiniteSequence):
         """
         k = 1 # number of sequences
         seqs = [self]
-        cond = lambda seq : (not seq.is_degenerate() or seq.is_zero())
-        while not all([cond(seq) for seq in seqs]) :
+        while not self._check_sequences_non_degenerate(seqs) :
             k += 1
             seqs = [self.subsequence(k, v) for v in range(k)]
         return seqs
@@ -635,13 +661,172 @@ class CFiniteSequence(DFiniteSequence):
     def _is_positive_dominant_root(self, strict=True) :
         r"""
         """
+        logger = CFiniteSequence.log
+        try :
+            logger.info("Try showing positivity with ball arithmetic")
+            return self._is_positive_dominant_root_CBF(strict=strict)
+        except ValueError as err :
+            if "Ball arithmetic not precise enough" in str(err) :
+                logger.info("Ball arithmetic did not work. Try exact.")
+                return self._is_positive_dominant_root_QQbar(strict=strict)
+            else :
+                raise err
+        
+    def _is_positive_dominant_root_CBF(self, strict=True) :
+        r"""
+        """
+        ball_arith_error = ValueError("Ball arithmetic not precise enough")
+        
+        logger = CFiniteSequence.log
+        def bound_poly_CBF(p) :
+            r"""
+            Compute constant c, such that |p(n)| <= c*n^deg(p) for all n.
+            We choose the smallest integer larger than (deg(p)+1)*max_coeff(p).
+            """
+            max_coeff = max([CBF(coeff).abs().upper().ceil() 
+                                for coeff in p.list()])
+            return max_coeff*(p.degree() + 1)
+
+        def get_constants_CBF(seq, max_root) :
+            r"""
+            Given a C-finite sequence seq with unique maximal eigenvalue, compute a bound c on the polynomial coefficients,
+            d the maximal degree of the coefficient polynomials, l the absolute value of the second largest eigenvalue and
+            the coefficient polynomial p of the maximal eigenvalue.
+            Returns a tuple (c, d, l, p).
+            """
+            R = PolynomialRing(CBF, "x")
+            closed_form = seq._closed_form_list(exact = False, 
+                                                polynomial_ring=R)
+            logger.info("Closed form computed")
+            p_found = False
+            closed_form_res = []
+            max_root_CBF = CBF(max_root)
+            p = 0
+            for poly, root in closed_form :
+                if root.overlaps(max_root_CBF) :
+                    if p_found :
+                        raise ball_arith_error
+                    p_found = True
+                    p = poly
+                else :
+                    closed_form_res.append((poly, root))
+            if not closed_form_res :
+                return (RBF(1), RBF(0), RBF(1/2), p)
+            d = max([poly.degree() for poly, _ in closed_form_res])
+            c = sum(bound_poly_CBF(poly) for poly, _ in closed_form_res)
+            l = closed_form_res[0][1].abs()
+            for _, root in closed_form_res[1:] :
+                root_abs = root.abs()
+                if root_abs > l :
+                    l = root_abs
+            return (RBF(c), d, RBF(l/max_root), p)
+
+        def bound_poly_below_CBF(p, eps) :
+            r"""
+            Given a polynomial p and an eps in (0,1), compute an index n0, s.t. p(n) >= (1-eps)^n for all n >= n0.
+            Of course, this is only possible if the leading coefficient of p is positive. If this is not the case, a ValueError is raised.
+            """
+            # know that leading coefficient is real as dominant ev is real 
+            # algebraic
+            lc = CBF(p.leading_coefficient()).real()
+            if lc <= 0 :
+                raise ValueError("Leading coefficient of polynomial is not "
+                                 "positive")
+            if not lc > 0 :
+                raise ball_arith_error
+            p_deriv = p.derivative()
+            if p_deriv == 0 :
+                return max(0, (CBF(p).real().log(1-eps)).upper().ceil())
+            zeros = p_deriv.roots(RBF, multiplicities=False) + [RBF(0)]
+            n = (max(zeros)).upper().ceil()
+            # p is monton. increasing from n on
+            while True :
+                if p(n).real() >= (1-eps)**n :
+                    return n
+                n += 1
+
+        def get_bound_CBF(seq, max_root) :
+            r"""
+            Given a C-finite sequence seq with unique maximal positive real eigenvalue, compute an index n0, such that seq is positive
+            from n0 on.
+            """
+            c, d, l, p = get_constants_CBF(seq, max_root)
+            logger.info(f"Constants {c}, {d}, {l}, {p} computed")
+            c = ceil(c)
+            eps = (1-l)/2
+            
+            if 0 in l :
+                raise ball_arith_error
+            f = (l+eps)/l if d == 0 else ((l+eps)/l)**(1/d) 
+            if not (eps > 0 and 1-eps > 0 and f > 0) :
+                raise ball_arith_error
+            bound_poly = bound_poly_below_CBF(p, eps)
+            # logger.info(f"Bound poly {bound_poly} computed")
+            # make sure rhs is montonically increasing
+            if d == 0 :
+                return max((c.log(f)).upper().ceil(), bound_poly)
+            else :
+                n = max(1, (1/ln(f)).upper().ceil())
+                if not ( c**(1/d) > 0 ):
+                    raise ball_arith_error
+                lhs = (ln(c**(1/d))/ln(f)).upper().ceil()
+                while True :
+                    logger.info(f"Lhs {lhs}, rhs {n-n.log(f)}")
+                    if lhs < n-n.log(f) :
+                        return max( n, bound_poly )
+                    n += 1
+        
+        cond = lambda term : term > 0 if strict else term >= 0
+        
+        # make sure sequence is in canonical form with non zero
+        # trailing coefficient
+        N, c = self.nonzero_trailing_coefficient()
+        if N > 0 :
+            if all([cond(term) for term in self[:N]]) :
+                return c._is_positive_dominant_root_CBF(strict=strict)
+            else :
+                return False
+           
+        # check some simple cases, i.e., sequence is zero, 
+        # or the dominant root is not a positive real number         
+        if self.is_zero() :
+            return not strict
+        try :
+            max_root = QQbar(self.dominant_root())
+            logger.info("Sequence has a unique maximal root")
+        except ValueError :
+            raise ValueError("Sequence does not have a dominant root")
+        
+        if max_root.imag() != 0 or max_root <= 0 :
+            logger.info("Max root is not real or is real and negative")
+            return False
+                  
+        try :
+            bound = get_bound_CBF(self, max_root)
+            N = ZZ(max(bound, 1))
+            logger.info(f"Bound {N} computed. Check first {N} terms")
+        except ValueError as err:
+            if err == ball_arith_error :
+                raise err
+            else :
+                # leading coeff of leading polynomial negative
+                return False
+        if all([cond(term) for term in self[:N]]) :
+            return True
+        else :
+            return False
+        
+    def _is_positive_dominant_root_QQbar(self, strict=True) :
+        r"""
+        """
+        logger = CFiniteSequence.log
         def bound_poly(p) :
             r"""
             Compute constant c, such that |p(n)| <= c*n^deg(p) for all n.
             We choose the smallest integer larger than (deg(p)+1)*max_coeff(p).
             """
-            max_coeff = max([QQbar(coeff).abs() for coeff in p.list()])
-            return (max_coeff*(p.degree() + 1)).ceil()
+            max_coeff = max([QQbar(coeff).abs().ceil() for coeff in p.list()])
+            return max_coeff*(p.degree() + 1)
 
         def get_constants(seq, max_root) :
             r"""
@@ -651,7 +836,8 @@ class CFiniteSequence(DFiniteSequence):
             Returns a tuple (c, d, l, p).
             """
             R = PolynomialRing(QQbar, "x")
-            closed_form = seq._closed_form_list(R)
+            closed_form = seq._closed_form_list(polynomial_ring=R)
+            logger.info("Closed form computed")
             p = [poly for poly, root in closed_form if root == max_root][0]
             filter_root = lambda pair : pair[1] != max_root
             closed_form_res = list(filter(filter_root, closed_form))
@@ -690,13 +876,11 @@ class CFiniteSequence(DFiniteSequence):
             from n0 on.
             """
             c, d, l, p = get_constants(seq, max_root)
+            logger.info(f"Constants {c}, {d}, {l}, {p} computed")
             c = ceil_SR(c)
-            
             eps = (1-l)/2
             f = (l+eps)/l if d == 0 else ((l+eps)/l)**(1/d) 
-            
             bound_poly = bound_poly_below(p, eps)
-            
             # make sure rhs is montonically increasing
             if d == 0 :
                 return max(ceil_SR(ln(c)/ln(f)), bound_poly)
@@ -723,17 +907,19 @@ class CFiniteSequence(DFiniteSequence):
         # or the dominant root is not a positive real number         
         if self.is_zero() :
             return not strict
-        
         try :
             max_root = QQbar(self.dominant_root())
+            logger.info("Sequence has a unique maximal root")
         except ValueError :
             raise ValueError("Sequence does not have a dominant root")
         
         if max_root.imag() != 0 or max_root <= 0 :
+            logger.info("Max root is not real or is real and negative")
             return False
                   
         try :
             N = max(get_bound(self, max_root), 1)
+            logger.info(f"Bound {N} computed. Check first {N} terms")
         except ValueError :
             return False
         if all([cond(term) for term in self[:N]]) :
@@ -1669,21 +1855,19 @@ class CFiniteSequence(DFiniteSequence):
         return sum(ring(coeff)*gen**i 
                    for i,coeff in enumerate(self.coefficients()))
     
-    def roots(self, gen="z", gen_char="y", *args, **kwargs):
+    def roots(self, exact=True, *args, **kwargs):
         r"""
         Returns all roots (also called eigenvalues) of the characteristic
-        polynomial of the sequence as elements in the splitting field.
-        The generator of the splitting field is ``gen`` and the base polynomial
-        is written in the generator ``gen_char``. 
-        
-        INPUT:
-
-        - ``gen`` (default: "z") -- name for the generator of the underlying 
-          splitting field
-        - ``gen_char`` (default: "y") -- name for the generator of the 
-          polynomial ring containing the characteristic polynomial
+        polynomial of the sequence as elements in the algebraic number field.
         
         Any additional arguments are passed to Sage's ``roots`` method.
+        
+        INPUT:
+        
+        - ``exact`` (default: ``True``) -- if ``True``, the roots are returned 
+          as elements in ``QQbar``. If ``False`` they are returned as elements 
+          in ``CBF``. In case the roots are in ``CBF`` they are not guaranteed
+          to be separated.
         
         OUTPUT:
         
@@ -1698,12 +1882,29 @@ class CFiniteSequence(DFiniteSequence):
             [2]
             
             sage: C([1,1,-1], [0,1]).roots()
-            [(z, 1), (-z + 1, 1)]
+            [(-0.618033988749895?, 1), (1.618033988749895?, 1)]
              
         """
-        charpoly = self.charpoly(PolynomialRing(self.base_ring(),"y"))
-        K = charpoly.splitting_field(gen)
-        return charpoly.roots(K, *args, **kwargs)
+        with SR.temp_var() as y : 
+            charpoly = self.charpoly(PolynomialRing(self.base_ring(), y))
+            if exact :
+                return charpoly.roots(ring=QQbar, *args, **kwargs)
+            else :
+                # root finding in CBF does not always support multiple roots
+                # and cannot find multiplicity of a root, hence we do 
+                # squarefree factorisation first
+                roots = []
+                for factor, mult in charpoly.squarefree_decomposition() :
+                    roots_factor = factor.roots(ring=CBF, 
+                                                multiplicities=False)
+                    for root in roots_factor :
+                        if "multiplicities" in kwargs \
+                            and not kwargs["multiplicities"]:
+                            roots.append(root)
+                        else :
+                            roots.append((root, mult))
+                            
+                return roots
     
     def dominant_root(self) :
         r"""
@@ -1715,8 +1916,7 @@ class CFiniteSequence(DFiniteSequence):
         an element in ``QQbar`` if it exists. If it does not exist, a
         ``ValueError`` is raised.
         """
-        R = PolynomialRing(self.base_ring(), "y")
-        roots = self.charpoly(R).roots(QQbar, multiplicities=False)
+        roots = self.roots(multiplicities=False)
         max_root = roots[0]
         max_val = max_root.abs()
         multiplicity = 1
@@ -1735,7 +1935,7 @@ class CFiniteSequence(DFiniteSequence):
                              f" with equal modulus")
         
     
-    def _closed_form_list(self, polynomial_ring = False) :
+    def _closed_form_list(self, exact=True, polynomial_ring=False) :
         r"""
         Returns a list ``l`` of tuples `(d_i,\gamma_i,\lambda_i)` such that:: 
         
@@ -1756,6 +1956,9 @@ class CFiniteSequence(DFiniteSequence):
             
         where the `p_i` are polynomials in the given ring and `\lambda_i` the 
         pairwise different eigenvalues.
+
+        If exact is ``True``, the roots are returned as elements in ``QQbar``. 
+        If ``False`` they are returned as elements in ``CBF``.
         """
         if self.is_zero():
             if polynomial_ring :
@@ -1763,24 +1966,25 @@ class CFiniteSequence(DFiniteSequence):
             else :
                 return [(0, 0, 0)]
         
-        R = PolynomialRing(self.base_ring(), "y")
-        roots = self.charpoly(R).roots(QQbar)
         # closed form might only hold from some term on
         # shift accordingly so that closed form holds
         N, new_seq = self.nonzero_trailing_coefficient()
         if N > 0 :
-            return new_seq._closed_form_list(polynomial_ring)
+            return new_seq._closed_form_list(exact=exact,
+                                             polynomial_ring=polynomial_ring)
         
+        roots = self.roots(exact=exact)
         # set up linear system for coefficients ci
         # we know that a solution exists and the linear system is a 
         # generalized vandermonde matrix, so the solution is unique
         num_vars = sum(mult for root, mult in roots)
-        M = matrix(QQbar, num_vars)
+        field = QQbar if exact else CBF
+        M = matrix(field, num_vars)
         for n in range(num_vars) :
             row = flatten([[n**j*root**n for j in range(mult)] 
                                          for root, mult in roots])
             M[n] = row   
-        rhs = vector(QQbar, self[:num_vars])
+        rhs = vector(field, self[:num_vars])
         sol = M.solve_right(rhs)
         
         # assemble list of closed form
@@ -1844,6 +2048,9 @@ class CFiniteSequenceRing(DFiniteSequenceRing):
             
         """
         self._poly_ring = PolynomialRing(field, "n")
+        # self._degeneracy_table is used to save already computed results
+        # about which characteristic polynomials are non-degenerate
+        self._degeneracy_table = dict()
         
         DFiniteSequenceRing.__init__(self, self._poly_ring, time_limit)
 
