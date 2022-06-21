@@ -57,6 +57,7 @@ EXAMPLES::
 #############################################################################
 
 from __future__ import absolute_import, division, print_function
+from multiprocessing.sharedctypes import Value
 
 import pprint
 import logging
@@ -295,6 +296,44 @@ class CFiniteSequence(DFiniteSequence):
                 return False 
         return True
     
+    def _is_degenerate_CBF(self) :
+        r"""
+        Checks whether a sequence is degenerate using ``CBF``, i.e.,
+        compute all the eigenvalues in ``CBF`` and check whether any quotient
+        of the roots have absolute value close enough to 1. 
+        
+        OUTPUT: 
+        
+        Returns False if the sequence is non-degenerate, i.e. the ratio of two
+        distinct roots is not a root of unity. Returns True otherwise.
+        Note, this is only a certified numerical check and the return value 
+        True only means that it is possible that the sequence is degenerate.
+        """
+        roots = self.roots(exact=False, multiplicities=False)
+        pairs_root = combinations(roots, 2)
+        one = RBF(1)
+        for pair in pairs_root :
+            if not pair[1].is_zero() and (pair[0]/pair[1]).abs().overlaps(one) :
+                return True
+        return False
+    
+    def _is_degenerate_exact(self):
+        r"""
+        Checks whether a sequence is degenerate. This is a necessary but 
+        not sufficient condition for a sequence to have infinitely many zeros.
+        
+        OUTPUT: 
+        
+        Returns True if the sequence is degenerate, i.e. the ratio of two
+        distinct roots is a root of unity. Returns False otherwise.
+        """
+        roots = self.roots(multiplicities=False)
+        pairs_root = combinations(roots, 2)
+        for pair in pairs_root :
+            if not pair[1].is_zero() and is_root_of_unity(pair[0]/pair[1]) :
+                return True
+        return False
+    
     def is_degenerate(self):
         r"""
         Checks whether a sequence is degenerate. This is a necessary but 
@@ -318,12 +357,10 @@ class CFiniteSequence(DFiniteSequence):
             sage: b.is_degenerate() 
             True  
         """
-        roots = self.roots(multiplicities=False)
-        pairs_root = combinations(roots, 2)
-        for pair in pairs_root :
-            if not pair[1].is_zero() and is_root_of_unity(pair[0]/pair[1]) :
-                return True
-        return False
+        if not self._is_degenerate_CBF() :
+            return False
+        else :
+            return self._is_degenerate_exact()
     
     def _check_sequences_non_degenerate(self, seqs) :
         r"""
@@ -442,7 +479,8 @@ class CFiniteSequence(DFiniteSequence):
         r"""
         The following methods are used to show positivity of the sequence:
         
-        1. Decomposes a sequence into non-generate and zero sequences and
+        1. Decomposes a sequence into sequences which have a unique dominant
+           root and zero sequences and
            proves positivity of each sequence using a classical method based
            on the asymptotics provided that the sequences have a unique 
            dominating root [OW14]_.
@@ -578,7 +616,8 @@ class CFiniteSequence(DFiniteSequence):
 
     def is_positive_dominant_root_decompose(self, strict=True, time=-1) :
         r"""
-        Decomposes the sequence into non-degenerate and zero sequences
+        Decomposes the sequence into sequences which have a unique dominant
+        eigenvalue and zero sequences
         and proves positivity of these sequences using 
         :meth:`is_positive_dominant_root`. This fails if one of the sequences
         does not have a unique dominating root. In this case, a ValueError is
@@ -610,9 +649,36 @@ class CFiniteSequence(DFiniteSequence):
             False
             
         """
-        return timeout(self._is_positive_dominant_root_decompose, time,
+        return timeout(self._is_positive_dominant_root_decompose_num, time,
                        strict=strict)
 
+    def _is_positive_dominant_root_decompose_num(self, strict=True) :
+        r"""
+        """
+        k = 1
+        while True :
+            subsequences = []
+            CFiniteSequence.log.info(f"Decompose into {k} subsequences. Check "
+                                      "if all have unique maximal eigenvalue")
+            try :
+                for i in range(k) :
+                    seq = self.subsequence(k, i)
+                    subsequences.append(seq)
+                    if not seq.is_zero() :
+                        seq._has_dominant_root_num()
+            except ValueError :
+                # one of the subsequences does not have a unique maximal ev
+                # increase decomposition
+                k += 1
+                continue      
+            
+            for seq in subsequences :
+                if not seq.is_positive_dominant_root(strict=strict) :
+                    return False
+            # all subsequences are positive
+            return True
+            
+    
     def _is_positive_dominant_root_decompose(self, strict=True) :
         r"""
         """
@@ -752,7 +818,6 @@ class CFiniteSequence(DFiniteSequence):
             """
             c, d, l, p = get_constants_CBF(seq, max_root)
             logger.info(f"Constants {c}, {d}, {l}, {p} computed")
-            c = ceil(c)
             eps = (1-l)/2
             
             if 0 in l :
@@ -766,12 +831,12 @@ class CFiniteSequence(DFiniteSequence):
             if d == 0 :
                 return max((c.log(f)).upper().ceil(), bound_poly)
             else :
-                n = max(1, (1/ln(f)).upper().ceil())
+                n = RBF(max(1, (1/ln(f)).upper().ceil()))
                 if not ( c**(1/d) > 0 ):
                     raise ball_arith_error
                 lhs = (ln(c**(1/d))/ln(f)).upper().ceil()
                 while True :
-                    logger.info(f"Lhs {lhs}, rhs {n-n.log(f)}")
+                    # logger.info(f"Lhs {lhs}, rhs {n-n.log(f)}")
                     if lhs < n-n.log(f) :
                         return max( n, bound_poly )
                     n += 1
@@ -1906,6 +1971,40 @@ class CFiniteSequence(DFiniteSequence):
                             
                 return roots
     
+    def _has_dominant_root_num(self) :
+        r"""
+        Numerically checks if the sequence has a unique dominant root.
+        """
+        dom_root_table = self.parent()._dom_root_table
+        error = ValueError(f"There might be more eigenvalues" 
+                           f" with equal modulus")
+        coeffs = tuple(self.coefficients())
+        if coeffs in dom_root_table :
+            # dom root known
+            if dom_root_table[coeffs] :
+                return True
+            else :
+                raise error
+            
+        roots = self.roots(exact=False, multiplicities=False)
+        max_root = roots[0]
+        max_val = RBF(max_root.abs())
+        multiplicity = 1
+        for e in roots[1:] :
+            e_abs = RBF(e.abs())
+            if e_abs > max_val :
+                max_root = e
+                max_val = e_abs
+                multiplicity = 1
+            elif e_abs.overlaps(max_val) :
+                multiplicity += 1
+        if multiplicity == 1 :
+            dom_root_table[coeffs] = True
+            return max_root
+        else :
+            dom_root_table[coeffs] = False
+            raise error
+    
     def dominant_root(self) :
         r"""
         Returns the dominant root of the sequence.
@@ -2051,6 +2150,9 @@ class CFiniteSequenceRing(DFiniteSequenceRing):
         # self._degeneracy_table is used to save already computed results
         # about which characteristic polynomials are non-degenerate
         self._degeneracy_table = dict()
+        # self._dom_root_table is used to save already computed results
+        # about which characteristic polynomials have a unique dominant root
+        self._dom_root_table = dict()
         
         DFiniteSequenceRing.__init__(self, self._poly_ring, time_limit)
 
