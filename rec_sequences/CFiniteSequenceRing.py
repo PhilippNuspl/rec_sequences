@@ -162,6 +162,8 @@ class CFiniteSequence(DFiniteSequence):
         
         # contains _negative_values = [self[-1],self[-2],...]
         self._negative_values = [] 
+        
+        self._dom_root_table = dict()
 
     def dfinite(self, ring) :
         r"""
@@ -543,7 +545,7 @@ class CFiniteSequence(DFiniteSequence):
         if time != -1 :
             # times used for decomp. maximal ev, algo 1, differences, algo 2,
             # d-finite case
-            time_dist = [1/2, 1/5, 1/5, 1/20, 1/20]
+            time_dist = [9/10, (1/10)/4, (1/10)/4, (1/10)/4, (1/10)/4]
             times = [time*ratio for ratio in time_dist]
         else :
             times = 5*[-1]
@@ -1055,6 +1057,7 @@ class CFiniteSequence(DFiniteSequence):
                             self._create_ineq_positive_algo1(n, x_var, strict)
                             )
                 if qepcad(formula) == "TRUE" :
+                    CFiniteSequence.log.info(f"Positivity shown at step n={n}")
                     return True
         raise ValueError("Could not decide whether positive!")
 
@@ -1126,6 +1129,7 @@ class CFiniteSequence(DFiniteSequence):
                 else :
                     total = cad.exists(mu, cad.and_(form_qff, cond_mu))
                 if qepcad(total) == "TRUE" :
+                    CFiniteSequence.log.info(f"Positivity shown at step n={n}")
                     return True
         raise ValueError("Could not decide whether positive!")
         
@@ -1975,7 +1979,8 @@ class CFiniteSequence(DFiniteSequence):
         r"""
         Numerically checks if the sequence has a unique dominant root.
         """
-        dom_root_table = self.parent()._dom_root_table
+        # dom_root_table = self.parent()._dom_root_table
+        dom_root_table = self._dom_root_table
         error = ValueError(f"There might be more eigenvalues" 
                            f" with equal modulus")
         coeffs = tuple(self.coefficients())
@@ -2152,7 +2157,7 @@ class CFiniteSequenceRing(DFiniteSequenceRing):
         self._degeneracy_table = dict()
         # self._dom_root_table is used to save already computed results
         # about which characteristic polynomials have a unique dominant root
-        self._dom_root_table = dict()
+        # self._dom_root_table = dict()
         
         DFiniteSequenceRing.__init__(self, self._poly_ring, time_limit)
 
