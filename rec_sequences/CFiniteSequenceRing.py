@@ -413,11 +413,41 @@ class CFiniteSequence(DFiniteSequence):
             
         """
         k = 1 # number of sequences
-        seqs = [self]
-        while not self._check_sequences_non_degenerate(seqs) :
-            k += 1
-            seqs = [self.subsequence(k, v) for v in range(k)]
-        return seqs
+        while True :
+            all_seqs_fine = True 
+            seqs = []
+            for v in range(k) :
+                # check whether subsequence self[n*k+v] is non-degenerate
+                # by checking whether it was already checked previously
+                # or check it if it was not checked previously
+                
+                seq = self.subsequence(k, v) 
+                seqs.append(seq)
+                
+                if seq.is_zero() :
+                    continue
+                
+                coeffs_list = tuple(seq.coefficients())
+                degenaracy_table = self.parent()._degeneracy_table
+                if coeffs_list in degenaracy_table :
+                    # degeneracy known
+                    if degenaracy_table[coeffs_list] :
+                        all_seqs_fine = False 
+                        break
+                    else :
+                        continue
+                    
+                is_degenerate = seq.is_degenerate()
+                degenaracy_table[coeffs_list] = is_degenerate
+                if is_degenerate :
+                    all_seqs_fine = False 
+                    break
+        
+            if all_seqs_fine :
+                return seqs
+            else :
+                k += 1
+
     
     def is_eventually_positive(self, bound_n = 5, bound=0, strict=True, 
                                time=-1) :
@@ -1241,8 +1271,6 @@ class CFiniteSequence(DFiniteSequence):
         if isinstance(n, slice) :
             if n.stop == None :
                 raise ValueError("Sequences are infinite. Need to specify upper bound.")
-            elif n.step != None and n.step != 1 :
-                raise NotImplementedError
             if len(self._values) < n.stop :
                 self._create_values(n.stop+1)
             if n.start == None or n.start >= 0 :
@@ -1778,14 +1806,16 @@ class CFiniteSequence(DFiniteSequence):
 
         return R(rec, initial_values).clear_common_factor()
     
-    def subsequence(self, u, v=0):
+    def subsequence(self, u, v=0, guessing=1):
         r"""
         Returns the sequence ``self[floor(u*n+v)]``.
 
         INPUT:
 
         - ``u`` -- a rational number
-        - ``v`` (optional) -- a rational number
+        - ``v`` (default: ``0``) -- a rational number
+        - ``guessing`` (default: `1``) -- if positive, guessing is used to
+          compute the subsequence if ``self.order() >= guessing``.
 
         OUTPUT:
         
@@ -1798,7 +1828,7 @@ class CFiniteSequence(DFiniteSequence):
             
             sage: a = C([2,-1], [1])
             sage: a.subsequence(3, 1)
-            C-finite sequence a(n): (-8)*a(n) + (1)*a(n+1) = 0 and a(0)=2
+            C-finite sequence a(n): (8)*a(n) + (-1)*a(n+1) = 0 and a(0)=2
             
             sage: f = C([1,1,-1], [0,1])
             sage: f[:10]
@@ -1806,7 +1836,27 @@ class CFiniteSequence(DFiniteSequence):
             sage: f.subsequence(2)[:5]
             [0, 1, 3, 8, 21]
             
+            sage: f.subsequence(2, guessing=1)[:5]
+            [0, 1, 3, 8, 21]
+            
         """
+        if u == 1 and v == 0 :
+            return self 
+        
+        if guessing > 0 and self.order() >= guessing and u in ZZ and v in ZZ :
+            try :
+                r = self.order()
+                # make sure that len(terms) >= 2(r+1) as
+                # subsequence has order at most r
+                terms = self[v:(v+2*u*(r+1))+1:u]
+                guess = self.parent().guess(terms)
+                if guess.order() > r :
+                    raise ValueError("Subsequence must have order at most r")
+                else :
+                    return guess
+            except ValueError as e:
+                pass
+            
         gen = self.ann().parent().base_ring().gen()
         op = self.ann().annihilator_of_composition(u*gen+v)
         order = op.order()
