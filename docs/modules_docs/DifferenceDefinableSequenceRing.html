@@ -415,6 +415,49 @@ order of the coefficients</p>
 </div>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequence.interlace">
+<span class="sig-name descname"><span class="pre">interlace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">others</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequence.interlace" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the interlaced sequence of self with <code class="docutils literal notranslate"><span class="pre">others</span></code>.</p>
+<p>INPUT:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">others</span></code> – other difference definable sequences</p></li>
+</ul>
+<p>OUTPUT:</p>
+<p>The interlaced sequence of self with <code class="docutils literal notranslate"><span class="pre">others</span></code>.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.C2FiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.CFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">C2</span> <span class="o">=</span> <span class="n">C2FiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">n</span> <span class="o">=</span> <span class="n">var</span><span class="p">(</span><span class="s2">&quot;n&quot;</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">c</span> <span class="o">=</span> <span class="n">C</span><span class="p">(</span><span class="mi">2</span><span class="o">^</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">a</span> <span class="o">=</span> <span class="n">C2</span><span class="p">([</span><span class="n">c</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">a</span><span class="p">[:</span><span class="mi">6</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">810</span><span class="p">,</span> <span class="mi">13770</span><span class="p">]</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">f</span> <span class="o">=</span> <span class="n">C</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># define fibonacci numbers</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">f_fac</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="n">C2</span><span class="p">)</span> <span class="c1"># define fibonorials</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">f_fac</span><span class="p">[:</span><span class="mi">6</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">interlaced</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">interlace</span><span class="p">(</span><span class="n">f_fac</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">interlaced</span><span class="o">.</span><span class="n">order</span><span class="p">()</span>
+<span class="mi">2</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">interlaced</span><span class="p">[:</span><span class="mi">12</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">810</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">13770</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">interlaced2</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">interlace</span><span class="p">(</span><span class="n">f_fac</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">interlaced2</span><span class="o">.</span><span class="n">order</span><span class="p">()</span>
+<span class="mi">6</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">interlaced2</span><span class="p">[:</span><span class="mi">12</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">36</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
 <dl class="py attribute">
 <dt class="sig sig-object py" id="rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequence.log">
 <span class="sig-name descname"><span class="pre">log</span></span><em class="property"> <span class="pre">=</span> <span class="pre">&lt;Logger</span> <span class="pre">DDS</span> <span class="pre">(WARNING)&gt;</span></em><a class="headerlink" href="#rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequence.log" title="Permalink to this definition"></a></dt>

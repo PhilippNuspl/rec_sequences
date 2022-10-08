@@ -1919,6 +1919,8 @@ class CFiniteSequence(DFiniteSequence):
             [0, 1, 1, 2, 1, 4, 2, 8, 3, 16]
             
         """
+        R = self.parent()
+        others = [R(seq) for seq in others]
         ops = [seq.ann() for seq in others]
         op = self.ann().annihilator_of_interlacing(*ops)
         m = 1 + len(others)

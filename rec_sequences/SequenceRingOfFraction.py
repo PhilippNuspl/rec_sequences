@@ -590,7 +590,9 @@ class FractionSequence(CommutativeAlgebraElement):
         .. NOTE::
             
             Only some initial terms are checked to see whether a sequence is 
-            invertible, cf. :meth:`is_unit`.
+            invertible, cf. :meth:`is_unit` (this is only checked if the option
+            ``strict`` in the construction of the parent ring is ``True``; it 
+            is by default).
                     
         OUTPUT: 
 
@@ -617,7 +619,7 @@ class FractionSequence(CommutativeAlgebraElement):
             True
             
         """
-        if self.is_unit() :
+        if not self.parent()._strict or self.is_unit() :
             return FractionSequence(self.parent(), self.denominator(), 
                                     self.numerator())
         else :
@@ -1040,13 +1042,16 @@ class SequenceRingOfFraction(UniqueRepresentation, CommutativeAlgebra):
 
 # constructor
 
-    def __init__(self, base, name=None, element_class=None, category=None):
+    def __init__(self, base, strict=True, name=None, element_class=None, 
+                 category=None):
         r"""
         Constructor for a sequence ring of fractions.
 
         INPUT:
 
         - ``base`` -- a base ring which represents a sequence ring
+        - ``strict`` (default: ``True``) -- if ``True`` elements in the 
+          ring can only be inverted if they do not contain any zero terms
 
         OUTPUT:
 
@@ -1071,6 +1076,7 @@ class SequenceRingOfFraction(UniqueRepresentation, CommutativeAlgebra):
         CommutativeAlgebra.__init__(self, base.base_ring(), category=CommutativeAlgebras(base.base_ring()))
 
         self._base = base
+        self._strict = strict
 
 
     def _element_constructor_(self, x, y=None, check=True, is_gen = False, construct=False, **kwds):

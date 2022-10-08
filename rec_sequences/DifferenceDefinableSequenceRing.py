@@ -705,6 +705,82 @@ class DifferenceDefinableSequence(RecurrenceSequenceElement):
         element_constructor = self.parent()._element_constructor_
         return element_constructor(coeffs_multiple, initial_values)
 
+    def interlace(self, *others):
+        r"""
+        Returns the interlaced sequence of self with ``others``.
+
+        INPUT:
+
+        - ``others`` -- other difference definable sequences 
+
+        OUTPUT:
+        
+        The interlaced sequence of self with ``others``.
+        
+        EXAMPLES::
+
+            sage: from rec_sequences.C2FiniteSequenceRing import *
+            sage: from rec_sequences.CFiniteSequenceRing import *
+            
+            sage: C = CFiniteSequenceRing(QQ)
+            sage: C2 = C2FiniteSequenceRing(QQ)
+                
+            sage: n = var("n")
+            sage: c = C(2^n+1)
+            sage: a = C2([c, -1], [3])
+            sage: a[:6]
+            [3, 6, 18, 90, 810, 13770]
+            
+            sage: f = C([1,1, -1], [0,1]) # define fibonacci numbers
+            sage: f_fac = f.factorial(C2) # define fibonorials
+            sage: f_fac[:6]
+            [1, 1, 1, 2, 6, 30]
+            
+            sage: interlaced = a.interlace(f_fac)
+            sage: interlaced.order()
+            2
+            sage: interlaced[:12]
+            [3, 1, 6, 1, 18, 1, 90, 2, 810, 6, 13770, 30]
+            
+            sage: interlaced2 = a.interlace(f_fac, f)
+            sage: interlaced2.order()
+            6
+            sage: interlaced2[:12]
+            [3, 1, 0, 6, 1, 1, 12, 1, 1, 36, 1, 2]
+            
+        """
+        max_order = max([self.order()]+
+                        [seq.order() for seq in others])
+        R = self.base()
+        zero_seq = self.base().zero()
+        d = len(others) + 1 # number of sequences to interlace
+        all_seqs = [self] + list(others)
+        
+        # compute coefficients of new recurrence
+        coeffs_new = []
+        for i in range(max_order+1) :
+            # coefficient di is interlacing of the coefficients
+            to_interlace = []
+            for seq in all_seqs :
+                seq_order = seq.order()
+                coefficients = seq.coefficients()
+                if i-max_order+seq_order < 0 :
+                    to_interlace.append(zero_seq)
+                else :
+                    coeff = coefficients[i-max_order+seq_order]
+                    to_interlace.append(R(coeff))
+                
+            interlaced = to_interlace[0].interlace(*to_interlace[1:])
+            coeffs_new.append(interlaced)
+            if i != max_order :
+                coeffs_new += (d-1)*[zero_seq]
+            
+        initial_values = [all_seqs[i%d][i//d] for i in range(d*max_order)]
+        
+        element_constructor = self.parent()._element_constructor_
+        return element_constructor(coeffs_new, initial_values)
+        
+
     @staticmethod
     def _split_exp_term(term):
         r"""
@@ -1249,11 +1325,11 @@ class DifferenceDefinableSequenceRing(RecurrenceSequenceRing):
         except ValueError as e:
             # system was not big enough, have to go bigger
             # do this by checking more initial values in the next step
-            new_entries = floor(check_entries*1.1)
+            new_entries = floor(check_entries*2)
             msg = f"error {str(e)} occured while solving the linear system, \
                     try increasing initial values used to {new_entries}"
             log(self, msg)
-            return self.compute_recurrence(A, v0, check_entries = new_entries)
+            return self._compute_recurrence(A, v0, check_entries = new_entries)
             
 
     @staticmethod

@@ -189,8 +189,10 @@ class ZeroPattern(SageObject):
             max_point = floor((m-i)/cycles+i)
             for j in range(i+1, max_point):
                 if data[i] == data[j]:  # candidate found
+                    #print(f"candidate found {i}, {j}")
                     d = j-i
                     if ArithmeticProgression._check_cycle_(i, d, data):
+                        #print(f"cycle was found, {i}, {d}")
                         # cycle was really found
                         cycle = data[i:i+d]
                         finite_set = [k for k, el in enumerate(data[:i])

@@ -468,7 +468,7 @@ class LinearSolveSequence(object):
         cycle_length = 1
         num_minors = len(evaluations_minors[0])
         for i in range(num_minors) :
-            minor_seq = [evaluations_minors[j][i] for j in range(guess)]
+            minor_seq = [evaluations_minors[j][i] for j in range(guess)]  
             pattern = ZeroPattern.guess(minor_seq)
             start_cycle = max([start_cycle, pattern.get_cycle_start()])
             cycle_length = lcm([cycle_length, pattern.get_cycle_length()])
@@ -503,8 +503,18 @@ class LinearSolveSequence(object):
                 except ValueError :
                     pass
             if not pattern_found :
-                raise ValueError("Zero pattern of minors could not be "
-                                 "established")
+                log(cls, f"Zero pattern of {sage_input(minor)} could not " 
+                    "be found", 2)
+                guess_length = 2000
+                while not pattern_found :
+                    try :
+                        pattern = minor.zeros(data=guess_length)
+                        pattern_found = True
+                        break
+                    except ValueError :
+                        pass
+                    guess_length = guess_length*2
+                    
             start_cycle = max([start_cycle, pattern.get_cycle_start()])
             cycle_length = lcm([cycle_length, pattern.get_cycle_length()])
             
