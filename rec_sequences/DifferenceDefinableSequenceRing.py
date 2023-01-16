@@ -76,6 +76,7 @@ from datetime import datetime
 import logging
 
 from numpy import random
+from rec_sequences.SequenceFieldOfFraction import SequenceFieldOfFraction
 
 from sage.repl.rich_output.pretty_print import show
 from sage.arith.all import gcd
@@ -110,6 +111,7 @@ from sage.symbolic.ring import SR
 
 from sage.repl.rich_output.pretty_print import show
 
+from .SequenceFieldOfFraction import SequenceFieldOfFraction
 from .SequenceRingOfFraction import SequenceRingOfFraction
 from .SequenceRingOfFraction import FractionSequence
 from .CFiniteSequenceRing import CFiniteSequence
@@ -466,29 +468,29 @@ class DifferenceDefinableSequence(RecurrenceSequenceElement):
         return r
 
 # helper for arithmetic
-    def _companion_sum(self, right) :
+    def _companion_sum(self, right, field=False) :
         r"""
         Computes the companion matrix of ``self+right``.
         """
-        comp_left = self.companion_matrix()
-        comp_right = right.companion_matrix()
+        comp_left = self.companion_matrix(field)
+        comp_right = right.companion_matrix(field)
         return block_diagonal_matrix(comp_left, comp_right)
 
-    def _companion_product(self, right) :
+    def _companion_product(self, right, field=False) :
         r"""
         Computes the companion matrix of ``self*right``.
         """
-        comp_left = self.companion_matrix()
-        comp_right = right.companion_matrix()
+        comp_left = self.companion_matrix(field)
+        comp_right = right.companion_matrix(field)
         return comp_left.tensor_product(comp_right)
     
-    def _companion_subsequence(self, u) :
+    def _companion_subsequence(self, u, field=False) :
         r"""
         Computes the companion matrix of ``self`` for the subsequence 
         ``self[n*u]``. This is given by ``Ma[u*n]*...*Ma[u*n+u-1]`` where 
         ``Ma`` denotes the companion matrix of ``seq``.
         """
-        comp = self.companion_matrix()
+        comp = self.companion_matrix(field)
         return prod(matrix_subsequence(comp, u, v) for v in range(u))
 
 # arithmetic
@@ -882,7 +884,7 @@ class DifferenceDefinableSequence(RecurrenceSequenceElement):
         """
         return self._degree
 
-    def companion_matrix(self):
+    def companion_matrix(self, field = False):
         r"""
         Returns the `r \times r` companion matrix 
         
@@ -897,6 +899,12 @@ class DifferenceDefinableSequence(RecurrenceSequenceElement):
             
         of ``self`` with entries in the
         ``SequenceRingOfFraction`` of the base. 
+        
+        INPUT:
+        
+        - ``field`` (default: ``False``) -- if ``True`` the companion matrix
+          is defined over a ``SequenceFieldOfFraction``, if ``False`` it is
+          defined over a ``SequenceRingOfFraction``.
         
         OUTPUT:
         
@@ -919,7 +927,11 @@ class DifferenceDefinableSequence(RecurrenceSequenceElement):
             ]
             
         """
-        R = SequenceRingOfFraction(self.base())
+        if field :
+            R = SequenceFieldOfFraction(self.base())
+        else :
+            R = SequenceRingOfFraction(self.base())
+            
         leading_coeff = self.leading_coefficient()
         coefficients = self.coefficients()
         M_comp = matrix(R, self.order())

@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>C2FiniteSequenceBounded and C2FiniteSequenceRingBounded &mdash; rec_sequences 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="IntegerRelations" href="IntegerRelations.html" />
+    <link rel="prev" title="SignPattern" href="SignPattern.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> rec_sequences
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="RecurrenceSequenceRing.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">RecurrenceSequenceElement</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">RecurrenceSequenceRing</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="CFiniteSequenceRing.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">CFiniteSequence</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">CFiniteSequenceRing</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="DFiniteSequenceRing.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">DFiniteSequence</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">DFiniteSequenceRing</span></code></a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="DifferenceDefinableSequenceRing.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">DifferenceDefinableSequence</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">DifferenceDefinableSequenceRing</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="C2FiniteSequenceRing.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">C2FiniteSequence</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">C2FiniteSequenceRing</span></code></a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="ArithmeticProgression.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">ArithmeticProgression</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="ZeroPattern.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">ZeroPattern</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="SignPattern.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">SignPattern</span></code></a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#"><code class="xref py py-class docutils literal notranslate"><span class="pre">C2FiniteSequenceBounded</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">C2FiniteSequenceRingBounded</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="IntegerRelations.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">IntegerRelations</span></code></a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="LinearSolveSequence.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">LinearSolveSequence</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="FunctionalEquation.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">FunctionalEquation</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="SequenceRingOfFraction.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">FractionSequence</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">SequenceRingOfFraction</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="SequenceFieldOfFraction.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">FractionFieldSequence</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">SequenceFieldOfFraction</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="utility.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">utility</span></code></a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">rec_sequences</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><code class="xref py py-class docutils literal notranslate"><span class="pre">C2FiniteSequenceBounded</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">C2FiniteSequenceRingBounded</span></code></li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules_docs/C2FiniteSequenceRingBounded.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-rec_sequences.C2FiniteSequenceRingBounded">
+<span id="c2finitesequencebounded-and-c2finitesequenceringbounded"></span><h1><code class="xref py py-class docutils literal notranslate"><span class="pre">C2FiniteSequenceBounded</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">C2FiniteSequenceRingBounded</span></code><a class="headerlink" href="#module-rec_sequences.C2FiniteSequenceRingBounded" title="Permalink to this headline"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="rec_sequences.C2FiniteSequenceRingBounded.C2FiniteSequenceBounded">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">rec_sequences.C2FiniteSequenceRingBounded.</span></span><span class="sig-name descname"><span class="pre">C2FiniteSequenceBounded</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coefficients</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'a'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_gen</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">construct</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwds</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.C2FiniteSequenceRingBounded.C2FiniteSequenceBounded" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="DifferenceDefinableSequenceRing.html#rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequence" title="rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequence"><code class="xref py py-class docutils literal notranslate"><span class="pre">rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequence</span></code></a></p>
+<p>A C^2-finite sequence, i.e. a sequence where every term can be determined by a linear recurrence
+with coefficients coming from a C-finite sequence ring and finitely many initial values. We assume that this
+recurrence holds for all values and that the leading coefficient only
+contains finitely many zeros (which is not checked).</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.C2FiniteSequenceRingBounded.C2FiniteSequenceBounded.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coefficients</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'a'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_gen</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">construct</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwds</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.C2FiniteSequenceRingBounded.C2FiniteSequenceBounded.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Construct a <span class="math notranslate nohighlight">\(C^2\)</span>-finite sequence <span class="math notranslate nohighlight">\(a(n)\)</span> with recurrence</p>
+<div class="math notranslate nohighlight">
+\[c_0(n) a(n) + \dots + c_r(n) a(n+r) = 0 \text{ for all } n \geq 0\]</div>
+<p>from given list of coefficients <span class="math notranslate nohighlight">\(c_0, ... , c_r\)</span> and given list of
+initial values <span class="math notranslate nohighlight">\(a(0), ..., a(r-1)\)</span>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We assume that the leading coefficient <span class="math notranslate nohighlight">\(c_r\)</span> only contains finitely 
+many zero terms.</p>
+</div>
+<p>INPUT:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">parent</span></code> – a <code class="docutils literal notranslate"><span class="pre">C2FiniteSequenceRingBounded</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">coefficients</span></code> – the coefficients of the recurrence</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">initial_values</span></code> – a list of initial values, determining the 
+sequence with at least order of the recurrence many values</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code> (default “a”) – a name for the sequence</p></li>
+</ul>
+<p>OUTPUT:</p>
+<p>A sequence determined by the given recurrence and 
+initial values.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.C2FiniteSequenceRingBounded</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.CFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">C2</span> <span class="o">=</span> <span class="n">C2FiniteSequenceRingBounded</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">n</span> <span class="o">=</span> <span class="n">var</span><span class="p">(</span><span class="s2">&quot;n&quot;</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">c</span> <span class="o">=</span> <span class="n">C</span><span class="p">(</span><span class="mi">2</span><span class="o">^</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">a</span> <span class="o">=</span> <span class="n">C2</span><span class="p">([</span><span class="n">c</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">a</span>
+<span class="n">C</span><span class="o">^</span><span class="mi">2</span><span class="o">-</span><span class="n">finite</span> <span class="n">sequence</span> <span class="n">of</span> <span class="n">order</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">degree</span> <span class="mi">2</span> <span class="k">with</span> <span class="n">coefficients</span><span class="p">:</span>
+<span class="o">&gt;</span> <span class="n">c0</span> <span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span> <span class="n">C</span><span class="o">-</span><span class="n">finite</span> <span class="n">sequence</span> <span class="n">c0</span><span class="p">(</span><span class="n">n</span><span class="p">):</span> <span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">c0</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="n">c0</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">c0</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">c0</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">=</span><span class="mi">2</span> <span class="p">,</span> <span class="n">c0</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">=</span><span class="mi">3</span>
+<span class="o">&gt;</span> <span class="n">c1</span> <span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span> <span class="n">C</span><span class="o">-</span><span class="n">finite</span> <span class="n">sequence</span> <span class="n">c1</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">=-</span><span class="mi">1</span>
+<span class="ow">and</span> <span class="n">initial</span> <span class="n">values</span> <span class="n">a</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">=</span><span class="mi">3</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.C2FiniteSequenceRingBounded.C2FiniteSequenceBounded._latex_">
+<span class="sig-name descname"><span class="pre">_latex_</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.C2FiniteSequenceRingBounded.C2FiniteSequenceBounded._latex_" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a latex representation of the sequence.
+This is done by creating the latex representation of the closed forms
+of the coefficients and showing the recurrence and the initial values.</p>
+<p>OUTPUT:</p>
+<p>A latex representation showing the closed form of the sequence.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.C2FiniteSequenceRingBounded</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.CFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">C2</span> <span class="o">=</span> <span class="n">C2FiniteSequenceRingBounded</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">n</span> <span class="o">=</span> <span class="n">var</span><span class="p">(</span><span class="s2">&quot;n&quot;</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">c</span> <span class="o">=</span> <span class="n">C</span><span class="p">(</span><span class="mi">2</span><span class="o">^</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">d</span> <span class="o">=</span> <span class="n">C</span><span class="p">(</span><span class="mi">3</span><span class="o">^</span><span class="n">n</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">a</span> <span class="o">=</span> <span class="n">C2</span><span class="p">([</span><span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">latex</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+\<span class="n">left</span><span class="p">(</span><span class="mi">2</span><span class="o">^</span><span class="p">{</span><span class="n">n</span><span class="p">}</span> <span class="o">+</span> <span class="mi">1</span>\<span class="n">right</span><span class="p">)</span>\<span class="n">cdot</span> <span class="n">a</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">+</span> \<span class="n">left</span><span class="p">(</span><span class="mi">3</span><span class="o">^</span><span class="p">{</span><span class="n">n</span><span class="p">}</span>\<span class="n">right</span><span class="p">)</span> \<span class="n">cdot</span> <span class="n">a</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span> \<span class="n">quad</span> <span class="n">a</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">=</span><span class="mi">1</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.C2FiniteSequenceRingBounded.C2FiniteSequenceBounded._repr_">
+<span class="sig-name descname"><span class="pre">_repr_</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.C2FiniteSequenceRingBounded.C2FiniteSequenceBounded._repr_" title="Permalink to this definition"></a></dt>
+<dd><p>Produces a string representation of the sequence.</p>
+<p>INPUT:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code> (optional) – a string used as the name of the sequence;
+if not given, <code class="docutils literal notranslate"><span class="pre">self.name()</span></code> is used.</p></li>
+</ul>
+<p>OUTPUT:</p>
+<p>A string representation of the sequence consisting of the recurrence
+and enough initial values to uniquely define the sequence.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.C2FiniteSequenceRingBounded</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.CFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">C2</span> <span class="o">=</span> <span class="n">C2FiniteSequenceRingBounded</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">n</span> <span class="o">=</span> <span class="n">var</span><span class="p">(</span><span class="s2">&quot;n&quot;</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">c</span> <span class="o">=</span> <span class="n">C</span><span class="p">(</span><span class="mi">2</span><span class="o">^</span><span class="n">n</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">a</span> <span class="o">=</span> <span class="n">C2</span><span class="p">([</span><span class="n">c</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">a</span>
+<span class="n">C</span><span class="o">^</span><span class="mi">2</span><span class="o">-</span><span class="n">finite</span> <span class="n">sequence</span> <span class="n">of</span> <span class="n">order</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">degree</span> <span class="mi">1</span> <span class="k">with</span> <span class="n">coefficients</span><span class="p">:</span>
+<span class="o">&gt;</span> <span class="n">c0</span> <span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span> <span class="n">C</span><span class="o">-</span><span class="n">finite</span> <span class="n">sequence</span> <span class="n">c0</span><span class="p">(</span><span class="n">n</span><span class="p">):</span> <span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">c0</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">c0</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">c0</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">=</span><span class="mi">1</span>
+<span class="o">&gt;</span> <span class="n">c1</span> <span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span> <span class="n">C</span><span class="o">-</span><span class="n">finite</span> <span class="n">sequence</span> <span class="n">c1</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">=-</span><span class="mi">1</span>
+<span class="ow">and</span> <span class="n">initial</span> <span class="n">values</span> <span class="n">a</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">=</span><span class="mi">1</span>  
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.C2FiniteSequenceRingBounded.C2FiniteSequenceBounded.eigenvalues">
+<span class="sig-name descname"><span class="pre">eigenvalues</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.C2FiniteSequenceRingBounded.C2FiniteSequenceBounded.eigenvalues" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a list of the eigenvalues that appear in the coefficients
+of the defining recurrence.</p>
+<p>OUTPUT:</p>
+<p>A list of the pairwise distinct eigenvalues of the coefficients.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.C2FiniteSequenceRingBounded</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">C2</span> <span class="o">=</span> <span class="n">C2FiniteSequenceRingBounded</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="s2">&quot;n&quot;</span><span class="p">);</span>
+<span class="n">n</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">c</span> <span class="o">=</span> <span class="n">C</span><span class="p">(</span><span class="mi">2</span><span class="o">^</span><span class="n">n</span><span class="o">+</span><span class="mi">3</span><span class="o">^</span><span class="n">n</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">d</span> <span class="o">=</span> <span class="n">C</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">^</span><span class="n">n</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">e</span> <span class="o">=</span> <span class="n">C</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">C2</span><span class="p">([</span><span class="n">c</span><span class="p">,</span><span class="n">d</span><span class="o">*</span><span class="n">c</span><span class="p">,</span><span class="n">d</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">e</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span><span class="o">.</span><span class="n">eigenvalues</span><span class="p">())</span>
+<span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="rec_sequences.C2FiniteSequenceRingBounded.C2FiniteSequenceBounded.log">
+<span class="sig-name descname"><span class="pre">log</span></span><em class="property"> <span class="pre">=</span> <span class="pre">&lt;Logger</span> <span class="pre">C2FinBound</span> <span class="pre">(WARNING)&gt;</span></em><a class="headerlink" href="#rec_sequences.C2FiniteSequenceRingBounded.C2FiniteSequenceBounded.log" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.C2FiniteSequenceRingBounded.C2FiniteSequenceBounded.subsequence">
+<span class="sig-name descname"><span class="pre">subsequence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_torsion_number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.C2FiniteSequenceRingBounded.C2FiniteSequenceBounded.subsequence" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the sequence <span class="math notranslate nohighlight">\(c(n u + v)\)</span>.</p>
+<p>INPUT:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">u</span></code> – a natural number</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">v</span></code> (default: <code class="docutils literal notranslate"><span class="pre">0</span></code>) – a natural number</p></li>
+</ul>
+<p>OUTPUT:</p>
+<p>The sequence <span class="math notranslate nohighlight">\(c(n u + v)\)</span>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.C2FiniteSequenceRingBounded.C2FiniteSequenceBounded.torsion_number">
+<span class="sig-name descname"><span class="pre">torsion_number</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">others</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.C2FiniteSequenceRingBounded.C2FiniteSequenceBounded.torsion_number" title="Permalink to this definition"></a></dt>
+<dd><p>Compute the torsion number of some C^2-finite sequences.</p>
+<p>INPUT:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">others</span></code> – C^2-finite sequences</p></li>
+</ul>
+<p>OUTPUT:</p>
+<p>The torsion number of <code class="docutils literal notranslate"><span class="pre">self</span></code> and the other given C^2-finite sequences.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.C2FiniteSequenceRingBounded</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">C2</span> <span class="o">=</span> <span class="n">C2FiniteSequenceRingBounded</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">alt</span> <span class="o">=</span> <span class="n">C</span><span class="p">(</span><span class="mi">10</span><span class="o">*</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">C2</span><span class="p">([</span><span class="n">alt</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">torsion_number</span><span class="p">()</span>
+<span class="mi">2</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="rec_sequences.C2FiniteSequenceRingBounded.C2FiniteSequenceRingBounded">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">rec_sequences.C2FiniteSequenceRingBounded.</span></span><span class="sig-name descname"><span class="pre">C2FiniteSequenceRingBounded</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base_ring</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">element_class</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">category</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwds</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.C2FiniteSequenceRingBounded.C2FiniteSequenceRingBounded" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="DifferenceDefinableSequenceRing.html#rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequenceRing" title="rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequenceRing"><code class="xref py py-class docutils literal notranslate"><span class="pre">rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequenceRing</span></code></a></p>
+<p>A Ring of C^2-finite sequences where the orders for closure properties
+are bounded.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="rec_sequences.C2FiniteSequenceRingBounded.C2FiniteSequenceRingBounded.Element">
+<span class="sig-name descname"><span class="pre">Element</span></span><a class="headerlink" href="#rec_sequences.C2FiniteSequenceRingBounded.C2FiniteSequenceRingBounded.Element" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="#rec_sequences.C2FiniteSequenceRingBounded.C2FiniteSequenceBounded" title="rec_sequences.C2FiniteSequenceRingBounded.C2FiniteSequenceBounded"><code class="xref py py-class docutils literal notranslate"><span class="pre">rec_sequences.C2FiniteSequenceRingBounded.C2FiniteSequenceBounded</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.C2FiniteSequenceRingBounded.C2FiniteSequenceRingBounded.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base_ring</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">element_class</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">category</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwds</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.C2FiniteSequenceRingBounded.C2FiniteSequenceRingBounded.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Constructor for a <span class="math notranslate nohighlight">\(C^2\)</span>-finite sequence ring.</p>
+<p>INPUT:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">field</span></code> (default: <code class="docutils literal notranslate"><span class="pre">QQ</span></code>) – a field of characteristic zero over 
+which the <span class="math notranslate nohighlight">\(C^2\)</span>-finite sequence ring is defined.</p></li>
+</ul>
+<p>OUTPUT:</p>
+<p>A ring of <span class="math notranslate nohighlight">\(C^2\)</span>-finite sequences</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.C2FiniteSequenceRingBounded</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">C2FiniteSequenceRingBounded</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+<span class="n">Ring</span> <span class="n">of</span> <span class="n">bounded</span> <span class="n">C</span><span class="o">^</span><span class="mi">2</span><span class="o">-</span><span class="n">finite</span> <span class="n">sequences</span> <span class="k">with</span> <span class="n">base</span> <span class="n">field</span> <span class="n">Rational</span> <span class="n">Field</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.C2FiniteSequenceRingBounded.C2FiniteSequenceRingBounded._element_constructor_">
+<span class="sig-name descname"><span class="pre">_element_constructor_</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'a'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_gen</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">construct</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwds</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.C2FiniteSequenceRingBounded.C2FiniteSequenceRingBounded._element_constructor_" title="Permalink to this definition"></a></dt>
+<dd><p>Tries to construct a sequence <span class="math notranslate nohighlight">\(a(n)\)</span>.</p>
+<p>This is possible if:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">x</span></code> is already a bounded <span class="math notranslate nohighlight">\(C^2\)</span>-finite sequence.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">x</span></code> is a list of C-finite sequences and <code class="docutils literal notranslate"><span class="pre">y</span></code> is a list of field 
+elements. Then <code class="docutils literal notranslate"><span class="pre">x</span></code> is interpreted as the coefficients of the 
+recurrence and <code class="docutils literal notranslate"><span class="pre">y</span></code> as the initial 
+values of the sequence, i.e. <span class="math notranslate nohighlight">\(a(0), ..., a(r-1)\)</span>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">x</span></code> is a C-finite sequence.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">x</span></code> can be converted into a field element. Then it is interpreted 
+as the constant sequence <span class="math notranslate nohighlight">\((x)_{n \in \mathbb{N}}\)</span></p></li>
+</ul>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.C2FiniteSequenceRingBounded</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.CFiniteSequenceRing</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">CFiniteSequenceRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">C2</span> <span class="o">=</span> <span class="n">C2FiniteSequenceRingBounded</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span> 
+<span class="n">sage</span><span class="p">:</span> <span class="n">n</span> <span class="o">=</span> <span class="n">var</span><span class="p">(</span><span class="s2">&quot;n&quot;</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">c</span> <span class="o">=</span> <span class="n">C</span><span class="p">(</span><span class="mi">2</span><span class="o">^</span><span class="n">n</span><span class="o">+</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">^</span><span class="n">n</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">d</span> <span class="o">=</span> <span class="n">C</span><span class="p">(</span><span class="mi">2</span><span class="o">^</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">a</span> <span class="o">=</span> <span class="n">C2</span><span class="p">([</span><span class="n">c</span><span class="p">,</span><span class="o">-</span><span class="n">d</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;a&quot;</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">latex</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+\<span class="n">left</span><span class="p">(</span><span class="mi">2</span><span class="o">^</span><span class="p">{</span><span class="n">n</span><span class="p">}</span> <span class="o">+</span> \<span class="n">left</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span>\<span class="n">right</span><span class="p">)</span><span class="o">^</span><span class="p">{</span><span class="n">n</span><span class="p">}</span>\<span class="n">right</span><span class="p">)</span>\<span class="n">cdot</span> <span class="n">a</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">+</span> \<span class="n">left</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="o">^</span><span class="p">{</span><span class="n">n</span><span class="p">}</span> <span class="o">-</span> 
+<span class="mi">1</span>\<span class="n">right</span><span class="p">)</span> \<span class="n">cdot</span> <span class="n">a</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span> \<span class="n">quad</span> <span class="n">a</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">a2</span> <span class="o">=</span> <span class="n">C2</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">b</span> <span class="o">=</span> <span class="n">C2</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="n">C</span><span class="o">^</span><span class="mi">2</span><span class="o">-</span><span class="n">finite</span> <span class="n">sequence</span> <span class="n">of</span> <span class="n">order</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">degree</span> <span class="mi">1</span> <span class="k">with</span> <span class="n">coefficients</span><span class="p">:</span>
+<span class="o">&gt;</span> <span class="n">c0</span> <span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span> <span class="n">C</span><span class="o">-</span><span class="n">finite</span> <span class="n">sequence</span> <span class="n">c0</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">=</span><span class="mi">2</span>
+<span class="o">&gt;</span> <span class="n">c1</span> <span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span> <span class="n">C</span><span class="o">-</span><span class="n">finite</span> <span class="n">sequence</span> <span class="n">c1</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">=</span><span class="mi">1</span>
+<span class="o">&gt;</span> <span class="n">c2</span> <span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span> <span class="n">C</span><span class="o">-</span><span class="n">finite</span> <span class="n">sequence</span> <span class="n">c2</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">=-</span><span class="mi">1</span>
+<span class="ow">and</span> <span class="n">initial</span> <span class="n">values</span> <span class="n">a</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">=</span><span class="mi">2</span> <span class="p">,</span> <span class="n">a</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">=</span><span class="mi">1</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.C2FiniteSequenceRingBounded.C2FiniteSequenceRingBounded._latex_">
+<span class="sig-name descname"><span class="pre">_latex_</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.C2FiniteSequenceRingBounded.C2FiniteSequenceRingBounded._latex_" title="Permalink to this definition"></a></dt>
+<dd><p>OUTPUT:</p>
+<p>A latex representation of the sequence ring.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.C2FiniteSequenceRingBounded</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">latex</span><span class="p">(</span><span class="n">C2FiniteSequenceRingBounded</span><span class="p">(</span><span class="n">QQ</span><span class="p">)))</span>
+\<span class="n">mathcal</span><span class="p">{</span><span class="n">C</span><span class="o">^</span><span class="mi">2</span><span class="p">}(</span>\<span class="n">Bold</span><span class="p">{</span><span class="n">Q</span><span class="p">})</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.C2FiniteSequenceRingBounded.C2FiniteSequenceRingBounded._repr_">
+<span class="sig-name descname"><span class="pre">_repr_</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.C2FiniteSequenceRingBounded.C2FiniteSequenceRingBounded._repr_" title="Permalink to this definition"></a></dt>
+<dd><p>OUTPUT:</p>
+<p>A string representation of the sequence ring.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.C2FiniteSequenceRingBounded</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">C2FiniteSequenceRingBounded</span><span class="p">(</span><span class="n">QQ</span><span class="p">)</span>
+<span class="n">Ring</span> <span class="n">of</span> <span class="n">bounded</span> <span class="n">C</span><span class="o">^</span><span class="mi">2</span><span class="o">-</span><span class="n">finite</span> <span class="n">sequences</span> <span class="k">with</span> <span class="n">base</span> <span class="n">field</span> <span class="n">Rational</span> <span class="n">Field</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="rec_sequences.C2FiniteSequenceRingBounded.C2FiniteSequenceRingBounded.log">
+<span class="sig-name descname"><span class="pre">log</span></span><em class="property"> <span class="pre">=</span> <span class="pre">&lt;Logger</span> <span class="pre">C2FinRingBound</span> <span class="pre">(WARNING)&gt;</span></em><a class="headerlink" href="#rec_sequences.C2FiniteSequenceRingBounded.C2FiniteSequenceRingBounded.log" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="SignPattern.html" class="btn btn-neutral float-left" title="SignPattern" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="IntegerRelations.html" class="btn btn-neutral float-right" title="IntegerRelations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Philipp Nuspl.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

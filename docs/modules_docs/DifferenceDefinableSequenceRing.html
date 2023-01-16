@@ -53,9 +53,14 @@
 <li class="toctree-l1"><a class="reference internal" href="SignPattern.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">SignPattern</span></code></a></li>
 </ul>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="C2FiniteSequenceRingBounded.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">C2FiniteSequenceBounded</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">C2FiniteSequenceRingBounded</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="IntegerRelations.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">IntegerRelations</span></code></a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="LinearSolveSequence.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">LinearSolveSequence</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="FunctionalEquation.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">FunctionalEquation</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="SequenceRingOfFraction.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">FractionSequence</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">SequenceRingOfFraction</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="SequenceFieldOfFraction.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">FractionFieldSequence</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">SequenceFieldOfFraction</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="utility.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">utility</span></code></a></li>
 </ul>
 
@@ -350,7 +355,7 @@ recurrence.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequence.companion_matrix">
-<span class="sig-name descname"><span class="pre">companion_matrix</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequence.companion_matrix" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">companion_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">field</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequence.companion_matrix" title="Permalink to this definition"></a></dt>
 <dd><p>Returns the <span class="math notranslate nohighlight">\(r \times r\)</span> companion matrix</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{pmatrix}
@@ -362,6 +367,12 @@ recurrence.</p>
 \end{pmatrix} .\end{split}\]</div>
 <p>of <code class="docutils literal notranslate"><span class="pre">self</span></code> with entries in the
 <code class="docutils literal notranslate"><span class="pre">SequenceRingOfFraction</span></code> of the base.</p>
+<p>INPUT:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">field</span></code> (default: <code class="docutils literal notranslate"><span class="pre">False</span></code>) – if <code class="docutils literal notranslate"><span class="pre">True</span></code> the companion matrix
+is defined over a <code class="docutils literal notranslate"><span class="pre">SequenceFieldOfFraction</span></code>, if <code class="docutils literal notranslate"><span class="pre">False</span></code> it is
+defined over a <code class="docutils literal notranslate"><span class="pre">SequenceRingOfFraction</span></code>.</p></li>
+</ul>
 <p>OUTPUT:</p>
 <p>The companion matrix.</p>
 <p>EXAMPLES:</p>

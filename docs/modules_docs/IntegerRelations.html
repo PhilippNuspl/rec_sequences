@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IntegerRelations &mdash; rec_sequences 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="LinearSolveSequence" href="LinearSolveSequence.html" />
+    <link rel="prev" title="C2FiniteSequenceBounded and C2FiniteSequenceRingBounded" href="C2FiniteSequenceRingBounded.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> rec_sequences
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="RecurrenceSequenceRing.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">RecurrenceSequenceElement</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">RecurrenceSequenceRing</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="CFiniteSequenceRing.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">CFiniteSequence</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">CFiniteSequenceRing</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="DFiniteSequenceRing.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">DFiniteSequence</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">DFiniteSequenceRing</span></code></a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="DifferenceDefinableSequenceRing.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">DifferenceDefinableSequence</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">DifferenceDefinableSequenceRing</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="C2FiniteSequenceRing.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">C2FiniteSequence</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">C2FiniteSequenceRing</span></code></a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="ArithmeticProgression.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">ArithmeticProgression</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="ZeroPattern.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">ZeroPattern</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="SignPattern.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">SignPattern</span></code></a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="C2FiniteSequenceRingBounded.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">C2FiniteSequenceBounded</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">C2FiniteSequenceRingBounded</span></code></a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#"><code class="xref py py-class docutils literal notranslate"><span class="pre">IntegerRelations</span></code></a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="LinearSolveSequence.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">LinearSolveSequence</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="FunctionalEquation.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">FunctionalEquation</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="SequenceRingOfFraction.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">FractionSequence</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">SequenceRingOfFraction</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="SequenceFieldOfFraction.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">FractionFieldSequence</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">SequenceFieldOfFraction</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="utility.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">utility</span></code></a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">rec_sequences</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><code class="xref py py-class docutils literal notranslate"><span class="pre">IntegerRelations</span></code></li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules_docs/IntegerRelations.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-rec_sequences.IntegerRelations">
+<span id="integerrelations"></span><h1><a class="reference internal" href="#module-rec_sequences.IntegerRelations" title="rec_sequences.IntegerRelations"><code class="xref py py-class docutils literal notranslate"><span class="pre">IntegerRelations</span></code></a><a class="headerlink" href="#module-rec_sequences.IntegerRelations" title="Permalink to this headline"></a></h1>
+<p>Integer relations</p>
+<p>This class provides methods to compute a basis of the exponent lattice</p>
+<div class="math notranslate nohighlight">
+\[\{(e_1,\dots,e_n) \in \mathbb{Z}^n \colon x_1^{e_1} \dots x_n^{e_n}=1\}\]</div>
+<p>of a tuple of algebraic numbers <span class="math notranslate nohighlight">\(x=(x_1,\dots,x_n)\)</span>. If the algebraic numbers
+<span class="math notranslate nohighlight">\(x\)</span> are rational integers, a method based on factorizing these rational numbers
+is used. For general algebraic numbers two methods, both based on LLL and a
+bound on the basis, are implemented.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.IntegerRelations</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">IntegerRelations</span><span class="o">.</span><span class="n">integer_relations</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="p">[</span><span class="mi">0</span> <span class="mi">2</span><span class="p">]</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">IntegerRelations</span><span class="o">.</span><span class="n">integer_relations</span><span class="p">([</span><span class="mi">3</span><span class="p">])</span>
+<span class="p">[]</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">),</span> <span class="n">I</span><span class="p">,</span> <span class="o">-</span><span class="n">I</span><span class="p">]</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">relations</span> <span class="o">=</span> <span class="n">IntegerRelations</span><span class="o">.</span><span class="n">integer_relations</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">relations</span><span class="o">.</span><span class="n">nrows</span><span class="p">()</span>
+<span class="mi">3</span>
+<span class="n">sage</span><span class="p">:</span> <span class="nb">all</span><span class="p">([</span><span class="n">prod</span><span class="p">(</span><span class="n">xi</span><span class="o">**</span><span class="n">ei</span> <span class="k">for</span> <span class="n">xi</span><span class="p">,</span> <span class="n">ei</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">numbers</span><span class="p">,</span> <span class="n">relation</span><span class="p">))</span><span class="o">==</span><span class="mi">1</span> 
+<span class="o">....</span><span class="p">:</span>                    <span class="k">for</span> <span class="n">relation</span> <span class="ow">in</span> <span class="n">relations</span><span class="p">])</span>  
+<span class="kc">True</span>
+</pre></div>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="rec_sequences.IntegerRelations.IntegerRelations">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">rec_sequences.IntegerRelations.</span></span><span class="sig-name descname"><span class="pre">IntegerRelations</span></span><a class="headerlink" href="#rec_sequences.IntegerRelations.IntegerRelations" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.IntegerRelations.IntegerRelations.additive_relations_ge">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">additive_relations_ge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">M</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.IntegerRelations.IntegerRelations.additive_relations_ge" title="Permalink to this definition"></a></dt>
+<dd><p>Computes all possible additive integer relations up to a given size.</p>
+<p>INPUT:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">x</span></code> – a list of vectors or lists of numbers</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">M</span></code> – a number; an upper bound for that is guaranteed to contain
+a basis for the lattice</p></li>
+</ul>
+<p>OUTPUT:</p>
+<p>Let <span class="math notranslate nohighlight">\(x=(v_1,\dots,v_s)\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[L=\{\sum_{i=1}^s \alpha_i v_i | \alpha_i \in \mathbb{Z}\}\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[\Lambda_0=\{(e_1,\dots,e_s) \in \mathbb{Z}^s | \sum_{i=1}^s e_i v_i=0\}.\]</div>
+<p>If the lattice <span class="math notranslate nohighlight">\(\Lambda_0\)</span> has a basis with elements bounded by <code class="docutils literal notranslate"><span class="pre">M</span></code>,
+a basis for the lattice is found and returned (as the rows of an
+integer matrix).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.IntegerRelations.IntegerRelations.integer_relations">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">integer_relations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">algorithm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'kauers'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">integral</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.IntegerRelations.IntegerRelations.integer_relations" title="Permalink to this definition"></a></dt>
+<dd><p>Computes all possible integer relations of the given algebraic numbers.
+If the input is rational, then a method based on factorizing the input
+is used. Otherwise one of two algorithms can be used:</p>
+<ol class="arabic simple">
+<li><p>Kauers: An iterative algorithm based on LLL.</p></li>
+<li><p>Ge: Ge’s original algorithm together with a result by Masser as 
+explained in detail in <a class="reference internal" href="../index.html#f14" id="id1"><span>[F14]</span></a>.</p></li>
+</ol>
+<p>INPUT:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">x</span></code> – a list of algebraic numbers</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">algorithm</span></code> (default: <code class="docutils literal notranslate"><span class="pre">&quot;kauers&quot;</span></code>) – the algorithm used to compute
+the algebraic relations. Possible options are <code class="docutils literal notranslate"><span class="pre">&quot;kauers&quot;</span></code> and 
+<code class="docutils literal notranslate"><span class="pre">&quot;ge&quot;</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">integral</span></code> (default: <code class="docutils literal notranslate"><span class="pre">False</span></code>) – if <code class="docutils literal notranslate"><span class="pre">True</span></code> it will be assumed 
+that all elements of <code class="docutils literal notranslate"><span class="pre">x</span></code> are algebraic integers</p></li>
+</ul>
+<p>OUTPUT:</p>
+<p>Let <span class="math notranslate nohighlight">\(x=(x_1,\dots,x_n)\)</span>. Returns a basis for the lattice of relations</p>
+<div class="math notranslate nohighlight">
+\[\{(e_1,\dots,e_n) \in \mathbb{Z}^n \colon x_1^{e_1} \dots x_n^{e_n}=1\}\]</div>
+<p>The basis is returned as the rows of a matrix over <code class="docutils literal notranslate"><span class="pre">Z</span></code>.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.IntegerRelations</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">IntegerRelations</span><span class="o">.</span><span class="n">integer_relations</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">IntegerRelations</span><span class="o">.</span><span class="n">integer_relations</span><span class="p">([</span><span class="n">I</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="n">I</span><span class="p">])</span>
+<span class="p">[</span> <span class="mi">1</span>  <span class="mi">0</span>  <span class="mi">1</span><span class="p">]</span>
+<span class="p">[</span><span class="o">-</span><span class="mi">2</span>  <span class="mi">0</span>  <span class="mi">2</span><span class="p">]</span>
+<span class="p">[</span> <span class="mi">0</span>  <span class="mi">1</span>  <span class="mi">0</span><span class="p">]</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">IntegerRelations</span><span class="o">.</span><span class="n">integer_relations</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+<span class="p">[</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">0</span> <span class="mi">2</span> <span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.IntegerRelations.IntegerRelations.integer_relations_ge">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">integer_relations_ge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.IntegerRelations.IntegerRelations.integer_relations_ge" title="Permalink to this definition"></a></dt>
+<dd><p>Computes all possible integer relations of the given algebraic integers.
+This is based on Ge’s algorithm as outlined in the PhD thesis of
+Paolo Faccin <a class="reference internal" href="../index.html#f14" id="id2"><span>[F14]</span></a>.</p>
+<p>INPUT:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">x</span></code> – a list of non-zero algebraic integers, not all integral</p></li>
+</ul>
+<p>OUTPUT:</p>
+<p>Let <span class="math notranslate nohighlight">\(x=(x_1,\dots,x_n)\)</span>. Returns a basis for the lattice of relations</p>
+<div class="math notranslate nohighlight">
+\[\{(e_1,\dots,e_n) \in \mathbb{Z}^n \colon x_1^{e_1} \dots x_n^{e_n}=1\}\]</div>
+<p>The basis is returned as the rows of a matrix over <code class="docutils literal notranslate"><span class="pre">Z</span></code>.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.IntegerRelations</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">ge_algorithm</span> <span class="o">=</span> <span class="n">IntegerRelations</span><span class="o">.</span><span class="n">integer_relations_ge</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">ge_algorithm</span><span class="p">([</span><span class="n">QQbar</span><span class="p">(</span><span class="n">I</span><span class="p">),</span><span class="n">QQbar</span><span class="p">(</span><span class="o">-</span><span class="n">I</span><span class="p">),</span><span class="n">QQbar</span><span class="p">(</span><span class="mi">1</span><span class="p">)])</span>
+<span class="p">[</span> <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">1</span><span class="p">]</span>
+<span class="p">[</span> <span class="mi">1</span>  <span class="mi">1</span>  <span class="mi">0</span><span class="p">]</span>
+<span class="p">[</span><span class="o">-</span><span class="mi">2</span>  <span class="mi">2</span>  <span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.IntegerRelations.IntegerRelations.integer_relations_integers">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">integer_relations_integers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.IntegerRelations.IntegerRelations.integer_relations_integers" title="Permalink to this definition"></a></dt>
+<dd><p>Computes all possible integer relations of the given integer numbers.</p>
+<p>INPUT:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">x</span></code> – a list of integers</p></li>
+</ul>
+<p>OUTPUT:</p>
+<p>Let <span class="math notranslate nohighlight">\(x=(x_1,\dots,x_n)\)</span>. Returns a basis for the lattice of relations</p>
+<div class="math notranslate nohighlight">
+\[\{(e_1,\dots,e_n) \in \mathbb{Z}^n \colon x_1^{e_1}\dots x_n^{e_n}=1\}\]</div>
+<p>The basis is returned as the rows of a matrix over <code class="docutils literal notranslate"><span class="pre">Z</span></code>.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.IntegerRelations</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">IntegerRelations</span><span class="o">.</span><span class="n">integer_relations_integers</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">IntegerRelations</span><span class="o">.</span><span class="n">integer_relations_integers</span><span class="p">([</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="p">[</span> <span class="mi">2</span> <span class="o">-</span><span class="mi">2</span>  <span class="mi">0</span>  <span class="mi">0</span><span class="p">]</span>
+<span class="p">[</span> <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">1</span><span class="p">]</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">IntegerRelations</span><span class="o">.</span><span class="n">integer_relations_integers</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+<span class="p">[</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">0</span> <span class="mi">2</span> <span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.IntegerRelations.IntegerRelations.integer_relations_kauers">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">integer_relations_kauers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">precision</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.IntegerRelations.IntegerRelations.integer_relations_kauers" title="Permalink to this definition"></a></dt>
+<dd><p>Computes all possible integer relations of the given algebraic integers.
+This is based on Ge’s algorithm as outlined in the PhD thesis of
+Manuel Kauers.</p>
+<p>INPUT:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">a</span></code> – a list of algebraic integers, not all integral</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">precision</span></code> (default: <code class="docutils literal notranslate"><span class="pre">100</span></code>) – to check if certain vectors really
+give rise to integer relations, numerical checks with this precision 
+are made before doing the symbolic check.</p></li>
+</ul>
+<p>OUTPUT:</p>
+<p>Let <span class="math notranslate nohighlight">\(a=(a_1,\dots,a_n)\)</span>. Returns a basis for the lattice of relations</p>
+<div class="math notranslate nohighlight">
+\[\{(e_1,\dots,e_n) \in \mathbb{Z}^n \colon a_1^{e_1}\dots a_n^{e_n}=1\}\]</div>
+<p>The basis is returned as the rows of a matrix over <code class="docutils literal notranslate"><span class="pre">Z</span></code>.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.IntegerRelations</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="rec_sequences.IntegerRelations.IntegerRelations.log">
+<span class="sig-name descname"><span class="pre">log</span></span><em class="property"> <span class="pre">=</span> <span class="pre">&lt;Logger</span> <span class="pre">IR</span> <span class="pre">(WARNING)&gt;</span></em><a class="headerlink" href="#rec_sequences.IntegerRelations.IntegerRelations.log" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="C2FiniteSequenceRingBounded.html" class="btn btn-neutral float-left" title="C2FiniteSequenceBounded and C2FiniteSequenceRingBounded" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="LinearSolveSequence.html" class="btn btn-neutral float-right" title="LinearSolveSequence" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Philipp Nuspl.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

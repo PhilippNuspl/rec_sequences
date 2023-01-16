@@ -71,7 +71,6 @@ from sage.rings.ring import CommutativeRing
 from sage.structure.element import CommutativeAlgebraElement
 from sage.rings.polynomial.polynomial_ring_constructor import PolynomialRing
 from sage.structure.element import RingElement
-from sage.structure.element import RingElement
 from sage.categories.pushout import ConstructionFunctor
 from sage.categories.fields import Fields
 from sage.categories.algebras import Algebras
@@ -576,8 +575,8 @@ class FractionSequence(CommutativeAlgebraElement):
         if k==0 :
             return self
 
-        return FractionSequence(self.parent(), self.numerator().shift(k), 
-                                self.denominator().shift(k))
+        return self.parent()(self.numerator().shift(k), 
+                             self.denominator().shift(k))
 
     def __invert__(self):
         r"""
@@ -620,8 +619,7 @@ class FractionSequence(CommutativeAlgebraElement):
             
         """
         if not self.parent()._strict or self.is_unit() :
-            return FractionSequence(self.parent(), self.denominator(), 
-                                    self.numerator())
+            return self.parent()(self.denominator(), self.numerator())
         else :
             raise ValueError("Sequence is not invertible")
 
@@ -664,7 +662,7 @@ class FractionSequence(CommutativeAlgebraElement):
         n2 = right.numerator()
         d2 = right.denominator()
 
-        return FractionSequence(self.parent(), n1*d2+d1*n2, d1*d2)
+        return self.parent()(n1*d2+d1*n2, d1*d2)
 
     def _neg_(self):
         r"""
@@ -688,8 +686,7 @@ class FractionSequence(CommutativeAlgebraElement):
             True
             
         """
-        return FractionSequence(self.parent(), 
-                                -self.numerator(), self.denominator())
+        return self.parent()(-self.numerator(), self.denominator())
 
     def _mul_(self, right):
         r"""
@@ -728,7 +725,7 @@ class FractionSequence(CommutativeAlgebraElement):
         n2 = right.numerator()
         d2 = right.denominator()
 
-        return FractionSequence(self.parent(), n1*n2, d1*d2)
+        return self.parent()(n1*n2, d1*d2)
 
     def __pow__(self, n, modulus = None):
         r"""
@@ -807,7 +804,7 @@ class FractionSequence(CommutativeAlgebraElement):
         """
         num = self.numerator().subsequence(u, v)
         denom = self.denominator().subsequence(u, v)
-        return FractionSequence(self.parent(), num, denom)
+        return self.parent()(num, denom)
     
     def interlace(self, *others):
         r"""
@@ -849,7 +846,7 @@ class FractionSequence(CommutativeAlgebraElement):
         interlaced_num = self.numerator().interlace(*others_num)
         interlaced_denom = self.denominator().interlace(*others_denom)
             
-        return FractionSequence(self.parent(), interlaced_num, interlaced_denom)
+        return self.parent()(interlaced_num, interlaced_denom)
     
     def prepend(self, values) :
         r"""
@@ -884,7 +881,7 @@ class FractionSequence(CommutativeAlgebraElement):
         num = self.numerator().prepend(values)
         K = self.parent().base_ring()
         denom = self.denominator().prepend(len(values)*[K(1)])
-        return FractionSequence(self.parent(), num, denom)
+        return self.parent()(num, denom)
     
 #base ring related functions
 
@@ -1079,7 +1076,8 @@ class SequenceRingOfFraction(UniqueRepresentation, CommutativeAlgebra):
         self._strict = strict
 
 
-    def _element_constructor_(self, x, y=None, check=True, is_gen = False, construct=False, **kwds):
+    def _element_constructor_(self, x, y=None, check=True, is_gen = False, 
+                              construct=False, **kwds):
         r"""
         Tries to construct a fraction sequence element.
 
@@ -1117,11 +1115,11 @@ class SequenceRingOfFraction(UniqueRepresentation, CommutativeAlgebra):
         if isinstance(x, SequenceRingOfFraction) :
             return x
         elif x!=None and y==None :
-            return FractionSequence(self, R(x), R.one())
+            return self.Element(self, R(x), R.one())
         elif x!=None and y!=None and not isinstance(x, list) and not isinstance(y, list):
-            return FractionSequence(self, R(x), R(y))
+            return self.Element(self, R(x), R(y))
         else :
-            return FractionSequence(self, R(x,y), R.one())
+            return self.Element(self, R(x,y), R.one())
 
     def one(self) :
         r"""
@@ -1202,7 +1200,7 @@ class SequenceRingOfFraction(UniqueRepresentation, CommutativeAlgebra):
         
         ``False``
         """
-        raise False
+        return False
 
     def is_commutative(self):
         r"""
@@ -1405,7 +1403,7 @@ class SequenceRingOfFraction(UniqueRepresentation, CommutativeAlgebra):
 class SequenceRingOfFractionFunctor(ConstructionFunctor):
     def __init__(self):
         r"""
-        Constructs a ``RecurrenceSequenceRingFunctor``.
+        Constructs a ``SequenceRingOfFractionFunctor``.
         """
         ConstructionFunctor.__init__(self, Fields(), Rings())
 

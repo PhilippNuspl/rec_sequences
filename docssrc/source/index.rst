@@ -198,6 +198,24 @@ to work with a sign pattern of a sequence which is cyclic from some term on.
     modules_docs/ZeroPattern
     modules_docs/SignPattern
 
+Bounded Sequences 
+------------------
+
+`C^2`-finite sequences which are defined by a linear recurrence with 
+coefficients being `C`-finite sequences where the leading coefficient
+is allowed to have finitely many zeros are defined in the ring 
+``C2FiniteSequenceRingBounded``. This definition allows us to find 
+bounds for the orders of closure properties and lets us compute these
+closure properties in a different more classical ways. For this, 
+there is also an implementation of Ge's algorithm for computing the
+exponent lattice of algebraic numbers in the class ``IntegerRelations``.
+
+.. toctree::
+    :maxdepth: 1
+
+    modules_docs/C2FiniteSequenceRingBounded
+    modules_docs/IntegerRelations
+
 Additional Modules 
 --------------------
 
@@ -215,6 +233,7 @@ Finally, ``utility`` contains various other auxiliary methods.
     modules_docs/LinearSolveSequence
     modules_docs/FunctionalEquation
     modules_docs/SequenceRingOfFraction
+    modules_docs/SequenceFieldOfFraction
     modules_docs/utility
 
 References
@@ -247,8 +266,13 @@ References
    James Worrell. 2021. Deciding ω-regular properties on linear recurrence 
    sequences. Proc. ACM Program. Lang. 5, POPL, Article 48 (January 2021)
    
-.. [OW14] Joël Ouaknine and James Worrell. Positivity problems for low-order linear 
-   recurrence sequences. In: Proceedings of SODA 14. 2014
+.. [OW14] Joël Ouaknine and James Worrell. Positivity problems for low-order 
+   linear recurrence sequences. In: Proceedings of SODA 14. 2014
+
+.. [F14] Paolo Faccin. Computational problems in algebra: units in group rings 
+   and subalgebras of real simple Lie algebras. PhD thesis. University of 
+   Trento. 2014
+
    
 
 Indices and tables

@@ -52,9 +52,14 @@
 <li class="toctree-l1"><a class="reference internal" href="modules_docs/SignPattern.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">SignPattern</span></code></a></li>
 </ul>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="modules_docs/C2FiniteSequenceRingBounded.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">C2FiniteSequenceBounded</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">C2FiniteSequenceRingBounded</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules_docs/IntegerRelations.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">IntegerRelations</span></code></a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="modules_docs/LinearSolveSequence.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">LinearSolveSequence</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="modules_docs/FunctionalEquation.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">FunctionalEquation</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="modules_docs/SequenceRingOfFraction.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">FractionSequence</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">SequenceRingOfFraction</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules_docs/SequenceFieldOfFraction.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">FractionFieldSequence</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">SequenceFieldOfFraction</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="modules_docs/utility.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">utility</span></code></a></li>
 </ul>
 
@@ -270,6 +275,23 @@ to work with a sign pattern of a sequence which is cyclic from some term on.</p>
 </ul>
 </div>
 </section>
+<section id="bounded-sequences">
+<h3>Bounded Sequences<a class="headerlink" href="#bounded-sequences" title="Permalink to this headline"></a></h3>
+<p><span class="math notranslate nohighlight">\(C^2\)</span>-finite sequences which are defined by a linear recurrence with
+coefficients being <span class="math notranslate nohighlight">\(C\)</span>-finite sequences where the leading coefficient
+is allowed to have finitely many zeros are defined in the ring
+<code class="docutils literal notranslate"><span class="pre">C2FiniteSequenceRingBounded</span></code>. This definition allows us to find
+bounds for the orders of closure properties and lets us compute these
+closure properties in a different more classical ways. For this,
+there is also an implementation of Ge’s algorithm for computing the
+exponent lattice of algebraic numbers in the class <code class="docutils literal notranslate"><span class="pre">IntegerRelations</span></code>.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules_docs/C2FiniteSequenceRingBounded.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">C2FiniteSequenceBounded</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">C2FiniteSequenceRingBounded</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules_docs/IntegerRelations.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">IntegerRelations</span></code></a></li>
+</ul>
+</div>
+</section>
 <section id="additional-modules">
 <h3>Additional Modules<a class="headerlink" href="#additional-modules" title="Permalink to this headline"></a></h3>
 <p>The following modules contain auxiliary methods. The class
@@ -284,6 +306,7 @@ Finally, <code class="docutils literal notranslate"><span class="pre">utility</s
 <li class="toctree-l1"><a class="reference internal" href="modules_docs/LinearSolveSequence.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">LinearSolveSequence</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="modules_docs/FunctionalEquation.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">FunctionalEquation</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="modules_docs/SequenceRingOfFraction.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">FractionSequence</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">SequenceRingOfFraction</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules_docs/SequenceFieldOfFraction.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">FractionFieldSequence</span></code>  and <code class="xref py py-class docutils literal notranslate"><span class="pre">SequenceFieldOfFraction</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="modules_docs/utility.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">utility</span></code></a></li>
 </ul>
 </div>
@@ -322,8 +345,13 @@ James Worrell. 2021. Deciding ω-regular properties on linear recurrence
 sequences. Proc. ACM Program. Lang. 5, POPL, Article 48 (January 2021)</p>
 </dd>
 <dt class="label" id="ow14"><span class="brackets">OW14</span></dt>
-<dd><p>Joël Ouaknine and James Worrell. Positivity problems for low-order linear
-recurrence sequences. In: Proceedings of SODA 14. 2014</p>
+<dd><p>Joël Ouaknine and James Worrell. Positivity problems for low-order
+linear recurrence sequences. In: Proceedings of SODA 14. 2014</p>
+</dd>
+<dt class="label" id="f14"><span class="brackets">F14</span></dt>
+<dd><p>Paolo Faccin. Computational problems in algebra: units in group rings
+and subalgebras of real simple Lie algebras. PhD thesis. University of
+Trento. 2014</p>
 </dd>
 </dl>
 </section>

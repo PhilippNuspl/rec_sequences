@@ -424,4 +424,3 @@ def ceil_SR_bound(a, bound) :
         approx = (a_approx*10**k+1).trunc()/10**k
         
     return QQ(approx)
-    
