@@ -406,7 +406,6 @@ class IntegerRelations :
             sage: IntegerRelations.integer_relations([I,0,-I])
             [ 1  0  1]
             [-2  0  2]
-            [ 0  1  0]
             sage: IntegerRelations.integer_relations([1,-1,2])
             [1 0 0]
             [0 2 0]
@@ -432,9 +431,7 @@ class IntegerRelations :
             relations = IntegerRelations._add_columns_to_matrix(relations, 
                                                                zero_matrix, 
                                                                zero_indices)
-            identity = identity_matrix(ZZ, relations.ncols())
-            new_rows = identity.matrix_from_rows(zero_indices)
-            return relations.stack(new_rows)
+            return relations
         
         # make sure that we only deal with algebraic integers
         to_algebraic_integer = IntegerRelations._to_algebraic_integer
@@ -531,7 +528,7 @@ class IntegerRelations :
         
         INPUT:
         
-        - ``a`` -- a list of algebraic integers, not all integral
+        - ``a`` -- a list of non-zero algebraic integers, not all integral
         - ``precision`` (default: ``100``) -- to check if certain vectors really
           give rise to integer relations, numerical checks with this precision 
           are made before doing the symbolic check.
@@ -629,14 +626,17 @@ class IntegerRelations :
         lam = 1/10
         t = ceil(log(U*(sqrt(s*n)+1)/lam, 10))
         log_info(f"U={U}, s={s}, n={n}, t={t} computed")
+        log_info(f"{x}")
         
         w = [IntegerRelations._p_rational_approximation(xi, 10, t) for xi in x]
+        log_info(f"{w}")
         log_info(f"Approximations computed")
         w_mat = matrix(QQ, w)
         b = identity_matrix(QQ, s)
         b = b.augment(10**t*w_mat)
         b_reduced = b.LLL()
         log_info(f"LLL performed")
+        log_info(f"{b_reduced}")
         for l0 in range(b_reduced.nrows()) :
             if b_reduced.row(l0).norm(2) > U :
                 break
@@ -649,6 +649,12 @@ class IntegerRelations :
         Computes all possible integer relations of the given algebraic integers.
         This is based on Ge's algorithm as outlined in the PhD thesis of
         Paolo Faccin [F14]_.
+        
+        .. warning::
+            This method might return wrong relations, so the output should be
+            checked carefully. For instance, the input ``[I, -I, 3, 4]`` yields,
+            among others, the relation ``[0, 0, 31867, -25254]`` which is 
+            clearly wrong.
         
         INPUT:
         
@@ -679,8 +685,8 @@ class IntegerRelations :
         K, x_K, _ = number_field_elements_from_algebraics(x)
         embeddings = K.embeddings(QQbar)
         n = K.degree()
-        log_info("Compute Masser bound")
         M = IntegerRelations._masser_bound(x, degree=n) 
+        log_info(f"Masser bound M={M} computed")
         
         log_info("Set up vectors for relations")
         u = []
