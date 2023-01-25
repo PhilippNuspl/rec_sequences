@@ -89,6 +89,15 @@ class ZeroPattern(SageObject):
         
         """
         SageObject.__init__(self)
+        
+        # make sure that progressions are not single terms
+        cleared_progressions = set()
+        for progression in progressions :
+            if progression.get_diff() != 0 :
+                cleared_progressions.add(progression)
+            else :
+                finite_set.add(progression.get_shift())
+        
         self._finite_set = finite_set
         self._progressions = progressions
 
@@ -498,6 +507,32 @@ class ZeroPattern(SageObject):
             if self[n] != False :
                 return False 
         return True
+        
+    def eventually_non_zero(self):
+        r"""
+        OUTPUT:
+        
+        Returns ``True`` if the pattern is eventually non-zero, i.e.,
+        the pattern only consists of finitely many zeros and no 
+        arithmetic progressions.
+        
+        EXAMPLES::
+        
+            sage: from rec_sequences.ZeroPattern import *
+        
+            sage: progressions = set([ArithmeticProgression(3, 3)])
+            sage: ZeroPattern(set([0]), progressions).eventually_non_zero()
+            False
+            sage: ZeroPattern(set([3])).eventually_non_zero()
+            True
+            sage: ZeroPattern().eventually_non_zero()
+            True
+        
+        """
+        if len(self.get_progressions()) > 0 :
+            return False
+        else :
+            return True
         
     def non_zero_start(self):
         r"""

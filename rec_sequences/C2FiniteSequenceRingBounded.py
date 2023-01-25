@@ -93,7 +93,8 @@ class C2FiniteSequenceBounded(DifferenceDefinableSequence):
         .. NOTE::
         
             We assume that the leading coefficient `c_r` only contains finitely 
-            many zero terms.
+            many zero terms and enough initial values are given such that the
+            sequence can be uniquely continued.
         
         INPUT:
 
@@ -131,7 +132,7 @@ class C2FiniteSequenceBounded(DifferenceDefinableSequence):
                             "ring.")
 
         DifferenceDefinableSequence.__init__(self, parent, coefficients,
-                                             initial_values, name, is_gen,
+                                             initial_values, name, True, is_gen,
                                              construct, cache, *args, **kwds)
 
 #tests
@@ -171,15 +172,7 @@ class C2FiniteSequenceBounded(DifferenceDefinableSequence):
             and initial values a(0)=1  
             
         """
-        if name==None :
-            name = self._name
-        r = "C^2-finite sequence of order {}".format(self.order())
-        r += " and degree {} with coefficients:\n".format(self.degree())
-        for i in range(self.order()+1) :
-            r += f" > c{i} (n) : " + self._coefficients[i]._repr_(name=f"c{i}") + "\n"
-        init_repr = [f"{self._name}({i})={val}" for i, val in enumerate(self._initial_values)]
-        r += "and initial values " + " , ".join(init_repr)
-        return r
+        return super()._repr_(ring_name = "C^2-finite")
 
     def _latex_(self, name=None):
         r"""
@@ -208,23 +201,7 @@ class C2FiniteSequenceBounded(DifferenceDefinableSequence):
             \left(2^{n} + 1\right)\cdot a(n) + \left(3^{n}\right) \cdot a(n+1) = 0 \quad a(0)=1
             
         """
-        if name==None :
-            name = self._name
-        coeffs = [(index, coeff) for index, coeff \
-                                 in enumerate(self.coefficients()[1:], 1) \
-                                 if not coeff.is_zero()]
-        coeffs_repr = [r"\left({}\right) \cdot {}(n+{})".format(coeff._latex_(), name, i) \
-                                 for i, coeff in coeffs]
-        init_repr = ["{}({})={}".format(name, i, val) \
-                                 for i, val in enumerate(self._initial_values)]
-        r = r"\left({}\right)\cdot {}(n)".format(self.coefficients()[0]._latex_(), name)
-        if self.order() > 0 :
-            r += " + " + " + ".join(coeffs_repr) + " = 0"
-        elif self.order() == 0 :
-            r += " = 0"
-        r += r" \quad " + " , ".join(init_repr)
-
-        return r
+        return super()._latex_()
 
 # helper for arithmetic
     def eigenvalues(self) :
@@ -289,9 +266,9 @@ class C2FiniteSequenceBounded(DifferenceDefinableSequence):
             
         eigenvalues = list(set(eigenvalues))
         basis_relations = IntegerRelations.integer_relations(eigenvalues)
-        
         divisors = basis_relations.elementary_divisors()
-        return sorted(divisors)[-1]
+        
+        return sorted(divisors)[-1] if divisors else 1
     
     # arithmetic operations 
     
@@ -328,8 +305,10 @@ class C2FiniteSequenceBounded(DifferenceDefinableSequence):
             w0 = identity_matrix(QC, M.ncols()).column(0)
             
             recurrence = self.parent()._compute_recurrence(M, w0)
-            # TODO: make sure to compute sufficiently many initial values
-            initial_values = [self[u*n] for n in range(len(recurrence))]
+            compute_initial_values = lambda bound : \
+                    [self[u*n] for n in range(bound)]
+            initial_values = C2FiniteSequenceBounded._compute_initial_values(
+                compute_initial_values, recurrence)
             
             return self.parent()(recurrence, initial_values)
             
@@ -389,9 +368,10 @@ class C2FiniteSequenceBounded(DifferenceDefinableSequence):
             w0[0] = QC(1); w0[a_subs.order()] = QC(1)
 
             recurrence = self.parent()._compute_recurrence(M, w0)
-            # TODO: make sure to compute sufficiently many initial values
-            r = len(recurrence)
-            initial_values = [sum(x) for x in zip(a_subs[:r], b_subs[:r])]
+            compute_initial_values = lambda bound : \
+                    [sum(x) for x in zip(a_subs[:bound], b_subs[:bound])]
+            initial_values = C2FiniteSequenceBounded._compute_initial_values(
+                compute_initial_values, recurrence)
             
             subsequences.append(self.parent()(recurrence, initial_values))
             
@@ -447,13 +427,23 @@ class C2FiniteSequenceBounded(DifferenceDefinableSequence):
             w0[0] = QC(1)
 
             recurrence = self.parent()._compute_recurrence(M, w0)
-            # TODO: make sure to compute sufficiently many initial values
-            r = len(recurrence)
-            initial_values = [prod(x) for x in zip(a_subs[:r], b_subs[:r])]
+            compute_initial_values = lambda bound : \
+                    [prod(x) for x in zip(a_subs[:bound], b_subs[:bound])]
+            initial_values = C2FiniteSequenceBounded._compute_initial_values(
+                compute_initial_values, recurrence)
             
             subsequences.append(self.parent()(recurrence, initial_values))
             
         return subsequences[0].interlace(*subsequences[1:])
+    
+    @staticmethod
+    def _compute_initial_values(method, recurrence) :
+        r"""
+        """
+        leading_coefficient = recurrence[-1]
+        order = len(recurrence)-1
+        n0 = leading_coefficient.zeros().non_zero_start()
+        return method(n0+order)
 
 
 ####################################################################################################
@@ -646,4 +636,59 @@ class C2FiniteSequenceRingBounded(DifferenceDefinableSequenceRing):
         
         return solution_cleared
         
+    def _compute_sparse_subsequence(self, seq, u=1, v=0, w=0, 
+                                    binomial_basis=False) :
+        r"""
+        Returns the sequence `c(u n^2 + vn + w)`.
         
+        .. NOTE::
+        
+            The sequence need to be defined in the given range.
+            If the sequence cannot be extended to the negative numbers
+            (if the trailing coefficient is zero), then the indices 
+            `u n^2 + vn +w` all have to be non-negative for every `n`. 
+        
+        INPUT:
+        
+        - ``seq`` -- a sequence in the base ring of ``self``
+        - ``u`` (default: ``1``) -- an integer
+        - ``v`` (default: ``0``) -- an integer
+        - ``w`` (default: ``0``) -- an integer
+        - ``binomial_basis`` (default: ``False``) -- a boolean; if ``True``
+          the sequence `c(u \binom{n,2} + vn + w)` is computed instead, i.e.
+          the binomial basis is chosen instead of the monomial one.
+        
+        OUTPUT:
+        
+        The sequence `seq(u n^2 + vn + w)`.
+        """
+        if binomial_basis :
+            raise NotImplementedError
+        
+        # compute torsion number
+        eigenvalues = seq.roots(multiplicities=False)
+        basis_relations = IntegerRelations.integer_relations(eigenvalues)
+
+        divisors = basis_relations.elementary_divisors()
+        d = sorted(divisors)[-1] if divisors else 1
+            
+        # compute sparse subsequence by interlacing
+        QC = SequenceFieldOfFraction(self.base())
+        subsequences = []
+        for rem in range(d) :
+            j, k, l = d**2**u, d*(2*u*rem+v), u*rem**2+v*rem+w 
+            A = seq._companion_sparse_subsequence(2*j, j).change_ring(QC)
+            v0_matrix = seq._companion_sparse_subsequence(k, l-rem+1)
+            v0 = v0_matrix.column(seq.order()-1).change_ring(QC)
+            
+            recurrence = self._compute_recurrence(A, v0)   
+            compute_initial_values = lambda bound : \
+                    [seq[j*n**2+k*n+l] for n in range(bound)]
+            initial_values = C2FiniteSequenceBounded._compute_initial_values(
+                compute_initial_values, recurrence)
+            
+            subsequence = self(recurrence, initial_values) 
+            subsequences.append(subsequence)
+            
+        return subsequences[0].interlace(*subsequences[1:])
+    

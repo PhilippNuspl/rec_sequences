@@ -110,9 +110,8 @@ class RecurrenceSequenceElement(CommutativeAlgebraElement):
         CommutativeAlgebraElement.__init__(self, parent)
         
         K = parent.base_ring()
-        order = len(coefficients)-1
-        self._initial_values = [K(i) for i in initial_values[:order]]
-        self._values = list(self._initial_values)
+        self._initial_values = [K(i) for i in initial_values]
+        self._values = self._initial_values
         self._name = name
         self._is_gen = is_gen
 

@@ -135,8 +135,8 @@ class DifferenceDefinableSequence(RecurrenceSequenceElement):
 
     log = logging.getLogger("DDS")
 
-    def __init__(self, parent, coefficients, initial_values, name = "a", 
-                 is_gen = False, construct=False, cache=True):
+    def __init__(self, parent, coefficients, initial_values, name = "a",
+                 check_lc = False, is_gen = False, construct=False, cache=True):
         r"""
         Construct a difference definable sequence `a(n)` with recurrence
 
@@ -145,20 +145,21 @@ class DifferenceDefinableSequence(RecurrenceSequenceElement):
 
         from given list of coefficients `c_0, ... , c_r` and given list of
         initial values `a(0), ..., a(r-1)`.
-
-        .. NOTE::
-        
-            We assume that the leading coefficient `c_r` does not contain any 
-            zero terms. If it does, this might yield problems in later 
-            computations.
         
         INPUT:
 
         - ``parent`` -- a ``DifferenceDefinableSequenceRing``
         - ``coefficients`` -- the coefficients of the recurrence
         - ``initial_values`` -- a list of initial values, determining the 
-          sequence with at least order of the recurrence many values
-        - ``name`` (default "a") -- a name for the sequence
+          sequence with at least order of the recurrence many values; it is
+          assumed that any additional initial values are consistent with the
+          recurrence.
+        - ``name`` (default: ``"a"``) -- a name for the sequence
+        - ``check_lc`` (default: ``False``) -- if ``True`` the zeros of the 
+           leading coefficient are checked. In this case in may have finitely
+           many zeros if enough initial values are given such that the sequence
+           can be continued uniquely. If ``False`` nothing is checked and it is
+           assumed that the leading coefficient has no zeros.
 
         OUTPUT:
 
@@ -194,7 +195,26 @@ class DifferenceDefinableSequence(RecurrenceSequenceElement):
         self._coefficients = coefficients
         self._degree = max([coeff.order() for coeff in self._coefficients])
 
-        self._create_values(20)
+        # create more terms from the given initial values and the recurrence
+        order = self.order()
+        # the maximal number of leading coefficients necessary to uniquely
+        # define the sequence
+        self._max_lc = order
+        if check_lc :
+            leading_coefficient = self.leading_coefficient()
+            zeros = leading_coefficient.zeros()
+            if not zeros.eventually_non_zero() :
+                raise ValueError("Leading coefficient has infinitely many "
+                                 "zeros")
+            # make sure that enough initial values are given to uniquely 
+            # determine rest of sequence 
+            n0 = zeros.non_zero_start()
+            self._max_lc = n0 + order
+            if len(initial_values) < self._max_lc :
+                raise ValueError("Not enough initial values given")
+            self._create_values(self._max_lc+20)
+        else :
+            self._create_values(order+20)
 
 #tests
     def compress(self) :
@@ -236,7 +256,8 @@ class DifferenceDefinableSequence(RecurrenceSequenceElement):
         pre_computed = len(self._values) - 1
 
         for i in range(1+pre_computed-self.order(), n+1-self.order()) :
-            new_value = sum(coeff[i]*self._values[i+j] for j, coeff in enumerate(self.coefficients()[:-1]))
+            new_value = sum(coeff[i]*self._values[i+j] 
+                            for j, coeff in enumerate(self.coefficients()[:-1]))
             self._values.append(-1/(self.coefficients()[-1][i])*new_value)
 
 #conversion
@@ -383,7 +404,7 @@ class DifferenceDefinableSequence(RecurrenceSequenceElement):
         """
         return super().__hash__()
 
-    def _repr_(self, name=None):
+    def _repr_(self, name=None, ring_name = "Difference definable"):
         r"""
         Produces a string representation of the sequence.
         
@@ -391,6 +412,8 @@ class DifferenceDefinableSequence(RecurrenceSequenceElement):
         
         - ``name`` (optional) -- a string used as the name of the sequence;
           if not given, ``self.name()`` is used.
+        - ``ring_name `` (default: ``"Difference definable"``) -- used to
+          specify from which ring the given sequence is coming from.
         
         OUTPUT:
         
@@ -416,11 +439,13 @@ class DifferenceDefinableSequence(RecurrenceSequenceElement):
         """
         if name==None :
             name = self._name
-        r = "Difference definable sequence of order {}".format(self.order())
+        r = f"{ring_name} sequence of order {self.order()}"
         r += " and degree {} with coefficients:\n".format(self.degree())
         for i in range(self.order()+1) :
             r += f" > c{i} (n) : " + self._coefficients[i]._repr_(name=f"c{i}") + "\n"
-        init_repr = [f"{self._name}({i})={val}" for i, val in enumerate(self._initial_values)]
+        initial_values = self.initial_values()[:self._max_lc]
+        init_repr = [f"{self._name}({i})={val}" 
+                        for i, val in enumerate(initial_values)]
         r += "and initial values " + " , ".join(init_repr)
         return r
 
@@ -456,8 +481,9 @@ class DifferenceDefinableSequence(RecurrenceSequenceElement):
                                  if not coeff.is_zero()]
         coeffs_repr = [r"\left({}\right) \cdot {}(n+{})".format(coeff._latex_(), name, i) \
                                  for i, coeff in coeffs]
-        init_repr = ["{}({})={}".format(name, i, val) \
-                                 for i, val in enumerate(self._initial_values)]
+        initial_values = self.initial_values()[:self._max_lc]
+        init_repr = ["{}({})={}".format(name, i, val) 
+                                 for i, val in enumerate(initial_values)]
         r = r"\left({}\right)\cdot {}(n)".format(self.coefficients()[0]._latex_(), name)
         if self.order() > 0 :
             r += " + " + " + ".join(coeffs_repr) + " = 0"
@@ -1359,6 +1385,49 @@ class DifferenceDefinableSequenceRing(RecurrenceSequenceRing):
             if M_eval.rank() != M_aug_eval.rank() :
                 return False
         return True
+    
+    def _compute_sparse_subsequence(self, seq, u=1, v=0, w=0, 
+                                    binomial_basis=False) :
+        r"""
+        Returns the sequence `c(u n^2 + vn + w)`.
+        
+        .. NOTE::
+        
+            The sequence need to be defined in the given range.
+            If the sequence cannot be extended to the negative numbers
+            (if the trailing coefficient is zero), then the indices 
+            `u n^2 + vn +w` all have to be non-negative for every `n`. 
+        
+        INPUT:
+        
+        - ``seq`` -- a sequence in the base ring of ``self``
+        - ``u`` (default: ``1``) -- an integer
+        - ``v`` (default: ``0``) -- an integer
+        - ``w`` (default: ``0``) -- an integer
+        - ``binomial_basis`` (default: ``False``) -- a boolean; if ``True``
+          the sequence `c(u \binom{n,2} + vn + w)` is computed instead, i.e.
+          the binomial basis is chosen instead of the monomial one.
+        
+        OUTPUT:
+        
+        The sequence `seq(u n^2 + vn + w)`.
+        """
+        if not binomial_basis :
+            # always compute with binomial basis
+            return self._compute_sparse_subsequence(seq, 2*u, v+u, w, 
+                                                    binomial_basis=True)
+        
+        QR = SequenceRingOfFraction(seq.parent())
+        A = seq._companion_sparse_subsequence(u, 0).change_ring(QR)
+        r = seq.order()
+        v0_matrix = seq._companion_sparse_subsequence(v, w-r+1)
+        v0 = v0_matrix.column(r-1).change_ring(QR)
+        
+        rec = self._compute_recurrence(A, v0)    
+        r = len(rec)
+        initial_values = [seq[u*binomial(n,2)+v*n+w] for n in range(r)]
+
+        return self(rec, initial_values).clear_common_factor()
 
 class DifferenceDefinableSequenceRingFunctor(RecurrenceSequenceRingFunctor):
     def __init__(self):

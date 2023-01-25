@@ -224,15 +224,7 @@ class C2FiniteSequence(DifferenceDefinableSequence):
             and initial values a(0)=1  
             
         """
-        if name==None :
-            name = self._name
-        r = "C^2-finite sequence of order {}".format(self.order())
-        r += " and degree {} with coefficients:\n".format(self.degree())
-        for i in range(self.order()+1) :
-            r += f" > c{i} (n) : " + self._coefficients[i]._repr_(name=f"c{i}") + "\n"
-        init_repr = [f"{self._name}({i})={val}" for i, val in enumerate(self._initial_values)]
-        r += "and initial values " + " , ".join(init_repr)
-        return r
+        return super()._repr_(ring_name = "C^2-finite")
 
     def _latex_(self, name=None):
         r"""
@@ -261,23 +253,7 @@ class C2FiniteSequence(DifferenceDefinableSequence):
             \left(2^{n} + 1\right)\cdot a(n) + \left(3^{n}\right) \cdot a(n+1) = 0 \quad a(0)=1
             
         """
-        if name==None :
-            name = self._name
-        coeffs = [(index, coeff) for index, coeff \
-                                 in enumerate(self.coefficients()[1:], 1) \
-                                 if not coeff.is_zero()]
-        coeffs_repr = [r"\left({}\right) \cdot {}(n+{})".format(coeff._latex_(), name, i) \
-                                 for i, coeff in coeffs]
-        init_repr = ["{}({})={}".format(name, i, val) \
-                                 for i, val in enumerate(self._initial_values)]
-        r = r"\left({}\right)\cdot {}(n)".format(self.coefficients()[0]._latex_(), name)
-        if self.order() > 0 :
-            r += " + " + " + ".join(coeffs_repr) + " = 0"
-        elif self.order() == 0 :
-            r += " = 0"
-        r += r" \quad " + " , ".join(init_repr)
-
-        return r
+        return super()._latex_()
 
 # helper for arithmetic
 

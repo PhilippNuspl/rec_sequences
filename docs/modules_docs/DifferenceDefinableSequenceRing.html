@@ -136,32 +136,36 @@ This is based on the theory and algorithms developed in <a class="reference inte
 </div>
 <dl class="py class">
 <dt class="sig sig-object py" id="rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequence">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">rec_sequences.DifferenceDefinableSequenceRing.</span></span><span class="sig-name descname"><span class="pre">DifferenceDefinableSequence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coefficients</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'a'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_gen</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">construct</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequence" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">rec_sequences.DifferenceDefinableSequenceRing.</span></span><span class="sig-name descname"><span class="pre">DifferenceDefinableSequence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coefficients</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'a'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_lc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_gen</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">construct</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequence" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="RecurrenceSequenceRing.html#rec_sequences.RecurrenceSequenceRing.RecurrenceSequenceElement" title="rec_sequences.RecurrenceSequenceRing.RecurrenceSequenceElement"><code class="xref py py-class docutils literal notranslate"><span class="pre">rec_sequences.RecurrenceSequenceRing.RecurrenceSequenceElement</span></code></a></p>
 <p>A difference definable sequence, i.e. a sequence where every term can be determined by a linear recurrence
 with coefficients coming from a difference ring and finitely many initial values. We assume that this
 recurrence holds for all values and that the leading coefficient is non-zero for all n (this is not checked).</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequence.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coefficients</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'a'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_gen</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">construct</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequence.__init__" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coefficients</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'a'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_lc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_gen</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">construct</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequence.__init__" title="Permalink to this definition"></a></dt>
 <dd><p>Construct a difference definable sequence <span class="math notranslate nohighlight">\(a(n)\)</span> with recurrence</p>
 <div class="math notranslate nohighlight">
 \[c_0(n) a(n) + \dots + c_r(n) a(n+r) = 0 \text{ for all } n \geq 0\]</div>
 <p>from given list of coefficients <span class="math notranslate nohighlight">\(c_0, ... , c_r\)</span> and given list of
 initial values <span class="math notranslate nohighlight">\(a(0), ..., a(r-1)\)</span>.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>We assume that the leading coefficient <span class="math notranslate nohighlight">\(c_r\)</span> does not contain any 
-zero terms. If it does, this might yield problems in later 
-computations.</p>
-</div>
 <p>INPUT:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">parent</span></code> – a <code class="docutils literal notranslate"><span class="pre">DifferenceDefinableSequenceRing</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">coefficients</span></code> – the coefficients of the recurrence</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">initial_values</span></code> – a list of initial values, determining the 
-sequence with at least order of the recurrence many values</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code> (default “a”) – a name for the sequence</p></li>
+sequence with at least order of the recurrence many values; it is
+assumed that any additional initial values are consistent with the
+recurrence.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code> (default: <code class="docutils literal notranslate"><span class="pre">&quot;a&quot;</span></code>) – a name for the sequence</p></li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">check_lc</span></code> (default: <code class="docutils literal notranslate"><span class="pre">False</span></code>) – if <code class="docutils literal notranslate"><span class="pre">True</span></code> the zeros of the </dt><dd><p>leading coefficient are checked. In this case in may have finitely
+many zeros if enough initial values are given such that the sequence
+can be continued uniquely. If <code class="docutils literal notranslate"><span class="pre">False</span></code> nothing is checked and it is
+assumed that the leading coefficient has no zeros.</p>
+</dd>
+</dl>
+</li>
 </ul>
 <p>OUTPUT:</p>
 <p>A sequence determined by the given recurrence and 
@@ -282,12 +286,14 @@ termwise product (Hadamard product) of <code class="docutils literal notranslate
 
 <dl class="py method">
 <dt class="sig sig-object py" id="rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequence._repr_">
-<span class="sig-name descname"><span class="pre">_repr_</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequence._repr_" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">_repr_</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ring_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Difference</span> <span class="pre">definable'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.DifferenceDefinableSequenceRing.DifferenceDefinableSequence._repr_" title="Permalink to this definition"></a></dt>
 <dd><p>Produces a string representation of the sequence.</p>
 <p>INPUT:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">name</span></code> (optional) – a string used as the name of the sequence;
 if not given, <code class="docutils literal notranslate"><span class="pre">self.name()</span></code> is used.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ring_name</span> <span class="pre">``</span> <span class="pre">(default:</span> <span class="pre">``&quot;Difference</span> <span class="pre">definable&quot;</span></code>) – used to
+specify from which ring the given sequence is coming from.</p></li>
 </ul>
 <p>OUTPUT:</p>
 <p>A string representation of the sequence consisting of the recurrence

@@ -221,6 +221,27 @@ arithmetic progressions.</p></li>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="rec_sequences.ZeroPattern.ZeroPattern.eventually_non_zero">
+<span class="sig-name descname"><span class="pre">eventually_non_zero</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.ZeroPattern.ZeroPattern.eventually_non_zero" title="Permalink to this definition"></a></dt>
+<dd><p>OUTPUT:</p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the pattern is eventually non-zero, i.e.,
+the pattern only consists of finitely many zeros and no 
+arithmetic progressions.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">rec_sequences.ZeroPattern</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">progressions</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="n">ArithmeticProgression</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">ZeroPattern</span><span class="p">(</span><span class="nb">set</span><span class="p">([</span><span class="mi">0</span><span class="p">]),</span> <span class="n">progressions</span><span class="p">)</span><span class="o">.</span><span class="n">eventually_non_zero</span><span class="p">()</span>
+<span class="kc">False</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">ZeroPattern</span><span class="p">(</span><span class="nb">set</span><span class="p">([</span><span class="mi">3</span><span class="p">]))</span><span class="o">.</span><span class="n">eventually_non_zero</span><span class="p">()</span>
+<span class="kc">True</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">ZeroPattern</span><span class="p">()</span><span class="o">.</span><span class="n">eventually_non_zero</span><span class="p">()</span>
+<span class="kc">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="rec_sequences.ZeroPattern.ZeroPattern.from_zero_pattern">
 <em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">from_zero_pattern</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">finite_set</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cycle_start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cycle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rec_sequences.ZeroPattern.ZeroPattern.from_zero_pattern" title="Permalink to this definition"></a></dt>
 <dd><p>Creates a zero pattern with the given set <code class="docutils literal notranslate"><span class="pre">finite_set</span></code> and the

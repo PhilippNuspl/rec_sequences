@@ -195,7 +195,8 @@ class DFiniteSequence(RecurrenceSequenceElement):
             raise ValueError("No coefficients given.")
 
         self._recurrence = self.parent().associated_ore_algebra()(coefficients)
-        self._values = self._recurrence.to_list(self.initial_values(), 20)
+        order = len(coefficients)-1
+        self._values = self._recurrence.to_list(self.initial_values(), order+20)
         
     @staticmethod
     def _largest_zeros_of_polynomial(poly) :
@@ -953,7 +954,9 @@ class DFiniteSequence(RecurrenceSequenceElement):
                                  in enumerate(self.coefficients()[1:], 1) \
                                  if not coeff.is_zero()]
         coeffs_repr = [f"({coeff})*{name}(n+{i})" for i, coeff in coeffs]
-        init_repr = [f"{name}({i})={val}" for i, val in enumerate(self._initial_values)]
+        initial_values = self.initial_values()[:self.order()]
+        init_repr = [f"{name}({i})={val}" 
+                        for i, val in enumerate(initial_values)]
         r = "D-finite sequence {}(n): ".format(name)
         r += "({})*{}(n)".format(self.coefficients()[0], name)
         if self.order() > 0 :

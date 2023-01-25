@@ -65,6 +65,7 @@ import logging
 from copy import copy
 from math import factorial
 from operator import pow
+# from rec_sequences.C2FiniteSequenceRingBounded import C2FiniteSequenceRingBounded
 from rec_sequences.RecurrenceSequenceRing import RecurrenceSequenceRing
 
 from numpy import random
@@ -762,7 +763,8 @@ class CFiniteSequence(DFiniteSequence):
             logger.info("Try showing positivity with ball arithmetic")
             return self._is_positive_dominant_root_CBF(strict=strict)
         except ValueError as err :
-            if "Ball arithmetic not precise enough" in str(err) :
+            if "Ball arithmetic not precise enough" in str(err) or \
+               "unable to invert this matrix" in str(err):
                 logger.info("Ball arithmetic did not work. Try exact.")
                 return self._is_positive_dominant_root_QQbar(strict=strict)
             else :
@@ -772,6 +774,8 @@ class CFiniteSequence(DFiniteSequence):
         r"""
         """
         ball_arith_error = ValueError("Ball arithmetic not precise enough")
+        lc_negative = ValueError("Leading coefficient of polynomial is not "
+                                 "positive")
         
         logger = CFiniteSequence.log
         def bound_poly_CBF(p) :
@@ -826,8 +830,7 @@ class CFiniteSequence(DFiniteSequence):
             # algebraic
             lc = CBF(p.leading_coefficient()).real()
             if lc <= 0 :
-                raise ValueError("Leading coefficient of polynomial is not "
-                                 "positive")
+                raise lc_negative
             if not lc > 0 :
                 raise ball_arith_error
             p_deriv = p.derivative()
@@ -901,11 +904,13 @@ class CFiniteSequence(DFiniteSequence):
             N = ZZ(max(bound, 1))
             logger.info(f"Bound {N} computed. Check first {N} terms")
         except ValueError as err:
-            if err == ball_arith_error :
-                raise err
-            else :
+            if err == lc_negative :
                 # leading coeff of leading polynomial negative
+                logger.info("Leading coefficient negative")
+                #raise ValueError("something wrong")
                 return False
+            else :
+                raise err 
         if all([cond(term) for term in self[:N]]) :
             return True
         else :
@@ -1409,7 +1414,9 @@ class CFiniteSequence(DFiniteSequence):
                                  in enumerate(self.coefficients()[1:], 1) \
                                  if not coeff.is_zero()]
         coeffs_repr = [f"({coeff})*{name}(n+{i})" for i, coeff in coeffs]
-        init_repr = [f"{name}({i})={val}" for i, val in enumerate(self._initial_values)]
+        initial_values = self.initial_values()[:self.order()]
+        init_repr = [f"{name}({i})={val}" 
+                        for i, val in enumerate(initial_values)]
         r = "C-finite sequence {}(n): ".format(name)
         r += "({})*{}(n)".format(self.coefficients()[0], name)
         if self.order() > 0 :
@@ -1789,22 +1796,8 @@ class CFiniteSequence(DFiniteSequence):
         """
         if u == 0 :
             return self.subsequence(v, w)
-        
-        if not binomial_basis :
-            # always compute with binomial basis
-            return self.sparse_subsequence(R, 2*u, v+u, w, binomial_basis=True)
-        
-        QR = SequenceRingOfFraction(self.parent())
-        A = self._companion_sparse_subsequence(u, 0).change_ring(QR)
-        r = self.order()
-        v0_matrix = self._companion_sparse_subsequence(v, w-r+1)
-        v0 = v0_matrix.column(r-1).change_ring(QR)
-        
-        rec = R._compute_recurrence(A, v0)    
-        r = len(rec)
-        initial_values = [self[u*binomial(n,2)+v*n+w] for n in range(r)]
-
-        return R(rec, initial_values).clear_common_factor()
+                
+        return R._compute_sparse_subsequence(self, u, v, w, binomial_basis)
     
     def subsequence(self, u, v=0, guessing=1):
         r"""
