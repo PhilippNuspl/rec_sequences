@@ -1875,22 +1875,50 @@ class DFiniteSequenceRing(RecurrenceSequenceRing):
         If no recurrence could be found, a ValueError is raised.
         If a recurrence could be found, the associated ore polynomial is 
         returned.
-        If ``cut`` is specified and ``True``, then only the minimal number
-        of equations necessary to have the given ``ensure`` are used.
+        If ``cut`` is specified and ``False``, then not only the minimal number
+        of equations necessary to have the given ``ensure`` are used but all 
+        possible.
         """
         ring = self.associated_ore_algebra().base_ring()
         D = len(data)-1
         max_order = floor((D-ensure)/2)
+        if "sparse" in kwds and kwds["sparse"] > 0 :
+            max_check = min(kwds["sparse"], len(data))
+            # z is ratio of non-zeros in the given data
+            z = 1-data[:max_check].count(0)/max_check
+            if z < 1/10 :
+                # sequence has many zeros, e.g. might be
+                # eventually zero
+                z = 1/10
+            ensure = floor(ensure/z)
+            log(self.Element, 
+                f"Guessing: density of non-zero elements {z}")
+            max_order = 0
+            while floor((max_order+1)*z) <= (z*D-z*ensure)/2-1 :
+                max_order += 1
+            # max_order=r is maximal with (z*N-z*ens)/2-1 >= floor(r*z)
+        if "max_order" in kwds :
+            max_order = min(kwds["max_order"], max_order)
         for r in range(0, max_order+1) :
             max_degree = floor((D-ensure-2*r)/(r+1))
+            if "sparse" in kwds and kwds["sparse"] > 0 :
+                rz = floor(r*z)
+                max_degree = floor((z*D-z*ensure-2*(rz+1))/(rz+1))
             if "max_degree" in kwds :
                 max_degree = min(kwds["max_degree"], max_degree)
             for d in range(0, max_degree+1) :
                 # populate linear system
-                N = D-r+1
-                if "cut" in kwds and kwds["cut"] :
-                    N = (r+1)*(d+1) + ensure
+                N = (r+1)*(d+1) + ensure
+                if "sparse" in kwds and kwds["sparse"] > 0 :
+                    rz = floor(r*z)
+                    N  = floor(((rz+1)*(d+2))/z + ensure)
+                    if N+r > D or N < (r+1)*(d+1) + ensure:
+                        break
+                if "cut" in kwds and not kwds["cut"] :
+                    N = D-r+1
                 M = matrix(QQ, N, (r+1)*(d+1))
+                log(self.Element, 
+                    f"Guessing: Set up linear system of size {N}x{(r+1)*(d+1)}" f" for order={r}, degree={d}")
                 #print(f"dimensions of M={M.dimensions()}")
                 for n in range(0, N) :
                     M.set_row(n, flatten([[(n**l)*data[n+k] for l in range(d+1)
