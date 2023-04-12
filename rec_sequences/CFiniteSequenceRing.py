@@ -226,6 +226,12 @@ class CFiniteSequence(DFiniteSequence):
             c = self
         else :
             c = self.shift(N).compress()
+            if c.coefficients()[0] == 0 :
+                # something went wrong, this can happen if guessing
+                # was done badly
+                terms = self[N:(self.order()*2+N)]
+                op = self.parent()._own_guess(terms, ensure=0, max_degree=0)
+                c = self.parent()(op.list(), terms[:op.order()])
             
         return (N, c)
         
@@ -697,15 +703,22 @@ class CFiniteSequence(DFiniteSequence):
                     subsequences.append(seq)
                     if not seq.is_zero() :
                         seq._has_dominant_root_num()
-            except ValueError :
+            except ValueError as e:
                 # one of the subsequences does not have a unique maximal ev
                 # increase decomposition
                 k += 1
                 continue      
             
             for seq in subsequences :
-                if not seq.is_positive_dominant_root(strict=strict) :
-                    return False
+                try :
+                    if not seq.is_positive_dominant_root(strict=strict) :
+                        return False
+                except ValueError as e:
+                    if str(e).startswith("unable to isolate the roots") :
+                        return self._is_positive_dominant_root_decompose(strict)
+                    else :
+                        raise e
+                    
             # all subsequences are positive
             return True
             
@@ -715,7 +728,7 @@ class CFiniteSequence(DFiniteSequence):
         """
         subseqs = self.decompose_degenerate()
         for seq in subseqs :
-            positive = seq.is_positive_dominant_root(strict=strict)
+            positive = seq._is_positive_dominant_root_QQbar(strict=strict)
             if not positive :
                 return False
         return True
@@ -999,7 +1012,7 @@ class CFiniteSequence(DFiniteSequence):
         N, c = self.nonzero_trailing_coefficient()
         if N > 0 :
             if all([cond(term) for term in self[:N]]) :
-                return c._is_positive_dominant_root(strict=strict)
+                return c._is_positive_dominant_root_QQbar(strict=strict)
             else :
                 return False
            
@@ -1820,8 +1833,8 @@ class CFiniteSequence(DFiniteSequence):
             sage: C = CFiniteSequenceRing(QQ)
             
             sage: a = C([2,-1], [1])
-            sage: a.subsequence(3, 1)
-            C-finite sequence a(n): (8)*a(n) + (-1)*a(n+1) = 0 and a(0)=2
+            sage: a.subsequence(3, 1).normalized()
+            C-finite sequence a(n): (-8)*a(n) + (1)*a(n+1) = 0 and a(0)=2
             
             sage: f = C([1,1,-1], [0,1])
             sage: f[:10]
@@ -1842,11 +1855,12 @@ class CFiniteSequence(DFiniteSequence):
                 # make sure that len(terms) >= 2(r+1) as
                 # subsequence has order at most r
                 terms = self[v:(v+2*u*(r+1))+1:u]
-                guess = self.parent().guess(terms)
-                if guess.order() > r :
+                op = self.parent()._own_guess(terms, ensure=0, cut=False, 
+                                              max_order=r, max_degree=0)
+                if op.order() > r :
                     raise ValueError("Subsequence must have order at most r")
                 else :
-                    return guess
+                    return self.parent()(op.list(), terms[:op.order()])
             except ValueError as e:
                 pass
             

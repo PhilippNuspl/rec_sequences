@@ -1878,6 +1878,9 @@ class DFiniteSequenceRing(RecurrenceSequenceRing):
         If ``cut`` is specified and ``False``, then not only the minimal number
         of equations necessary to have the given ``ensure`` are used but all 
         possible.
+        If ``ensure_relative`` is specified and ``True``, then the corresponding
+        linear system has at least (r+1)(d+1)*(1+floor(e/100))+floor(e/10) 
+        equations compared to (r+1)(d+1) variables.
         """
         ring = self.associated_ore_algebra().base_ring()
         D = len(data)-1
@@ -1890,29 +1893,30 @@ class DFiniteSequenceRing(RecurrenceSequenceRing):
                 # sequence has many zeros, e.g. might be
                 # eventually zero
                 z = 1/10
-            ensure = floor(ensure/z)
+            # ensure = floor(ensure/z)
             log(self.Element, 
                 f"Guessing: density of non-zero elements {z}")
-            max_order = 0
-            while floor((max_order+1)*z) <= (z*D-z*ensure)/2-1 :
-                max_order += 1
-            # max_order=r is maximal with (z*N-z*ens)/2-1 >= floor(r*z)
         if "max_order" in kwds :
             max_order = min(kwds["max_order"], max_order)
         for r in range(0, max_order+1) :
             max_degree = floor((D-ensure-2*r)/(r+1))
-            if "sparse" in kwds and kwds["sparse"] > 0 :
-                rz = floor(r*z)
-                max_degree = floor((z*D-z*ensure-2*(rz+1))/(rz+1))
             if "max_degree" in kwds :
+                if "sparse" in kwds and kwds["sparse"] > 0 :
+                    curve = max(floor(kwds["max_degree"]/(r+1)-1), 0)
+                    max_degree = min(curve, max_degree)
                 max_degree = min(kwds["max_degree"], max_degree)
             for d in range(0, max_degree+1) :
                 # populate linear system
                 N = (r+1)*(d+1) + ensure
+                if "ensure_relative" in kwds and kwds["ensure_relative"] :
+                    N = floor((r+1)*(d+1)*(1+ensure/2))+floor(ensure)
+                    if N-1+r > D :
+                        break
                 if "sparse" in kwds and kwds["sparse"] > 0 :
                     rz = floor(r*z)
-                    N  = floor(((rz+1)*(d+2))/z + ensure)
-                    if N+r > D or N < (r+1)*(d+1) + ensure:
+                    # N ... number of equations
+                    N = floor((rz+1)*(d+1)*(1+ensure/2)/z)+floor(ensure)
+                    if N+r > D or N < (r+1)*(d+1) :
                         break
                 if "cut" in kwds and not kwds["cut"] :
                     N = D-r+1
@@ -2032,7 +2036,9 @@ class DFiniteSequenceRing(RecurrenceSequenceRing):
                 raise TypeError("Something went wrong, wrong recurrence")
             return recurrence
         else :
-            return self.Element(self, recurrence.list(), data, name = name)
+            order = recurrence.order()
+            return self.Element(self, recurrence.list(), data[:order], 
+                                name = name)
 
 class DFiniteSequenceRingFunctor(RecurrenceSequenceRingFunctor):
     def __init__(self):
