@@ -1879,7 +1879,7 @@ class DFiniteSequenceRing(RecurrenceSequenceRing):
         of equations necessary to have the given ``ensure`` are used but all 
         possible.
         If ``ensure_relative`` is specified and ``True``, then the corresponding
-        linear system has at least (r+1)(d+1)*(1+floor(e/100))+floor(e/10) 
+        linear system has at least (r+1)(d+1)*(1+floor(e/2))+floor(e) 
         equations compared to (r+1)(d+1) variables.
         """
         ring = self.associated_ore_algebra().base_ring()

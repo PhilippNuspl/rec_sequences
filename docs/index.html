@@ -102,20 +102,13 @@ sequences is based on the
 <a class="reference external" href="https://github.com/mkauers/ore_algebra"><code class="docutils literal notranslate"><span class="pre">ore_algebra</span></code></a> package (cf. <a class="reference internal" href="#kjj15" id="id1"><span>[KJJ15]</span></a>).</p></li>
 <li><p>From these simple sequences
 one can create more complicated sequences, e.g. sequences satisfying a linear
-recurrence with <span class="math notranslate nohighlight">\(C\)</span>-finite coefficients, so called <span class="math notranslate nohighlight">\(C^2\)</span>-finite sequences.</p></li>
+recurrence with <span class="math notranslate nohighlight">\(C\)</span>-finite coefficients, so called <span class="math notranslate nohighlight">\(C^2\)</span>-finite sequences
+(cf. <a class="reference internal" href="#jpnp21a" id="id2"><span>[JPNP21a]</span></a>, <a class="reference internal" href="#jpnp21b" id="id3"><span>[JPNP21b]</span></a>)..</p></li>
 <li><p>The package furthermore provides methods to show inequalities of <span class="math notranslate nohighlight">\(C\)</span>-finite
-and <span class="math notranslate nohighlight">\(D\)</span>-finite sequences based on the Gerhold-Kauers method
-(cf. <a class="reference internal" href="#gk05" id="id2"><span>[GK05]</span></a>, <a class="reference internal" href="#kp10" id="id3"><span>[KP10]</span></a>).</p></li>
+and <span class="math notranslate nohighlight">\(D\)</span>-finite sequences based on the Gerhold-Kauers method and methods based
+on arbitrary precision computations (cf. <a class="reference internal" href="#gk05" id="id4"><span>[GK05]</span></a>, <a class="reference internal" href="#kp10" id="id5"><span>[KP10]</span></a>, <a class="reference internal" href="#np22" id="id6"><span>[NP22]</span></a>).</p></li>
 </ul>
-<p>The theory of <span class="math notranslate nohighlight">\(C^2\)</span>-finite sequences which serves as the theoretic backbone of
-the package is developed in:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>Antonio Jiménez-Pastor, Philipp Nuspl, Veronika Pillwein:
-An extension of holonomic sequences: <span class="math notranslate nohighlight">\(C^2\)</span>-finite sequences (2021),
-<a class="reference external" href="https://epub.jku.at/obvulioa/download/pdf/6880353?originalFilename=true">10.35011/risc.21-20</a></p></li>
-</ul>
-</div></blockquote>
+<p>A tutorial for the package can be found below and in <a class="reference internal" href="#n22" id="id7"><span>[N22]</span></a>.</p>
 <p>The package is developed by <a class="reference external" href="mailto:philipp&#46;nuspl&#37;&#52;&#48;jku&#46;at">Philipp Nuspl</a> and
 published under the GNU General Public License v3.0.
 The research is funded by the
@@ -188,7 +181,7 @@ check identities (like Cassini's identity here):</p>
 <span class="kc">True</span>
 </pre></div>
 </div>
-<p>Furthermore, using the Gerhold-Kauers method (<a class="reference internal" href="#gk05" id="id4"><span>[GK05]</span></a>, <a class="reference internal" href="#kp10" id="id5"><span>[KP10]</span></a>)
+<p>Furthermore, using the Gerhold-Kauers method (<a class="reference internal" href="#gk05" id="id8"><span>[GK05]</span></a>, <a class="reference internal" href="#kp10" id="id9"><span>[KP10]</span></a>)
 we can check termwise inequalities for <span class="math notranslate nohighlight">\(C\)</span>-finite
 (or <span class="math notranslate nohighlight">\(D\)</span>-finite) sequences:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="n">fib</span> <span class="o">&gt;</span> <span class="mi">0</span>
@@ -314,35 +307,15 @@ Finally, <code class="docutils literal notranslate"><span class="pre">utility</s
 <section id="references">
 <h3>References<a class="headerlink" href="#references" title="Permalink to this headline"></a></h3>
 <dl class="citation">
-<dt class="label" id="gk05"><span class="brackets">GK05</span><span class="fn-backref">(<a href="#id2">1</a>,<a href="#id4">2</a>)</span></dt>
+<dt class="label" id="gk05"><span class="brackets">GK05</span><span class="fn-backref">(<a href="#id4">1</a>,<a href="#id8">2</a>)</span></dt>
 <dd><p>Stefan Gerhold, Manuel Kauers: A Procedure for Proving Special
 Function Inequalities Involving a Discrete Parameter. In: Proceedings of
-ISSAC’05, pp. 156–162. 2005.</p>
+ISSAC’05, pp. 156-162. 2005.</p>
 </dd>
-<dt class="label" id="kjj15"><span class="brackets"><a class="fn-backref" href="#id1">KJJ15</a></span></dt>
-<dd><p>Manuel Kauers, Maximilian Jaroschek, Frederik Johansson: Ore
-Polynomials in Sage. In: Computer Algebra and Polynomials. Lecture Notes in
-Computer Science. 2015</p>
-</dd>
-<dt class="label" id="kp10"><span class="brackets">KP10</span><span class="fn-backref">(<a href="#id3">1</a>,<a href="#id5">2</a>)</span></dt>
+<dt class="label" id="kp10"><span class="brackets">KP10</span><span class="fn-backref">(<a href="#id5">1</a>,<a href="#id9">2</a>)</span></dt>
 <dd><p>Manuel Kauers, Veronika Pillwein: When can we detect that
 a P-finite sequence is positive? In: Proceedings of
-ISSAC’10, pp. 195–202. 2010.</p>
-</dd>
-<dt class="label" id="jpnp21a"><span class="brackets">JPNP21a</span></dt>
-<dd><p>Antonio Jiménez-Pastor, Philipp Nuspl, Veronika Pillwein:
-An extension of holonomic sequences: <span class="math notranslate nohighlight">\(C^2\)</span>-finite sequences (2021), doi:
-<a class="reference external" href="https://epub.jku.at/obvulioa/download/pdf/6880353?originalFilename=true">10.35011/risc.21-20</a></p>
-</dd>
-<dt class="label" id="jpnp21b"><span class="brackets">JPNP21b</span></dt>
-<dd><p>Antonio Jiménez-Pastor, Philipp Nuspl, Veronika Pillwein:
-On <span class="math notranslate nohighlight">\(C^2\)</span>-finite sequences. In:
-Proceedings of ISSAC’21, pp. 217–224. 2021. <a class="reference external" href="https://www.dk-compmath.jku.at/publications/dk-reports/2021-02-08jp-n-p/at_download/file">preprint</a></p>
-</dd>
-<dt class="label" id="akkow21"><span class="brackets">AKKOW21</span></dt>
-<dd><p>Shaull Almagor, Toghrul Karimov, Edon Kelmendi, Joël Ouaknine, and
-James Worrell. 2021. Deciding ω-regular properties on linear recurrence
-sequences. Proc. ACM Program. Lang. 5, POPL, Article 48 (January 2021)</p>
+ISSAC’10, pp. 195-202. 2010.</p>
 </dd>
 <dt class="label" id="ow14"><span class="brackets">OW14</span></dt>
 <dd><p>Joël Ouaknine and James Worrell. Positivity problems for low-order
@@ -352,6 +325,37 @@ linear recurrence sequences. In: Proceedings of SODA 14. 2014</p>
 <dd><p>Paolo Faccin. Computational problems in algebra: units in group rings
 and subalgebras of real simple Lie algebras. PhD thesis. University of
 Trento. 2014</p>
+</dd>
+<dt class="label" id="kjj15"><span class="brackets"><a class="fn-backref" href="#id1">KJJ15</a></span></dt>
+<dd><p>Manuel Kauers, Maximilian Jaroschek, Frederik Johansson: Ore
+Polynomials in Sage. In: Computer Algebra and Polynomials. Lecture Notes in
+Computer Science. 2015</p>
+</dd>
+<dt class="label" id="akkow21"><span class="brackets">AKKOW21</span></dt>
+<dd><p>Shaull Almagor, Toghrul Karimov, Edon Kelmendi, Joël Ouaknine, and
+James Worrell. 2021. Deciding ω-regular properties on linear recurrence
+sequences. Proc. ACM Program. Lang. 5, POPL, Article 48 (January 2021)</p>
+</dd>
+<dt class="label" id="jpnp21a"><span class="brackets"><a class="fn-backref" href="#id2">JPNP21a</a></span></dt>
+<dd><p>Antonio Jiménez-Pastor, Philipp Nuspl, Veronika Pillwein:
+An extension of holonomic sequences: <span class="math notranslate nohighlight">\(C^2\)</span>-finite sequences. In:  J. Symb. Comput. 116, pp.400-424, 2023, doi:
+<a class="reference external" href="https://epub.jku.at/obvulioa/download/pdf/6880353?originalFilename=true">10.1016/j.jsc.2022.10.008</a></p>
+</dd>
+<dt class="label" id="jpnp21b"><span class="brackets"><a class="fn-backref" href="#id3">JPNP21b</a></span></dt>
+<dd><p>Antonio Jiménez-Pastor, Philipp Nuspl, Veronika Pillwein:
+On <span class="math notranslate nohighlight">\(C^2\)</span>-finite sequences. In:
+Proceedings of ISSAC’21, pp. 217-224. 2021. <a class="reference external" href="https://www.dk-compmath.jku.at/publications/dk-reports/2021-02-08jp-n-p/at_download/file">preprint</a></p>
+</dd>
+<dt class="label" id="np22"><span class="brackets"><a class="fn-backref" href="#id6">NP22</a></span></dt>
+<dd><p>Philipp Nuspl, Veronika Pillwein: A Comparison of Algorithms for
+Proving Positivity of Linearly Recurrent Sequences. In: Proceedings of
+CASC 2022, pp. 268-287. 2022, doi:
+<a class="reference external" href="http://www3.risc.jku.at/publications/download/risc_6514/22-05.pdf">10.1007/978-3-031-14788-3_15</a></p>
+</dd>
+<dt class="label" id="n22"><span class="brackets"><a class="fn-backref" href="#id7">N22</a></span></dt>
+<dd><p>Philipp Nuspl: <span class="math notranslate nohighlight">\(C\)</span>-finite and <span class="math notranslate nohighlight">\(C^2\)</span>-finite Sequences in SageMath. In:
+Software Presentation at ISSAC 2022, doi:
+<a class="reference external" href="https://epub.jku.at/obvulioa/download/pdf/7803895?originalFilename=true">10.35011/risc.22-06</a></p>
 </dd>
 </dl>
 </section>

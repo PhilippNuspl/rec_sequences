@@ -19,8 +19,10 @@ equations.
   recurrence with `C`-finite coefficients, so called `C^2`-finite sequences
   (cf. [JPNP21a]_, [JPNP21b]_).
 - The package furthermore provides methods to show inequalities of `C`-finite 
-  and `D`-finite sequences based on the Gerhold-Kauers method 
-  (cf. [GK05]_, [KP10]_).
+  and `D`-finite sequences based on the Gerhold-Kauers method and methods based
+  on arbitrary precision computations (cf. [GK05]_, [KP10]_, [NP22]_).
+
+A tutorial for the package can be found in [N22]_.
 
 The package is developed by `Philipp Nuspl <mailto:philipp.nuspl@jku.at>`_ and
 published under the GNU General Public License v3.0.
@@ -72,7 +74,7 @@ References
 
 .. [GK05] Stefan Gerhold, Manuel Kauers: A Procedure for Proving Special 
     Function Inequalities Involving a Discrete Parameter. In: Proceedings of 
-    ISSAC'05, pp. 156–162. 2005. 
+    ISSAC'05, pp. 156-162. 2005. 
 
 .. [KJJ15] Manuel Kauers, Maximilian Jaroschek, Frederik Johansson: Ore 
    Polynomials in Sage. In: Computer Algebra and Polynomials. Lecture Notes in 
@@ -80,16 +82,24 @@ References
 
 .. [KP10] Manuel Kauers, Veronika Pillwein: When can we detect that
     a P-finite sequence is positive? In: Proceedings of 
-    ISSAC'10, pp. 195–202. 2010. 
+    ISSAC'10, pp. 195-202. 2010. 
 
 .. [JPNP21a] Antonio Jiménez-Pastor, Philipp Nuspl, Veronika Pillwein: 
-   An extension of holonomic sequences: `C^2`-finite sequences (2021), doi:
-   `10.35011/risc.21-20 <https://epub.jku.at/obvulioa/download/pdf/6880353?
-   originalFilename=true>`_
+   An extension of holonomic sequences: `C^2`-finite sequences. In:  J. Symb. Comput. 116, pp.400-424, 2023, doi:
+   `10.1016/j.jsc.2022.10.008 <https://epub.jku.at/obvulioa/download/pdf/6880353?originalFilename=true>`_
 
 .. [JPNP21b] Antonio Jiménez-Pastor, Philipp Nuspl, Veronika Pillwein: 
    On `C^2`-finite sequences. In: 
-   Proceedings of ISSAC'21, pp. 217–224. 2021. `preprint <https://www.
+   Proceedings of ISSAC'21, pp. 217-224. 2021. `preprint <https://www.
    dk-compmath.jku.at/publications/dk-reports/2021-02-08jp-n-p/at_download/
    file>`_
+
+.. [NP22] Philipp Nuspl, Veronika Pillwein: A Comparison of Algorithms for 
+   Proving Positivity of Linearly Recurrent Sequences. In: Proceedings of 
+   CASC 2022, pp. 268-287. 2022, doi:
+   `10.1007/978-3-031-14788-3_15 <http://www3.risc.jku.at/publications/download/risc_6514/22-05.pdf>`_
+
+.. [N22] Philipp Nuspl: `C`-finite and `C^2`-finite Sequences in SageMath. In: 
+   Software Presentation at ISSAC 2022, doi:
+   `10.35011/risc.22-06 <https://epub.jku.at/obvulioa/download/pdf/7803895?originalFilename=true>`_
    
