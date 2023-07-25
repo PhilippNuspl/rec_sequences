@@ -1882,6 +1882,9 @@ class DFiniteSequenceRing(RecurrenceSequenceRing):
         linear system has at least ceil((r+1)(d+1)*(1+e/10))+floor(e) 
         equations compared to (r+1)(d+1) variables.
         """
+        # ensure relative factor
+        erf = kwds.get("ensure_relative_factor", 10) 
+        
         ring = self.associated_ore_algebra().base_ring()
         D = len(data)-1
         max_order = floor((D-ensure)/2)
@@ -1909,13 +1912,13 @@ class DFiniteSequenceRing(RecurrenceSequenceRing):
                 # populate linear system
                 N = (r+1)*(d+1) + ensure
                 if "ensure_relative" in kwds and kwds["ensure_relative"] :
-                    N = ceil((r+1)*(d+1)*(1+ensure/10))+floor(ensure)
+                    N = ceil((r+1)*(d+1)*(1+ensure/erf))+floor(ensure)
                     if N-1+r > D :
                         break
                 if "sparse" in kwds and kwds["sparse"] > 0 :
                     rz = floor(r*z)
                     # N ... number of equations
-                    N = ceil((rz+1)*(d+1)*(1+ensure/10)/z)+floor(ensure)
+                    N = ceil((rz+1)*(d+1)*(1+ensure/erf)/z)+floor(ensure)
                     if N+r > D or N < (r+1)*(d+1) :
                         break
                 if "cut" in kwds and not kwds["cut"] :
